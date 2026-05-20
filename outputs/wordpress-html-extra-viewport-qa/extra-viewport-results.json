@@ -1,0 +1,971 @@
+{
+  "generatedAt": "2026-05-11T05:48:32.122Z",
+  "appBase": "http://127.0.0.1:58483",
+  "routes": [
+    {
+      "route": "/",
+      "slug": "home"
+    },
+    {
+      "route": "/about/",
+      "slug": "about"
+    },
+    {
+      "route": "/career-services/",
+      "slug": "career-services"
+    },
+    {
+      "route": "/educational-services/",
+      "slug": "educational-services"
+    },
+    {
+      "route": "/diy-products/",
+      "slug": "diy-products"
+    },
+    {
+      "route": "/contact-us/",
+      "slug": "contact-us"
+    }
+  ],
+  "viewports": [
+    {
+      "name": "360w",
+      "width": 360,
+      "height": 900
+    },
+    {
+      "name": "390w",
+      "width": 390,
+      "height": 900
+    },
+    {
+      "name": "430w",
+      "width": 430,
+      "height": 900
+    },
+    {
+      "name": "768w",
+      "width": 768,
+      "height": 900
+    },
+    {
+      "name": "1024w",
+      "width": 1024,
+      "height": 1100
+    },
+    {
+      "name": "1440w",
+      "width": 1440,
+      "height": 1100
+    }
+  ],
+  "totals": {
+    "brokenVisibleImages": 0,
+    "overflowCases": 0,
+    "entryLimitCases": 0,
+    "pageErrors": 0,
+    "failedRequests": 0
+  },
+  "results": [
+    {
+      "route": "/",
+      "viewport": {
+        "name": "360w",
+        "width": 360,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/home-360w.png",
+      "metrics": {
+        "title": "Elevate Career Hub — Career & Education Support in Ghana",
+        "h1": [
+          "Complete Hub for Career and Education Success"
+        ],
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 17,
+        "ctaLinkCount": 15
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/about/",
+      "viewport": {
+        "name": "360w",
+        "width": 360,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/about-360w.png",
+      "metrics": {
+        "title": "About Elevate Career Hub",
+        "h1": [
+          "Helping Ambitious People Move Forward With Confidence"
+        ],
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 21,
+        "ctaLinkCount": 23
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/career-services/",
+      "viewport": {
+        "name": "360w",
+        "width": 360,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/career-services-360w.png",
+      "metrics": {
+        "title": "Career Services — CVs, Cover Letters, LinkedIn & Interview Prep",
+        "h1": [
+          "Career Services That Help You Stand Out"
+        ],
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 21,
+        "ctaLinkCount": 35
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/educational-services/",
+      "viewport": {
+        "name": "360w",
+        "width": 360,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/educational-services-360w.png",
+      "metrics": {
+        "title": "Educational Services — Graduate School & Scholarship Support",
+        "h1": [
+          "Education Support for Stronger Applications"
+        ],
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 21,
+        "ctaLinkCount": 34
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/diy-products/",
+      "viewport": {
+        "name": "360w",
+        "width": 360,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/diy-products-360w.png",
+      "metrics": {
+        "title": "DIY Career & Education Products — Elevate Career Hub",
+        "h1": [
+          "Practical DIY Resources for Your Next Step"
+        ],
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 16,
+        "ctaLinkCount": 35
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/contact-us/",
+      "viewport": {
+        "name": "360w",
+        "width": 360,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/contact-us-360w.png",
+      "metrics": {
+        "title": "Contact Elevate Career Hub",
+        "h1": [
+          "Talk to Elevate Career Hub"
+        ],
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 15,
+        "ctaLinkCount": 21
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "390w",
+        "width": 390,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/home-390w.png",
+      "metrics": {
+        "title": "Elevate Career Hub — Career & Education Support in Ghana",
+        "h1": [
+          "Complete Hub for Career and Education Success"
+        ],
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 17,
+        "ctaLinkCount": 15
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/about/",
+      "viewport": {
+        "name": "390w",
+        "width": 390,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/about-390w.png",
+      "metrics": {
+        "title": "About Elevate Career Hub",
+        "h1": [
+          "Helping Ambitious People Move Forward With Confidence"
+        ],
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 21,
+        "ctaLinkCount": 23
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/career-services/",
+      "viewport": {
+        "name": "390w",
+        "width": 390,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/career-services-390w.png",
+      "metrics": {
+        "title": "Career Services — CVs, Cover Letters, LinkedIn & Interview Prep",
+        "h1": [
+          "Career Services That Help You Stand Out"
+        ],
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 21,
+        "ctaLinkCount": 35
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/educational-services/",
+      "viewport": {
+        "name": "390w",
+        "width": 390,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/educational-services-390w.png",
+      "metrics": {
+        "title": "Educational Services — Graduate School & Scholarship Support",
+        "h1": [
+          "Education Support for Stronger Applications"
+        ],
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 21,
+        "ctaLinkCount": 34
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/diy-products/",
+      "viewport": {
+        "name": "390w",
+        "width": 390,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/diy-products-390w.png",
+      "metrics": {
+        "title": "DIY Career & Education Products — Elevate Career Hub",
+        "h1": [
+          "Practical DIY Resources for Your Next Step"
+        ],
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 16,
+        "ctaLinkCount": 35
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/contact-us/",
+      "viewport": {
+        "name": "390w",
+        "width": 390,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/contact-us-390w.png",
+      "metrics": {
+        "title": "Contact Elevate Career Hub",
+        "h1": [
+          "Talk to Elevate Career Hub"
+        ],
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 15,
+        "ctaLinkCount": 21
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "430w",
+        "width": 430,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/home-430w.png",
+      "metrics": {
+        "title": "Elevate Career Hub — Career & Education Support in Ghana",
+        "h1": [
+          "Complete Hub for Career and Education Success"
+        ],
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 17,
+        "ctaLinkCount": 15
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/about/",
+      "viewport": {
+        "name": "430w",
+        "width": 430,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/about-430w.png",
+      "metrics": {
+        "title": "About Elevate Career Hub",
+        "h1": [
+          "Helping Ambitious People Move Forward With Confidence"
+        ],
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 21,
+        "ctaLinkCount": 23
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/career-services/",
+      "viewport": {
+        "name": "430w",
+        "width": 430,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/career-services-430w.png",
+      "metrics": {
+        "title": "Career Services — CVs, Cover Letters, LinkedIn & Interview Prep",
+        "h1": [
+          "Career Services That Help You Stand Out"
+        ],
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 21,
+        "ctaLinkCount": 35
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/educational-services/",
+      "viewport": {
+        "name": "430w",
+        "width": 430,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/educational-services-430w.png",
+      "metrics": {
+        "title": "Educational Services — Graduate School & Scholarship Support",
+        "h1": [
+          "Education Support for Stronger Applications"
+        ],
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 21,
+        "ctaLinkCount": 34
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/diy-products/",
+      "viewport": {
+        "name": "430w",
+        "width": 430,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/diy-products-430w.png",
+      "metrics": {
+        "title": "DIY Career & Education Products — Elevate Career Hub",
+        "h1": [
+          "Practical DIY Resources for Your Next Step"
+        ],
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 16,
+        "ctaLinkCount": 35
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/contact-us/",
+      "viewport": {
+        "name": "430w",
+        "width": 430,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/contact-us-430w.png",
+      "metrics": {
+        "title": "Contact Elevate Career Hub",
+        "h1": [
+          "Talk to Elevate Career Hub"
+        ],
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 15,
+        "ctaLinkCount": 21
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "768w",
+        "width": 768,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/home-768w.png",
+      "metrics": {
+        "title": "Elevate Career Hub — Career & Education Support in Ghana",
+        "h1": [
+          "Complete Hub for Career and Education Success"
+        ],
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 18,
+        "ctaLinkCount": 16
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/about/",
+      "viewport": {
+        "name": "768w",
+        "width": 768,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/about-768w.png",
+      "metrics": {
+        "title": "About Elevate Career Hub",
+        "h1": [
+          "Helping Ambitious People Move Forward With Confidence"
+        ],
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 22,
+        "ctaLinkCount": 24
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/career-services/",
+      "viewport": {
+        "name": "768w",
+        "width": 768,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/career-services-768w.png",
+      "metrics": {
+        "title": "Career Services — CVs, Cover Letters, LinkedIn & Interview Prep",
+        "h1": [
+          "Career Services That Help You Stand Out"
+        ],
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 22,
+        "ctaLinkCount": 36
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/educational-services/",
+      "viewport": {
+        "name": "768w",
+        "width": 768,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/educational-services-768w.png",
+      "metrics": {
+        "title": "Educational Services — Graduate School & Scholarship Support",
+        "h1": [
+          "Education Support for Stronger Applications"
+        ],
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 22,
+        "ctaLinkCount": 35
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/diy-products/",
+      "viewport": {
+        "name": "768w",
+        "width": 768,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/diy-products-768w.png",
+      "metrics": {
+        "title": "DIY Career & Education Products — Elevate Career Hub",
+        "h1": [
+          "Practical DIY Resources for Your Next Step"
+        ],
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 17,
+        "ctaLinkCount": 36
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/contact-us/",
+      "viewport": {
+        "name": "768w",
+        "width": 768,
+        "height": 900
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/contact-us-768w.png",
+      "metrics": {
+        "title": "Contact Elevate Career Hub",
+        "h1": [
+          "Talk to Elevate Career Hub"
+        ],
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 16,
+        "ctaLinkCount": 22
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "1024w",
+        "width": 1024,
+        "height": 1100
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/home-1024w.png",
+      "metrics": {
+        "title": "Elevate Career Hub — Career & Education Support in Ghana",
+        "h1": [
+          "Complete Hub for Career and Education Success"
+        ],
+        "scrollWidth": 1024,
+        "innerWidth": 1024,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 18,
+        "ctaLinkCount": 16
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/about/",
+      "viewport": {
+        "name": "1024w",
+        "width": 1024,
+        "height": 1100
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/about-1024w.png",
+      "metrics": {
+        "title": "About Elevate Career Hub",
+        "h1": [
+          "Helping Ambitious People Move Forward With Confidence"
+        ],
+        "scrollWidth": 1024,
+        "innerWidth": 1024,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 22,
+        "ctaLinkCount": 24
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/career-services/",
+      "viewport": {
+        "name": "1024w",
+        "width": 1024,
+        "height": 1100
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/career-services-1024w.png",
+      "metrics": {
+        "title": "Career Services — CVs, Cover Letters, LinkedIn & Interview Prep",
+        "h1": [
+          "Career Services That Help You Stand Out"
+        ],
+        "scrollWidth": 1024,
+        "innerWidth": 1024,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 22,
+        "ctaLinkCount": 36
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/educational-services/",
+      "viewport": {
+        "name": "1024w",
+        "width": 1024,
+        "height": 1100
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/educational-services-1024w.png",
+      "metrics": {
+        "title": "Educational Services — Graduate School & Scholarship Support",
+        "h1": [
+          "Education Support for Stronger Applications"
+        ],
+        "scrollWidth": 1024,
+        "innerWidth": 1024,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 22,
+        "ctaLinkCount": 35
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/diy-products/",
+      "viewport": {
+        "name": "1024w",
+        "width": 1024,
+        "height": 1100
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/diy-products-1024w.png",
+      "metrics": {
+        "title": "DIY Career & Education Products — Elevate Career Hub",
+        "h1": [
+          "Practical DIY Resources for Your Next Step"
+        ],
+        "scrollWidth": 1024,
+        "innerWidth": 1024,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 17,
+        "ctaLinkCount": 36
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/contact-us/",
+      "viewport": {
+        "name": "1024w",
+        "width": 1024,
+        "height": 1100
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/contact-us-1024w.png",
+      "metrics": {
+        "title": "Contact Elevate Career Hub",
+        "h1": [
+          "Talk to Elevate Career Hub"
+        ],
+        "scrollWidth": 1024,
+        "innerWidth": 1024,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 16,
+        "ctaLinkCount": 22
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/",
+      "viewport": {
+        "name": "1440w",
+        "width": 1440,
+        "height": 1100
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/home-1440w.png",
+      "metrics": {
+        "title": "Elevate Career Hub — Career & Education Support in Ghana",
+        "h1": [
+          "Complete Hub for Career and Education Success"
+        ],
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 20,
+        "ctaLinkCount": 18
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/about/",
+      "viewport": {
+        "name": "1440w",
+        "width": 1440,
+        "height": 1100
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/about-1440w.png",
+      "metrics": {
+        "title": "About Elevate Career Hub",
+        "h1": [
+          "Helping Ambitious People Move Forward With Confidence"
+        ],
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 24,
+        "ctaLinkCount": 26
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/career-services/",
+      "viewport": {
+        "name": "1440w",
+        "width": 1440,
+        "height": 1100
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/career-services-1440w.png",
+      "metrics": {
+        "title": "Career Services — CVs, Cover Letters, LinkedIn & Interview Prep",
+        "h1": [
+          "Career Services That Help You Stand Out"
+        ],
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 24,
+        "ctaLinkCount": 38
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/educational-services/",
+      "viewport": {
+        "name": "1440w",
+        "width": 1440,
+        "height": 1100
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/educational-services-1440w.png",
+      "metrics": {
+        "title": "Educational Services — Graduate School & Scholarship Support",
+        "h1": [
+          "Education Support for Stronger Applications"
+        ],
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 24,
+        "ctaLinkCount": 37
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/diy-products/",
+      "viewport": {
+        "name": "1440w",
+        "width": 1440,
+        "height": 1100
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/diy-products-1440w.png",
+      "metrics": {
+        "title": "DIY Career & Education Products — Elevate Career Hub",
+        "h1": [
+          "Practical DIY Resources for Your Next Step"
+        ],
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 19,
+        "ctaLinkCount": 38
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    },
+    {
+      "route": "/contact-us/",
+      "viewport": {
+        "name": "1440w",
+        "width": 1440,
+        "height": 1100
+      },
+      "status": 200,
+      "screenshot": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/wordpress-html-extra-viewport-qa/contact-us-1440w.png",
+      "metrics": {
+        "title": "Contact Elevate Career Hub",
+        "h1": [
+          "Talk to Elevate Career Hub"
+        ],
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflowX": false,
+        "brokenVisibleImages": [],
+        "visibleEntryLimitMessage": false,
+        "navLinkCount": 18,
+        "ctaLinkCount": 24
+      },
+      "pageErrors": [],
+      "failedRequests": []
+    }
+  ]
+}

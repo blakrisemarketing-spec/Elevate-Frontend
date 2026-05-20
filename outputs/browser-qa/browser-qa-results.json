@@ -1,0 +1,2499 @@
+{
+  "startedAt": "2026-05-09T09:31:12.740Z",
+  "baseUrl": "http://localhost:4177",
+  "browser": "Chromium via Playwright Version 1.58.0",
+  "routes": [
+    {
+      "route": "/",
+      "label": "home",
+      "snapshot": "home.html",
+      "viewports": [
+        {
+          "width": 360,
+          "height": 780,
+          "url": "http://localhost:4177/",
+          "durationMs": 2042,
+          "screenshot": "outputs/browser-qa/home/360/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Home",
+            "path": "/",
+            "textSample": "WELCOME TO ELEVATE Complete Hub for Unrivaled Career and Education Success Are you ready to ascend to new height in your career or education? Welcome to Elevate Career Hub, your gateway to a transformative career experie",
+            "textLength": 5715,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 360,
+            "bodyClientWidth": 360,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 30,
+            "brokenImages": [],
+            "h1s": [
+              "Complete Hub for Unrivaled Career and Education Success"
+            ]
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 390,
+          "height": 780,
+          "url": "http://localhost:4177/",
+          "durationMs": 2049,
+          "screenshot": "outputs/browser-qa/home/390/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Home",
+            "path": "/",
+            "textSample": "WELCOME TO ELEVATE Complete Hub for Unrivaled Career and Education Success Are you ready to ascend to new height in your career or education? Welcome to Elevate Career Hub, your gateway to a transformative career experie",
+            "textLength": 5715,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 390,
+            "bodyClientWidth": 390,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 30,
+            "brokenImages": [],
+            "h1s": [
+              "Complete Hub for Unrivaled Career and Education Success"
+            ]
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 430,
+          "height": 780,
+          "url": "http://localhost:4177/",
+          "durationMs": 1978,
+          "screenshot": "outputs/browser-qa/home/430/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Home",
+            "path": "/",
+            "textSample": "WELCOME TO ELEVATE Complete Hub for Unrivaled Career and Education Success Are you ready to ascend to new height in your career or education? Welcome to Elevate Career Hub, your gateway to a transformative career experie",
+            "textLength": 5715,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 430,
+            "bodyClientWidth": 430,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 30,
+            "brokenImages": [],
+            "h1s": [
+              "Complete Hub for Unrivaled Career and Education Success"
+            ]
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 768,
+          "height": 900,
+          "url": "http://localhost:4177/",
+          "durationMs": 2171,
+          "screenshot": "outputs/browser-qa/home/768/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Home",
+            "path": "/",
+            "textSample": "WELCOME TO ELEVATE Complete Hub for Unrivaled Career and Education Success Are you ready to ascend to new height in your career or education? Welcome to Elevate Career Hub, your gateway to a transformative career experie",
+            "textLength": 5715,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 768,
+            "bodyClientWidth": 768,
+            "horizontalOverflow": false,
+            "badOverflow": [
+              {
+                "tag": "DIV",
+                "className": "elementor-widget-container",
+                "right": 214,
+                "left": -96
+              },
+              {
+                "tag": "IMG",
+                "className": "attachment-large size-large wp-image-576",
+                "right": 214,
+                "left": -96
+              }
+            ],
+            "visibleImageCount": 30,
+            "brokenImages": [],
+            "h1s": [
+              "Complete Hub for Unrivaled Career and Education Success"
+            ]
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1024,
+          "height": 900,
+          "url": "http://localhost:4177/",
+          "durationMs": 2737,
+          "screenshot": "outputs/browser-qa/home/1024/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Home",
+            "path": "/",
+            "textSample": "WELCOME TO ELEVATE Complete Hub for Unrivaled Career and Education Success Are you ready to ascend to new height in your career or education? Welcome to Elevate Career Hub, your gateway to a transformative career experie",
+            "textLength": 5715,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1024,
+            "bodyClientWidth": 1024,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 30,
+            "brokenImages": [],
+            "h1s": [
+              "Complete Hub for Unrivaled Career and Education Success"
+            ]
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1280,
+          "height": 1080,
+          "url": "http://localhost:4177/",
+          "durationMs": 2392,
+          "screenshot": "outputs/browser-qa/home/1280/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Home",
+            "path": "/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products WELCOME TO ELEVATE Complete Hub for Unrivaled Career and Education Success Are you ready to ascend to new height in your career or education? Welcome to Elevat",
+            "textLength": 5837,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1280,
+            "bodyClientWidth": 1280,
+            "horizontalOverflow": false,
+            "badOverflow": [
+              {
+                "tag": "DIV",
+                "className": "elementor-widget-container",
+                "right": 424,
+                "left": -76
+              },
+              {
+                "tag": "IMG",
+                "className": "attachment-large size-large wp-image-576",
+                "right": 424,
+                "left": -76
+              }
+            ],
+            "visibleImageCount": 30,
+            "brokenImages": [],
+            "h1s": [
+              "Complete Hub for Unrivaled Career and Education Success"
+            ]
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1080,
+          "url": "http://localhost:4177/",
+          "durationMs": 2591,
+          "screenshot": "outputs/browser-qa/home/1440/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Home",
+            "path": "/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products WELCOME TO ELEVATE Complete Hub for Unrivaled Career and Education Success Are you ready to ascend to new height in your career or education? Welcome to Elevat",
+            "textLength": 5837,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1440,
+            "bodyClientWidth": 1440,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 30,
+            "brokenImages": [],
+            "h1s": [
+              "Complete Hub for Unrivaled Career and Education Success"
+            ]
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "url": "http://localhost:4177/",
+          "durationMs": 2898,
+          "screenshot": "outputs/browser-qa/home/1920/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Home",
+            "path": "/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products WELCOME TO ELEVATE Complete Hub for Unrivaled Career and Education Success Are you ready to ascend to new height in your career or education? Welcome to Elevat",
+            "textLength": 5837,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1920,
+            "bodyClientWidth": 1920,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 30,
+            "brokenImages": [],
+            "h1s": [
+              "Complete Hub for Unrivaled Career and Education Success"
+            ]
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        }
+      ],
+      "parity": {
+        "snapshotExists": true,
+        "textSimilarity": 0.9724,
+        "snapshotTextLength": 5980,
+        "appTextLength": 5893,
+        "commonPrefixChars": 0
+      }
+    },
+    {
+      "route": "/about/",
+      "label": "about",
+      "snapshot": "about.html",
+      "viewports": [
+        {
+          "width": 360,
+          "height": 780,
+          "url": "http://localhost:4177/about/",
+          "durationMs": 2301,
+          "screenshot": "outputs/browser-qa/about/360/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "About",
+            "path": "/about/",
+            "textSample": "About Us HOME ABOUT ABOUT US Crafting Careers, Building Educational Futures Welcome to Elevate Career Hub, where we believe in transforming careers through empowerment, education, and connections. Elevate is more than a ",
+            "textLength": 5304,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 360,
+            "bodyClientWidth": 360,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 7,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 390,
+          "height": 780,
+          "url": "http://localhost:4177/about/",
+          "durationMs": 1778,
+          "screenshot": "outputs/browser-qa/about/390/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "About",
+            "path": "/about/",
+            "textSample": "About Us HOME ABOUT ABOUT US Crafting Careers, Building Educational Futures Welcome to Elevate Career Hub, where we believe in transforming careers through empowerment, education, and connections. Elevate is more than a ",
+            "textLength": 5304,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 390,
+            "bodyClientWidth": 390,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 7,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 430,
+          "height": 780,
+          "url": "http://localhost:4177/about/",
+          "durationMs": 1834,
+          "screenshot": "outputs/browser-qa/about/430/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "About",
+            "path": "/about/",
+            "textSample": "About Us HOME ABOUT ABOUT US Crafting Careers, Building Educational Futures Welcome to Elevate Career Hub, where we believe in transforming careers through empowerment, education, and connections. Elevate is more than a ",
+            "textLength": 5304,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 430,
+            "bodyClientWidth": 430,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 7,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 768,
+          "height": 900,
+          "url": "http://localhost:4177/about/",
+          "durationMs": 2277,
+          "screenshot": "outputs/browser-qa/about/768/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "About",
+            "path": "/about/",
+            "textSample": "About Us HOME ABOUT ABOUT US Crafting Careers, Building Educational Futures Welcome to Elevate Career Hub, where we believe in transforming careers through empowerment, education, and connections. Elevate is more than a ",
+            "textLength": 5304,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 768,
+            "bodyClientWidth": 768,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 8,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1024,
+          "height": 900,
+          "url": "http://localhost:4177/about/",
+          "durationMs": 2395,
+          "screenshot": "outputs/browser-qa/about/1024/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "About",
+            "path": "/about/",
+            "textSample": "About Us HOME ABOUT ABOUT US Crafting Careers, Building Educational Futures Welcome to Elevate Career Hub, where we believe in transforming careers through empowerment, education, and connections. Elevate is more than a ",
+            "textLength": 5304,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1024,
+            "bodyClientWidth": 1024,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 8,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1280,
+          "height": 1080,
+          "url": "http://localhost:4177/about/",
+          "durationMs": 2258,
+          "screenshot": "outputs/browser-qa/about/1280/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "About",
+            "path": "/about/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products About Us HOME ABOUT ABOUT US Crafting Careers, Building Educational Futures Welcome to Elevate Career Hub, where we believe in transforming careers through emp",
+            "textLength": 5426,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1280,
+            "bodyClientWidth": 1280,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 8,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1080,
+          "url": "http://localhost:4177/about/",
+          "durationMs": 2943,
+          "screenshot": "outputs/browser-qa/about/1440/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "About",
+            "path": "/about/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products About Us HOME ABOUT ABOUT US Crafting Careers, Building Educational Futures Welcome to Elevate Career Hub, where we believe in transforming careers through emp",
+            "textLength": 5426,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1440,
+            "bodyClientWidth": 1440,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 8,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "url": "http://localhost:4177/about/",
+          "durationMs": 2682,
+          "screenshot": "outputs/browser-qa/about/1920/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "About",
+            "path": "/about/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products About Us HOME ABOUT ABOUT US Crafting Careers, Building Educational Futures Welcome to Elevate Career Hub, where we believe in transforming careers through emp",
+            "textLength": 5426,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1920,
+            "bodyClientWidth": 1920,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 8,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        }
+      ],
+      "parity": {
+        "snapshotExists": true,
+        "textSimilarity": 0.8403,
+        "snapshotTextLength": 7207,
+        "appTextLength": 5476,
+        "commonPrefixChars": 0
+      }
+    },
+    {
+      "route": "/career-services/",
+      "label": "career-services",
+      "snapshot": "career-services.html",
+      "viewports": [
+        {
+          "width": 360,
+          "height": 780,
+          "url": "http://localhost:4177/career-services/",
+          "durationMs": 1915,
+          "screenshot": "outputs/browser-qa/career-services/360/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Career Services",
+            "path": "/career-services/",
+            "textSample": "Our Career Services HOME CAREER SERVICES CAREER SERVICES Standalone Career Services Curriculum Vitae Our Curriculum Vitae (CV) service at Elevate goes beyond mere documentation – it's a strategic masterpiece designed to ",
+            "textLength": 4654,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 360,
+            "bodyClientWidth": 360,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 17,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 390,
+          "height": 780,
+          "url": "http://localhost:4177/career-services/",
+          "durationMs": 1819,
+          "screenshot": "outputs/browser-qa/career-services/390/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Career Services",
+            "path": "/career-services/",
+            "textSample": "Our Career Services HOME CAREER SERVICES CAREER SERVICES Standalone Career Services Curriculum Vitae Our Curriculum Vitae (CV) service at Elevate goes beyond mere documentation – it's a strategic masterpiece designed to ",
+            "textLength": 4654,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 390,
+            "bodyClientWidth": 390,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 17,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 430,
+          "height": 780,
+          "url": "http://localhost:4177/career-services/",
+          "durationMs": 1921,
+          "screenshot": "outputs/browser-qa/career-services/430/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Career Services",
+            "path": "/career-services/",
+            "textSample": "Our Career Services HOME CAREER SERVICES CAREER SERVICES Standalone Career Services Curriculum Vitae Our Curriculum Vitae (CV) service at Elevate goes beyond mere documentation – it's a strategic masterpiece designed to ",
+            "textLength": 4654,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 430,
+            "bodyClientWidth": 430,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 17,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 768,
+          "height": 900,
+          "url": "http://localhost:4177/career-services/",
+          "durationMs": 2386,
+          "screenshot": "outputs/browser-qa/career-services/768/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Career Services",
+            "path": "/career-services/",
+            "textSample": "Our Career Services HOME CAREER SERVICES CAREER SERVICES Standalone Career Services Curriculum Vitae Our Curriculum Vitae (CV) service at Elevate goes beyond mere documentation – it's a strategic masterpiece designed to ",
+            "textLength": 4654,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 768,
+            "bodyClientWidth": 768,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 18,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1024,
+          "height": 900,
+          "url": "http://localhost:4177/career-services/",
+          "durationMs": 3373,
+          "screenshot": "outputs/browser-qa/career-services/1024/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Career Services",
+            "path": "/career-services/",
+            "textSample": "Our Career Services HOME CAREER SERVICES CAREER SERVICES Standalone Career Services Curriculum Vitae Our Curriculum Vitae (CV) service at Elevate goes beyond mere documentation – it's a strategic masterpiece designed to ",
+            "textLength": 4654,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1024,
+            "bodyClientWidth": 1024,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 18,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1280,
+          "height": 1080,
+          "url": "http://localhost:4177/career-services/",
+          "durationMs": 2529,
+          "screenshot": "outputs/browser-qa/career-services/1280/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Career Services",
+            "path": "/career-services/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products Our Career Services HOME CAREER SERVICES CAREER SERVICES Standalone Career Services Curriculum Vitae Our Curriculum Vitae (CV) service at Elevate goes beyond m",
+            "textLength": 4776,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1280,
+            "bodyClientWidth": 1280,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 18,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1080,
+          "url": "http://localhost:4177/career-services/",
+          "durationMs": 2713,
+          "screenshot": "outputs/browser-qa/career-services/1440/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Career Services",
+            "path": "/career-services/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products Our Career Services HOME CAREER SERVICES CAREER SERVICES Standalone Career Services Curriculum Vitae Our Curriculum Vitae (CV) service at Elevate goes beyond m",
+            "textLength": 4776,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1440,
+            "bodyClientWidth": 1440,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 18,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "url": "http://localhost:4177/career-services/",
+          "durationMs": 3025,
+          "screenshot": "outputs/browser-qa/career-services/1920/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Career Services",
+            "path": "/career-services/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products Our Career Services HOME CAREER SERVICES CAREER SERVICES Standalone Career Services Curriculum Vitae Our Curriculum Vitae (CV) service at Elevate goes beyond m",
+            "textLength": 4776,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1920,
+            "bodyClientWidth": 1920,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 18,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        }
+      ],
+      "parity": {
+        "snapshotExists": true,
+        "textSimilarity": 0.8361,
+        "snapshotTextLength": 6566,
+        "appTextLength": 4826,
+        "commonPrefixChars": 0
+      }
+    },
+    {
+      "route": "/educational-services/",
+      "label": "educational-services",
+      "snapshot": "educational-services.html",
+      "viewports": [
+        {
+          "width": 360,
+          "height": 780,
+          "url": "http://localhost:4177/educational-services/",
+          "durationMs": 1790,
+          "screenshot": "outputs/browser-qa/educational-services/360/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Educational Services",
+            "path": "/educational-services/",
+            "textSample": "Our Education Services HOME EDUCATION SERVICES EDUCATIONAL SERVICES A La Carte Service Grad School CV Let us help you stand out and make a lasting impression on admissions committees with a compelling CV that showcases y",
+            "textLength": 6401,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 360,
+            "bodyClientWidth": 360,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 19,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 390,
+          "height": 780,
+          "url": "http://localhost:4177/educational-services/",
+          "durationMs": 1979,
+          "screenshot": "outputs/browser-qa/educational-services/390/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Educational Services",
+            "path": "/educational-services/",
+            "textSample": "Our Education Services HOME EDUCATION SERVICES EDUCATIONAL SERVICES A La Carte Service Grad School CV Let us help you stand out and make a lasting impression on admissions committees with a compelling CV that showcases y",
+            "textLength": 6401,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 390,
+            "bodyClientWidth": 390,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 19,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 430,
+          "height": 780,
+          "url": "http://localhost:4177/educational-services/",
+          "durationMs": 1863,
+          "screenshot": "outputs/browser-qa/educational-services/430/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Educational Services",
+            "path": "/educational-services/",
+            "textSample": "Our Education Services HOME EDUCATION SERVICES EDUCATIONAL SERVICES A La Carte Service Grad School CV Let us help you stand out and make a lasting impression on admissions committees with a compelling CV that showcases y",
+            "textLength": 6401,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 430,
+            "bodyClientWidth": 430,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 19,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 768,
+          "height": 900,
+          "url": "http://localhost:4177/educational-services/",
+          "durationMs": 2527,
+          "screenshot": "outputs/browser-qa/educational-services/768/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Educational Services",
+            "path": "/educational-services/",
+            "textSample": "Our Education Services HOME EDUCATION SERVICES EDUCATIONAL SERVICES A La Carte Service Grad School CV Let us help you stand out and make a lasting impression on admissions committees with a compelling CV that showcases y",
+            "textLength": 6401,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 768,
+            "bodyClientWidth": 768,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 20,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1024,
+          "height": 900,
+          "url": "http://localhost:4177/educational-services/",
+          "durationMs": 2618,
+          "screenshot": "outputs/browser-qa/educational-services/1024/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Educational Services",
+            "path": "/educational-services/",
+            "textSample": "Our Education Services HOME EDUCATION SERVICES EDUCATIONAL SERVICES A La Carte Service Grad School CV Let us help you stand out and make a lasting impression on admissions committees with a compelling CV that showcases y",
+            "textLength": 6401,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1024,
+            "bodyClientWidth": 1024,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 20,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1280,
+          "height": 1080,
+          "url": "http://localhost:4177/educational-services/",
+          "durationMs": 2635,
+          "screenshot": "outputs/browser-qa/educational-services/1280/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Educational Services",
+            "path": "/educational-services/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products Our Education Services HOME EDUCATION SERVICES EDUCATIONAL SERVICES A La Carte Service Grad School CV Let us help you stand out and make a lasting impression o",
+            "textLength": 6523,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1280,
+            "bodyClientWidth": 1280,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 20,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1080,
+          "url": "http://localhost:4177/educational-services/",
+          "durationMs": 2622,
+          "screenshot": "outputs/browser-qa/educational-services/1440/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Educational Services",
+            "path": "/educational-services/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products Our Education Services HOME EDUCATION SERVICES EDUCATIONAL SERVICES A La Carte Service Grad School CV Let us help you stand out and make a lasting impression o",
+            "textLength": 6523,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1440,
+            "bodyClientWidth": 1440,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 20,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "url": "http://localhost:4177/educational-services/",
+          "durationMs": 3141,
+          "screenshot": "outputs/browser-qa/educational-services/1920/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Educational Services",
+            "path": "/educational-services/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products Our Education Services HOME EDUCATION SERVICES EDUCATIONAL SERVICES A La Carte Service Grad School CV Let us help you stand out and make a lasting impression o",
+            "textLength": 6523,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1920,
+            "bodyClientWidth": 1920,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 20,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        }
+      ],
+      "parity": {
+        "snapshotExists": true,
+        "textSimilarity": 0.861,
+        "snapshotTextLength": 8356,
+        "appTextLength": 6583,
+        "commonPrefixChars": 0
+      }
+    },
+    {
+      "route": "/blog/",
+      "label": "blog",
+      "snapshot": "blog.html",
+      "viewports": [
+        {
+          "width": 360,
+          "height": 780,
+          "url": "http://localhost:4177/blog/",
+          "durationMs": 1585,
+          "screenshot": "outputs/browser-qa/blog/360/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Blog",
+            "path": "/blog/",
+            "textSample": "Blog & News HOME BLOG 14 October 2023 How to Boost Your Career with Professional Resume Writing Blog How to Boost your Career with Professional Resume Writing… Read More 14 October 2023 How Our Career Development Company",
+            "textLength": 1556,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 360,
+            "bodyClientWidth": 360,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 11,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 390,
+          "height": 780,
+          "url": "http://localhost:4177/blog/",
+          "durationMs": 1594,
+          "screenshot": "outputs/browser-qa/blog/390/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Blog",
+            "path": "/blog/",
+            "textSample": "Blog & News HOME BLOG 14 October 2023 How to Boost Your Career with Professional Resume Writing Blog How to Boost your Career with Professional Resume Writing… Read More 14 October 2023 How Our Career Development Company",
+            "textLength": 1556,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 390,
+            "bodyClientWidth": 390,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 11,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 430,
+          "height": 780,
+          "url": "http://localhost:4177/blog/",
+          "durationMs": 1757,
+          "screenshot": "outputs/browser-qa/blog/430/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Blog",
+            "path": "/blog/",
+            "textSample": "Blog & News HOME BLOG 14 October 2023 How to Boost Your Career with Professional Resume Writing Blog How to Boost your Career with Professional Resume Writing… Read More 14 October 2023 How Our Career Development Company",
+            "textLength": 1556,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 430,
+            "bodyClientWidth": 430,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 11,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 768,
+          "height": 900,
+          "url": "http://localhost:4177/blog/",
+          "durationMs": 1964,
+          "screenshot": "outputs/browser-qa/blog/768/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Blog",
+            "path": "/blog/",
+            "textSample": "Blog & News HOME BLOG 14 October 2023 How to Boost Your Career with Professional Resume Writing Blog How to Boost your Career with Professional Resume Writing… Read More 14 October 2023 How Our Career Development Company",
+            "textLength": 1556,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 768,
+            "bodyClientWidth": 768,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 12,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1024,
+          "height": 900,
+          "url": "http://localhost:4177/blog/",
+          "durationMs": 2248,
+          "screenshot": "outputs/browser-qa/blog/1024/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Blog",
+            "path": "/blog/",
+            "textSample": "Blog & News HOME BLOG 14 October 2023 How to Boost Your Career with Professional Resume Writing Blog How to Boost your Career with Professional Resume Writing… Read More 14 October 2023 How Our Career Development Company",
+            "textLength": 1556,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1024,
+            "bodyClientWidth": 1024,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 12,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1280,
+          "height": 1080,
+          "url": "http://localhost:4177/blog/",
+          "durationMs": 2318,
+          "screenshot": "outputs/browser-qa/blog/1280/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Blog",
+            "path": "/blog/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products Blog & News HOME BLOG 14 October 2023 How to Boost Your Career with Professional Resume Writing Blog How to Boost your Career with Professional Resume Writing…",
+            "textLength": 1678,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1280,
+            "bodyClientWidth": 1280,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 12,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1080,
+          "url": "http://localhost:4177/blog/",
+          "durationMs": 2459,
+          "screenshot": "outputs/browser-qa/blog/1440/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Blog",
+            "path": "/blog/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products Blog & News HOME BLOG 14 October 2023 How to Boost Your Career with Professional Resume Writing Blog How to Boost your Career with Professional Resume Writing…",
+            "textLength": 1678,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1440,
+            "bodyClientWidth": 1440,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 12,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "url": "http://localhost:4177/blog/",
+          "durationMs": 2802,
+          "screenshot": "outputs/browser-qa/blog/1920/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Blog",
+            "path": "/blog/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products Blog & News HOME BLOG 14 October 2023 How to Boost Your Career with Professional Resume Writing Blog How to Boost your Career with Professional Resume Writing…",
+            "textLength": 1678,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1920,
+            "bodyClientWidth": 1920,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 12,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        }
+      ],
+      "parity": {
+        "snapshotExists": true,
+        "textSimilarity": 0.9658,
+        "snapshotTextLength": 1791,
+        "appTextLength": 1706,
+        "commonPrefixChars": 0
+      }
+    },
+    {
+      "route": "/contact-us/",
+      "label": "contact-us",
+      "snapshot": "contact-us.html",
+      "viewports": [
+        {
+          "width": 360,
+          "height": 780,
+          "url": "http://localhost:4177/contact-us/",
+          "durationMs": 1615,
+          "screenshot": "outputs/browser-qa/contact-us/360/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Contact Us",
+            "path": "/contact-us/",
+            "textSample": "Our Contact HOME CONTACT CONTACT Reach out, We're here to help WhatsApp ‪+233 53 111 3454‬ Email elevatewithnll@gmail.com Send a message Maximum number of entries exceeded. Stay Connected to us. Follow Us on our Socials ",
+            "textLength": 529,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 360,
+            "bodyClientWidth": 360,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 4,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 390,
+          "height": 780,
+          "url": "http://localhost:4177/contact-us/",
+          "durationMs": 1548,
+          "screenshot": "outputs/browser-qa/contact-us/390/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Contact Us",
+            "path": "/contact-us/",
+            "textSample": "Our Contact HOME CONTACT CONTACT Reach out, We're here to help WhatsApp ‪+233 53 111 3454‬ Email elevatewithnll@gmail.com Send a message Maximum number of entries exceeded. Stay Connected to us. Follow Us on our Socials ",
+            "textLength": 529,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 390,
+            "bodyClientWidth": 390,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 4,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 430,
+          "height": 780,
+          "url": "http://localhost:4177/contact-us/",
+          "durationMs": 1837,
+          "screenshot": "outputs/browser-qa/contact-us/430/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Contact Us",
+            "path": "/contact-us/",
+            "textSample": "Our Contact HOME CONTACT CONTACT Reach out, We're here to help WhatsApp ‪+233 53 111 3454‬ Email elevatewithnll@gmail.com Send a message Maximum number of entries exceeded. Stay Connected to us. Follow Us on our Socials ",
+            "textLength": 529,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 430,
+            "bodyClientWidth": 430,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 4,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 768,
+          "height": 900,
+          "url": "http://localhost:4177/contact-us/",
+          "durationMs": 1610,
+          "screenshot": "outputs/browser-qa/contact-us/768/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Contact Us",
+            "path": "/contact-us/",
+            "textSample": "Our Contact HOME CONTACT CONTACT Reach out, We're here to help WhatsApp ‪+233 53 111 3454‬ Email elevatewithnll@gmail.com Send a message Maximum number of entries exceeded. Stay Connected to us. Follow Us on our Socials ",
+            "textLength": 529,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 768,
+            "bodyClientWidth": 768,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 5,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1024,
+          "height": 900,
+          "url": "http://localhost:4177/contact-us/",
+          "durationMs": 1842,
+          "screenshot": "outputs/browser-qa/contact-us/1024/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Contact Us",
+            "path": "/contact-us/",
+            "textSample": "Our Contact HOME CONTACT CONTACT Reach out, We're here to help WhatsApp ‪+233 53 111 3454‬ Email elevatewithnll@gmail.com Send a message Maximum number of entries exceeded. Stay Connected to us. Follow Us on our Socials ",
+            "textLength": 529,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1024,
+            "bodyClientWidth": 1024,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 5,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1280,
+          "height": 1080,
+          "url": "http://localhost:4177/contact-us/",
+          "durationMs": 1947,
+          "screenshot": "outputs/browser-qa/contact-us/1280/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Contact Us",
+            "path": "/contact-us/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products Our Contact HOME CONTACT CONTACT Reach out, We're here to help WhatsApp ‪+233 53 111 3454‬ Email elevatewithnll@gmail.com Send a message Maximum number of entr",
+            "textLength": 651,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1280,
+            "bodyClientWidth": 1280,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 5,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1080,
+          "url": "http://localhost:4177/contact-us/",
+          "durationMs": 1843,
+          "screenshot": "outputs/browser-qa/contact-us/1440/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Contact Us",
+            "path": "/contact-us/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products Our Contact HOME CONTACT CONTACT Reach out, We're here to help WhatsApp ‪+233 53 111 3454‬ Email elevatewithnll@gmail.com Send a message Maximum number of entr",
+            "textLength": 651,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1440,
+            "bodyClientWidth": 1440,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 5,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "url": "http://localhost:4177/contact-us/",
+          "durationMs": 1973,
+          "screenshot": "outputs/browser-qa/contact-us/1920/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Contact Us",
+            "path": "/contact-us/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products Our Contact HOME CONTACT CONTACT Reach out, We're here to help WhatsApp ‪+233 53 111 3454‬ Email elevatewithnll@gmail.com Send a message Maximum number of entr",
+            "textLength": 651,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1920,
+            "bodyClientWidth": 1920,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 5,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        }
+      ],
+      "parity": {
+        "snapshotExists": true,
+        "textSimilarity": 0.9429,
+        "snapshotTextLength": 732,
+        "appTextLength": 667,
+        "commonPrefixChars": 0
+      }
+    },
+    {
+      "route": "/diy-products/",
+      "label": "diy-products",
+      "snapshot": "diy-products.html",
+      "viewports": [
+        {
+          "width": 360,
+          "height": 780,
+          "url": "http://localhost:4177/diy-products/",
+          "durationMs": 1656,
+          "screenshot": "outputs/browser-qa/diy-products/360/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "DIY Products",
+            "path": "/diy-products/",
+            "textSample": "DIY Products HOME DIY PRODUCTS DIY PRODUCTS Our Do-It-Yourself Products Discover our range of DIY products designed to elevate your professional and educational journey. From comprehensive interview preparation and inter",
+            "textLength": 1922,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 360,
+            "bodyClientWidth": 360,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 10,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 390,
+          "height": 780,
+          "url": "http://localhost:4177/diy-products/",
+          "durationMs": 1609,
+          "screenshot": "outputs/browser-qa/diy-products/390/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "DIY Products",
+            "path": "/diy-products/",
+            "textSample": "DIY Products HOME DIY PRODUCTS DIY PRODUCTS Our Do-It-Yourself Products Discover our range of DIY products designed to elevate your professional and educational journey. From comprehensive interview preparation and inter",
+            "textLength": 1922,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 390,
+            "bodyClientWidth": 390,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 10,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 430,
+          "height": 780,
+          "url": "http://localhost:4177/diy-products/",
+          "durationMs": 1650,
+          "screenshot": "outputs/browser-qa/diy-products/430/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "DIY Products",
+            "path": "/diy-products/",
+            "textSample": "DIY Products HOME DIY PRODUCTS DIY PRODUCTS Our Do-It-Yourself Products Discover our range of DIY products designed to elevate your professional and educational journey. From comprehensive interview preparation and inter",
+            "textLength": 1922,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 430,
+            "bodyClientWidth": 430,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 10,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 768,
+          "height": 900,
+          "url": "http://localhost:4177/diy-products/",
+          "durationMs": 1750,
+          "screenshot": "outputs/browser-qa/diy-products/768/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "DIY Products",
+            "path": "/diy-products/",
+            "textSample": "DIY Products HOME DIY PRODUCTS DIY PRODUCTS Our Do-It-Yourself Products Discover our range of DIY products designed to elevate your professional and educational journey. From comprehensive interview preparation and inter",
+            "textLength": 1922,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 768,
+            "bodyClientWidth": 768,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 11,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1024,
+          "height": 900,
+          "url": "http://localhost:4177/diy-products/",
+          "durationMs": 1769,
+          "screenshot": "outputs/browser-qa/diy-products/1024/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "DIY Products",
+            "path": "/diy-products/",
+            "textSample": "DIY Products HOME DIY PRODUCTS DIY PRODUCTS Our Do-It-Yourself Products Discover our range of DIY products designed to elevate your professional and educational journey. From comprehensive interview preparation and inter",
+            "textLength": 1922,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1024,
+            "bodyClientWidth": 1024,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 11,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1280,
+          "height": 1080,
+          "url": "http://localhost:4177/diy-products/",
+          "durationMs": 1799,
+          "screenshot": "outputs/browser-qa/diy-products/1280/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "DIY Products",
+            "path": "/diy-products/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products DIY Products HOME DIY PRODUCTS DIY PRODUCTS Our Do-It-Yourself Products Discover our range of DIY products designed to elevate your professional and educationa",
+            "textLength": 2044,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1280,
+            "bodyClientWidth": 1280,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 11,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1080,
+          "url": "http://localhost:4177/diy-products/",
+          "durationMs": 1770,
+          "screenshot": "outputs/browser-qa/diy-products/1440/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "DIY Products",
+            "path": "/diy-products/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products DIY Products HOME DIY PRODUCTS DIY PRODUCTS Our Do-It-Yourself Products Discover our range of DIY products designed to elevate your professional and educationa",
+            "textLength": 2044,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1440,
+            "bodyClientWidth": 1440,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 11,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "url": "http://localhost:4177/diy-products/",
+          "durationMs": 1918,
+          "screenshot": "outputs/browser-qa/diy-products/1920/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "DIY Products",
+            "path": "/diy-products/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products DIY Products HOME DIY PRODUCTS DIY PRODUCTS Our Do-It-Yourself Products Discover our range of DIY products designed to elevate your professional and educationa",
+            "textLength": 2044,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1920,
+            "bodyClientWidth": 1920,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 11,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        }
+      ],
+      "parity": {
+        "snapshotExists": true,
+        "textSimilarity": 0.9185,
+        "snapshotTextLength": 2372,
+        "appTextLength": 2070,
+        "commonPrefixChars": 0
+      }
+    },
+    {
+      "route": "/product/remote-job-playbook/",
+      "label": "product-remote-job-playbook",
+      "snapshot": "product-remote-job-playbook.html",
+      "viewports": [
+        {
+          "width": 360,
+          "height": 780,
+          "url": "http://localhost:4177/product/remote-job-playbook/",
+          "durationMs": 1631,
+          "screenshot": "outputs/browser-qa/product-remote-job-playbook/360/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Remote Job Playbook",
+            "path": "/product/remote-job-playbook/",
+            "textSample": "HOME / DIY PRODUCTS / REMOTE JOB PLAYBOOK ₵75.00 Original price was: ₵75.00. ₵0.00 Current price is: ₵0.00. Unlock Your Remote Career Potential Discover the strategies trusted by thousands of professionals to secure... E",
+            "textLength": 1533,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 360,
+            "bodyClientWidth": 360,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 3,
+            "brokenImages": [],
+            "h1s": [
+              "Remote Job Playbook"
+            ]
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 390,
+          "height": 780,
+          "url": "http://localhost:4177/product/remote-job-playbook/",
+          "durationMs": 1468,
+          "screenshot": "outputs/browser-qa/product-remote-job-playbook/390/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Remote Job Playbook",
+            "path": "/product/remote-job-playbook/",
+            "textSample": "HOME / DIY PRODUCTS / REMOTE JOB PLAYBOOK ₵75.00 Original price was: ₵75.00. ₵0.00 Current price is: ₵0.00. Unlock Your Remote Career Potential Discover the strategies trusted by thousands of professionals to secure... E",
+            "textLength": 1533,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 390,
+            "bodyClientWidth": 390,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 3,
+            "brokenImages": [],
+            "h1s": [
+              "Remote Job Playbook"
+            ]
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 430,
+          "height": 780,
+          "url": "http://localhost:4177/product/remote-job-playbook/",
+          "durationMs": 1472,
+          "screenshot": "outputs/browser-qa/product-remote-job-playbook/430/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Remote Job Playbook",
+            "path": "/product/remote-job-playbook/",
+            "textSample": "HOME / DIY PRODUCTS / REMOTE JOB PLAYBOOK ₵75.00 Original price was: ₵75.00. ₵0.00 Current price is: ₵0.00. Unlock Your Remote Career Potential Discover the strategies trusted by thousands of professionals to secure... E",
+            "textLength": 1533,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 430,
+            "bodyClientWidth": 430,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 3,
+            "brokenImages": [],
+            "h1s": [
+              "Remote Job Playbook"
+            ]
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 768,
+          "height": 900,
+          "url": "http://localhost:4177/product/remote-job-playbook/",
+          "durationMs": 1610,
+          "screenshot": "outputs/browser-qa/product-remote-job-playbook/768/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Remote Job Playbook",
+            "path": "/product/remote-job-playbook/",
+            "textSample": "HOME / DIY PRODUCTS / REMOTE JOB PLAYBOOK ₵75.00 Original price was: ₵75.00. ₵0.00 Current price is: ₵0.00. Unlock Your Remote Career Potential Discover the strategies trusted by thousands of professionals to secure... E",
+            "textLength": 1533,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 768,
+            "bodyClientWidth": 768,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 3,
+            "brokenImages": [],
+            "h1s": [
+              "Remote Job Playbook"
+            ]
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1024,
+          "height": 900,
+          "url": "http://localhost:4177/product/remote-job-playbook/",
+          "durationMs": 1654,
+          "screenshot": "outputs/browser-qa/product-remote-job-playbook/1024/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Remote Job Playbook",
+            "path": "/product/remote-job-playbook/",
+            "textSample": "HOME / DIY PRODUCTS / REMOTE JOB PLAYBOOK ₵75.00 Original price was: ₵75.00. ₵0.00 Current price is: ₵0.00. Unlock Your Remote Career Potential Discover the strategies trusted by thousands of professionals to secure... E",
+            "textLength": 1533,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1024,
+            "bodyClientWidth": 1024,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 3,
+            "brokenImages": [],
+            "h1s": [
+              "Remote Job Playbook"
+            ]
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1280,
+          "height": 1080,
+          "url": "http://localhost:4177/product/remote-job-playbook/",
+          "durationMs": 1626,
+          "screenshot": "outputs/browser-qa/product-remote-job-playbook/1280/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Remote Job Playbook",
+            "path": "/product/remote-job-playbook/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products HOME / DIY PRODUCTS / REMOTE JOB PLAYBOOK ₵75.00 Original price was: ₵75.00. ₵0.00 Current price is: ₵0.00. Unlock Your Remote Career Potential Discover the st",
+            "textLength": 1655,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1280,
+            "bodyClientWidth": 1280,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 3,
+            "brokenImages": [],
+            "h1s": [
+              "Remote Job Playbook"
+            ]
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1080,
+          "url": "http://localhost:4177/product/remote-job-playbook/",
+          "durationMs": 1666,
+          "screenshot": "outputs/browser-qa/product-remote-job-playbook/1440/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Remote Job Playbook",
+            "path": "/product/remote-job-playbook/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products HOME / DIY PRODUCTS / REMOTE JOB PLAYBOOK ₵75.00 Original price was: ₵75.00. ₵0.00 Current price is: ₵0.00. Unlock Your Remote Career Potential Discover the st",
+            "textLength": 1655,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1440,
+            "bodyClientWidth": 1440,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 3,
+            "brokenImages": [],
+            "h1s": [
+              "Remote Job Playbook"
+            ]
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "url": "http://localhost:4177/product/remote-job-playbook/",
+          "durationMs": 1880,
+          "screenshot": "outputs/browser-qa/product-remote-job-playbook/1920/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "Remote Job Playbook",
+            "path": "/product/remote-job-playbook/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products HOME / DIY PRODUCTS / REMOTE JOB PLAYBOOK ₵75.00 Original price was: ₵75.00. ₵0.00 Current price is: ₵0.00. Unlock Your Remote Career Potential Discover the st",
+            "textLength": 1655,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1920,
+            "bodyClientWidth": 1920,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 3,
+            "brokenImages": [],
+            "h1s": [
+              "Remote Job Playbook"
+            ]
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        }
+      ],
+      "parity": {
+        "snapshotExists": true,
+        "textSimilarity": 0.963,
+        "snapshotTextLength": 1810,
+        "appTextLength": 1679,
+        "commonPrefixChars": 0
+      }
+    },
+    {
+      "route": "/how-to-boost-your-career-with-professional-resume-writing/",
+      "label": "post-how-to-boost-career",
+      "snapshot": "how-to-boost-your-career-with-professional-resume-writing.html",
+      "viewports": [
+        {
+          "width": 360,
+          "height": 780,
+          "url": "http://localhost:4177/how-to-boost-your-career-with-professional-resume-writing/",
+          "durationMs": 1500,
+          "screenshot": "outputs/browser-qa/post-how-to-boost-career/360/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "How to Boost Your Career with Professional Resume Writing",
+            "path": "/how-to-boost-your-career-with-professional-resume-writing/",
+            "textSample": "BLOG How to Boost your Career with Professional Resume Writing Are you looking to take your career to the next level? Whether you are a recent graduate or a seasoned professional, having a well-crafted resume is essentia",
+            "textLength": 3378,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 360,
+            "bodyClientWidth": 360,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 5,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 390,
+          "height": 780,
+          "url": "http://localhost:4177/how-to-boost-your-career-with-professional-resume-writing/",
+          "durationMs": 1745,
+          "screenshot": "outputs/browser-qa/post-how-to-boost-career/390/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "How to Boost Your Career with Professional Resume Writing",
+            "path": "/how-to-boost-your-career-with-professional-resume-writing/",
+            "textSample": "BLOG How to Boost your Career with Professional Resume Writing Are you looking to take your career to the next level? Whether you are a recent graduate or a seasoned professional, having a well-crafted resume is essentia",
+            "textLength": 3378,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 390,
+            "bodyClientWidth": 390,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 5,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 430,
+          "height": 780,
+          "url": "http://localhost:4177/how-to-boost-your-career-with-professional-resume-writing/",
+          "durationMs": 1656,
+          "screenshot": "outputs/browser-qa/post-how-to-boost-career/430/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "How to Boost Your Career with Professional Resume Writing",
+            "path": "/how-to-boost-your-career-with-professional-resume-writing/",
+            "textSample": "BLOG How to Boost your Career with Professional Resume Writing Are you looking to take your career to the next level? Whether you are a recent graduate or a seasoned professional, having a well-crafted resume is essentia",
+            "textLength": 3378,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 430,
+            "bodyClientWidth": 430,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 5,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 768,
+          "height": 900,
+          "url": "http://localhost:4177/how-to-boost-your-career-with-professional-resume-writing/",
+          "durationMs": 1611,
+          "screenshot": "outputs/browser-qa/post-how-to-boost-career/768/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "How to Boost Your Career with Professional Resume Writing",
+            "path": "/how-to-boost-your-career-with-professional-resume-writing/",
+            "textSample": "BLOG How to Boost your Career with Professional Resume Writing Are you looking to take your career to the next level? Whether you are a recent graduate or a seasoned professional, having a well-crafted resume is essentia",
+            "textLength": 3378,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 768,
+            "bodyClientWidth": 768,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 6,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1024,
+          "height": 900,
+          "url": "http://localhost:4177/how-to-boost-your-career-with-professional-resume-writing/",
+          "durationMs": 1650,
+          "screenshot": "outputs/browser-qa/post-how-to-boost-career/1024/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "How to Boost Your Career with Professional Resume Writing",
+            "path": "/how-to-boost-your-career-with-professional-resume-writing/",
+            "textSample": "BLOG How to Boost your Career with Professional Resume Writing Are you looking to take your career to the next level? Whether you are a recent graduate or a seasoned professional, having a well-crafted resume is essentia",
+            "textLength": 3378,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1024,
+            "bodyClientWidth": 1024,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 6,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1280,
+          "height": 1080,
+          "url": "http://localhost:4177/how-to-boost-your-career-with-professional-resume-writing/",
+          "durationMs": 1762,
+          "screenshot": "outputs/browser-qa/post-how-to-boost-career/1280/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "How to Boost Your Career with Professional Resume Writing",
+            "path": "/how-to-boost-your-career-with-professional-resume-writing/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products BLOG How to Boost your Career with Professional Resume Writing Are you looking to take your career to the next level? Whether you are a recent graduate or a se",
+            "textLength": 3500,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1280,
+            "bodyClientWidth": 1280,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 6,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1440,
+          "height": 1080,
+          "url": "http://localhost:4177/how-to-boost-your-career-with-professional-resume-writing/",
+          "durationMs": 1685,
+          "screenshot": "outputs/browser-qa/post-how-to-boost-career/1440/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "How to Boost Your Career with Professional Resume Writing",
+            "path": "/how-to-boost-your-career-with-professional-resume-writing/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products BLOG How to Boost your Career with Professional Resume Writing Are you looking to take your career to the next level? Whether you are a recent graduate or a se",
+            "textLength": 3500,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1440,
+            "bodyClientWidth": 1440,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 6,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        },
+        {
+          "width": 1920,
+          "height": 1080,
+          "url": "http://localhost:4177/how-to-boost-your-career-with-professional-resume-writing/",
+          "durationMs": 1670,
+          "screenshot": "outputs/browser-qa/post-how-to-boost-career/1920/screenshot.png",
+          "navError": null,
+          "consoleMessages": [],
+          "failedRequests": [],
+          "badResponses": [],
+          "metrics": {
+            "title": "How to Boost Your Career with Professional Resume Writing",
+            "path": "/how-to-boost-your-career-with-professional-resume-writing/",
+            "textSample": "Home About Educational Services Blog Contact Us DIY Products BLOG How to Boost your Career with Professional Resume Writing Are you looking to take your career to the next level? Whether you are a recent graduate or a se",
+            "textLength": 3500,
+            "hasSnapshotError": false,
+            "bodyScrollWidth": 1920,
+            "bodyClientWidth": 1920,
+            "horizontalOverflow": false,
+            "badOverflow": [],
+            "visibleImageCount": 6,
+            "brokenImages": [],
+            "h1s": []
+          },
+          "menu": {
+            "tested": true,
+            "beforeClasses": "elementskit-menu-hamburger elementskit-menu-toggler",
+            "afterClasses": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open",
+            "opened": true,
+            "openNodeClass": "elementskit-menu-hamburger elementskit-menu-toggler snapshot-menu-open"
+          }
+        }
+      ],
+      "parity": {
+        "snapshotExists": true,
+        "textSimilarity": 0.9801,
+        "snapshotTextLength": 3599,
+        "appTextLength": 3524,
+        "commonPrefixChars": 0
+      }
+    }
+  ],
+  "defects": [],
+  "global": {
+    "totalScreenshots": 72
+  }
+}

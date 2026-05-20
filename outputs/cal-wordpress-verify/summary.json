@@ -1,0 +1,362 @@
+[
+  {
+    "slug": "home",
+    "route": "/",
+    "file": "Home.html",
+    "width": 390,
+    "source": {
+      "title": "",
+      "text": 5884,
+      "sw": 390,
+      "iw": 390,
+      "sh": 14501,
+      "imgs": 32,
+      "broken": 12,
+      "shortcode": false,
+      "entry": false,
+      "failed": 9
+    },
+    "app": {
+      "title": "",
+      "text": 5884,
+      "sw": 390,
+      "iw": 390,
+      "sh": 14594,
+      "imgs": 32,
+      "broken": 0,
+      "shortcode": false,
+      "entry": false,
+      "failed": 0
+    }
+  },
+  {
+    "slug": "home",
+    "route": "/",
+    "file": "Home.html",
+    "width": 1440,
+    "source": {
+      "title": "",
+      "text": 5895,
+      "sw": 1440,
+      "iw": 1440,
+      "sh": 8758,
+      "imgs": 32,
+      "broken": 9,
+      "shortcode": false,
+      "entry": false,
+      "failed": 10
+    },
+    "app": {
+      "title": "",
+      "text": 5895,
+      "sw": 1440,
+      "iw": 1440,
+      "sh": 8955,
+      "imgs": 32,
+      "broken": 0,
+      "shortcode": false,
+      "entry": false,
+      "failed": 0
+    }
+  },
+  {
+    "slug": "about",
+    "route": "/about/",
+    "file": "About.html",
+    "width": 390,
+    "source": {
+      "title": "",
+      "text": 3886,
+      "sw": 390,
+      "iw": 390,
+      "sh": 9132,
+      "imgs": 12,
+      "broken": 2,
+      "shortcode": false,
+      "entry": false,
+      "failed": 10
+    },
+    "app": {
+      "title": "",
+      "text": 3886,
+      "sw": 390,
+      "iw": 390,
+      "sh": 9132,
+      "imgs": 12,
+      "broken": 0,
+      "shortcode": false,
+      "entry": false,
+      "failed": 0
+    }
+  },
+  {
+    "slug": "about",
+    "route": "/about/",
+    "file": "About.html",
+    "width": 1440,
+    "source": {
+      "title": "",
+      "text": 3897,
+      "sw": 1440,
+      "iw": 1440,
+      "sh": 6444,
+      "imgs": 12,
+      "broken": 2,
+      "shortcode": false,
+      "entry": false,
+      "failed": 11
+    },
+    "app": {
+      "title": "",
+      "text": 3897,
+      "sw": 1440,
+      "iw": 1440,
+      "sh": 6444,
+      "imgs": 12,
+      "broken": 0,
+      "shortcode": false,
+      "entry": false,
+      "failed": 0
+    }
+  },
+  {
+    "slug": "career",
+    "route": "/career-services/",
+    "file": "Career-services.html",
+    "width": 390,
+    "source": {
+      "title": "",
+      "text": 886,
+      "sw": 390,
+      "iw": 390,
+      "sh": 12793,
+      "imgs": 21,
+      "broken": 7,
+      "shortcode": false,
+      "entry": false,
+      "failed": 10
+    },
+    "app": {
+      "title": "",
+      "text": 886,
+      "sw": 390,
+      "iw": 390,
+      "sh": 12793,
+      "imgs": 21,
+      "broken": 0,
+      "shortcode": false,
+      "entry": false,
+      "failed": 0
+    }
+  },
+  {
+    "slug": "career",
+    "route": "/career-services/",
+    "file": "Career-services.html",
+    "width": 1440,
+    "source": {
+      "title": "",
+      "text": 1149,
+      "sw": 1440,
+      "iw": 1440,
+      "sh": 8633,
+      "imgs": 21,
+      "broken": 7,
+      "shortcode": false,
+      "entry": false,
+      "failed": 11
+    },
+    "app": {
+      "title": "",
+      "text": 1149,
+      "sw": 1440,
+      "iw": 1440,
+      "sh": 8633,
+      "imgs": 21,
+      "broken": 0,
+      "shortcode": false,
+      "entry": false,
+      "failed": 0
+    }
+  },
+  {
+    "slug": "education",
+    "route": "/educational-services/",
+    "file": "Education-services.html",
+    "width": 390,
+    "source": {
+      "title": "",
+      "text": 906,
+      "sw": 390,
+      "iw": 390,
+      "sh": 15002,
+      "imgs": 23,
+      "broken": 8,
+      "shortcode": false,
+      "entry": false,
+      "failed": 13
+    },
+    "app": {
+      "title": "",
+      "text": 906,
+      "sw": 390,
+      "iw": 390,
+      "sh": 15002,
+      "imgs": 23,
+      "broken": 0,
+      "shortcode": false,
+      "entry": false,
+      "failed": 0
+    }
+  },
+  {
+    "slug": "education",
+    "route": "/educational-services/",
+    "file": "Education-services.html",
+    "width": 1440,
+    "source": {
+      "title": "",
+      "text": 1395,
+      "sw": 1440,
+      "iw": 1440,
+      "sh": 9241,
+      "imgs": 23,
+      "broken": 7,
+      "shortcode": false,
+      "entry": false,
+      "failed": 14
+    },
+    "app": {
+      "title": "",
+      "text": 1395,
+      "sw": 1440,
+      "iw": 1440,
+      "sh": 9241,
+      "imgs": 23,
+      "broken": 0,
+      "shortcode": false,
+      "entry": false,
+      "failed": 0
+    }
+  },
+  {
+    "slug": "diy",
+    "route": "/diy-products/",
+    "file": "DIY-Products.html",
+    "width": 390,
+    "source": {
+      "title": "",
+      "text": 2168,
+      "sw": 390,
+      "iw": 390,
+      "sh": 7100,
+      "imgs": 14,
+      "broken": 0,
+      "shortcode": false,
+      "entry": false,
+      "failed": 17
+    },
+    "app": {
+      "title": "",
+      "text": 2168,
+      "sw": 390,
+      "iw": 390,
+      "sh": 7100,
+      "imgs": 14,
+      "broken": 0,
+      "shortcode": false,
+      "entry": false,
+      "failed": 1
+    }
+  },
+  {
+    "slug": "diy",
+    "route": "/diy-products/",
+    "file": "DIY-Products.html",
+    "width": 1440,
+    "source": {
+      "title": "",
+      "text": 2179,
+      "sw": 1440,
+      "iw": 1440,
+      "sh": 5258,
+      "imgs": 14,
+      "broken": 2,
+      "shortcode": false,
+      "entry": false,
+      "failed": 18
+    },
+    "app": {
+      "title": "",
+      "text": 2179,
+      "sw": 1440,
+      "iw": 1440,
+      "sh": 5258,
+      "imgs": 14,
+      "broken": 0,
+      "shortcode": false,
+      "entry": false,
+      "failed": 1
+    }
+  },
+  {
+    "slug": "contact",
+    "route": "/contact-us/",
+    "file": "Contact.html",
+    "width": 390,
+    "source": {
+      "title": "",
+      "text": 658,
+      "sw": 390,
+      "iw": 390,
+      "sh": 3016,
+      "imgs": 8,
+      "broken": 0,
+      "shortcode": false,
+      "entry": true,
+      "failed": 9
+    },
+    "app": {
+      "title": "",
+      "text": 648,
+      "sw": 390,
+      "iw": 390,
+      "sh": 3452,
+      "imgs": 8,
+      "broken": 0,
+      "shortcode": false,
+      "entry": false,
+      "failed": 0
+    }
+  },
+  {
+    "slug": "contact",
+    "route": "/contact-us/",
+    "file": "Contact.html",
+    "width": 1440,
+    "source": {
+      "title": "",
+      "text": 669,
+      "sw": 1440,
+      "iw": 1440,
+      "sh": 2378,
+      "imgs": 8,
+      "broken": 2,
+      "shortcode": false,
+      "entry": true,
+      "failed": 10
+    },
+    "app": {
+      "title": "",
+      "text": 659,
+      "sw": 1440,
+      "iw": 1440,
+      "sh": 2566,
+      "imgs": 8,
+      "broken": 0,
+      "shortcode": false,
+      "entry": false,
+      "failed": 0
+    }
+  }
+]

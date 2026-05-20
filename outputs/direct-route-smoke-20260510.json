@@ -1,0 +1,218 @@
+{
+  "generatedAt": "2026-05-10T10:40:46.247Z",
+  "base": "http://127.0.0.1:60622",
+  "total": 35,
+  "failed": 0,
+  "results": [
+    {
+      "route": "/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/about/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/blog/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/career-services/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/career-strategy-session/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/cart/",
+      "expected": "intentional assisted-commerce redirect shell to /contact-us/",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/checkout/",
+      "expected": "intentional assisted-commerce redirect shell to /contact-us/",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/contact-us/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/cover-letter/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/curriculum-vitae/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/diy-products/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/educational-services/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/faqs/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/how-our-career-development-company-can-help-you-stand-out/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/how-to-boost-your-career-with-professional-resume-writing/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/interview-preparation-session/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/job-readiness-bootcamp/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/jrb-thank-you/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/lets-keep-in-touch/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/linkedin-optimization/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/manage-profile/",
+      "expected": "intentional assisted-commerce redirect shell to /contact-us/",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/my-account/",
+      "expected": "intentional assisted-commerce redirect shell to /contact-us/",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/product/becoming-a-job-magnet-on-linkedin/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/product/complete-grad-school-bundle/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/product/how-to-write-the-resume-that-lands-the-interview/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/product/mastering-the-art-of-job-hunting-in-the-uk-as-an-international-student/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/product/nailing-your-job-interviews/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/product/remote-job-playbook/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/product/the-complete-job-search-bundle/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/reference-letter/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/shop/",
+      "expected": "intentional assisted-commerce redirect shell to /contact-us/",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/statement-of-purpose/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/suggestion-of-schools/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/the-importance-of-professional-documents-in-career-development/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/tips-for-crafting-an-effective-resume-cover-letter-personal-statement-and-school-application/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    }
+  ]
+}

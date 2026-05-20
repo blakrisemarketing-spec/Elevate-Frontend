@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": false,
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/cart/", "destination": "/contact-us/", "permanent": false },
+    { "source": "/checkout/", "destination": "/contact-us/", "permanent": false },
+    { "source": "/my-account/", "destination": "/contact-us/", "permanent": false },
+    { "source": "/shop/", "destination": "/contact-us/", "permanent": false },
+    { "source": "/manage-profile/", "destination": "/contact-us/", "permanent": false },
+    { "source": "/index.php/about/", "destination": "/about/", "permanent": true },
+    { "source": "/index.php/contact-us/", "destination": "/contact-us/", "permanent": true },
+    { "source": "/index.php/diy-products/", "destination": "/diy-products/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+      ]
+    }
+  ]
+}

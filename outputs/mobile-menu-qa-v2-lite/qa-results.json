@@ -1,0 +1,6829 @@
+{
+  "base": "http://127.0.0.1:4174",
+  "generatedAt": "2026-05-11T06:08:28.141Z",
+  "routes": [
+    "/",
+    "/about/",
+    "/career-services/",
+    "/educational-services/",
+    "/diy-products/",
+    "/contact-us/"
+  ],
+  "viewports": [
+    {
+      "name": "mobile360",
+      "width": 360,
+      "height": 800
+    },
+    {
+      "name": "mobile390",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "name": "mobile430",
+      "width": 430,
+      "height": 932
+    }
+  ],
+  "results": [
+    {
+      "route": "/",
+      "viewport": "mobile360",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/",
+      "metrics": {
+        "title": "Elevate Career Hub — Career & Education Support in Ghana",
+        "h1s": [
+          "Complete Hub for Career and Education Success"
+        ],
+        "textLength": 5916,
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link active",
+          "href": "/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link",
+          "href": "/about/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/home/mobile360"
+    },
+    {
+      "route": "/about/",
+      "viewport": "mobile360",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/about/",
+      "metrics": {
+        "title": "About Elevate Career Hub",
+        "h1s": [
+          "Helping Ambitious People Move Forward With Confidence"
+        ],
+        "textLength": 5579,
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link",
+          "href": "/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link active",
+          "href": "/about/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Facebook",
+          "cls": "facebook",
+          "href": "https://facebook.com/",
+          "rect": {
+            "w": 32,
+            "h": 32
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Twitter",
+          "cls": "twitter",
+          "href": "https://facebook.com/",
+          "rect": {
+            "w": 32,
+            "h": 32
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Facebook",
+          "cls": "facebook",
+          "href": "https://facebook.com/",
+          "rect": {
+            "w": 32,
+            "h": 32
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Twitter",
+          "cls": "twitter",
+          "href": "https://facebook.com/",
+          "rect": {
+            "w": 32,
+            "h": 32
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "What Services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-a6e330569fee75e2b7d3",
+          "rect": {
+            "w": 314,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How do I get started with Elevate Career Hub? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-ed795eb69fee75e2b7d3",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Are your services designed to specific industries or fields? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-3ec797f69fee75e2b7d3",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What are your payment options? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-a6e330569fee75e2c368",
+          "rect": {
+            "w": 314,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How long does it take to complete a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-ed795eb69fee75e2c368",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What happens after I purchase a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-3ec797f69fee75e2c368",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you assist me with selecting the right school for my educational goals? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-a6e330569fee75e2cef1",
+          "rect": {
+            "w": 314,
+            "h": 127
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of educational services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-ed795eb69fee75e2cef1",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How can I benefit from your educational services? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-3ec797f69fee75e2cef1",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you help me with my resume even if I have limited work experience? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-a6e330569fee75e2da47",
+          "rect": {
+            "w": 314,
+            "h": 127
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Do you provide interview coaching for specific industries or job roles? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-ed795eb69fee75e2da47",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of career services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-3ec797f69fee75e2da47",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/about/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/about/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/about/mobile360"
+    },
+    {
+      "route": "/career-services/",
+      "viewport": "mobile360",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/career-services/",
+      "metrics": {
+        "title": "Career Services — CVs, Cover Letters, LinkedIn & Interview Prep",
+        "h1s": [
+          "Career Services That Help You Stand Out"
+        ],
+        "textLength": 4939,
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link",
+          "href": "/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link",
+          "href": "/about/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What Services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-a6e330569fee75e5cd3c",
+          "rect": {
+            "w": 314,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How do I get started with Elevate Career Hub? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-ed795eb69fee75e5cd3c",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Are your services designed to specific industries or fields? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-3ec797f69fee75e5cd3c",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What are your payment options? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-a6e330569fee75e5df57",
+          "rect": {
+            "w": 314,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How long does it take to complete a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-ed795eb69fee75e5df57",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What happens after I purchase a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-3ec797f69fee75e5df57",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you assist me with selecting the right school for my educational goals? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-a6e330569fee75e5f298",
+          "rect": {
+            "w": 314,
+            "h": 127
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of educational services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-ed795eb69fee75e5f298",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How can I benefit from your educational services? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-3ec797f69fee75e5f298",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you help me with my resume even if I have limited work experience? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-a6e330569fee75e60591",
+          "rect": {
+            "w": 314,
+            "h": 127
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Do you provide interview coaching for specific industries or job roles? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-ed795eb69fee75e60591",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of career services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-3ec797f69fee75e60591",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/career-services/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/career-services/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/career-services/mobile360"
+    },
+    {
+      "route": "/educational-services/",
+      "viewport": "mobile360",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/educational-services/",
+      "metrics": {
+        "title": "Educational Services — Graduate School & Scholarship Support",
+        "h1s": [
+          "Education Support for Stronger Applications"
+        ],
+        "textLength": 6719,
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link",
+          "href": "/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link",
+          "href": "/about/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle active",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What Services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-a6e330569fee75e6303b",
+          "rect": {
+            "w": 314,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How do I get started with Elevate Career Hub? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-ed795eb69fee75e6303b",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Are your services designed to specific industries or fields? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-3ec797f69fee75e6303b",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What are your payment options? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-a6e330569fee75e63bee",
+          "rect": {
+            "w": 314,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How long does it take to complete a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-ed795eb69fee75e63bee",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What happens after I purchase a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-3ec797f69fee75e63bee",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you assist me with selecting the right school for my educational goals? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-a6e330569fee75e64797",
+          "rect": {
+            "w": 314,
+            "h": 127
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of educational services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-ed795eb69fee75e64797",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How can I benefit from your educational services? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-3ec797f69fee75e64797",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you help me with my resume even if I have limited work experience? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-a6e330569fee75e65480",
+          "rect": {
+            "w": 314,
+            "h": 127
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Do you provide interview coaching for specific industries or job roles? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-ed795eb69fee75e65480",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of career services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-3ec797f69fee75e65480",
+          "rect": {
+            "w": 314,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/educational-services/mobile360"
+    },
+    {
+      "route": "/diy-products/",
+      "viewport": "mobile360",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/diy-products/",
+      "metrics": {
+        "title": "DIY Career & Education Products — Elevate Career Hub",
+        "h1s": [
+          "Practical DIY Resources for Your Next Step"
+        ],
+        "textLength": 2294,
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link",
+          "href": "/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link",
+          "href": "/about/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about Becoming a Job Magnet on LinkedIn",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20Becoming%20a%20Job%20Magnet%20on%20LinkedIn.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about Complete Grad School Bundle",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20Complete%20Grad%20School%20Bundle.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about How to Write the Resume that Lands the Interview",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20How%20to%20Write%20the%20Resume%20that%20Lands%20the%20Interview.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about Mastering the Art of Job Hunting in the UK as an Intern",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20Mastering%20the%20Art%20of%20Job%20Hunting%20in%20the%20UK%20as%20an%20International%20Student.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about Nailing your Job Interviews",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20Nailing%20your%20Job%20Interviews.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about Remote Job Playbook",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20Remote%20Job%20Playbook.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/diy-products/mobile360"
+    },
+    {
+      "route": "/contact-us/",
+      "viewport": "mobile360",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/contact-us/",
+      "metrics": {
+        "title": "Contact Elevate Career Hub",
+        "h1s": [
+          "Talk to Elevate Career Hub"
+        ],
+        "textLength": 1130,
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link",
+          "href": "/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link",
+          "href": "/about/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link active",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 270,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "WhatsApp",
+          "cls": "elementor-icon",
+          "href": "https://wa.me/233531113454",
+          "rect": {
+            "w": 83,
+            "h": 67
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "WhatsApp",
+          "cls": "",
+          "href": "https://wa.me/233531113454",
+          "rect": {
+            "w": 86,
+            "h": 22
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Email",
+          "cls": "elementor-icon",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 32,
+            "h": 35
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message us on WhatsApp",
+          "cls": "ech-contact-fallback__button ech-contact-fallback__button--primary",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20help%20with%20CVs%2C%20applications%2C%20interviews%2C%20scholarships%2C%20school%20selection%2C%20DIY%20resources%2C%20or%20education/career%20planning.",
+          "rect": {
+            "w": 186,
+            "h": 64
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 304,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/contact-us/mobile360"
+    },
+    {
+      "route": "/",
+      "viewport": "mobile390",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/",
+      "metrics": {
+        "title": "Elevate Career Hub — Career & Education Support in Ghana",
+        "h1s": [
+          "Complete Hub for Career and Education Success"
+        ],
+        "textLength": 5916,
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link active",
+          "href": "/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link",
+          "href": "/about/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/home/mobile390"
+    },
+    {
+      "route": "/about/",
+      "viewport": "mobile390",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/about/",
+      "metrics": {
+        "title": "About Elevate Career Hub",
+        "h1s": [
+          "Helping Ambitious People Move Forward With Confidence"
+        ],
+        "textLength": 5579,
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link",
+          "href": "/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link active",
+          "href": "/about/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Facebook",
+          "cls": "facebook",
+          "href": "https://facebook.com/",
+          "rect": {
+            "w": 32,
+            "h": 32
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Twitter",
+          "cls": "twitter",
+          "href": "https://facebook.com/",
+          "rect": {
+            "w": 32,
+            "h": 32
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Facebook",
+          "cls": "facebook",
+          "href": "https://facebook.com/",
+          "rect": {
+            "w": 32,
+            "h": 32
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Twitter",
+          "cls": "twitter",
+          "href": "https://facebook.com/",
+          "rect": {
+            "w": 32,
+            "h": 32
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "What Services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-a6e330569fee75e2b7d3",
+          "rect": {
+            "w": 344,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How do I get started with Elevate Career Hub? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-ed795eb69fee75e2b7d3",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Are your services designed to specific industries or fields? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-3ec797f69fee75e2b7d3",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What are your payment options? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-a6e330569fee75e2c368",
+          "rect": {
+            "w": 344,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How long does it take to complete a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-ed795eb69fee75e2c368",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What happens after I purchase a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-3ec797f69fee75e2c368",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you assist me with selecting the right school for my educational goals? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-a6e330569fee75e2cef1",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of educational services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-ed795eb69fee75e2cef1",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How can I benefit from your educational services? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-3ec797f69fee75e2cef1",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you help me with my resume even if I have limited work experience? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-a6e330569fee75e2da47",
+          "rect": {
+            "w": 344,
+            "h": 127
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Do you provide interview coaching for specific industries or job roles? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-ed795eb69fee75e2da47",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of career services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-3ec797f69fee75e2da47",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/about/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/about/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/about/mobile390"
+    },
+    {
+      "route": "/career-services/",
+      "viewport": "mobile390",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/career-services/",
+      "metrics": {
+        "title": "Career Services — CVs, Cover Letters, LinkedIn & Interview Prep",
+        "h1s": [
+          "Career Services That Help You Stand Out"
+        ],
+        "textLength": 4939,
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link",
+          "href": "/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link",
+          "href": "/about/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What Services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-a6e330569fee75e5cd3c",
+          "rect": {
+            "w": 344,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How do I get started with Elevate Career Hub? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-ed795eb69fee75e5cd3c",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Are your services designed to specific industries or fields? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-3ec797f69fee75e5cd3c",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What are your payment options? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-a6e330569fee75e5df57",
+          "rect": {
+            "w": 344,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How long does it take to complete a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-ed795eb69fee75e5df57",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What happens after I purchase a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-3ec797f69fee75e5df57",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you assist me with selecting the right school for my educational goals? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-a6e330569fee75e5f298",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of educational services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-ed795eb69fee75e5f298",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How can I benefit from your educational services? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-3ec797f69fee75e5f298",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you help me with my resume even if I have limited work experience? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-a6e330569fee75e60591",
+          "rect": {
+            "w": 344,
+            "h": 127
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Do you provide interview coaching for specific industries or job roles? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-ed795eb69fee75e60591",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of career services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-3ec797f69fee75e60591",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/career-services/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/career-services/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/career-services/mobile390"
+    },
+    {
+      "route": "/educational-services/",
+      "viewport": "mobile390",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/educational-services/",
+      "metrics": {
+        "title": "Educational Services — Graduate School & Scholarship Support",
+        "h1s": [
+          "Education Support for Stronger Applications"
+        ],
+        "textLength": 6719,
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link",
+          "href": "/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link",
+          "href": "/about/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle active",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What Services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-a6e330569fee75e6303b",
+          "rect": {
+            "w": 344,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How do I get started with Elevate Career Hub? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-ed795eb69fee75e6303b",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Are your services designed to specific industries or fields? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-3ec797f69fee75e6303b",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What are your payment options? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-a6e330569fee75e63bee",
+          "rect": {
+            "w": 344,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How long does it take to complete a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-ed795eb69fee75e63bee",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What happens after I purchase a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-3ec797f69fee75e63bee",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you assist me with selecting the right school for my educational goals? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-a6e330569fee75e64797",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of educational services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-ed795eb69fee75e64797",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How can I benefit from your educational services? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-3ec797f69fee75e64797",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you help me with my resume even if I have limited work experience? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-a6e330569fee75e65480",
+          "rect": {
+            "w": 344,
+            "h": 127
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Do you provide interview coaching for specific industries or job roles? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-ed795eb69fee75e65480",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of career services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-3ec797f69fee75e65480",
+          "rect": {
+            "w": 344,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/educational-services/mobile390"
+    },
+    {
+      "route": "/diy-products/",
+      "viewport": "mobile390",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/diy-products/",
+      "metrics": {
+        "title": "DIY Career & Education Products — Elevate Career Hub",
+        "h1s": [
+          "Practical DIY Resources for Your Next Step"
+        ],
+        "textLength": 2294,
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link",
+          "href": "/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link",
+          "href": "/about/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about Becoming a Job Magnet on LinkedIn",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20Becoming%20a%20Job%20Magnet%20on%20LinkedIn.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about Complete Grad School Bundle",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20Complete%20Grad%20School%20Bundle.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about How to Write the Resume that Lands the Interview",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20How%20to%20Write%20the%20Resume%20that%20Lands%20the%20Interview.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about Mastering the Art of Job Hunting in the UK as an Intern",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20Mastering%20the%20Art%20of%20Job%20Hunting%20in%20the%20UK%20as%20an%20International%20Student.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about Nailing your Job Interviews",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20Nailing%20your%20Job%20Interviews.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about Remote Job Playbook",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20Remote%20Job%20Playbook.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/diy-products/mobile390"
+    },
+    {
+      "route": "/contact-us/",
+      "viewport": "mobile390",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/contact-us/",
+      "metrics": {
+        "title": "Contact Elevate Career Hub",
+        "h1s": [
+          "Talk to Elevate Career Hub"
+        ],
+        "textLength": 1130,
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link",
+          "href": "/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link",
+          "href": "/about/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link active",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 293,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "WhatsApp",
+          "cls": "elementor-icon",
+          "href": "https://wa.me/233531113454",
+          "rect": {
+            "w": 83,
+            "h": 67
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "WhatsApp",
+          "cls": "",
+          "href": "https://wa.me/233531113454",
+          "rect": {
+            "w": 86,
+            "h": 22
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Email",
+          "cls": "elementor-icon",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 32,
+            "h": 35
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message us on WhatsApp",
+          "cls": "ech-contact-fallback__button ech-contact-fallback__button--primary",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20help%20with%20CVs%2C%20applications%2C%20interviews%2C%20scholarships%2C%20school%20selection%2C%20DIY%20resources%2C%20or%20education/career%20planning.",
+          "rect": {
+            "w": 216,
+            "h": 64
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 334,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/contact-us/mobile390"
+    },
+    {
+      "route": "/",
+      "viewport": "mobile430",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/",
+      "metrics": {
+        "title": "Elevate Career Hub — Career & Education Support in Ghana",
+        "h1s": [
+          "Complete Hub for Career and Education Success"
+        ],
+        "textLength": 5916,
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link active",
+          "href": "/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link",
+          "href": "/about/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/home/mobile430"
+    },
+    {
+      "route": "/about/",
+      "viewport": "mobile430",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/about/",
+      "metrics": {
+        "title": "About Elevate Career Hub",
+        "h1s": [
+          "Helping Ambitious People Move Forward With Confidence"
+        ],
+        "textLength": 5579,
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link",
+          "href": "/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link active",
+          "href": "/about/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Facebook",
+          "cls": "facebook",
+          "href": "https://facebook.com/",
+          "rect": {
+            "w": 32,
+            "h": 32
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Twitter",
+          "cls": "twitter",
+          "href": "https://facebook.com/",
+          "rect": {
+            "w": 32,
+            "h": 32
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Facebook",
+          "cls": "facebook",
+          "href": "https://facebook.com/",
+          "rect": {
+            "w": 32,
+            "h": 32
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Twitter",
+          "cls": "twitter",
+          "href": "https://facebook.com/",
+          "rect": {
+            "w": 32,
+            "h": 32
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "What Services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-a6e330569fee75e2b7d3",
+          "rect": {
+            "w": 384,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How do I get started with Elevate Career Hub? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-ed795eb69fee75e2b7d3",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Are your services designed to specific industries or fields? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-3ec797f69fee75e2b7d3",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What are your payment options? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-a6e330569fee75e2c368",
+          "rect": {
+            "w": 384,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How long does it take to complete a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-ed795eb69fee75e2c368",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What happens after I purchase a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-3ec797f69fee75e2c368",
+          "rect": {
+            "w": 384,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you assist me with selecting the right school for my educational goals? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-a6e330569fee75e2cef1",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of educational services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-ed795eb69fee75e2cef1",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How can I benefit from your educational services? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-3ec797f69fee75e2cef1",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you help me with my resume even if I have limited work experience? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-a6e330569fee75e2da47",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Do you provide interview coaching for specific industries or job roles? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-ed795eb69fee75e2da47",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of career services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/about/#collapse-3ec797f69fee75e2da47",
+          "rect": {
+            "w": 384,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/about/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/about/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/about/mobile430"
+    },
+    {
+      "route": "/career-services/",
+      "viewport": "mobile430",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/career-services/",
+      "metrics": {
+        "title": "Career Services — CVs, Cover Letters, LinkedIn & Interview Prep",
+        "h1s": [
+          "Career Services That Help You Stand Out"
+        ],
+        "textLength": 4939,
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link",
+          "href": "/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link",
+          "href": "/about/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What Services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-a6e330569fee75e5cd3c",
+          "rect": {
+            "w": 384,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How do I get started with Elevate Career Hub? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-ed795eb69fee75e5cd3c",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Are your services designed to specific industries or fields? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-3ec797f69fee75e5cd3c",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What are your payment options? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-a6e330569fee75e5df57",
+          "rect": {
+            "w": 384,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How long does it take to complete a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-ed795eb69fee75e5df57",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What happens after I purchase a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-3ec797f69fee75e5df57",
+          "rect": {
+            "w": 384,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you assist me with selecting the right school for my educational goals? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-a6e330569fee75e5f298",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of educational services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-ed795eb69fee75e5f298",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How can I benefit from your educational services? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-3ec797f69fee75e5f298",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you help me with my resume even if I have limited work experience? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-a6e330569fee75e60591",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Do you provide interview coaching for specific industries or job roles? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-ed795eb69fee75e60591",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of career services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/career-services/#collapse-3ec797f69fee75e60591",
+          "rect": {
+            "w": 384,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/career-services/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/career-services/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/career-services/mobile430"
+    },
+    {
+      "route": "/educational-services/",
+      "viewport": "mobile430",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/educational-services/",
+      "metrics": {
+        "title": "Educational Services — Graduate School & Scholarship Support",
+        "h1s": [
+          "Education Support for Stronger Applications"
+        ],
+        "textLength": 6719,
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link",
+          "href": "/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link",
+          "href": "/about/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle active",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What Services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-a6e330569fee75e6303b",
+          "rect": {
+            "w": 384,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How do I get started with Elevate Career Hub? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-ed795eb69fee75e6303b",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Are your services designed to specific industries or fields? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-3ec797f69fee75e6303b",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What are your payment options? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-a6e330569fee75e63bee",
+          "rect": {
+            "w": 384,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How long does it take to complete a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-ed795eb69fee75e63bee",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What happens after I purchase a service? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-3ec797f69fee75e63bee",
+          "rect": {
+            "w": 384,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you assist me with selecting the right school for my educational goals? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-a6e330569fee75e64797",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of educational services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-ed795eb69fee75e64797",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "How can I benefit from your educational services? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-3ec797f69fee75e64797",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Can you help me with my resume even if I have limited work experience? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-a6e330569fee75e65480",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Do you provide interview coaching for specific industries or job roles? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-ed795eb69fee75e65480",
+          "rect": {
+            "w": 384,
+            "h": 98
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "What types of career services do you offer? ▾ ←",
+          "cls": "ekit-accordion--toggler elementskit-btn-link collapsed",
+          "href": "/educational-services/#collapse-3ec797f69fee75e65480",
+          "rect": {
+            "w": 384,
+            "h": 69
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/educational-services/mobile430"
+    },
+    {
+      "route": "/diy-products/",
+      "viewport": "mobile430",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/diy-products/",
+      "metrics": {
+        "title": "DIY Career & Education Products — Elevate Career Hub",
+        "h1s": [
+          "Practical DIY Resources for Your Next Step"
+        ],
+        "textLength": 2294,
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link",
+          "href": "/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link",
+          "href": "/about/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about Becoming a Job Magnet on LinkedIn",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20Becoming%20a%20Job%20Magnet%20on%20LinkedIn.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about Complete Grad School Bundle",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20Complete%20Grad%20School%20Bundle.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about How to Write the Resume that Lands the Interview",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20How%20to%20Write%20the%20Resume%20that%20Lands%20the%20Interview.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about Mastering the Art of Job Hunting in the UK as an Intern",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20Mastering%20the%20Art%20of%20Job%20Hunting%20in%20the%20UK%20as%20an%20International%20Student.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about Nailing your Job Interviews",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20Nailing%20your%20Job%20Interviews.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message Elevate Career Hub on WhatsApp about Remote Job Playbook",
+          "cls": "button ech-assisted-commerce-link",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20to%20purchase%20or%20ask%20about%20Remote%20Job%20Playbook.",
+          "rect": {
+            "w": 214,
+            "h": 41
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/diy-products/mobile430"
+    },
+    {
+      "route": "/contact-us/",
+      "viewport": "mobile430",
+      "status": 200,
+      "url": "http://127.0.0.1:4174/contact-us/",
+      "metrics": {
+        "title": "Contact Elevate Career Hub",
+        "h1s": [
+          "Talk to Elevate Career Hub"
+        ],
+        "textLength": 1130,
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflowX": false,
+        "navToggleExists": true,
+        "navOpen": false,
+        "navVisibleLinks": [
+          {
+            "text": "Home",
+            "href": "/"
+          },
+          {
+            "text": "About",
+            "href": "/about/"
+          },
+          {
+            "text": "Educational Services▾",
+            "href": "/educational-services/"
+          },
+          {
+            "text": "Blog",
+            "href": "/blog/"
+          },
+          {
+            "text": "Contact Us",
+            "href": "/contact-us/"
+          },
+          {
+            "text": "",
+            "href": "/"
+          }
+        ]
+      },
+      "menu": {
+        "before": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "afterOpen": {
+          "open": true,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto",
+          "links": [
+            {
+              "text": "Home",
+              "href": "/"
+            },
+            {
+              "text": "About",
+              "href": "/about/"
+            },
+            {
+              "text": "Educational Services▾",
+              "href": "/educational-services/"
+            },
+            {
+              "text": "Blog",
+              "href": "/blog/"
+            },
+            {
+              "text": "Contact Us",
+              "href": "/contact-us/"
+            },
+            {
+              "text": "",
+              "href": "/"
+            }
+          ]
+        },
+        "afterClose": {
+          "open": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        }
+      },
+      "iconControls": [
+        {
+          "label": "hamburger-icon",
+          "cls": "elementskit-menu-hamburger elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "ekit-menu-nav-link",
+          "href": "/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "ekit-menu-nav-link",
+          "href": "/about/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services▾",
+          "cls": "ekit-menu-nav-link ekit-menu-dropdown-toggle",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "ekit-menu-nav-link",
+          "href": "/blog/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "ekit-menu-nav-link active",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 323,
+            "h": 43
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "X",
+          "cls": "elementskit-menu-close elementskit-menu-toggler",
+          "href": null,
+          "rect": {
+            "w": 45,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "WhatsApp",
+          "cls": "elementor-icon",
+          "href": "https://wa.me/233531113454",
+          "rect": {
+            "w": 83,
+            "h": 67
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "WhatsApp",
+          "cls": "",
+          "href": "https://wa.me/233531113454",
+          "rect": {
+            "w": 86,
+            "h": 22
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Email",
+          "cls": "elementor-icon",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 32,
+            "h": 35
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Message us on WhatsApp",
+          "cls": "ech-contact-fallback__button ech-contact-fallback__button--primary",
+          "href": "https://wa.me/233531113454?text=Hello%20Elevate%20Career%20Hub%2C%20I%20would%20like%20help%20with%20CVs%2C%20applications%2C%20interviews%2C%20scholarships%2C%20school%20selection%2C%20DIY%20resources%2C%20or%20education/career%20planning.",
+          "rect": {
+            "w": 256,
+            "h": 46
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Instagram IG",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-instagram elementor-animation-float elementor-repeater-item-2",
+          "href": "https://www.instagram.com/elevatecareerhub/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Twitter 𝕏",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-twitter elementor-animation-float elementor-repeater-item-bb8",
+          "href": "https://x.com/elevatecareers_",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Linkedin-in in",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-linkedin-in elementor-animation-float elementor-repeater-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Youtube ▶",
+          "cls": "elementor-icon elementor-social-icon elementor-social-icon-youtube elementor-animation-float elementor-repeater-item-171",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 44,
+            "h": 44
+          },
+          "pointerEvents": "auto",
+          "tappable": true
+        },
+        {
+          "label": "Home",
+          "cls": "hfe-menu-item",
+          "href": "/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "About",
+          "cls": "hfe-menu-item",
+          "href": "/about/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Educational Services",
+          "cls": "hfe-menu-item",
+          "href": "/educational-services/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Blog",
+          "cls": "hfe-menu-item",
+          "href": "/blog/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "DIY Products",
+          "cls": "hfe-menu-item",
+          "href": "/diy-products/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        },
+        {
+          "label": "Contact Us",
+          "cls": "hfe-menu-item",
+          "href": "/contact-us/",
+          "rect": {
+            "w": 374,
+            "h": 33
+          },
+          "pointerEvents": "auto",
+          "tappable": false
+        }
+      ],
+      "consoleMessages": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshotDir": "/Users/greatdamzi/Projects/Elevate-Frontend/outputs/mobile-menu-qa-v2-lite/contact-us/mobile430"
+    }
+  ]
+}

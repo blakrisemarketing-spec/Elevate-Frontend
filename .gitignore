@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# macOS
+.DS_Store
+
+# Context / local dev
+.context/
+tsconfig.tsbuildinfo
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+.env.*.local

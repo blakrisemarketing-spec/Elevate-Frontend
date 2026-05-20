@@ -1,0 +1,26 @@
+{
+  "name": "elevate-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc -b && vite build && node scripts/build-wordpress-html.mjs",
+    "preview": "vite preview --host 0.0.0.0",
+    "crawl": "node scripts/crawl-wordpress.mjs && node scripts/repair-migration.mjs",
+    "repair": "node scripts/repair-migration.mjs",
+    "audit": "node scripts/audit.mjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "typescript": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3"
+  }
+}

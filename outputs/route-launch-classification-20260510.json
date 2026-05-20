@@ -1,0 +1,286 @@
+{
+  "generatedAt": "2026-05-11T08:31:30.609Z",
+  "totalRoutes": 35,
+  "routes": [
+    {
+      "route": "/",
+      "type": "pages",
+      "title": "Home",
+      "behavior": "serve-static",
+      "target": "/",
+      "reason": "Priority launch route emitted as a direct WordPress source-of-truth static index.html."
+    },
+    {
+      "route": "/about/",
+      "type": "pages",
+      "title": "About",
+      "behavior": "serve-static",
+      "target": "/about/",
+      "reason": "Priority launch route emitted as a direct WordPress source-of-truth static index.html."
+    },
+    {
+      "route": "/blog/",
+      "type": "pages",
+      "title": "Blog",
+      "behavior": "rewrite-to-app",
+      "target": "/blog/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/career-services/",
+      "type": "pages",
+      "title": "Career Services",
+      "behavior": "serve-static",
+      "target": "/career-services/",
+      "reason": "Priority launch route emitted as a direct WordPress source-of-truth static index.html."
+    },
+    {
+      "route": "/career-strategy-session/",
+      "type": "pages",
+      "title": "Career Strategy Session",
+      "behavior": "rewrite-to-app",
+      "target": "/career-strategy-session/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/cart/",
+      "type": "pages",
+      "title": "Cart",
+      "behavior": "redirect-to-safe-route",
+      "target": "/contact-us/",
+      "reason": "Internal WooCommerce/account flow is not in MVP; route is redirected to assisted WhatsApp/email contact."
+    },
+    {
+      "route": "/checkout/",
+      "type": "pages",
+      "title": "Checkout",
+      "behavior": "redirect-to-safe-route",
+      "target": "/contact-us/",
+      "reason": "Internal WooCommerce/account flow is not in MVP; route is redirected to assisted WhatsApp/email contact."
+    },
+    {
+      "route": "/contact-us/",
+      "type": "pages",
+      "title": "Contact Us",
+      "behavior": "serve-static",
+      "target": "/contact-us/",
+      "reason": "Priority launch route emitted as a direct WordPress source-of-truth static index.html."
+    },
+    {
+      "route": "/cover-letter/",
+      "type": "pages",
+      "title": "Cover Letter",
+      "behavior": "rewrite-to-app",
+      "target": "/cover-letter/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/curriculum-vitae/",
+      "type": "pages",
+      "title": "Curriculum Vitae",
+      "behavior": "rewrite-to-app",
+      "target": "/curriculum-vitae/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/diy-products/",
+      "type": "pages",
+      "title": "DIY Products",
+      "behavior": "serve-static",
+      "target": "/diy-products/",
+      "reason": "Priority launch route emitted as a direct WordPress source-of-truth static index.html."
+    },
+    {
+      "route": "/educational-services/",
+      "type": "pages",
+      "title": "Educational Services",
+      "behavior": "serve-static",
+      "target": "/educational-services/",
+      "reason": "Priority launch route emitted as a direct WordPress source-of-truth static index.html."
+    },
+    {
+      "route": "/faqs/",
+      "type": "pages",
+      "title": "FAQs",
+      "behavior": "rewrite-to-app",
+      "target": "/faqs/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/how-our-career-development-company-can-help-you-stand-out/",
+      "type": "posts",
+      "title": "How Our Career Development Company Can Help You Stand Out",
+      "behavior": "rewrite-to-app",
+      "target": "/how-our-career-development-company-can-help-you-stand-out/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/how-to-boost-your-career-with-professional-resume-writing/",
+      "type": "posts",
+      "title": "How to Boost Your Career with Professional Resume Writing",
+      "behavior": "rewrite-to-app",
+      "target": "/how-to-boost-your-career-with-professional-resume-writing/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/interview-preparation-session/",
+      "type": "pages",
+      "title": "Interview Preparation Session",
+      "behavior": "rewrite-to-app",
+      "target": "/interview-preparation-session/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/job-readiness-bootcamp/",
+      "type": "pages",
+      "title": "Job Readiness Bootcamp",
+      "behavior": "rewrite-to-app",
+      "target": "/job-readiness-bootcamp/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/jrb-thank-you/",
+      "type": "pages",
+      "title": "Thank You",
+      "behavior": "rewrite-to-app",
+      "target": "/jrb-thank-you/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/lets-keep-in-touch/",
+      "type": "pages",
+      "title": "Let’s Keep In Touch",
+      "behavior": "rewrite-to-app",
+      "target": "/lets-keep-in-touch/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/linkedin-optimization/",
+      "type": "pages",
+      "title": "LinkedIn Optimization",
+      "behavior": "rewrite-to-app",
+      "target": "/linkedin-optimization/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/manage-profile/",
+      "type": "pages",
+      "title": "Manage Profile",
+      "behavior": "redirect-to-safe-route",
+      "target": "/contact-us/",
+      "reason": "Internal WooCommerce/account flow is not in MVP; route is redirected to assisted WhatsApp/email contact."
+    },
+    {
+      "route": "/my-account/",
+      "type": "pages",
+      "title": "My account",
+      "behavior": "redirect-to-safe-route",
+      "target": "/contact-us/",
+      "reason": "Internal WooCommerce/account flow is not in MVP; route is redirected to assisted WhatsApp/email contact."
+    },
+    {
+      "route": "/product/becoming-a-job-magnet-on-linkedin/",
+      "type": "product",
+      "title": "Becoming a Job Magnet on LinkedIn",
+      "behavior": "rewrite-to-app",
+      "target": "/product/becoming-a-job-magnet-on-linkedin/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/product/complete-grad-school-bundle/",
+      "type": "product",
+      "title": "Complete Grad School Bundle",
+      "behavior": "rewrite-to-app",
+      "target": "/product/complete-grad-school-bundle/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/product/how-to-write-the-resume-that-lands-the-interview/",
+      "type": "product",
+      "title": "How to Write the Resume that Lands the Interview",
+      "behavior": "rewrite-to-app",
+      "target": "/product/how-to-write-the-resume-that-lands-the-interview/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/product/mastering-the-art-of-job-hunting-in-the-uk-as-an-international-student/",
+      "type": "product",
+      "title": "Mastering the Art of Job Hunting in the UK as an International Student",
+      "behavior": "rewrite-to-app",
+      "target": "/product/mastering-the-art-of-job-hunting-in-the-uk-as-an-international-student/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/product/nailing-your-job-interviews/",
+      "type": "product",
+      "title": "Nailing your Job Interviews",
+      "behavior": "rewrite-to-app",
+      "target": "/product/nailing-your-job-interviews/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/product/remote-job-playbook/",
+      "type": "product",
+      "title": "Remote Job Playbook",
+      "behavior": "rewrite-to-app",
+      "target": "/product/remote-job-playbook/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/product/the-complete-job-search-bundle/",
+      "type": "product",
+      "title": "The Complete Job Search Bundle",
+      "behavior": "rewrite-to-app",
+      "target": "/product/the-complete-job-search-bundle/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/reference-letter/",
+      "type": "pages",
+      "title": "Reference Letter",
+      "behavior": "rewrite-to-app",
+      "target": "/reference-letter/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/shop/",
+      "type": "pages",
+      "title": "Shop",
+      "behavior": "redirect-to-safe-route",
+      "target": "/contact-us/",
+      "reason": "Internal WooCommerce/account flow is not in MVP; route is redirected to assisted WhatsApp/email contact."
+    },
+    {
+      "route": "/statement-of-purpose/",
+      "type": "pages",
+      "title": "Statement of Purpose",
+      "behavior": "rewrite-to-app",
+      "target": "/statement-of-purpose/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/suggestion-of-schools/",
+      "type": "pages",
+      "title": "Suggestion of Schools",
+      "behavior": "rewrite-to-app",
+      "target": "/suggestion-of-schools/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/the-importance-of-professional-documents-in-career-development/",
+      "type": "posts",
+      "title": "The Importance of Professional Documents in Career Development",
+      "behavior": "rewrite-to-app",
+      "target": "/the-importance-of-professional-documents-in-career-development/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/tips-for-crafting-an-effective-resume-cover-letter-personal-statement-and-school-application/",
+      "type": "posts",
+      "title": "Tips for Crafting an Effective Resume, Cover Letter, Personal Statement, and School Application",
+      "behavior": "rewrite-to-app",
+      "target": "/tips-for-crafting-an-effective-resume-cover-letter-personal-statement-and-school-application/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    }
+  ]
+}

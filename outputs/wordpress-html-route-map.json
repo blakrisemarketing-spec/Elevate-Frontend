@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-05-11T08:31:30.610Z",
+  "sourceRoot": "Wordpress Files",
+  "routes": [
+    {
+      "route": "/",
+      "label": "Home",
+      "sourceHtml": "Wordpress Files/Home.html",
+      "sourceAssets": "Wordpress Files/Home_files",
+      "distHtml": "dist/index.html",
+      "distAssets": "dist/Home_files"
+    },
+    {
+      "route": "/about/",
+      "label": "About",
+      "sourceHtml": "Wordpress Files/About.html",
+      "sourceAssets": "Wordpress Files/About_files",
+      "distHtml": "dist/about/index.html",
+      "distAssets": "dist/about/About_files"
+    },
+    {
+      "route": "/career-services/",
+      "label": "Career Services",
+      "sourceHtml": "Wordpress Files/Career-services.html",
+      "sourceAssets": "Wordpress Files/Career-services_files",
+      "distHtml": "dist/career-services/index.html",
+      "distAssets": "dist/career-services/Career-services_files"
+    },
+    {
+      "route": "/educational-services/",
+      "label": "Educational Services",
+      "sourceHtml": "Wordpress Files/Education-services.html",
+      "sourceAssets": "Wordpress Files/Education-services_files",
+      "distHtml": "dist/educational-services/index.html",
+      "distAssets": "dist/educational-services/Education-services_files"
+    },
+    {
+      "route": "/diy-products/",
+      "label": "DIY Products",
+      "sourceHtml": "Wordpress Files/DIY-Products.html",
+      "sourceAssets": "Wordpress Files/DIY-Products_files",
+      "distHtml": "dist/diy-products/index.html",
+      "distAssets": "dist/diy-products/DIY-Products_files"
+    },
+    {
+      "route": "/contact-us/",
+      "label": "Contact Us",
+      "sourceHtml": "Wordpress Files/Contact.html",
+      "sourceAssets": "Wordpress Files/Contact_files",
+      "distHtml": "dist/contact-us/index.html",
+      "distAssets": "dist/contact-us/Contact_files"
+    }
+  ]
+}

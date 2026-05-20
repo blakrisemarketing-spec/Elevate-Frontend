@@ -1,0 +1,89 @@
+/* WordPress HTML source-of-truth rebuild
+   The previous Elevate-DESIGN override layer has been intentionally disabled.
+   The six priority routes are emitted as static pages directly from:
+   /Wordpress Files/{Home,About,Career-services,Education-services,DIY-Products,Contact}.html
+   so their downloaded WordPress CSS/JS/assets control the visual output. */
+
+html, body, #root {
+  margin: 0;
+  min-width: 320px;
+}
+
+.snapshot-shell {
+  min-height: 100vh;
+}
+
+.snapshot-shell .elementskit-menu-toggler,
+.snapshot-shell .hfe-nav-menu__toggle,
+.snapshot-shell .elementor-icon.elementor-social-icon,
+.snapshot-shell .elementskit-card-header > .elementskit-btn-link {
+  touch-action: manipulation;
+}
+
+.snapshot-shell .elementskit-card-header > .elementskit-btn-link {
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .snapshot-shell .elementskit-menu-toggler,
+  .snapshot-shell .hfe-nav-menu__toggle {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .snapshot-shell .elementskit-menu-close.elementskit-menu-toggler {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    line-height: 1;
+  }
+
+  .snapshot-shell .elementskit-menu-container.elementskit-menu-offcanvas-elements.snapshot-menu-open {
+    left: auto !important;
+    right: 0 !important;
+    transform: translateX(0) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .snapshot-shell .hfe-nav-menu__layout-vertical.snapshot-menu-open {
+    left: 0 !important;
+    transform: translateX(0) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .snapshot-shell .elementor-icon.elementor-social-icon {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+  }
+
+  .snapshot-shell .elementor-icon.elementor-social-icon i,
+  .snapshot-shell .elementor-icon.elementor-social-icon svg {
+    pointer-events: none;
+  }
+
+  .snapshot-shell a.button,
+  .snapshot-shell .elementskit-btn,
+  .snapshot-shell .elementor-button {
+    min-height: 44px;
+  }
+}
+
+.snapshot-error {
+  max-width: 720px;
+  margin: 4rem auto;
+  padding: 1.5rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}

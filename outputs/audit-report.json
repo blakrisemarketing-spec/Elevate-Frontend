@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-05-10T10:52:15.019Z",
+  "pages": 35,
+  "links": 969,
+  "internalLinks": 552,
+  "assets": 348,
+  "warnings": [
+    "Page /lets-keep-in-touch/ has unexpectedly small HTML snapshot; likely a WooCommerce/account shell or gated page.",
+    "Page /lets-keep-in-touch/ is missing meta description in the source site.",
+    "Page /manage-profile/ has unexpectedly small HTML snapshot; likely a WooCommerce/account shell or gated page.",
+    "Page /manage-profile/ is missing meta description in the source site.",
+    "Page /my-account/ has unexpectedly small HTML snapshot; likely a WooCommerce/account shell or gated page.",
+    "Page /my-account/ is missing meta description in the source site.",
+    "Page /product/becoming-a-job-magnet-on-linkedin/ is missing meta description in the source site.",
+    "Page /product/complete-grad-school-bundle/ is missing meta description in the source site.",
+    "Page /product/how-to-write-the-resume-that-lands-the-interview/ is missing meta description in the source site.",
+    "Page /product/mastering-the-art-of-job-hunting-in-the-uk-as-an-international-student/ is missing meta description in the source site.",
+    "Page /product/nailing-your-job-interviews/ is missing meta description in the source site.",
+    "Page /product/remote-job-playbook/ is missing meta description in the source site.",
+    "Page /product/the-complete-job-search-bundle/ is missing meta description in the source site.",
+    "Page /shop/ has unexpectedly small HTML snapshot; likely a WooCommerce/account shell or gated page.",
+    "Page /shop/ is missing meta description in the source site."
+  ],
+  "issues": []
+}

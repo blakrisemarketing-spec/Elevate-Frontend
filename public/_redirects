@@ -1,0 +1,9 @@
+# Elevate Frontend static-host fallback.
+# Build also emits direct index.html files for every migrated route.
+# Hosts that support Netlify/Cloudflare Pages-style _redirects should keep unresolved MVP commerce/account flows off public shells.
+/cart/ /contact-us/ 302!
+/checkout/ /contact-us/ 302!
+/my-account/ /contact-us/ 302!
+/shop/ /contact-us/ 302!
+/manage-profile/ /contact-us/ 302!
+/index.php/about/ /about/ 301!
