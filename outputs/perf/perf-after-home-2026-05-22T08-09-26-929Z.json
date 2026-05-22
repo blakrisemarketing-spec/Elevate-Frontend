@@ -1,0 +1,37 @@
+{
+  "label": "after-home",
+  "generatedAt": "2026-05-22T08:09:26.929Z",
+  "profile": {
+    "name": "Regular 3G",
+    "download": 96000,
+    "upload": 32000,
+    "latencyMs": 300,
+    "cpuThrottle": 4
+  },
+  "targetLoadMs": 2000,
+  "results": [
+    {
+      "route": "/",
+      "wallClockMs": 971,
+      "requestCount": 1,
+      "totalEncodedBytes": 10096,
+      "totalEncodedKB": 9.9,
+      "ttfbMs": 6,
+      "domContentLoadedMs": 431,
+      "loadMs": 439,
+      "firstPaintMs": 436,
+      "firstContentfulPaintMs": 436,
+      "largestContentfulPaintMs": null,
+      "transferSizeBytes": 10170,
+      "encodedBodySizeBytes": 9870,
+      "decodedBodySizeBytes": 43988,
+      "topResources": [
+        {
+          "url": "/",
+          "mime": "text/html",
+          "bytes": 10096
+        }
+      ]
+    }
+  ]
+}

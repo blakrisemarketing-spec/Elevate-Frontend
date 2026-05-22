@@ -3,6 +3,10 @@ node_modules/
 
 # Build output
 dist/
+.tmp/
+
+# Perf bench screenshots — large, regenerated on each bench run
+outputs/perf/*.png
 
 # macOS
 .DS_Store

@@ -1,0 +1,152 @@
+{
+  "label": "after-all-6",
+  "generatedAt": "2026-05-22T08:51:00.839Z",
+  "profile": {
+    "name": "Regular 3G",
+    "download": 96000,
+    "upload": 32000,
+    "latencyMs": 300,
+    "cpuThrottle": 4
+  },
+  "targetLoadMs": 2000,
+  "results": [
+    {
+      "route": "/",
+      "wallClockMs": 979,
+      "requestCount": 1,
+      "totalEncodedBytes": 10426,
+      "totalEncodedKB": 10.2,
+      "ttfbMs": 6,
+      "domContentLoadedMs": 448,
+      "loadMs": 450,
+      "firstPaintMs": 408,
+      "firstContentfulPaintMs": 408,
+      "largestContentfulPaintMs": null,
+      "transferSizeBytes": 10499,
+      "encodedBodySizeBytes": 10199,
+      "decodedBodySizeBytes": 46117,
+      "topResources": [
+        {
+          "url": "/",
+          "mime": "text/html",
+          "bytes": 10426
+        }
+      ]
+    },
+    {
+      "route": "/about/",
+      "wallClockMs": 942,
+      "requestCount": 1,
+      "totalEncodedBytes": 10256,
+      "totalEncodedKB": 10,
+      "ttfbMs": 2,
+      "domContentLoadedMs": 425,
+      "loadMs": 434,
+      "firstPaintMs": 384,
+      "firstContentfulPaintMs": 384,
+      "largestContentfulPaintMs": null,
+      "transferSizeBytes": 10329,
+      "encodedBodySizeBytes": 10029,
+      "decodedBodySizeBytes": 42917,
+      "topResources": [
+        {
+          "url": "/about/",
+          "mime": "text/html",
+          "bytes": 10256
+        }
+      ]
+    },
+    {
+      "route": "/career-services/",
+      "wallClockMs": 932,
+      "requestCount": 1,
+      "totalEncodedBytes": 9814,
+      "totalEncodedKB": 9.6,
+      "ttfbMs": 2,
+      "domContentLoadedMs": 424,
+      "loadMs": 424,
+      "firstPaintMs": 384,
+      "firstContentfulPaintMs": 384,
+      "largestContentfulPaintMs": null,
+      "transferSizeBytes": 9888,
+      "encodedBodySizeBytes": 9588,
+      "decodedBodySizeBytes": 48440,
+      "topResources": [
+        {
+          "url": "/career-services/",
+          "mime": "text/html",
+          "bytes": 9814
+        }
+      ]
+    },
+    {
+      "route": "/educational-services/",
+      "wallClockMs": 930,
+      "requestCount": 1,
+      "totalEncodedBytes": 10414,
+      "totalEncodedKB": 10.2,
+      "ttfbMs": 2,
+      "domContentLoadedMs": 421,
+      "loadMs": 423,
+      "firstPaintMs": 384,
+      "firstContentfulPaintMs": 384,
+      "largestContentfulPaintMs": null,
+      "transferSizeBytes": 10487,
+      "encodedBodySizeBytes": 10187,
+      "decodedBodySizeBytes": 53732,
+      "topResources": [
+        {
+          "url": "/educational-services/",
+          "mime": "text/html",
+          "bytes": 10414
+        }
+      ]
+    },
+    {
+      "route": "/diy-products/",
+      "wallClockMs": 912,
+      "requestCount": 1,
+      "totalEncodedBytes": 8943,
+      "totalEncodedKB": 8.7,
+      "ttfbMs": 2,
+      "domContentLoadedMs": 401,
+      "loadMs": 403,
+      "firstPaintMs": 384,
+      "firstContentfulPaintMs": 384,
+      "largestContentfulPaintMs": null,
+      "transferSizeBytes": 9017,
+      "encodedBodySizeBytes": 8717,
+      "decodedBodySizeBytes": 37517,
+      "topResources": [
+        {
+          "url": "/diy-products/",
+          "mime": "text/html",
+          "bytes": 8943
+        }
+      ]
+    },
+    {
+      "route": "/contact-us/",
+      "wallClockMs": 907,
+      "requestCount": 1,
+      "totalEncodedBytes": 8181,
+      "totalEncodedKB": 8,
+      "ttfbMs": 2,
+      "domContentLoadedMs": 399,
+      "loadMs": 400,
+      "firstPaintMs": 388,
+      "firstContentfulPaintMs": 388,
+      "largestContentfulPaintMs": null,
+      "transferSizeBytes": 8255,
+      "encodedBodySizeBytes": 7955,
+      "decodedBodySizeBytes": 35396,
+      "topResources": [
+        {
+          "url": "/contact-us/",
+          "mime": "text/html",
+          "bytes": 8181
+        }
+      ]
+    }
+  ]
+}

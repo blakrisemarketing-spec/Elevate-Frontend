@@ -1,0 +1,107 @@
+{
+  "label": "before-home",
+  "generatedAt": "2026-05-22T08:02:48.562Z",
+  "profile": {
+    "name": "Regular 3G",
+    "download": 96000,
+    "upload": 32000,
+    "latencyMs": 300,
+    "cpuThrottle": 4
+  },
+  "targetLoadMs": 2000,
+  "results": [
+    {
+      "route": "/",
+      "wallClockMs": 20424,
+      "requestCount": 81,
+      "totalEncodedBytes": 1743375,
+      "totalEncodedKB": 1702.5,
+      "ttfbMs": 12,
+      "domContentLoadedMs": 5625,
+      "loadMs": 19894,
+      "firstPaintMs": 4196,
+      "firstContentfulPaintMs": 4196,
+      "largestContentfulPaintMs": null,
+      "transferSizeBytes": 26408,
+      "encodedBodySizeBytes": 26108,
+      "decodedBodySizeBytes": 170887,
+      "topResources": [
+        {
+          "url": "https://elevatecareerhub.com/wp-content/uploads/2024/01/T1-scaled-e1706572128922.webp",
+          "mime": "image/webp",
+          "bytes": 303588
+        },
+        {
+          "url": "/assets/wp-content/uploads/2024/02/Harvard.png",
+          "mime": "image/png",
+          "bytes": 170273
+        },
+        {
+          "url": "/assets/wp-content/uploads/2024/02/MU.png",
+          "mime": "image/png",
+          "bytes": 98628
+        },
+        {
+          "url": "/assets/wp-content/uploads/2024/01/T6-Copy-e1706661330276-1024x1536.webp",
+          "mime": "image/webp",
+          "bytes": 95259
+        },
+        {
+          "url": "/assets/wp-content/uploads/2024/01/T9-1024x1024.webp",
+          "mime": "image/webp",
+          "bytes": 76119
+        },
+        {
+          "url": "/assets/wp-content/uploads/2024/01/2-1024x474.png",
+          "mime": "image/png",
+          "bytes": 69928
+        },
+        {
+          "url": "/Home_files/2.png",
+          "mime": "image/png",
+          "bytes": 68236
+        },
+        {
+          "url": "/assets/wp-content/uploads/2024/01/R9-Copy-1024x1024.webp",
+          "mime": "image/webp",
+          "bytes": 61727
+        },
+        {
+          "url": "/assets/wp-content/uploads/2024/02/CU.png",
+          "mime": "image/png",
+          "bytes": 60208
+        },
+        {
+          "url": "/Home_files/writing-pad-hand-pen-3202747-1024x596.jpg",
+          "mime": "image/jpeg",
+          "bytes": 53553
+        },
+        {
+          "url": "/Home_files/wpo-minify-header-ekit-widget-styles.min.css",
+          "mime": "text/css",
+          "bytes": 51363
+        },
+        {
+          "url": "/Home_files/hand-man-watch-1076597-1024x682.jpg",
+          "mime": "image/jpeg",
+          "bytes": 43717
+        },
+        {
+          "url": "/assets/wp-content/uploads/2024/01/T6-Copy-e1706661330276-600x900.webp",
+          "mime": "image/webp",
+          "bytes": 42705
+        },
+        {
+          "url": "/assets/wp-content/uploads/2024/02/KPMG.png",
+          "mime": "image/png",
+          "bytes": 40401
+        },
+        {
+          "url": "/assets/wp-content/uploads/2024/02/ubc.png",
+          "mime": "image/png",
+          "bytes": 38727
+        }
+      ]
+    }
+  ]
+}

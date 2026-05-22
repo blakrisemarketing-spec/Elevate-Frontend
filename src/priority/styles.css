@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* No webfont in the critical path — system font stack gives sub-50ms render and
+   the design language stays geometric/clean on all platforms (SF Pro on iOS,
+   Roboto on Android, Segoe UI on Windows). Add Lexend later as a progressive
+   enhancement if the heading style is judged worth ~30 KB + a font request. */
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-canvas text-ink antialiased;
+    font-feature-settings: 'kern', 'liga', 'calt';
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 { @apply font-display text-navy; }
+  a { @apply text-primary underline-offset-2; }
+  a:hover { @apply underline; }
+  img { @apply max-w-full h-auto; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-primary text-white font-semibold px-6 py-3 rounded-lg no-underline transition-colors min-h-[48px];
+  }
+  .btn-primary:hover { @apply bg-primary-600 no-underline text-white; }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-white text-primary border border-primary font-semibold px-6 py-3 rounded-lg no-underline transition-colors min-h-[48px];
+  }
+  .btn-secondary:hover { @apply bg-primary-50 no-underline; }
+
+  .card {
+    @apply bg-white rounded-xl p-6 border border-black/5 shadow-soft;
+  }
+
+  .container-site {
+    @apply mx-auto w-full px-5 sm:px-6 lg:px-8 max-w-site;
+  }
+
+  /* CSS-only mobile menu */
+  .nav-toggle:checked ~ .nav-drawer { @apply translate-x-0; }
+  .nav-toggle:checked ~ .nav-overlay { @apply opacity-100 pointer-events-auto; }
+  .nav-toggle:checked ~ label .icon-open { @apply hidden; }
+  .nav-toggle:checked ~ label .icon-close { @apply block; }
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #fff;
+  color: #006BA6;
+  padding: 0.75rem 1rem;
+  z-index: 100;
+}
+.skip-link:focus { left: 1rem; top: 1rem; }
