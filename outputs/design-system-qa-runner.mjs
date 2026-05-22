@@ -1,4 +1,4 @@
-import { chromium } from '/opt/homebrew/lib/node_modules/playwright/index.mjs';
+import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 

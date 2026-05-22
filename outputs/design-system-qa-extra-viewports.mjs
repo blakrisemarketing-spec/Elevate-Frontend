@@ -1,4 +1,4 @@
-import { chromium } from '/opt/homebrew/lib/node_modules/playwright/index.mjs';
+import { chromium } from 'playwright';
 import fs from 'node:fs/promises';
 const base='http://127.0.0.1:4178';
 const out='/Users/greatdamzi/Projects/Elevate-Frontend/outputs/design-system-qa/extra-viewports.json';
