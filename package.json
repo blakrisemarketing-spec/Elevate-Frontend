@@ -11,6 +11,7 @@
     "build": "tsc -b && vite build && node scripts/build-wordpress-html.mjs && pnpm run build:priority",
     "build:priority": "tailwindcss -i src/priority/styles.css -o .tmp/priority.css --minify && node scripts/build-priority-routes.mjs",
     "preview": "vite preview --host 0.0.0.0",
+    "serve:php": "node scripts/serve-php.mjs",
     "crawl": "node scripts/crawl-wordpress.mjs && node scripts/repair-migration.mjs",
     "repair": "node scripts/repair-migration.mjs",
     "audit": "node scripts/audit.mjs",

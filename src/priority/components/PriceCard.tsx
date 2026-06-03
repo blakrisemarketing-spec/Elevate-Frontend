@@ -5,9 +5,11 @@ interface PriceCardProps {
   priceNote?: string;
   href?: string;
   ctaLabel?: string;
+  /** When set, the CTA becomes a Paystack buy button (progressive-enhancement island). */
+  serviceId?: string;
 }
 
-export function PriceCard({ title, description, price, priceNote, href = '/contact-us/', ctaLabel = 'Get Started' }: PriceCardProps) {
+export function PriceCard({ title, description, price, priceNote, href = '/contact-us/', ctaLabel, serviceId }: PriceCardProps) {
   return (
     <article className="card flex flex-col h-full">
       <h3 className="text-headline-md mb-3">{title}</h3>
@@ -16,7 +18,13 @@ export function PriceCard({ title, description, price, priceNote, href = '/conta
         <span className="text-display-lg text-primary leading-none">{price}</span>
         {priceNote && <span className="text-sm text-ink-muted">{priceNote}</span>}
       </div>
-      <a href={href} className="btn-primary mt-5">{ctaLabel}</a>
+      {serviceId ? (
+        <button type="button" className="btn-primary buy-btn mt-5" data-service-id={serviceId}>
+          {ctaLabel || `Pay ${price}`}
+        </button>
+      ) : (
+        <a href={href} className="btn-primary mt-5">{ctaLabel || 'Get Started'}</a>
+      )}
     </article>
   );
 }

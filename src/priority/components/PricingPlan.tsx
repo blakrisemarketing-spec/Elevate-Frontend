@@ -8,6 +8,8 @@ interface PricingPlanProps {
   ctaLabel?: string;
   href?: string;
   highlighted?: boolean;
+  /** When set, the CTA becomes a Paystack buy button. */
+  serviceId?: string;
 }
 
 export function PricingPlan({
@@ -20,6 +22,7 @@ export function PricingPlan({
   ctaLabel = 'Get Started',
   href = '/contact-us/',
   highlighted = false,
+  serviceId,
 }: PricingPlanProps) {
   return (
     <article className={`card flex flex-col h-full ${highlighted ? 'ring-2 ring-primary' : ''}`}>
@@ -40,7 +43,11 @@ export function PricingPlan({
         ))}
       </ul>
       {footnote && <p className="mt-4 text-xs text-ink-muted italic">{footnote}</p>}
-      <a href={href} className="btn-primary mt-6">{ctaLabel}</a>
+      {serviceId ? (
+        <button type="button" className="btn-primary buy-btn mt-6" data-service-id={serviceId}>{ctaLabel}</button>
+      ) : (
+        <a href={href} className="btn-primary mt-6">{ctaLabel}</a>
+      )}
     </article>
   );
 }

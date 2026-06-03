@@ -34,21 +34,25 @@ export function CareerServicesPage() {
                 title="Curriculum Vitae"
                 description="Our Curriculum Vitae (CV) service at Elevate goes beyond mere documentation — it's a strategic masterpiece designed to showcase your skills, experiences, and accomplishments effectively."
                 price="₵ 350"
+                serviceId="career-cv"
               />
               <PriceCard
                 title="Cover Letter"
                 description="Our service crafts a narrative that highlights your strengths and aspirations. Make a lasting impression and stand out in the competitive job market with a cover letter that speaks directly to your potential employers."
                 price="₵ 300"
+                serviceId="career-cover-letter"
               />
               <PriceCard
                 title="LinkedIn Optimization"
                 description="We fine-tune your LinkedIn profile to attract attention, showcase your skills, and maximize networking opportunities."
                 price="₵ 380"
+                serviceId="career-linkedin"
               />
               <PriceCard
                 title="1-on-1 Interview Prep"
                 description="Our experienced coaches tailor sessions to your specific needs, helping you refine your skills, boost confidence, and excel in your upcoming interviews."
                 price="₵ 450"
+                serviceId="career-interview-prep"
               />
             </div>
           </div>
@@ -65,6 +69,8 @@ export function CareerServicesPage() {
               <PricingPlan
                 tier="Bronze Career Bundle"
                 price="₵ 1,800"
+                ctaLabel="Pay ₵ 1,800"
+                serviceId="bundle-bronze"
                 features={[
                   '1-on-1 Career Consultation',
                   '1 Resume',
@@ -77,6 +83,8 @@ export function CareerServicesPage() {
                 tier="Silver Career Bundle"
                 price="₵ 3,000"
                 highlighted
+                ctaLabel="Pay ₵ 3,000"
+                serviceId="bundle-silver"
                 features={[
                   '1-on-1 Career Consultation',
                   '3 Resumes',
@@ -88,6 +96,8 @@ export function CareerServicesPage() {
               <PricingPlan
                 tier="Gold Career Bundle"
                 price="₵ 4,200"
+                ctaLabel="Pay ₵ 4,200"
+                serviceId="bundle-gold"
                 features={[
                   '1-on-1 Career Consultation',
                   '5 Resumes',

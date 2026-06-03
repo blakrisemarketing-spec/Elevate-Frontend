@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client';
 import pages from './generated/pages.json';
 import './generated/vendor-css.css';
 import './styles.css';
+import './priority/styles.css';
+import { PRIORITY_PAGES } from './priority/registry';
 
 interface PageSnapshot {
   id: number;
@@ -123,6 +125,9 @@ function App(): React.ReactElement {
   }, []);
 
   useEffect(() => {
+    // Priority routes render a redesigned React component (see render branch
+    // below), so there is no snapshot HTML to fetch for them.
+    if (PRIORITY_PAGES[page.route]) { setHtml(''); return; }
     let active = true;
     fetch(page.htmlPath)
       .then((response) => {
@@ -312,6 +317,14 @@ function App(): React.ReactElement {
     document.addEventListener('click', handleDocumentClick);
     return () => document.removeEventListener('click', handleDocumentClick);
   }, [routes]);
+
+  // Redesigned priority routes render their React component directly (dev: this
+  // path + HMR; production: the same component is pre-rendered to static HTML by
+  // scripts/build-priority-routes.mjs, which overwrites dist/<route>/index.html).
+  const PriorityPage = PRIORITY_PAGES[page.route];
+  if (PriorityPage) {
+    return <PriorityPage />;
+  }
 
   const routeClass = `route-${page.slug.replace(/[^a-z0-9-]/gi, '-')}`;
 

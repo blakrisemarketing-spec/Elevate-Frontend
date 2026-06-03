@@ -9,7 +9,10 @@ interface Product {
   description: string;
   price: string;
   href: string;
-  whatsappMessage: string;
+  /** Catalog id → renders a Paystack buy button. */
+  serviceId?: string;
+  /** For free products → renders a direct download instead of checkout. */
+  freeDownloadPath?: string;
 }
 
 const PRODUCTS: Product[] = [
@@ -18,55 +21,51 @@ const PRODUCTS: Product[] = [
     description: 'Unlock the secrets to becoming a job magnet on LinkedIn with our comprehensive DIY product.',
     price: '₵ 199.00',
     href: '/product/becoming-a-job-magnet-on-linkedin/',
-    whatsappMessage: 'Hello Elevate Career Hub, I would like to purchase "Becoming a Job Magnet on LinkedIn".',
+    serviceId: 'diy-job-magnet-linkedin',
   },
   {
     title: 'Complete Grad School Bundle',
     description: 'This all-in-one DIY product includes essential resources such as CV templates, statement of purpose guides, and more.',
     price: '₵ 250.00',
     href: '/product/complete-grad-school-bundle/',
-    whatsappMessage: 'Hello Elevate Career Hub, I would like to purchase the "Complete Grad School Bundle".',
+    serviceId: 'diy-grad-school-bundle',
   },
   {
     title: 'How to Write the Resume that Lands the Interview',
     description: 'If you keep getting rejections from jobs you\'re qualified for, then your resume may be holding you back. Learn the formula that gets interviews.',
     price: '₵ 199.00',
     href: '/product/how-to-write-the-resume-that-lands-the-interview/',
-    whatsappMessage: 'Hello Elevate Career Hub, I would like to purchase "How to Write the Resume that Lands the Interview".',
+    serviceId: 'diy-resume-that-lands',
   },
   {
     title: 'Mastering the Art of Job Hunting in the UK as an International Student',
     description: 'Learn about the recruitment process in the UK, the companies that offer visa sponsorship, and how to position yourself for interviews.',
     price: '₵ 199.00',
     href: '/product/mastering-the-art-of-job-hunting-in-the-uk-as-an-international-student/',
-    whatsappMessage: 'Hello Elevate Career Hub, I would like to purchase the UK job-hunting playbook.',
+    serviceId: 'diy-uk-job-hunting',
   },
   {
     title: 'Nailing Your Job Interviews',
     description: 'Elevate your interview game with our powerhouse interview course and land the job of your dreams with confidence.',
     price: '₵ 199.00',
     href: '/product/nailing-your-job-interviews/',
-    whatsappMessage: 'Hello Elevate Career Hub, I would like to purchase "Nailing Your Job Interviews".',
+    serviceId: 'diy-nailing-interviews',
   },
   {
     title: 'Remote Job Playbook',
     description: 'Unlock your remote career potential. Discover the strategies trusted by thousands of professionals to secure remote roles.',
     price: 'Free',
     href: '/product/remote-job-playbook/',
-    whatsappMessage: 'Hello Elevate Career Hub, I would like the Remote Job Playbook.',
+    freeDownloadPath: '/downloads/the-remote-job-playbook.pdf',
   },
   {
     title: 'The Complete Job Search Bundle',
     description: 'Everything you need to find, land, and start your next role — CV, cover letter, LinkedIn, and interview resources in one package.',
     price: '₵ 250.00',
     href: '/product/the-complete-job-search-bundle/',
-    whatsappMessage: 'Hello Elevate Career Hub, I would like the Complete Job Search Bundle.',
+    serviceId: 'diy-complete-job-search',
   },
 ];
-
-function whatsappLink(message: string): string {
-  return `https://wa.me/233531113454?text=${encodeURIComponent(message)}`;
-}
 
 export function DIYProductsPage() {
   return (
@@ -98,15 +97,15 @@ export function DIYProductsPage() {
                 <div className="flex items-baseline gap-2 mt-5">
                   <span className="text-2xl font-bold text-primary">{product.price}</span>
                 </div>
-                <a
-                  href={whatsappLink(product.whatsappMessage)}
-                  className="btn-primary mt-5"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label={`Message Elevate Career Hub on WhatsApp to purchase ${product.title}`}
-                >
-                  Message us to purchase
-                </a>
+                {product.freeDownloadPath ? (
+                  <a href={product.freeDownloadPath} className="btn-primary mt-5" download>
+                    Download free
+                  </a>
+                ) : (
+                  <button type="button" className="btn-primary buy-btn mt-5" data-service-id={product.serviceId}>
+                    Buy now
+                  </button>
+                )}
               </article>
             ))}
           </div>

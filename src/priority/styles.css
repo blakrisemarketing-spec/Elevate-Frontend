@@ -2,10 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/* No webfont in the critical path — system font stack gives sub-50ms render and
-   the design language stays geometric/clean on all platforms (SF Pro on iOS,
-   Roboto on Android, Segoe UI on Windows). Add Lexend later as a progressive
-   enhancement if the heading style is judged worth ~30 KB + a font request. */
+/* Heading display font.
+   Stand-in for Gilroy ExtraBold (Gilroy is commercial / not on Google Fonts):
+   self-hosted Montserrat ExtraBold 800 (~16 KB woff2). To use real Gilroy,
+   drop Gilroy-ExtraBold.woff2 into /public/fonts and change the src +
+   font-family name below — nothing else needs to change. Body keeps the
+   system sans stack (zero load cost). */
+@font-face {
+  font-family: 'Gilroy ExtraBold';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/Montserrat-ExtraBold.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 @layer base {
   html { scroll-behavior: smooth; }
@@ -14,7 +24,8 @@
     font-feature-settings: 'kern', 'liga', 'calt';
     text-rendering: optimizeLegibility;
   }
-  h1, h2, h3, h4 { @apply font-display text-navy; }
+  h1, h2, h3 { @apply font-display text-navy; letter-spacing: -0.01em; }
+  h4 { @apply font-sans font-bold text-navy; }
   a { @apply text-primary underline-offset-2; }
   a:hover { @apply underline; }
   img { @apply max-w-full h-auto; }
@@ -22,21 +33,39 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-primary text-white font-semibold px-6 py-3 rounded-lg no-underline transition-colors min-h-[48px];
+    @apply inline-flex items-center justify-center gap-2 bg-navy text-white font-semibold px-7 py-3.5 rounded-full no-underline transition-colors min-h-[48px];
   }
-  .btn-primary:hover { @apply bg-primary-600 no-underline text-white; }
+  .btn-primary:hover { @apply bg-navy-700 no-underline text-white; }
 
-  .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 bg-white text-primary border border-primary font-semibold px-6 py-3 rounded-lg no-underline transition-colors min-h-[48px];
+  .btn-electric {
+    @apply inline-flex items-center justify-center gap-2 bg-electric text-navy font-semibold px-7 py-3.5 rounded-full no-underline transition-colors min-h-[48px];
   }
-  .btn-secondary:hover { @apply bg-primary-50 no-underline; }
+  .btn-electric:hover { @apply bg-electric-600 no-underline; }
+
+  .btn-white {
+    @apply inline-flex items-center justify-center gap-2 bg-white text-navy font-semibold px-7 py-3.5 rounded-full no-underline transition-colors min-h-[48px];
+  }
+  .btn-white:hover { @apply bg-white/90 no-underline text-navy; }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent text-white border-2 border-white font-semibold px-7 py-3.5 rounded-full no-underline transition-colors min-h-[48px];
+  }
+  .btn-outline:hover { @apply bg-white/10 no-underline text-white; }
 
   .card {
-    @apply bg-white rounded-xl p-6 border border-black/5 shadow-soft;
+    @apply bg-white rounded-2xl p-7 shadow-card;
   }
 
   .container-site {
-    @apply mx-auto w-full px-5 sm:px-6 lg:px-8 max-w-site;
+    @apply mx-auto w-full px-5 sm:px-8 lg:px-10 max-w-site;
+  }
+
+  .wordmark {
+    @apply font-display italic font-bold tracking-tight lowercase;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em];
   }
 
   /* CSS-only mobile menu */
@@ -46,13 +75,28 @@
   .nav-toggle:checked ~ label .icon-close { @apply block; }
 }
 
+/* Hero co-founder crossfade (CSS-only, no JS).
+   Naa (top layer) holds, fades to reveal Rosemary (bottom), holds, fades back. */
+@keyframes heroSwap {
+  0%, 42% { opacity: 1; }
+  50%, 92% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.hero-swap-top {
+  animation: heroSwap 9s ease-in-out infinite;
+  will-change: opacity;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-swap-top { animation: none; opacity: 1; }
+}
+
 /* Skip link */
 .skip-link {
   position: absolute;
   left: -9999px;
   top: 0;
   background: #fff;
-  color: #006BA6;
+  color: #0077B6;
   padding: 0.75rem 1rem;
   z-index: 100;
 }

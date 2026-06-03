@@ -5,8 +5,8 @@ node_modules/
 dist/
 .tmp/
 
-# Perf bench screenshots — large, regenerated on each bench run
-outputs/perf/*.png
+# Perf bench artifacts (screenshots + JSON) — dev-only, regenerated each run
+outputs/perf/
 
 # macOS
 .DS_Store
@@ -22,3 +22,6 @@ tsconfig.tsbuildinfo
 .env
 .env.local
 .env.*.local
+
+# Server-side secrets (Hostinger PHP) — never commit
+api/config.php
