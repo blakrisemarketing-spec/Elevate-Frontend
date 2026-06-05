@@ -33,25 +33,37 @@ export interface CatalogItem {
 export const CURRENCY = 'GHS' as const;
 
 export const CATALOG: Record<string, CatalogItem> = {
-  // ── Career services (à la carte) ──────────────────────────────
-  'career-cv': { id: 'career-cv', name: 'Curriculum Vitae (CV)', amountPesewas: 35000, type: 'service' },
-  'career-cover-letter': { id: 'career-cover-letter', name: 'Cover Letter', amountPesewas: 30000, type: 'service' },
-  'career-linkedin': { id: 'career-linkedin', name: 'LinkedIn Optimization', amountPesewas: 38000, type: 'service' },
-  'career-interview-prep': { id: 'career-interview-prep', name: '1-on-1 Interview Preparation Session', amountPesewas: 45000, type: 'service' },
+  // ── Career Flex Services (à la carte) ─────────────────────────
+  // CV is tiered by career stage (feedback: Career Services tab).
+  'career-cv-early': { id: 'career-cv-early', name: 'CV — Early Career (0–3 yrs)', amountPesewas: 35000, type: 'service' },
+  'career-cv-experienced': { id: 'career-cv-experienced', name: 'CV — Experienced Professional (3–10 yrs)', amountPesewas: 40000, type: 'service' },
+  'career-cv-senior': { id: 'career-cv-senior', name: 'CV — Senior Executive (10+ yrs)', amountPesewas: 45000, type: 'service' },
+  'career-cover-letter-local': { id: 'career-cover-letter-local', name: 'Cover Letter — Local Applications', amountPesewas: 35000, type: 'service' },
+  'career-cover-letter-intl': { id: 'career-cover-letter-intl', name: 'Cover Letter — International Applications', amountPesewas: 40000, type: 'service' },
+  'career-linkedin': { id: 'career-linkedin', name: 'LinkedIn Optimisation', amountPesewas: 40000, type: 'service' },
+  'career-interview-prep': { id: 'career-interview-prep', name: '1-on-1 Interview Preparation', amountPesewas: 50000, type: 'service' },
 
-  // ── Career bundles ────────────────────────────────────────────
-  'bundle-bronze': { id: 'bundle-bronze', name: 'Bronze Career Bundle', amountPesewas: 180000, type: 'service' },
-  'bundle-silver': { id: 'bundle-silver', name: 'Silver Career Bundle', amountPesewas: 300000, type: 'service' },
-  'bundle-gold': { id: 'bundle-gold', name: 'Gold Career Bundle', amountPesewas: 420000, type: 'service' },
+  // ── Career Bundles ────────────────────────────────────────────
+  'bundle-starter': { id: 'bundle-starter', name: 'Starter Bundle', amountPesewas: 110000, type: 'service' },
+  'bundle-accelerator': { id: 'bundle-accelerator', name: 'Job Market Accelerator Bundle', amountPesewas: 200000, type: 'service' },
+  'bundle-premium': { id: 'bundle-premium', name: 'Premium Job Search Bundle', amountPesewas: 500000, type: 'service' },
+  'bundle-comprehensive': { id: 'bundle-comprehensive', name: 'Comprehensive Job Search Bundle', amountPesewas: 825000, type: 'service' },
 
-  // ── Educational services (à la carte) ─────────────────────────
-  'edu-grad-cv': { id: 'edu-grad-cv', name: 'Grad School CV', amountPesewas: 35000, type: 'service' },
-  'edu-reference-letter': { id: 'edu-reference-letter', name: 'Reference Letter Draft', amountPesewas: 30000, type: 'service' },
-  'edu-linkedin': { id: 'edu-linkedin', name: 'LinkedIn Optimization', amountPesewas: 38000, type: 'service' },
-  'edu-school-suggestion': { id: 'edu-school-suggestion', name: 'Suggestion of Schools', amountPesewas: 40000, type: 'service' },
-  'edu-interview-prep': { id: 'edu-interview-prep', name: '1-on-1 Interview Preparation Session', amountPesewas: 45000, type: 'service' },
-  'edu-sop-500': { id: 'edu-sop-500', name: 'Statement of Purpose / Scholarship Essay (500 words)', amountPesewas: 47000, type: 'service' },
-  'edu-sop-1000': { id: 'edu-sop-1000', name: 'Statement of Purpose / Scholarship Essay (1000 words)', amountPesewas: 75000, type: 'service' },
+  // ── Grad School Flex Services (à la carte) ────────────────────
+  'edu-grad-cv-early': { id: 'edu-grad-cv-early', name: 'Grad School CV — Early Career (0–3 yrs)', amountPesewas: 35000, type: 'service' },
+  'edu-grad-cv-experienced': { id: 'edu-grad-cv-experienced', name: 'Grad School CV — Experienced (3–10 yrs)', amountPesewas: 40000, type: 'service' },
+  'edu-grad-cv-senior': { id: 'edu-grad-cv-senior', name: 'Grad School CV — Senior Executive (10+ yrs)', amountPesewas: 45000, type: 'service' },
+  'edu-linkedin': { id: 'edu-linkedin', name: 'LinkedIn Optimisation', amountPesewas: 40000, type: 'service' },
+  'edu-school-selection': { id: 'edu-school-selection', name: 'School Selection & Programme Research', amountPesewas: 50000, type: 'service' },
+  'edu-essay-500': { id: 'edu-essay-500', name: 'Personal Statement / SOP / Scholarship Essay (up to 500 words)', amountPesewas: 52000, type: 'service' },
+  'edu-essay-1000': { id: 'edu-essay-1000', name: 'Personal Statement / SOP / Scholarship Essay (up to 1,000 words)', amountPesewas: 85000, type: 'service' },
+  'edu-consultation': { id: 'edu-consultation', name: '1-on-1 Consultation & Interview Prep (per session)', amountPesewas: 50000, type: 'service' },
+
+  // ── Grad School Bundles ───────────────────────────────────────
+  'edu-bundle-strategic': { id: 'edu-bundle-strategic', name: 'Strategic Bundle', amountPesewas: 180000, type: 'service' },
+  'edu-bundle-silver-general': { id: 'edu-bundle-silver-general', name: 'Silver Bundle — Masters / Taught Programmes', amountPesewas: 900000, type: 'service' },
+  'edu-bundle-silver-mba': { id: 'edu-bundle-silver-mba', name: 'Silver Bundle — MBA / MFA / MRes', amountPesewas: 1200000, type: 'service' },
+  'edu-bundle-gold': { id: 'edu-bundle-gold', name: 'Gold Bundle', amountPesewas: 1400000, type: 'service' },
 
   // ── DIY digital products (auto-delivered) ─────────────────────
   'diy-job-magnet-linkedin': { id: 'diy-job-magnet-linkedin', name: 'Becoming a Job Magnet on LinkedIn', amountPesewas: 19900, type: 'product' },

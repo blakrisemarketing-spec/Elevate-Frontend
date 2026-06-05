@@ -13,10 +13,13 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { build as esbuild } from 'esbuild';
 import { renderToStaticMarkup } from 'react-dom/server';
 
-const projectRoot = path.resolve(new URL('..', import.meta.url).pathname);
+// fileURLToPath (not URL.pathname) so paths containing spaces or other
+// URL-encoded characters — e.g. ".../01. GitHub/..." — resolve correctly.
+const projectRoot = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 const distRoot = path.join(projectRoot, 'dist');
 const cssPath = path.join(projectRoot, '.tmp', 'priority.css');
 

@@ -76,11 +76,11 @@ export function DIYProductsPage() {
       <main id="main">
         <PageHero
           eyebrow="DIY Products"
-          title="Practical DIY Resources for Your Next Step"
+          title="The tools we wish we&rsquo;d had at the beginning"
           crumbs={[{ label: 'Home', href: '/' }, { label: 'DIY Products' }]}
           intro={
             <p>
-              Discover our range of DIY products designed to elevate your professional and educational journey. From comprehensive interview preparation and interview courses to targeted resume guides, not forgetting our grad school and job search bundles, our offerings are crafted to equip you with the skills and insights needed to turn your career and higher education dreams into a reality. Your success story begins with Elevate.
+              Want to start on your own? These are the resume templates, interview guides, and prep tools we wish we&rsquo;d had at the beginning &mdash; practical, no fluff, built to get you moving today. Best for self-starters who want structured guidance, with the option to bring us in whenever you want a hand.
             </p>
           }
         />
