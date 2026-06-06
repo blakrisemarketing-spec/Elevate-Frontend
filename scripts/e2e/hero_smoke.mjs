@@ -57,10 +57,13 @@ for (const v of VIEWPORTS) {
     const cs = getComputedStyle(h1);
     const cta = document.querySelector('a[href="/career-services/"].btn-primary');
     const cr = cta && cta.getBoundingClientRect();
+    const ctaBottom = cr ? Math.round(cr.bottom) : 0;
     return {
       fontSizePx: parseFloat(cs.fontSize),
       h1Top: Math.round(r.top), h1Bottom: Math.round(r.bottom), h1Height: Math.round(r.height),
-      headingFullyInViewport: r.bottom <= window.innerHeight,
+      ctaBottom,
+      // whole hero copy block (down to the CTA row) fits above the fold
+      heroFullyInViewport: ctaBottom > 0 && ctaBottom <= window.innerHeight,
       ctaVisible: !!cr && cr.top < window.innerHeight,
       innerH: window.innerHeight,
     };
@@ -72,14 +75,14 @@ for (const v of VIEWPORTS) {
 await browser.close();
 server.close();
 
-console.log('viewport       font  h1Top h1Bot h1H  vh   headingInVP ctaInVP');
+console.log('viewport       font  h1Top ctaBot vh   heroInVP ctaInVP');
 for (const r of results) {
   console.log(
     r.vp.padEnd(14), String(r.fontSizePx).padStart(4), String(r.h1Top).padStart(5),
-    String(r.h1Bottom).padStart(5), String(r.h1Height).padStart(4), String(r.innerH).padStart(4),
-    String(r.headingFullyInViewport).padStart(11), String(r.ctaVisible).padStart(7),
+    String(r.ctaBottom).padStart(6), String(r.innerH).padStart(4),
+    String(r.heroFullyInViewport).padStart(8), String(r.ctaVisible).padStart(7),
   );
 }
-const fails = results.filter(r => !r.headingFullyInViewport || !r.ctaVisible);
-console.log(fails.length ? `\nWARN: ${fails.map(f => f.vp).join(', ')} — heading/CTA not fully above fold` : '\nALL OK: heading + primary CTA above the fold on every viewport');
+const fails = results.filter(r => !r.heroFullyInViewport || !r.ctaVisible);
+console.log(fails.length ? `\nWARN: ${fails.map(f => f.vp).join(', ')} — hero/CTA not fully above fold` : '\nALL OK: full hero (heading + subhead + CTAs) above the fold on every viewport');
 process.exit(fails.length ? 1 : 0);

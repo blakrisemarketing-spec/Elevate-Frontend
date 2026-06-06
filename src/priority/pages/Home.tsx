@@ -81,25 +81,28 @@ export function HomePage() {
             </svg>
           </div>
 
-          <div className="container-site grid gap-12 lg:grid-cols-12 lg:items-center py-16 lg:py-24 relative">
+          <div className="container-site grid gap-12 lg:grid-cols-12 lg:items-center py-16 lg:py-20 relative">
             {/* LEFT — copy */}
             <div className="lg:col-span-6 relative z-10">
               <p className="eyebrow text-primary mb-5">Accelerating access to global careers &amp; scholarships</p>
-              <h1 id="hero-heading" className="text-display-xl mb-7 text-navy">
-                Most opportunities go to people who already know someone. We&rsquo;re changing that.
+              <h1 id="hero-heading" className="text-display-xl text-navy mb-2">
+                Most opportunities go to people who already know someone.
               </h1>
+              <h2 className="text-display-xl text-primary mb-7">
+                We&rsquo;re changing that.
+              </h2>
               <p className="text-lg text-ink-muted leading-relaxed mb-9 max-w-xl not-italic">
-                We help ambitious people break into top jobs, top universities, and new careers home or abroad &mdash; no insider network required.
+                We help ambitious people break into top jobs, top universities, and new careers home or abroad, no insider network required.
               </p>
               <div className="flex flex-wrap items-center gap-4">
                 <a href="/career-services/" className="btn-primary">
                   Land a job <ArrowRight />
                 </a>
                 <a href="/educational-services/" className="inline-flex items-center gap-2 text-navy font-semibold no-underline group">
+                  Study abroad
                   <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white border border-navy/20 group-hover:bg-electric group-hover:border-electric transition-colors">
                     <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M8 5l8 7-8 7" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   </span>
-                  Study abroad
                 </a>
               </div>
             </div>
