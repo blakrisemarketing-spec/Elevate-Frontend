@@ -81,25 +81,28 @@ export function HomePage() {
             </svg>
           </div>
 
-          <div className="container-site grid gap-12 lg:grid-cols-12 lg:items-center py-16 lg:py-24 relative">
+          <div className="container-site grid gap-12 lg:grid-cols-12 lg:items-center py-16 lg:py-20 relative">
             {/* LEFT — copy */}
             <div className="lg:col-span-6 relative z-10">
-              <p className="eyebrow text-primary mb-5">Welcome to Elevate</p>
-              <h1 id="hero-heading" className="text-display-xl mb-7 text-navy">
-                Complete Hub for Unrivaled Career and Education Success
+              <p className="eyebrow text-primary mb-5">Accelerating access to global careers &amp; scholarships</p>
+              <h1 id="hero-heading" className="text-display-xl text-navy mb-2">
+                Most opportunities go to people who already know someone.
               </h1>
+              <h2 className="text-display-xl text-primary mb-7">
+                We&rsquo;re changing that.
+              </h2>
               <p className="text-lg text-ink-muted leading-relaxed mb-9 max-w-xl not-italic">
-                Are you ready to ascend to new heights in your career or education? Welcome to Elevate Career Hub, your gateway to a transformative career experience.
+                We help ambitious people break into top jobs, top universities, and new careers home or abroad, no insider network required.
               </p>
               <div className="flex flex-wrap items-center gap-4">
-                <a href="/contact-us/" className="btn-primary">
-                  Get Started Here <ArrowRight />
+                <a href="/career-services/" className="btn-primary">
+                  Land a job <ArrowRight />
                 </a>
-                <a href="/career-services/" className="inline-flex items-center gap-2 text-navy font-semibold no-underline group">
+                <a href="/educational-services/" className="inline-flex items-center gap-2 text-navy font-semibold no-underline group">
+                  Study abroad
                   <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white border border-navy/20 group-hover:bg-electric group-hover:border-electric transition-colors">
                     <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M8 5l8 7-8 7" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   </span>
-                  Explore services
                 </a>
               </div>
             </div>
@@ -163,7 +166,7 @@ export function HomePage() {
           {/* Bottom banner stripe */}
           <div className="bg-electric/15 border-y border-electric/30 mt-8 lg:mt-12">
             <div className="container-site py-4 text-center text-sm text-navy not-italic">
-              Take the first step toward new opportunities. We&rsquo;re here to guide you through every stage of your career journey.
+              No insider network? That&rsquo;s exactly who we&rsquo;re here for. Elevate is the connection our clients didn&rsquo;t have.
             </div>
           </div>
         </section>
@@ -172,7 +175,7 @@ export function HomePage() {
         <section className="bg-navy" aria-labelledby="clients-heading">
           <div className="container-site py-12">
             <h2 id="clients-heading" className="text-center text-headline-md text-white mb-9">
-              Most of our clients are now in:
+              Our clients are now building careers and studying at:
             </h2>
             <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-14" aria-label="Companies and universities our clients work and study at">
               {CLIENT_LOGOS.map(logo => (
@@ -194,21 +197,21 @@ export function HomePage() {
         <section className="bg-canvas" aria-labelledby="about-heading">
           <div className="container-site py-20 grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
-              <p className="eyebrow text-navy mb-4">About Us</p>
+              <p className="eyebrow text-navy mb-4">Our Story</p>
               <h2 id="about-heading" className="text-display-lg text-primary mb-6">
-                Crafting Careers, Building Educational Futures
+                We exist to break one pattern
               </h2>
               <p className="text-ink-muted leading-relaxed mb-4">
-                Our story is one of dedication to empowering individuals on their career journeys and in achieving their educational goals. At Elevate, we believe in the transformative power of a thriving career and a world-class education.
+                Elevate isn&rsquo;t just a service provider. It&rsquo;s an answer to a problem most ambitious applicants never name out loud &mdash; that opportunity, almost everywhere, gets distributed by who you know, not what you can do.
               </p>
               <p className="text-ink-muted leading-relaxed mb-4">
-                Our mission is to provide a dynamic hub where ambitious professionals, like you, can discover, learn, and connect. Whether you&rsquo;re seeking new opportunities, looking to enhance your skills, or craving mentorship to guide your path, Elevate is designed to be your ally in achieving your career and educational goals.
+                Whether you&rsquo;re applying to a top firm in Accra, chasing a master&rsquo;s at Manchester, or rebuilding a career as an immigrant in London or Toronto, the rules have always rewarded insiders.
               </p>
               <p className="text-ink-muted leading-relaxed mb-8">
-                Discover the story behind Elevate – your go-to destination for professional growth. Learn about our mission, values, and the passionate team driving the vision.
+                We&rsquo;re the brilliant friend who&rsquo;s been inside the system, learned how it works, and tells you what they wish someone had told them. Warm enough to trust. Direct enough to actually help.
               </p>
               <a href="/about/" className="btn-primary">
-                Learn More <ArrowRight />
+                Read our story <ArrowRight />
               </a>
             </div>
             <div className="relative">
@@ -246,15 +249,15 @@ export function HomePage() {
             <h2 id="stats-heading" className="sr-only">Our impact</h2>
             <div className="grid grid-cols-3 gap-6 text-center text-white">
               <div>
-                <div className="text-display-lg text-electric leading-none">5+</div>
+                <div className="text-display-lg text-electric leading-none">6+</div>
                 <p className="text-sm uppercase tracking-wide mt-3">Years of experience</p>
               </div>
               <div>
                 <div className="text-display-lg text-electric leading-none">2,000+</div>
-                <p className="text-sm uppercase tracking-wide mt-3">Satisfied Clients</p>
+                <p className="text-sm uppercase tracking-wide mt-3">Professionals helped</p>
               </div>
               <div>
-                <div className="text-display-lg text-electric leading-none">99%</div>
+                <div className="text-display-lg text-electric leading-none">96%</div>
                 <p className="text-sm uppercase tracking-wide mt-3">Positive Reviews</p>
               </div>
             </div>
@@ -267,14 +270,14 @@ export function HomePage() {
             <div className="text-center max-w-2xl mx-auto mb-12 text-white">
               <p className="eyebrow text-electric mb-4">Our Services</p>
               <h2 id="services-heading" className="text-display-lg text-white">
-                Our Suite of Services for Career Ascension
+                Here&rsquo;s how we can help
               </h2>
             </div>
             <div className="grid gap-6 md:grid-cols-3">
               <article className="card bg-white">
                 <h3 className="text-headline-md text-navy mb-4">Career Services</h3>
                 <p className="text-ink-muted leading-relaxed mb-6">
-                  Elevate your career with our comprehensive Career Services. From professional resume writing to personalized interview coaching, we offer tailored solutions to help you navigate every stage of your career journey with confidence and success.
+                  Whether you&rsquo;re going after a top firm at home or rebuilding your career in a new country, we&rsquo;ll help you get there faster. Resume, interviews, positioning, the whole approach &mdash; shaped by people who&rsquo;ve actually sat on the inside and know what makes a candidate stand out.
                 </p>
                 <a href="/career-services/" className="inline-flex items-center gap-1 text-primary font-semibold no-underline hover:underline">
                   Learn more <ArrowRight />
@@ -283,7 +286,7 @@ export function HomePage() {
               <article className="card bg-surface-tint ring-2 ring-electric/30">
                 <h3 className="text-headline-md text-navy mb-4">Educational Services</h3>
                 <p className="text-ink-muted leading-relaxed mb-6">
-                  Unlock your academic potential with our Educational Services. Whether you&rsquo;re selecting the perfect school or seeking expert guidance on academic planning, our dedicated team is here to support you in making informed decisions and achieving your educational goals.
+                  Picking the right master&rsquo;s program and actually getting in (and funded) is a lot to figure out alone. We&rsquo;ve done it ourselves, at schools like Manchester and Michigan Ross, and we&rsquo;ll walk it with you: choosing the program that fits, building an application that lands, and going after the scholarships that pay for it.
                 </p>
                 <a href="/educational-services/" className="inline-flex items-center gap-1 text-primary font-semibold no-underline hover:underline">
                   Learn more <ArrowRight />
@@ -292,7 +295,7 @@ export function HomePage() {
               <article className="card bg-white">
                 <h3 className="text-headline-md text-navy mb-4">DIY Products</h3>
                 <p className="text-ink-muted leading-relaxed mb-6">
-                  Empower yourself with our range of DIY Products made to enhance your career and educational prospects. From resume templates to interview preparation guides, our products provide valuable resources to help you take control.
+                  Want to start on your own? These are the resume templates, interview guides, and prep tools we wish we&rsquo;d had at the beginning. Practical, no fluff, built to get you moving today &mdash; with the option to bring us in whenever you want a hand.
                 </p>
                 <a href="/diy-products/" className="inline-flex items-center gap-1 text-primary font-semibold no-underline hover:underline">
                   Learn more <ArrowRight />
@@ -361,13 +364,13 @@ export function HomePage() {
               <div className="relative">
                 <p className="eyebrow text-electric mb-4">Get Started</p>
                 <h2 id="cta-heading" className="text-display-lg text-white mb-6">
-                  Take the First Step. Launch Your Success Story with Elevate
+                  Tell us the goal and we&rsquo;ll map the path
                 </h2>
                 <p className="text-white/90 text-lg max-w-xl mx-auto mb-8 not-italic">
-                  Reach out and elevate your career journey today.
+                  A job at a top firm, a scholarship to a world-class university, a career in a new country. Tell us where you want to go.
                 </p>
                 <a href="/contact-us/" className="btn-white">
-                  Contact Us <ArrowRight />
+                  Book a free chat <ArrowRight />
                 </a>
               </div>
             </div>

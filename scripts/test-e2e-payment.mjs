@@ -52,24 +52,24 @@ function line(label, ok, detail) {
 const results = [];
 console.log('--- Generating real test transactions via Paystack Charge API ---');
 
-// Test 1: happy path — pay ₵350, claim career-cv (₵350) → expect 200 ok + emails
+// Test 1: happy path — pay ₵350, claim career-cv-early (₵350) → expect 200 ok + emails
 {
   const c = await chargeTestCard(35000, BUYER);
   console.log(`  charge ₵350 → status=${c.status} amount=${c.amount} ref=${c.reference}`);
   if (c.status === 'success') {
-    const v = await callOurVerify(c.reference, 'career-cv');
-    results.push(line('Happy path (₵350 → career-cv)', v.http === 200 && v.body.ok === true, `HTTP ${v.http} ${JSON.stringify(v.body)}`));
+    const v = await callOurVerify(c.reference, 'career-cv-early');
+    results.push(line('Happy path (₵350 → career-cv-early)', v.http === 200 && v.body.ok === true, `HTTP ${v.http} ${JSON.stringify(v.body)}`));
   } else {
-    results.push(line('Happy path (₵350 → career-cv)', false, `charge did not succeed: ${c.status}`));
+    results.push(line('Happy path (₵350 → career-cv-early)', false, `charge did not succeed: ${c.status}`));
   }
 }
 
-// Test 2: ANTI-TAMPER — real successful ₵1, claim career-cv (₵350) → expect 402 reject
+// Test 2: ANTI-TAMPER — real successful ₵1, claim career-cv-early (₵350) → expect 402 reject
 {
   const c = await chargeTestCard(100, BUYER);
   console.log(`  charge ₵1 → status=${c.status} amount=${c.amount} ref=${c.reference}`);
   if (c.status === 'success') {
-    const v = await callOurVerify(c.reference, 'career-cv');
+    const v = await callOurVerify(c.reference, 'career-cv-early');
     results.push(line('Anti-tamper (real ₵1 cannot buy ₵350 service)', v.http === 402 && v.body.ok === false, `HTTP ${v.http} ${JSON.stringify(v.body)}`));
   } else {
     results.push(line('Anti-tamper guard', false, `charge did not succeed: ${c.status}`));
