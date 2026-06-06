@@ -43,7 +43,7 @@ export default {
         display: ['"Gilroy ExtraBold"', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
       },
       fontSize: {
-        'display-xl': ['clamp(2.75rem, 6vw + 0.5rem, 4.5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em', fontWeight: '800' }],
+        'display-xl': ['clamp(2rem, 3.5vw + 1rem, 3.25rem)', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '800' }],
         'display-lg': ['clamp(2.25rem, 5vw + 0.5rem, 3.5rem)', { lineHeight: '1.1', letterSpacing: '-0.015em', fontWeight: '800' }],
         'headline-lg': ['clamp(1.75rem, 3vw + 0.5rem, 2.25rem)', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '800' }],
         'headline-md': ['1.375rem', { lineHeight: '1.3', fontWeight: '800' }],
