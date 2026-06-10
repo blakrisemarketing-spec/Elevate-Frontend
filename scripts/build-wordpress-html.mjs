@@ -1,10 +1,13 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const projectRoot = path.resolve(new URL('..', import.meta.url).pathname);
+// fileURLToPath (not URL.pathname) so paths containing spaces or other
+// URL-encoded characters — e.g. ".../01. GitHub/..." — resolve correctly.
+const projectRoot = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 const sourceRoot = path.join(projectRoot, 'Wordpress Files');
 const distRoot = path.join(projectRoot, 'dist');
-const CONTACT_EMAIL = 'elevatewithnll@gmail.com';
+const CONTACT_EMAIL = 'hello@elevatecareerhub.com';
 const WHATSAPP_BASE = 'https://wa.me/233531113454';
 const ENTRY_LIMIT_TEXT = ['Maximum number of entries', 'exceeded.'].join(' ');
 const QUOTA_CLASS = ['ff_form', 'not_render'].join('_');

@@ -1,6 +1,6 @@
 # Direct Route Smoke Check — 2026-05-10
 
-Generated: 2026-05-10T10:40:46.247Z
+Generated: 2026-06-10T19:14:44.602Z
 
 Command: `node scripts/smoke-direct-routes.mjs`
 

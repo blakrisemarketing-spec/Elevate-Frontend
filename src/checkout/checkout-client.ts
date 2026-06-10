@@ -173,7 +173,7 @@ async function finalize(
     throw new Error(data?.message || 'We could not confirm your payment automatically.');
   } catch (err) {
     setButtonBusy(btn, false);
-    alert(`${(err as Error).message} If you were charged, email elevatewithnll@gmail.com with reference ${reference} and we’ll sort it out right away.`);
+    alert(`${(err as Error).message} If you were charged, email hello@elevatecareerhub.com with reference ${reference} and we’ll sort it out right away.`);
   }
 }
 

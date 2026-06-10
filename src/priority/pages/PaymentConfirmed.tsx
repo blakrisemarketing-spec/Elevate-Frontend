@@ -38,7 +38,7 @@ export function PaymentConfirmedPage() {
 
             <p className="text-sm text-ink-muted mt-10 not-italic">
               For services, our team will reach out shortly to get started. Need us sooner? Email{' '}
-              <a href="mailto:elevatewithnll@gmail.com">elevatewithnll@gmail.com</a>.
+              <a href="mailto:hello@elevatecareerhub.com">hello@elevatecareerhub.com</a>.
             </p>
           </div>
         </section>

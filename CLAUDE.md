@@ -5,8 +5,8 @@ Modern **Vite + React + TypeScript** rebuild of the WordPress site `elevatecaree
 > Machine-local **`elevate-*` skills** carry the deep detail (architecture, payments, deployment, design, open work). This file is the always-loaded summary + pointers. **This is NOT the BetterHealth Africa project** — do not apply `bh-*` skills or assume a Node/Supabase backend here.
 
 ## Mental model: two rendering systems
-1. **7 priority routes = static SSG, ZERO client JS** — `/`, `/about/`, `/career-services/`, `/educational-services/`, `/diy-products/`, `/contact-us/`, `/payment/confirmed/`. Built by `scripts/build-priority-routes.mjs` (react-dom/server + inlined Tailwind CSS). **LCP ~0.6s on Regular 3G.** Components in `src/priority/`.
-2. **~29 non-priority routes = WordPress-snapshot SPA** via `src/main.tsx` (loads `public/snapshots/*.html`). Not redesigned; loads the Vite bundle. Migrating these is the next big lift.
+1. **All content routes = static SSG, ZERO client JS** — built by `scripts/build-priority-routes.mjs` (react-dom/server + inlined Tailwind CSS), **LCP ~0.3–0.4s on Regular 3G**. Components in `src/priority/`. Static pages are listed in `PRIORITY_ROUTES`; the product/service/blog **detail** pages are data-driven — content in `src/priority/data/{products,services,blog}.ts`, rendered by the `ProductDetail`/`ServiceDetail`/`BlogPost` templates, with routes generated from that data (mirrored in `src/priority/registry.ts`). Detail pages with a catalog SKU ship the checkout island (`hasCheckout`).
+2. **WordPress-snapshot SPA (`src/main.tsx`) is now vestigial.** Every content route has a `PRIORITY_PAGES` entry, so snapshots in `public/snapshots/*.html` are no longer rendered for any route (the 5 commerce shells `/cart/` etc. are `.htaccess` 302s → `/contact-us/`). The SPA + its vendor CSS bundle can be fully removed as an optional cleanup (see `docs/route-migration-plan.md`, Phase 5).
 
 `src/main.tsx` imports `src/priority/registry.ts`, so `npm run dev` shows the redesigned pages with HMR. Checkout + PHP do NOT run under `npm run dev`.
 
@@ -29,10 +29,11 @@ Vite 8 · React 19 · TypeScript 6 · Tailwind v3 · esbuild 0.28 · **npm (NOT 
 Build: `VITE_PAYSTACK_PUBLIC_KEY`. Runtime PHP: `PAYSTACK_SECRET_KEY`, `TOSEND_API_KEY`, `MAIL_FROM`, `OPS_EMAIL`, `PUBLIC_APP_BASE_URL`. See `.env.example`.
 
 ## Open work (see elevate-tech-debt-registry for detail)
-Go-live: live Paystack keys · confirm env reaches PHP runtime (else `api/config.php`) · verify Tosend sender domain. Gaps: 5 DIY products lack deliverable files · 29 non-priority routes unmigrated · no CI/tests · dead netlify/vercel configs.
+Go-live: live Paystack keys · confirm env reaches PHP runtime (else `api/config.php`) · verify Tosend sender domain · create the `hello@elevatecareerhub.com` mailbox · legal-review the policy pages. Gaps: 5 DIY products lack deliverable files · Gilroy still a Montserrat stand-in · optional: rip out the now-vestigial SPA + vendor CSS (Phase 5). **Done this branch:** legal/404/staging-noindex, CI, all 24 snapshot routes migrated to SSG.
 
 ## Changelog (commit hashes)
 - `a53d751` — initial SSG redesign (system fonts), 20s→420ms on 3G.
 - `7f6c5eb` — ship-readiness (pinned deps, SEO, security headers).
 - `0cfb008` — Figma redesign + Paystack payments + co-founder hero + brand.
-- `751185a` — switch build to npm (fix Hostinger corepack/pnpm crash). **Current main.**
+- `751185a` — switch build to npm (fix Hostinger corepack/pnpm crash).
+- _this branch_ — go-live hardening (legal pages, real 404, staging noindex, social/email, CI, dead-config removal) + full route migration: all 24 WordPress-snapshot routes → data-driven zero-JS SSG.

@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# A newer push to the same branch supersedes an in-flight run.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20' # matches package.json engines + Hostinger runtime
+          cache: npm
+
+      # npm, not pnpm — Hostinger's corepack crashes on pnpm (see CLAUDE.md).
+      - name: Install dependencies
+        run: npm ci
+
+      # Full production build: tsc typecheck -> vite -> WP-html -> tailwind ->
+      # SSG + checkout island + api/*.php + .htaccess (with the SPA route
+      # allowlist self-test). No secrets needed; VITE_PAYSTACK_PUBLIC_KEY
+      # defaults to "" for a structure-only build.
+      - name: Build
+        run: npm run build
+
+      # Snapshots present, no stray scripts, internal links + assets resolve.
+      - name: Content audit
+        run: npm run audit
+
+      # Every route in pages.json serves a 200 with app-shell/static content.
+      - name: Direct-route smoke
+        run: node scripts/smoke-direct-routes.mjs

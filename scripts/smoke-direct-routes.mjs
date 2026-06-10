@@ -1,8 +1,10 @@
 import fs from 'node:fs/promises';
 import http from 'node:http';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const projectRoot = path.resolve(new URL('..', import.meta.url).pathname);
+// fileURLToPath (not URL.pathname) so paths containing spaces resolve correctly.
+const projectRoot = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 const distRoot = path.join(projectRoot, 'dist');
 const pages = JSON.parse(await fs.readFile(path.join(projectRoot, 'src/generated/pages.json'), 'utf8'));
 const outDir = path.join(projectRoot, 'outputs');

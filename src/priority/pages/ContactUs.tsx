@@ -46,7 +46,7 @@ export function ContactUsPage() {
             </a>
 
             <a
-              href="mailto:elevatewithnll@gmail.com"
+              href="mailto:hello@elevatecareerhub.com"
               className="card text-center flex flex-col items-center gap-3 no-underline hover:shadow-soft transition-shadow"
               aria-label="Email Elevate Career Hub"
             >
@@ -54,7 +54,7 @@ export function ContactUsPage() {
                 <svg viewBox="0 0 24 24" className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 8l9 6 9-6M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </span>
               <p className="text-sm font-semibold uppercase tracking-wider text-primary">Email</p>
-              <p className="text-headline-md break-all">elevatewithnll@gmail.com</p>
+              <p className="text-headline-md break-all">hello@elevatecareerhub.com</p>
               <p className="text-ink-muted text-sm">For longer questions or sharing documents.</p>
               <span className="btn-secondary mt-2">Send an email</span>
             </a>
