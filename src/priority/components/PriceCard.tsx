@@ -20,7 +20,7 @@ export function PriceCard({ title, description, price, priceNote, href = '/conta
       </div>
       {serviceId ? (
         <button type="button" className="btn-primary buy-btn mt-5" data-service-id={serviceId}>
-          {ctaLabel || `Pay ${price}`}
+          {ctaLabel || `${price} Investment`}
         </button>
       ) : (
         <a href={href} className="btn-primary mt-5">{ctaLabel || 'Get Started'}</a>

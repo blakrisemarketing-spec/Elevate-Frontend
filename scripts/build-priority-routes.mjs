@@ -182,6 +182,17 @@ const PRIORITY_ROUTES = [
     ogImage: OG_IMAGE,
   },
   {
+    route: '/get-into-grad-school-bootcamp/',
+    outDir: 'get-into-grad-school-bootcamp',
+    entry: 'src/priority/pages/GradSchoolBootcamp.tsx',
+    component: 'GradSchoolBootcampPage',
+    title: 'Get Into Grad School Bootcamp — Elevate Career Hub',
+    description: 'An 8-session intensive bootcamp covering school selection, essays, funding, scholarships, and visas — led by Chevening, DAAD and Mastercard scholars and top-MBA facilitators.',
+    canonical: 'https://elevatecareerhub.com/get-into-grad-school-bootcamp/',
+    ogImage: OG_IMAGE,
+    hasCheckout: true,
+  },
+  {
     // Branded 404. Written to dist/404.html (not a route dir) and wired via
     // ErrorDocument in .htaccess. Not in registry.ts/pages.json — it is an error
     // document, not a navigable route.

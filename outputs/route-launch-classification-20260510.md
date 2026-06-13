@@ -1,6 +1,6 @@
 # Elevate Frontend Route Launch Classification — 2026-05-10
 
-Generated: 2026-06-10T19:14:42.911Z
+Generated: 2026-06-13T01:39:03.092Z
 
 | Route | Type | Launch behavior | Target | Decision reason |
 |---|---|---|---|---|
