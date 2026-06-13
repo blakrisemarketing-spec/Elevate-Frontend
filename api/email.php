@@ -56,7 +56,7 @@ function ech_tosend_send(string $key, array $from, array $to, string $subject, s
 
 function send_fulfilment(array $item, string $reference, string $buyerName, string $buyerEmail): void {
     $key = getenv('TOSEND_API_KEY') ?: '';
-    $team = getenv('OPS_EMAIL') ?: 'elevatewithnll@gmail.com';
+    $team = getenv('OPS_EMAIL') ?: 'hello@elevatecareerhub.com';
     $from = ech_parse_from((string) (getenv('MAIL_FROM') ?: 'Elevate Career Hub <noreply@elevatecareerhub.com>'));
     $base = rtrim((string) (getenv('PUBLIC_APP_BASE_URL') ?: ''), '/');
     $price = ech_format_cedis((int) ($item['amountPesewas'] ?? 0));

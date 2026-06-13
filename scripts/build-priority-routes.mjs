@@ -100,7 +100,173 @@ const PRIORITY_ROUTES = [
     ogImage: OG_IMAGE,
     noindex: true,
   },
+  {
+    route: '/privacy-policy/',
+    outDir: 'privacy-policy',
+    entry: 'src/priority/pages/PrivacyPolicy.tsx',
+    component: 'PrivacyPolicyPage',
+    title: 'Privacy Policy — Elevate Career Hub',
+    description: 'How Elevate Career Hub collects, uses, and protects your personal information.',
+    canonical: 'https://elevatecareerhub.com/privacy-policy/',
+    ogImage: OG_IMAGE,
+  },
+  {
+    route: '/terms/',
+    outDir: 'terms',
+    entry: 'src/priority/pages/Terms.tsx',
+    component: 'TermsPage',
+    title: 'Terms & Services — Elevate Career Hub',
+    description: 'The terms that govern your use of the Elevate Career Hub website, services, and digital products.',
+    canonical: 'https://elevatecareerhub.com/terms/',
+    ogImage: OG_IMAGE,
+  },
+  {
+    route: '/refund-policy/',
+    outDir: 'refund-policy',
+    entry: 'src/priority/pages/RefundPolicy.tsx',
+    component: 'RefundPolicyPage',
+    title: 'Refund & Delivery Policy — Elevate Career Hub',
+    description: 'How Elevate Career Hub delivers its services and digital products, and when refunds apply.',
+    canonical: 'https://elevatecareerhub.com/refund-policy/',
+    ogImage: OG_IMAGE,
+  },
+  {
+    route: '/faqs/',
+    outDir: 'faqs',
+    entry: 'src/priority/pages/Faqs.tsx',
+    component: 'FaqsPage',
+    title: 'Frequently Asked Questions — Elevate Career Hub',
+    description: 'Answers to common questions about Elevate Career Hub services, payments, and process.',
+    canonical: 'https://elevatecareerhub.com/faqs/',
+    ogImage: OG_IMAGE,
+  },
+  {
+    route: '/blog/',
+    outDir: 'blog',
+    entry: 'src/priority/pages/BlogIndex.tsx',
+    component: 'BlogIndexPage',
+    title: 'Blog — Career & Education Insights | Elevate Career Hub',
+    description: 'Practical advice on CVs, applications, interviews, and standing out — from the Elevate Career Hub team.',
+    canonical: 'https://elevatecareerhub.com/blog/',
+    ogImage: OG_IMAGE,
+  },
+  {
+    route: '/job-readiness-bootcamp/',
+    outDir: 'job-readiness-bootcamp',
+    entry: 'src/priority/pages/JobReadinessBootcamp.tsx',
+    component: 'JobReadinessBootcampPage',
+    title: 'Job Readiness Bootcamp — Elevate Career Hub',
+    description: 'An 8-session live bootcamp to help you stop applying blindly and start getting interviews.',
+    canonical: 'https://elevatecareerhub.com/job-readiness-bootcamp/',
+    ogImage: OG_IMAGE,
+  },
+  {
+    route: '/jrb-thank-you/',
+    outDir: 'jrb-thank-you',
+    entry: 'src/priority/pages/JrbThankYou.tsx',
+    component: 'JrbThankYouPage',
+    title: 'Welcome to the Job Readiness Bootcamp — Elevate Career Hub',
+    description: 'Thank you for joining the Job Readiness Bootcamp.',
+    canonical: 'https://elevatecareerhub.com/jrb-thank-you/',
+    ogImage: OG_IMAGE,
+    noindex: true,
+  },
+  {
+    route: '/lets-keep-in-touch/',
+    outDir: 'lets-keep-in-touch',
+    entry: 'src/priority/pages/LetsKeepInTouch.tsx',
+    component: 'LetsKeepInTouchPage',
+    title: 'Let’s Keep in Touch — Elevate Career Hub',
+    description: 'Follow along and reach out for practical career and scholarship tips from Elevate Career Hub.',
+    canonical: 'https://elevatecareerhub.com/lets-keep-in-touch/',
+    ogImage: OG_IMAGE,
+  },
+  {
+    route: '/get-into-grad-school-bootcamp/',
+    outDir: 'get-into-grad-school-bootcamp',
+    entry: 'src/priority/pages/GradSchoolBootcamp.tsx',
+    component: 'GradSchoolBootcampPage',
+    title: 'Get Into Grad School Bootcamp — Elevate Career Hub',
+    description: 'An 8-session intensive bootcamp covering school selection, essays, funding, scholarships, and visas — led by Chevening, DAAD and Mastercard scholars and top-MBA facilitators.',
+    canonical: 'https://elevatecareerhub.com/get-into-grad-school-bootcamp/',
+    ogImage: OG_IMAGE,
+    hasCheckout: true,
+  },
+  {
+    // Branded 404. Written to dist/404.html (not a route dir) and wired via
+    // ErrorDocument in .htaccess. Not in registry.ts/pages.json — it is an error
+    // document, not a navigable route.
+    route: '/404.html',
+    outFile: '404.html',
+    entry: 'src/priority/pages/NotFound.tsx',
+    component: 'NotFoundPage',
+    title: 'Page not found — Elevate Career Hub',
+    description: 'The page you are looking for could not be found.',
+    canonical: 'https://elevatecareerhub.com/404.html',
+    ogImage: OG_IMAGE,
+    noindex: true,
+  },
 ];
+
+/**
+ * Build route entries for the data-driven detail pages (products, services)
+ * from the same data/*.ts files the dev registry uses. Each entry points at the
+ * shared template and carries `props` (the slug) the template renders from.
+ * Keeps the SSG list in sync with src/priority/registry.ts automatically.
+ */
+async function generateDataRoutes() {
+  const { PRODUCTS } = await loadModuleExports('src/priority/data/products.ts');
+  const { SERVICES } = await loadModuleExports('src/priority/data/services.ts');
+  const { BLOG_POSTS } = await loadModuleExports('src/priority/data/blog.ts');
+  const toOutDir = (route) => route.replace(/^\/|\/$/g, '');
+  const routes = [];
+
+  for (const p of PRODUCTS) {
+    routes.push({
+      route: p.route,
+      outDir: toOutDir(p.route),
+      entry: 'src/priority/pages/ProductDetail.tsx',
+      component: 'ProductDetailPage',
+      title: p.title,
+      description: p.metaDescription,
+      canonical: 'https://elevatecareerhub.com' + p.route,
+      ogImage: OG_IMAGE,
+      hasCheckout: !p.freeDownloadPath, // paid products show a buy button
+      props: { slug: p.catalogId },
+    });
+  }
+
+  for (const s of SERVICES) {
+    routes.push({
+      route: s.route,
+      outDir: toOutDir(s.route),
+      entry: 'src/priority/pages/ServiceDetail.tsx',
+      component: 'ServiceDetailPage',
+      title: s.title,
+      description: s.metaDescription,
+      canonical: 'https://elevatecareerhub.com' + s.route,
+      ogImage: OG_IMAGE,
+      hasCheckout: Array.isArray(s.priceTierIds) && s.priceTierIds.length > 0,
+      props: { slug: s.slug },
+    });
+  }
+
+  for (const post of BLOG_POSTS) {
+    routes.push({
+      route: post.route,
+      outDir: toOutDir(post.route),
+      entry: 'src/priority/pages/BlogPost.tsx',
+      component: 'BlogPostPage',
+      title: `${post.title} — Elevate Career Hub`,
+      description: post.excerpt,
+      canonical: 'https://elevatecareerhub.com' + post.route,
+      ogImage: OG_IMAGE,
+      props: { slug: post.slug },
+    });
+  }
+
+  return routes;
+}
 
 /** Compile the checkout island once → dist/assets/checkout.js. */
 async function buildCheckoutIsland() {
@@ -150,10 +316,75 @@ async function loadModuleExports(entry) {
 }
 
 /**
+ * Build dist/.htaccess from deploy/htaccess.conf, injecting the set of known
+ * "virtual" SPA routes so unknown URLs return a real 404 (ErrorDocument) instead
+ * of a soft-200 homepage. The allowlist is generated from src/generated/pages.json
+ * — the same manifest the SPA uses — so it cannot drift from the app's routes.
+ *
+ * Safety: throws (aborting the build) if the manifest is missing/too small or the
+ * generated regex fails its self-test, rather than ever shipping an .htaccess that
+ * would 404 legitimate pages.
+ */
+async function buildHtaccess() {
+  const templatePath = path.join(projectRoot, 'deploy', 'htaccess.conf');
+  const template = await fs.readFile(templatePath, 'utf8');
+  if (!template.includes('__SPA_ROUTES__')) {
+    throw new Error('deploy/htaccess.conf is missing the __SPA_ROUTES__ placeholder');
+  }
+
+  const pagesPath = path.join(projectRoot, 'src', 'generated', 'pages.json');
+  let pages;
+  try {
+    pages = JSON.parse(await fs.readFile(pagesPath, 'utf8'));
+  } catch (err) {
+    throw new Error(`Could not read ${pagesPath} for the .htaccess SPA allowlist: ${err.message}`);
+  }
+
+  // Directory-style, lowercase routes only (the SPA's virtual routes). Drop the
+  // root and anything with a file extension or unexpected characters.
+  const tokens = [...new Set(
+    pages
+      .map(p => p.route)
+      .filter(r => typeof r === 'string' && /^\/[a-z0-9][a-z0-9\-/]*\/$/.test(r) && r !== '/')
+      .map(r => r.replace(/^\/|\/$/g, ''))
+      .filter(t => /^[a-z0-9][a-z0-9\-/]*$/.test(t)),
+  )];
+
+  if (tokens.length < 5) {
+    throw new Error(`Refusing to emit .htaccess: only ${tokens.length} SPA route(s) found in pages.json (expected the full site)`);
+  }
+
+  const alternation = tokens.join('|');
+
+  // Self-test the generated pattern before writing it.
+  const re = new RegExp(`^/(${alternation})/?$`, 'i');
+  for (const token of tokens) {
+    if (!re.test(`/${token}/`)) {
+      throw new Error(`.htaccess SPA allowlist self-test failed: /${token}/ does not match the generated pattern`);
+    }
+  }
+  if (re.test('/this-route-should-never-exist-xyz/')) {
+    throw new Error('.htaccess SPA allowlist self-test failed: a junk route matched the generated pattern');
+  }
+
+  const htaccess = template.replaceAll('__SPA_ROUTES__', alternation);
+  if (htaccess.includes('__SPA_ROUTES__')) {
+    throw new Error('.htaccess still contains the __SPA_ROUTES__ placeholder after substitution');
+  }
+  // Final-content sanity check: the generated rewrite condition must carry real
+  // route tokens, never the literal placeholder (which would 404 every route).
+  if (!new RegExp(`REQUEST_URI} \\^/\\(${tokens[0]}\\|`).test(htaccess)) {
+    throw new Error('.htaccess SPA RewriteCond did not receive the generated route allowlist');
+  }
+  await fs.writeFile(path.join(distRoot, '.htaccess'), htaccess);
+  console.log(`[ssg] .htaccess → dist/.htaccess (SPA allowlist: ${tokens.length} routes, real-404 fallback)`);
+}
+
+/**
  * Emit the Hostinger deploy artifacts into dist/:
  *   - api/catalog.json  (generated from the TS catalog — single source of truth)
  *   - api/verify-payment.php  (copied)
- *   - .htaccess  (copied from deploy/htaccess.conf)
+ *   - .htaccess  (generated from deploy/htaccess.conf — see buildHtaccess)
  */
 async function emitDeployArtifacts() {
   const { CATALOG } = await loadModuleExports('src/checkout/catalog.ts');
@@ -170,7 +401,7 @@ async function emitDeployArtifacts() {
   await fs.writeFile(path.join(distRoot, 'api', 'catalog.json'), JSON.stringify(slim, null, 2));
   await fs.copyFile(path.join(projectRoot, 'api', 'verify-payment.php'), path.join(distRoot, 'api', 'verify-payment.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'email.php'), path.join(distRoot, 'api', 'email.php'));
-  await fs.copyFile(path.join(projectRoot, 'deploy', 'htaccess.conf'), path.join(distRoot, '.htaccess'));
+  await buildHtaccess();
   console.log(`[ssg] deploy artifacts → dist/api/{catalog.json,verify-payment.php,email.php}, dist/.htaccess`);
 }
 
@@ -261,17 +492,23 @@ async function main() {
     throw new Error(`Tailwind CSS not found at ${cssPath} — run "tailwindcss -i src/priority/styles.css -o .tmp/priority.css --minify" first`);
   }
 
+  // Static routes + data-driven detail routes (products, services) generated
+  // from src/priority/data/*.ts — the same source the dev registry uses.
+  const dataRoutes = await generateDataRoutes();
+  const ALL_ROUTES = [...PRIORITY_ROUTES, ...dataRoutes];
+
   // Build the checkout island + emit the Hostinger PHP/.htaccess deploy
   // artifacts once if any route uses checkout.
-  if (PRIORITY_ROUTES.some(r => r.hasCheckout)) {
+  if (ALL_ROUTES.some(r => r.hasCheckout)) {
     await buildCheckoutIsland();
     await emitDeployArtifacts();
   }
 
   const results = [];
-  for (const route of PRIORITY_ROUTES) {
+  for (const route of ALL_ROUTES) {
     const Component = await loadComponent(route.entry, route.component);
-    const body = '<div id="root">' + renderToStaticMarkup(Component()) + '</div>';
+    // route.props (e.g. { slug }) is undefined for static pages, which ignore it.
+    const body = '<div id="root">' + renderToStaticMarkup(Component(route.props)) + '</div>';
     const html = renderHtmlShell({
       title: route.title,
       description: route.description,
@@ -282,9 +519,12 @@ async function main() {
       hasCheckout: route.hasCheckout,
       noindex: route.noindex,
     });
-    const outDir = path.join(distRoot, route.outDir);
-    await ensureDir(outDir);
-    const outFile = path.join(outDir, 'index.html');
+    // Most routes write to dist/<outDir>/index.html; a route may instead set
+    // `outFile` to write to a specific file (e.g. dist/404.html).
+    const outFile = route.outFile
+      ? path.join(distRoot, route.outFile)
+      : path.join(distRoot, route.outDir, 'index.html');
+    await ensureDir(path.dirname(outFile));
     await fs.writeFile(outFile, html);
     const size = Buffer.byteLength(html);
     results.push({ route: route.route, file: path.relative(projectRoot, outFile), bytes: size, kb: +(size / 1024).toFixed(1) });

@@ -1,13 +1,23 @@
-interface NavLink {
+interface NavChild {
   label: string;
   href: string;
 }
+interface NavItem {
+  label: string;
+  href?: string;
+  children?: NavChild[];
+}
 
-const NAV_LINKS: NavLink[] = [
+const NAV_ITEMS: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about/' },
-  { label: 'Educational Services', href: '/educational-services/' },
-  { label: 'Career Services', href: '/career-services/' },
+  {
+    label: 'Services',
+    children: [
+      { label: 'Educational Services', href: '/educational-services/' },
+      { label: 'Career Services', href: '/career-services/' },
+    ],
+  },
   { label: 'Blog', href: '/blog/' },
   { label: 'Contact Us', href: '/contact-us/' },
 ];
@@ -15,6 +25,17 @@ const NAV_LINKS: NavLink[] = [
 interface SiteHeaderProps {
   currentRoute: string;
 }
+
+function isActive(item: NavItem, currentRoute: string): boolean {
+  if (item.href) return item.href === currentRoute;
+  return item.children?.some((c) => c.href === currentRoute) ?? false;
+}
+
+const Chevron = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+    <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
 export function SiteHeader({ currentRoute }: SiteHeaderProps) {
   return (
@@ -26,20 +47,50 @@ export function SiteHeader({ currentRoute }: SiteHeaderProps) {
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
-          {NAV_LINKS.map(link => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`px-3 py-2 rounded-lg text-sm no-underline transition-colors ${
-                link.href === currentRoute
-                  ? 'text-white font-semibold'
-                  : 'text-white/80 hover:text-white'
-              }`}
-              aria-current={link.href === currentRoute ? 'page' : undefined}
-            >
-              {link.label}
-            </a>
-          ))}
+          {NAV_ITEMS.map((item) =>
+            item.children ? (
+              <div key={item.label} className="relative group">
+                <button
+                  type="button"
+                  aria-haspopup="true"
+                  className={`inline-flex items-center gap-1 px-3 py-2 rounded-lg text-sm transition-colors ${
+                    isActive(item, currentRoute) ? 'text-white font-semibold' : 'text-white/80 hover:text-white'
+                  }`}
+                >
+                  {item.label}
+                  <Chevron className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                </button>
+                {/* CSS-only dropdown: reveals on hover or keyboard focus, no JS. */}
+                <div className="absolute left-0 top-full pt-2 min-w-[15rem] invisible opacity-0 translate-y-1 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0">
+                  <div className="bg-white rounded-xl shadow-soft border border-black/5 overflow-hidden py-1">
+                    {item.children.map((c) => (
+                      <a
+                        key={c.href}
+                        href={c.href}
+                        className={`block px-4 py-2.5 text-sm no-underline ${
+                          c.href === currentRoute ? 'text-primary font-semibold bg-surface' : 'text-navy hover:bg-surface'
+                        }`}
+                        aria-current={c.href === currentRoute ? 'page' : undefined}
+                      >
+                        {c.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`px-3 py-2 rounded-lg text-sm no-underline transition-colors ${
+                  item.href === currentRoute ? 'text-white font-semibold' : 'text-white/80 hover:text-white'
+                }`}
+                aria-current={item.href === currentRoute ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            ),
+          )}
           <a href="/diy-products/" className="btn-outline ml-3 px-5 py-2 text-sm border border-white/60">DIY Product</a>
         </nav>
 
@@ -59,21 +110,49 @@ export function SiteHeader({ currentRoute }: SiteHeaderProps) {
           aria-label="Mobile"
         >
           <ul className="flex flex-col gap-1">
-            {NAV_LINKS.map(link => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className={`block px-3 py-3 rounded-lg text-base no-underline ${
-                    link.href === currentRoute
-                      ? 'bg-white/10 text-white font-semibold'
-                      : 'text-white/80'
-                  }`}
-                  aria-current={link.href === currentRoute ? 'page' : undefined}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {NAV_ITEMS.map((item) =>
+              item.children ? (
+                <li key={item.label}>
+                  <details className="group">
+                    <summary
+                      className={`flex items-center justify-between px-3 py-3 rounded-lg text-base no-underline cursor-pointer list-none [&::-webkit-details-marker]:hidden ${
+                        isActive(item, currentRoute) ? 'bg-white/10 text-white font-semibold' : 'text-white/80'
+                      }`}
+                    >
+                      {item.label}
+                      <Chevron className="w-5 h-5 transition-transform group-open:rotate-180" />
+                    </summary>
+                    <ul className="mt-1 ml-3 flex flex-col gap-1 border-l border-white/15 pl-3">
+                      {item.children.map((c) => (
+                        <li key={c.href}>
+                          <a
+                            href={c.href}
+                            className={`block px-3 py-2.5 rounded-lg text-base no-underline ${
+                              c.href === currentRoute ? 'bg-white/10 text-white font-semibold' : 'text-white/80'
+                            }`}
+                            aria-current={c.href === currentRoute ? 'page' : undefined}
+                          >
+                            {c.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                </li>
+              ) : (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className={`block px-3 py-3 rounded-lg text-base no-underline ${
+                      item.href === currentRoute ? 'bg-white/10 text-white font-semibold' : 'text-white/80'
+                    }`}
+                    aria-current={item.href === currentRoute ? 'page' : undefined}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ),
+            )}
             <li>
               <a href="/diy-products/" className="block px-3 py-3 rounded-lg text-base no-underline text-white/80">
                 DIY Product

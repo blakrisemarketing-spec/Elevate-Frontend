@@ -7,6 +7,10 @@ import { WhyChooseUs } from '../components/WhyChooseUs';
 import { TestimonialsBlock } from '../components/TestimonialsBlock';
 import { FinalCTA } from '../components/FinalCTA';
 
+/** Silver & Gold bundles are application-based: apply first, pay only if selected. */
+const applyWhatsApp = (bundle: string) =>
+  `https://wa.me/233531113454?text=${encodeURIComponent(`Hi Elevate, I'd like to apply for the ${bundle}.`)}`;
+
 export function EducationalServicesPage() {
   return (
     <>
@@ -45,15 +49,15 @@ export function EducationalServicesPage() {
                 <ul className="flex flex-col gap-4 mt-auto">
                   <li>
                     <p className="text-sm text-ink mb-2"><span className="font-semibold text-navy">Early Career (0&ndash;3 yrs).</span> For recent graduates moving into a first postgraduate application — positioned to speak directly to a master&rsquo;s admissions panel.</p>
-                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="edu-grad-cv-early">Pay ₵350 · Early Career</button>
+                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="edu-grad-cv-early">₵350 Investment · Early Career</button>
                   </li>
                   <li>
                     <p className="text-sm text-ink mb-2"><span className="font-semibold text-navy">Experienced (3&ndash;10 yrs).</span> A CV that bridges your professional experience and your academic goals in a narrative that makes strategic sense to the AdComs.</p>
-                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="edu-grad-cv-experienced">Pay ₵400 · Experienced</button>
+                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="edu-grad-cv-experienced">₵400 Investment · Experienced</button>
                   </li>
                   <li>
                     <p className="text-sm text-ink mb-2"><span className="font-semibold text-navy">Senior Executive (10+ yrs).</span> For executives pursuing MBAs, executive education, or research study — communicating leadership and a clear academic purpose.</p>
-                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="edu-grad-cv-senior">Pay ₵450 · Senior Executive</button>
+                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="edu-grad-cv-senior">₵450 Investment · Senior Executive</button>
                   </li>
                 </ul>
               </article>
@@ -66,8 +70,8 @@ export function EducationalServicesPage() {
                   The committee already knows your grades. The essay is the only place they see your <em>why</em>. We write personal statements, statements of purpose, study plans, and scholarship essays that are evidence-led and impact-oriented &mdash; mapping your journey directly to the programme&rsquo;s goals and the funder&rsquo;s criteria. Our clients have been shortlisted for Chevening, Gates Cambridge, Erasmus Mundus, DAAD, and Commonwealth.
                 </p>
                 <div className="flex flex-col gap-3 mt-auto">
-                  <button type="button" className="btn-primary buy-btn" data-service-id="edu-essay-500">Pay ₵520 · up to 500 words</button>
-                  <button type="button" className="btn-secondary buy-btn" data-service-id="edu-essay-1000">Pay ₵850 · up to 1,000 words</button>
+                  <button type="button" className="btn-primary buy-btn" data-service-id="edu-essay-500">₵520 Investment · up to 500 words</button>
+                  <button type="button" className="btn-secondary buy-btn" data-service-id="edu-essay-1000">₵850 Investment · up to 1,000 words</button>
                 </div>
               </article>
 
@@ -81,7 +85,7 @@ export function EducationalServicesPage() {
                 <div className="mt-5 flex items-baseline gap-2">
                   <span className="text-display-lg text-primary leading-none">₵400</span>
                 </div>
-                <button type="button" className="btn-primary buy-btn mt-5" data-service-id="edu-linkedin">Pay ₵400</button>
+                <button type="button" className="btn-primary buy-btn mt-5" data-service-id="edu-linkedin">₵400 Investment</button>
               </article>
 
               {/* School selection */}
@@ -94,7 +98,7 @@ export function EducationalServicesPage() {
                 <div className="mt-5 flex items-baseline gap-2">
                   <span className="text-display-lg text-primary leading-none">₵500</span>
                 </div>
-                <button type="button" className="btn-primary buy-btn mt-5" data-service-id="edu-school-selection">Pay ₵500</button>
+                <button type="button" className="btn-primary buy-btn mt-5" data-service-id="edu-school-selection">₵500 Investment</button>
               </article>
 
               {/* Consultation & interview prep */}
@@ -108,7 +112,7 @@ export function EducationalServicesPage() {
                   <span className="text-display-lg text-primary leading-none">₵500</span>
                   <span className="text-sm text-ink-muted">per session</span>
                 </div>
-                <button type="button" className="btn-primary buy-btn mt-5 self-start" data-service-id="edu-consultation">Pay ₵500 · per session</button>
+                <button type="button" className="btn-primary buy-btn mt-5 self-start" data-service-id="edu-consultation">₵500 Investment · per session</button>
               </article>
             </div>
 
@@ -138,7 +142,7 @@ export function EducationalServicesPage() {
                 tier="Strategic Bundle"
                 price="₵1,800"
                 serviceId="edu-bundle-strategic"
-                ctaLabel="Pay ₵1,800"
+                ctaLabel="₵1,800 Investment"
                 features={[
                   'A curated school list based on your funding goals',
                   '1 tailored Grad School CV',
@@ -151,8 +155,9 @@ export function EducationalServicesPage() {
                 tier="Silver Bundle"
                 variant="Masters / Taught"
                 price="₵9,000"
-                serviceId="edu-bundle-silver-general"
-                ctaLabel="Pay ₵9,000"
+                priceNote="if selected"
+                href={applyWhatsApp('Silver Bundle (Masters / Taught)')}
+                ctaLabel="Apply now"
                 features={[
                   'A recommended schools list',
                   'Grad school CV(s), tailored to each programme',
@@ -170,8 +175,9 @@ export function EducationalServicesPage() {
                 variant="MBA / MFA / MRes"
                 price="₵12,000"
                 highlighted
-                serviceId="edu-bundle-silver-mba"
-                ctaLabel="Pay ₵12,000"
+                priceNote="if selected"
+                href={applyWhatsApp('Silver Bundle (MBA / MFA / MRes)')}
+                ctaLabel="Apply now"
                 features={[
                   'A recommended schools list',
                   'Grad school CV(s)',
@@ -188,8 +194,9 @@ export function EducationalServicesPage() {
               <PricingPlan
                 tier="Gold Bundle"
                 price="₵14,000"
-                serviceId="edu-bundle-gold"
-                ctaLabel="Pay ₵14,000"
+                priceNote="if selected"
+                href={applyWhatsApp('Gold Bundle')}
+                ctaLabel="Apply now"
                 features={[
                   'A recommended schools list, built around your profile and funding goals',
                   'Grad school CV(s), tailored to each programme',

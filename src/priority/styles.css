@@ -52,6 +52,13 @@
   }
   .btn-outline:hover { @apply bg-white/10 no-underline text-white; }
 
+  /* Outlined secondary action for light backgrounds. Dark-background usages
+     override the border/text via inline `border-white text-white` utilities. */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent text-primary border-2 border-primary font-semibold px-7 py-3.5 rounded-full no-underline transition-colors min-h-[48px];
+  }
+  .btn-secondary:hover { @apply bg-primary text-white no-underline; }
+
   .card {
     @apply bg-white rounded-2xl p-7 shadow-card;
   }

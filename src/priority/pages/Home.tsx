@@ -1,6 +1,8 @@
 import { SiteHeader } from '../components/SiteHeader';
 import { SiteFooter } from '../components/SiteFooter';
 import { WhatsAppFAB } from '../components/WhatsAppFAB';
+import { VideoTestimonials } from '../components/VideoTestimonials';
+import { TESTIMONIALS } from '../data/testimonials';
 
 const CLIENT_LOGOS = [
   { name: 'Harvard University', src: '/assets/wp-content/uploads/2024/02/Harvard-300x180.png' },
@@ -13,14 +15,6 @@ const CLIENT_LOGOS = [
   { name: 'Cambridge University Press', src: '/assets/wp-content/uploads/2024/02/CU-300x180.png' },
 ];
 
-const TESTIMONIALS = [
-  { author: 'Sarah', quote: 'Just wanted to shoot you a quick message to say a massive thank you for all your help getting me where I am now. Your help with my CV, LinkedIn tips and advice as well as that job application you practically held my hand through — it all made a huge difference. Three months into my new gig, and I\'m loving it.' },
-  { author: 'Samuella', quote: 'Thank you so much for your assistance with my SOP. I landed an unconditional offer with the University of Manchester!' },
-  { author: 'Nana Adjoa', quote: 'I just got an email this morning that I\'ve been shortlisted to take the assessment by PwC. Thank you for that impeccable CV. Fingers crossed. I\'ll be back for interview tips.' },
-  { author: 'Danielle', quote: 'This is a wonderful piece. It\'s as if you know my aspirations. The part about establishing a consultancy — spot on! A great work done. Thank you so much.' },
-  { author: 'Davida', quote: 'I\'ve looked at the LinkedIn Optimization SEVERAL TIMES. Emphasis on several times. I love it! And I just kept on smiling. It\'s like you took the words out of my head.' },
-  { author: 'Nyhira', quote: 'I owe you one, big tie. I\'ll make sure to spread the word about how awesome the Elevate Team is.' },
-];
 
 const BLOG_POSTS = [
   { date: '14 October 2023', title: 'How to Boost Your Career with Professional Resume Writing', href: '/how-to-boost-your-career-with-professional-resume-writing/' },
@@ -314,13 +308,23 @@ export function HomePage() {
                 Positive Reviews From Our Clients
               </h2>
             </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+            <VideoTestimonials />
+
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-12">
               {TESTIMONIALS.map((t, i) => (
                 <figure key={i} className="bg-white rounded-2xl p-6 flex gap-4 shadow-card">
-                  <span aria-hidden="true" className="inline-block w-12 h-12 rounded-full bg-gradient-to-br from-electric to-primary shrink-0" />
+                  {t.image ? (
+                    <img src={t.image} alt={t.author} width={48} height={48} loading="lazy" className="w-12 h-12 rounded-full object-cover shrink-0" />
+                  ) : (
+                    <span aria-hidden="true" className="inline-block w-12 h-12 rounded-full bg-gradient-to-br from-electric to-primary shrink-0" />
+                  )}
                   <div>
                     <blockquote className="text-sm text-ink leading-relaxed">{t.quote}</blockquote>
-                    <figcaption className="mt-3 text-xs font-semibold text-navy">{t.author}</figcaption>
+                    <figcaption className="mt-3 text-xs font-semibold text-navy">
+                      {t.author}
+                      {t.role && <span className="block font-normal text-ink-muted mt-0.5">{t.role}</span>}
+                    </figcaption>
                   </div>
                 </figure>
               ))}

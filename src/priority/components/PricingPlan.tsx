@@ -46,7 +46,13 @@ export function PricingPlan({
       {serviceId ? (
         <button type="button" className="btn-primary buy-btn mt-6" data-service-id={serviceId}>{ctaLabel}</button>
       ) : (
-        <a href={href} className="btn-primary mt-6">{ctaLabel}</a>
+        <a
+          href={href}
+          className="btn-primary mt-6"
+          {...(/^https?:/.test(href) ? { target: '_blank', rel: 'noopener' } : {})}
+        >
+          {ctaLabel}
+        </a>
       )}
     </article>
   );

@@ -8,7 +8,7 @@ declare(strict_types=1);
 require __DIR__ . '/../api/config.php';
 require __DIR__ . '/../api/email.php';
 
-$ops = getenv('OPS_EMAIL') ?: 'elevatewithnll@gmail.com';
+$ops = getenv('OPS_EMAIL') ?: 'hello@elevatecareerhub.com';
 $item = ['name' => '[TEST] Curriculum Vitae (CV)', 'amountPesewas' => 35000, 'type' => 'service', 'deliverablePath' => null];
 
 echo "TOSEND_API_KEY set: " . (getenv('TOSEND_API_KEY') ? 'yes' : 'NO') . "\n";

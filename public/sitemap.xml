@@ -175,8 +175,20 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://elevatecareerhub.com/jrb-thank-you/</loc>
-    <lastmod>2026-02-16</lastmod>
+    <loc>https://elevatecareerhub.com/privacy-policy/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://elevatecareerhub.com/terms/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://elevatecareerhub.com/refund-policy/</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

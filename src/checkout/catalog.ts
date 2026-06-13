@@ -79,6 +79,12 @@ export const CATALOG: Record<string, CatalogItem> = {
     deliverablePath: '/downloads/the-remote-job-playbook.pdf',
   },
   'diy-complete-job-search': { id: 'diy-complete-job-search', name: 'The Complete Job Search Bundle', amountPesewas: 25000, type: 'product' },
+
+  // ── Events ────────────────────────────────────────────────────
+  // Get Into Grad School Bootcamp (Jul–Aug 2026). Full pass is the early-bird
+  // price (regular GHS 1,500 shown struck through on the landing page).
+  'bootcamp-grad-full': { id: 'bootcamp-grad-full', name: 'Get Into Grad School Bootcamp — Full Access Pass (Early Bird)', amountPesewas: 120000, type: 'service', blurb: 'All 8 live sessions + bonuses + recordings' },
+  'bootcamp-grad-dropin': { id: 'bootcamp-grad-dropin', name: 'Get Into Grad School Bootcamp — Single Drop-In Session', amountPesewas: 30000, type: 'service', blurb: 'One session of your choice' },
 };
 
 /** Look up an item; returns undefined for unknown ids (caller must reject). */

@@ -60,10 +60,34 @@ function setCanonical(url: string): void {
   link.href = url;
 }
 
+function syntheticPriorityPage(route: string): PageSnapshot {
+  return {
+    id: -1,
+    type: 'priority',
+    route,
+    aliases: [],
+    originalUrl: route,
+    slug: route.replace(/^\/|\/$/g, '').replace(/\//g, '-') || 'home',
+    title: 'Elevate Career Hub',
+    description: '',
+    canonical: route,
+    ogImage: '',
+    dateModified: '',
+    htmlPath: '',
+  };
+}
+
 function resolveSnapshot(): PageSnapshot {
   const route = normalizeRoute(window.location.pathname);
   const safeRoute = blockedCommerceRoutes.has(route) ? assistedCommerceTarget : route;
-  return routeMap.get(safeRoute) || routeMap.get('/')!;
+  const matched = routeMap.get(safeRoute);
+  if (matched) return matched;
+  // Priority-only routes (e.g. legal pages) have a registered React component but
+  // no WordPress snapshot in pages.json. Synthesize a record so the priority
+  // render branch picks them up in dev and on client-side navigation. Production
+  // serves these as pre-rendered static HTML, so this path is dev/SPA only.
+  if (PRIORITY_PAGES[safeRoute]) return syntheticPriorityPage(safeRoute);
+  return routeMap.get('/')!;
 }
 
 function whatsappUrl(message: string): string {

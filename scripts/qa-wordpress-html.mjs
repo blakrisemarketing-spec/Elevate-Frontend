@@ -383,7 +383,7 @@ try {
           'invalidContactCtaHref',
           r.route,
           vpName,
-          `wa.me/233531113454 count=${m.whatsappLinkCount}, mailto:elevatewithnll@gmail.com count=${m.mailtoLinkCount}`
+          `wa.me/233531113454 count=${m.whatsappLinkCount}, mailto:hello@elevatecareerhub.com count=${m.mailtoLinkCount}`
         );
       }
     }
