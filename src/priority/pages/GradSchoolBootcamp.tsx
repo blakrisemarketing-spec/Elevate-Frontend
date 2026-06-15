@@ -73,34 +73,47 @@ export function GradSchoolBootcampPage() {
         {/* ── Hero ─────────────────────────────────────────────── */}
         <section className="bg-gradient-to-br from-primary to-navy text-white" aria-labelledby="hero-heading">
           <div className="container-site py-16 lg:py-24">
-            <div className="max-w-3xl">
-              <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-navy bg-electric px-3 py-1.5 rounded-full mb-6">
-                Get Into Grad School Bootcamp · Early-bird open
-              </p>
-              <h1 id="hero-heading" className="text-display-lg text-white mb-5">
-                Stop guessing your way through the 2026/2027 application cycle.
-                <span className="text-electric"> Turn your “average” profile into an offer letter.</span>
-              </h1>
-              <p className="text-lg text-white/90 leading-relaxed mb-8">
-                An 8-session intensive bootcamp that walks you through the entire process — from building your school list and writing killer essays, to securing funding and getting your visa approved. Every session is led by a facilitator with direct, relevant experience.
-              </p>
-              <div className="flex flex-wrap gap-4 items-center">
-                <button type="button" className="btn-primary bg-electric text-navy hover:bg-electric-600 buy-btn" data-service-id="bootcamp-grad-full">
-                  Register for the bootcamp now
-                </button>
-                <a href="#tickets" className="text-white/90 underline underline-offset-4 hover:text-electric text-sm">
-                  Can’t attend it all? See individual drop-in tickets &darr;
-                </a>
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+              <div>
+                <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-navy bg-electric px-3 py-1.5 rounded-full mb-6">
+                  Get Into Grad School Bootcamp · Early-bird open
+                </p>
+                <h1 id="hero-heading" className="text-display-lg text-white mb-5">
+                  <span className="text-white/75">Stop guessing your way through the 2026/2027 application cycle.</span>{' '}
+                  Turn your “average” profile into an offer letter.
+                </h1>
+                <p className="text-lg text-white/90 leading-relaxed mb-8">
+                  An 8-session intensive bootcamp that walks you through the entire process — from building your school list and writing killer essays, to securing funding and getting your visa approved. Every session is led by a facilitator with direct, relevant experience.
+                </p>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <button type="button" className="btn-primary bg-electric text-navy hover:bg-electric-600 buy-btn" data-service-id="bootcamp-grad-full">
+                    Register for the bootcamp now
+                  </button>
+                  <a href="#tickets" className="text-white underline underline-offset-4 hover:text-electric-400 text-sm">
+                    Can’t attend it all? See individual drop-in tickets &darr;
+                  </a>
+                </div>
+
+                <ul className="flex flex-wrap gap-x-8 gap-y-3 mt-10">
+                  {QUICK_FACTS.map((f) => (
+                    <li key={f.label} className="flex items-center gap-2 text-white text-sm">
+                      <svg viewBox="0 0 24 24" className="w-5 h-5 text-electric-400" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d={f.icon} strokeLinecap="round" strokeLinejoin="round"/></svg>
+                      {f.label}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <ul className="flex flex-wrap gap-x-8 gap-y-3 mt-10">
-                {QUICK_FACTS.map((f) => (
-                  <li key={f.label} className="flex items-center gap-2 text-white/90 text-sm">
-                    <svg viewBox="0 0 24 24" className="w-5 h-5 text-electric" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d={f.icon} strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    {f.label}
-                  </li>
-                ))}
-              </ul>
+              {/* Co-founders */}
+              <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+                <div aria-hidden="true" className="absolute -inset-3 sm:-inset-4 rounded-[2rem] bg-electric/15 rotate-2" />
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-card ring-1 ring-white/15">
+                  <img src="/assets/founders/cofounders-together.webp" alt="Naa Lamle Lamptey and Rosemary Agyeiwah Great-Damzi, Elevate Career Hub co-founders" width={720} height={900} loading="eager" decoding="async" className="w-full h-full object-cover" />
+                </div>
+                <p className="relative text-center text-white/80 text-sm mt-6">
+                  Led by Elevate co-founders <span className="text-white font-semibold">Naa</span> &amp; <span className="text-white font-semibold">Rosemary</span>
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -162,21 +175,48 @@ export function GradSchoolBootcampPage() {
             <h2 id="facilitators-heading" className="text-headline-lg text-center mb-4">Learn from people who’ve actually done it</h2>
             <p className="text-ink-muted text-center max-w-2xl mx-auto mb-12">Chevening, DAAD, Mastercard Foundation and Forté scholars, MBAs from Columbia, Duke and Kellogg, and admissions and visa specialists — each session is led by someone with direct, relevant experience.</p>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-              {FACILITATORS.map((f) => (
-                <article key={f.name} className="bg-white rounded-xl border border-black/5 overflow-hidden flex flex-col">
-                  <div className="aspect-[4/5] bg-surface-tint overflow-hidden">
-                    <img src={f.photo} alt={f.name} width={600} height={750} loading="lazy" className="w-full h-full object-cover object-top" />
-                  </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    <span className="inline-flex self-start items-center text-[11px] font-semibold uppercase tracking-wide text-primary bg-surface-tint px-2.5 py-1 rounded-full mb-3">{f.session}</span>
-                    <h3 className="text-lg font-bold text-navy leading-tight">{f.name}</h3>
-                    <p className="text-primary text-sm font-medium mb-3">{f.credential}</p>
-                    <p className="text-ink-muted text-sm leading-relaxed">{f.bio}</p>
-                  </div>
-                </article>
-              ))}
+              {FACILITATORS.map((f) => {
+                const slug = f.photo.replace(/^.*\/|\.webp$/g, '');
+                return (
+                  <a key={f.name} href={`#fac-${slug}`} className="group bg-white rounded-xl border border-black/5 overflow-hidden flex flex-col no-underline hover:shadow-card transition-shadow">
+                    <div className="aspect-[4/5] bg-surface-tint overflow-hidden">
+                      <img src={f.photo} alt={f.name} width={600} height={750} loading="lazy" className="w-full h-full object-cover object-top" />
+                    </div>
+                    <div className="p-5 flex flex-col flex-1">
+                      <span className="inline-flex self-start items-center text-[11px] font-semibold uppercase tracking-wide text-primary bg-surface-tint px-2.5 py-1 rounded-full mb-3">{f.session}</span>
+                      <h3 className="text-lg font-bold text-navy leading-tight">{f.name}</h3>
+                      <p className="text-primary text-sm font-medium mb-3">{f.credential}</p>
+                      <span className="mt-auto inline-flex items-center gap-1 text-primary text-sm font-semibold group-hover:gap-2 transition-all">Read full bio &rarr;</span>
+                    </div>
+                  </a>
+                );
+              })}
             </div>
           </div>
+
+          {/* Full-bio modals — zero-JS, opened via CSS :target */}
+          {FACILITATORS.map((f) => {
+            const slug = f.photo.replace(/^.*\/|\.webp$/g, '');
+            return (
+              <div key={slug} id={`fac-${slug}`} className="bio-modal" role="dialog" aria-modal="true" aria-labelledby={`fac-${slug}-name`}>
+                <a href="#_" className="bio-modal__backdrop" aria-label="Close bio" />
+                <div className="bio-modal__panel">
+                  <a href="#_" className="bio-modal__close" aria-label="Close bio">&times;</a>
+                  <div className="flex items-center gap-4 mb-5 pr-6">
+                    <img src={f.photo} alt="" width={160} height={200} loading="lazy" className="w-20 h-24 rounded-lg object-cover object-top shrink-0" />
+                    <div>
+                      <span className="inline-flex items-center text-[11px] font-semibold uppercase tracking-wide text-primary bg-surface-tint px-2.5 py-1 rounded-full mb-2">{f.session}</span>
+                      <h3 id={`fac-${slug}-name`} className="text-xl font-bold text-navy leading-tight">{f.name}</h3>
+                      <p className="text-primary text-sm font-medium">{f.credential}</p>
+                    </div>
+                  </div>
+                  <div className="space-y-4 text-ink-muted leading-relaxed">
+                    {f.bio.map((para, i) => <p key={i}>{para}</p>)}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </section>
 
         {/* ── Testimonial ──────────────────────────────────────── */}
