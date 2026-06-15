@@ -105,16 +105,12 @@ export function GradSchoolBootcampPage() {
               </div>
 
               {/* Co-founders */}
-              <div className="relative">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-card ring-1 ring-white/15 lg:translate-y-3">
-                    <img src="/assets/founders/naa.webp" alt="Naa Lamle Lamptey, Elevate Career Hub co-founder" width={720} height={900} loading="eager" decoding="async" className="w-full h-full object-cover object-top" />
-                  </div>
-                  <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-card ring-1 ring-white/15 lg:-translate-y-3">
-                    <img src="/assets/founders/rosemary.webp" alt="Rosemary Agyeiwah Great-Damzi, Elevate Career Hub co-founder" width={720} height={900} loading="eager" decoding="async" className="w-full h-full object-cover object-top" />
-                  </div>
+              <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+                <div aria-hidden="true" className="absolute -inset-3 sm:-inset-4 rounded-[2rem] bg-electric/15 rotate-2" />
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-card ring-1 ring-white/15">
+                  <img src="/assets/founders/cofounders-together.webp" alt="Naa Lamle Lamptey and Rosemary Agyeiwah Great-Damzi, Elevate Career Hub co-founders" width={720} height={900} loading="eager" decoding="async" className="w-full h-full object-cover" />
                 </div>
-                <p className="text-center text-white/80 text-sm mt-5">
+                <p className="relative text-center text-white/80 text-sm mt-6">
                   Led by Elevate co-founders <span className="text-white font-semibold">Naa</span> &amp; <span className="text-white font-semibold">Rosemary</span>
                 </p>
               </div>
