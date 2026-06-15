@@ -116,6 +116,17 @@ export function AboutPage() {
             </div>
             <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
               <article className="card">
+                <div className="aspect-[4/5] rounded-xl overflow-hidden mb-5 bg-primary-100">
+                  <img
+                    src="/assets/founders/naa-about.webp"
+                    alt="Naa Lamle Lamptey, Elevate Career Hub co-founder"
+                    width={720}
+                    height={900}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
                 <h3 className="text-headline-md mb-1">Naa Lamle Lamptey</h3>
                 <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-4">Co-founder</p>
                 <div className="space-y-3 text-ink-muted leading-relaxed">
@@ -126,6 +137,17 @@ export function AboutPage() {
                 </div>
               </article>
               <article className="card">
+                <div className="aspect-[4/5] rounded-xl overflow-hidden mb-5 bg-primary-100">
+                  <img
+                    src="/assets/founders/rosemary-about.webp"
+                    alt="Rosemary Agyeiwah Great-Damzi, Elevate Career Hub co-founder"
+                    width={720}
+                    height={900}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
                 <h3 className="text-headline-md mb-1">Rosemary Great-Damzi</h3>
                 <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-4">Co-founder</p>
                 <div className="space-y-3 text-ink-muted leading-relaxed">
