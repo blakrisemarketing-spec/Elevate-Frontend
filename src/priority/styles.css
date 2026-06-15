@@ -97,6 +97,44 @@
   .hero-swap-top { animation: none; opacity: 1; }
 }
 
+/* Zero-JS facilitator bio modal (opens via CSS :target, closes via #_) */
+.bio-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.bio-modal:target { display: flex; }
+.bio-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 24, 42, 0.6);
+}
+.bio-modal__panel {
+  position: relative;
+  width: 100%;
+  max-width: 40rem;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.75rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+.bio-modal__close {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.9rem;
+  font-size: 2rem;
+  line-height: 1;
+  color: #4a5168;
+  text-decoration: none;
+}
+.bio-modal__close:hover { color: #1b1c28; }
+
 /* Skip link */
 .skip-link {
   position: absolute;
