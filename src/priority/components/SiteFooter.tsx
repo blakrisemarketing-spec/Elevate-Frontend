@@ -34,6 +34,7 @@ export function SiteFooter() {
             <ul className="flex flex-col gap-2.5 text-sm">
               <li><a href="/" className="text-white/80 hover:text-electric no-underline">Home</a></li>
               <li><a href="/about/" className="text-white/80 hover:text-electric no-underline">About</a></li>
+              <li><a href="/career-services/" className="text-white/80 hover:text-electric no-underline">Career Services</a></li>
               <li><a href="/educational-services/" className="text-white/80 hover:text-electric no-underline">Educational Services</a></li>
               <li><a href="/blog/" className="text-white/80 hover:text-electric no-underline">Blog</a></li>
               <li><a href="/diy-products/" className="text-white/80 hover:text-electric no-underline">DIY Products</a></li>

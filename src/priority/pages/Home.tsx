@@ -125,8 +125,8 @@ export function HomePage() {
                   <img
                     src="/assets/founders/rosemary.webp"
                     alt="Rosemary Agyeiwah Great-Damzi, Elevate Career Hub co-founder"
-                    width={600}
-                    height={465}
+                    width={720}
+                    height={900}
                     loading="eager"
                     decoding="async"
                     className="absolute inset-0 w-full h-full object-cover object-top"
@@ -134,8 +134,8 @@ export function HomePage() {
                   <img
                     src="/assets/founders/naa.webp"
                     alt="Naa Lamle Lamptey, Elevate Career Hub co-founder"
-                    width={600}
-                    height={692}
+                    width={720}
+                    height={900}
                     loading="eager"
                     fetchPriority="high"
                     decoding="async"
@@ -212,7 +212,7 @@ export function HomePage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-card translate-y-6 bg-primary-100">
                   <img
-                    src="/assets/wp-content/uploads/2024/02/Rosemary-Headshots-44-scaled-e1708820376937-600x600.webp"
+                    src="/assets/founders/rosemary-square.webp"
                     alt="Rosemary Agyeiwah Great-Damzi, Elevate Career Hub co-founder"
                     width={600}
                     height={600}
@@ -223,7 +223,7 @@ export function HomePage() {
                 </div>
                 <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-card -translate-y-6 bg-primary-100">
                   <img
-                    src="/assets/wp-content/uploads/2024/02/Naa-7_Original-scaled-e1708822884258-600x600.webp"
+                    src="/assets/founders/naa-square.webp"
                     alt="Naa Lamle Lamptey, Elevate Career Hub co-founder"
                     width={600}
                     height={600}
