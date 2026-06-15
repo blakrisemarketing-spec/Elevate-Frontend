@@ -2,7 +2,9 @@ import { SiteHeader } from '../components/SiteHeader';
 import { SiteFooter } from '../components/SiteFooter';
 import { WhatsAppFAB } from '../components/WhatsAppFAB';
 import { VideoTestimonials } from '../components/VideoTestimonials';
+import { BlogCover } from '../components/BlogCover';
 import { TESTIMONIALS } from '../data/testimonials';
+import { BLOG_POSTS } from '../data/blog';
 
 const CLIENT_LOGOS = [
   { name: 'Harvard University', src: '/assets/wp-content/uploads/2024/02/Harvard-300x180.png' },
@@ -13,13 +15,6 @@ const CLIENT_LOGOS = [
   { name: 'University of British Columbia', src: '/assets/wp-content/uploads/2024/02/ubc-300x180.png' },
   { name: 'SFU Beedie School of Business', src: '/assets/wp-content/uploads/2024/02/SFU-300x180.png' },
   { name: 'Cambridge University Press', src: '/assets/wp-content/uploads/2024/02/CU-300x180.png' },
-];
-
-
-const BLOG_POSTS = [
-  { date: '14 October 2023', title: 'How to Boost Your Career with Professional Resume Writing', href: '/how-to-boost-your-career-with-professional-resume-writing/' },
-  { date: '14 October 2023', title: 'How Our Career Development Company Can Help You Stand Out', href: '/how-our-career-development-company-can-help-you-stand-out/' },
-  { date: '14 October 2023', title: 'The Importance of Professional Documents in Career Development', href: '/the-importance-of-professional-documents-in-career-development/' },
 ];
 
 function ArrowRight() {
@@ -342,15 +337,20 @@ export function HomePage() {
               </h2>
             </div>
             <div className="grid gap-6 md:grid-cols-3">
-              {BLOG_POSTS.map((post, i) => (
-                <article key={i} className="bg-white rounded-2xl overflow-hidden shadow-card flex flex-col">
-                  <div aria-hidden="true" className="aspect-[16/10] bg-gradient-to-br from-primary-100 via-electric-400 to-primary" />
+              {BLOG_POSTS.slice(0, 3).map((post) => (
+                <article key={post.slug} className="bg-white rounded-2xl overflow-hidden shadow-card flex flex-col">
+                  <a href={post.route} className="block relative" aria-label={post.title}>
+                    <BlogCover cover={post.cover} className="w-full aspect-[16/10]" />
+                    <span className="absolute top-4 left-4 inline-block bg-white/95 text-navy text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full">
+                      {post.category}
+                    </span>
+                  </a>
                   <div className="p-6 flex-1 flex flex-col">
-                    <p className="text-xs text-primary font-semibold uppercase tracking-wide mb-3">{post.date}</p>
+                    <p className="text-xs text-ink-muted font-medium mb-3">{post.date} &middot; {post.readMinutes} min read</p>
                     <h3 className="font-sans font-bold text-base text-navy leading-snug mb-4 not-italic">
-                      {post.title}
+                      <a href={post.route} className="no-underline text-navy hover:text-primary">{post.title}</a>
                     </h3>
-                    <a href={post.href} className="inline-flex items-center gap-1 text-primary font-semibold mt-auto no-underline hover:underline">
+                    <a href={post.route} className="inline-flex items-center gap-1 text-primary font-semibold mt-auto no-underline hover:underline">
                       Read more <ArrowRight />
                     </a>
                   </div>
