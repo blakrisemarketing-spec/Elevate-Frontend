@@ -89,6 +89,17 @@ export const FACILITATORS: Facilitator[] = [
     ],
   },
   {
+    name: 'Sylvia Boamah Yeboah',
+    credential: 'Erasmus Mundus Scholar · Social Work',
+    session: 'Scholarship Panel',
+    photo: '/assets/facilitators/sylvia-boamah.webp',
+    bio: [
+      'Sylvia Boamah Yeboah is an Erasmus Mundus Scholar whose academic journey took her across multiple European universities through one of the world’s most prestigious and competitive fully funded scholarship programmes. With a background in Social Work and a passion for social inclusion and community development, Sylvia has built experience working with diverse populations and contributing to initiatives that create meaningful social impact. Her journey reflects a commitment to lifelong learning, global engagement, and using education as a tool for transformation.',
+      'Having successfully secured and completed the highly competitive Erasmus Mundus Scholarship programme, Sylvia understands firsthand what it takes to navigate the scholarship application process, stand out as a candidate, and thrive in an international academic environment. Her experience has equipped her with practical insights into scholarship strategy, application preparation, studying abroad, and building a global network.',
+      'As a panellist for the “Deep Dive into Scholarships” session at the Get Into Grad School Bootcamp, Sylvia is excited to share lessons from her Erasmus Mundus journey and help aspiring graduate students identify and successfully pursue fully funded scholarship opportunities around the world.',
+    ],
+  },
+  {
     name: 'Alexander Dankyi Asare',
     credential: 'MBA, Duke Fuqua · ex-BCG, KPMG · CFA',
     session: 'The MBA Blueprint',
