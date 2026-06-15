@@ -35,9 +35,9 @@ export const FACILITATORS: Facilitator[] = [
   {
     name: 'Peggy Kere Osman',
     credential: 'DAAD Helmut-Schmidt Scholar · Duisburg-Essen',
-    session: 'Becoming the Candidate Committees Can’t Overlook',
+    session: 'Becoming the Candidate Admissions Committees Can’t Overlook',
     photo: '/assets/facilitators/peggy-kere-osman.webp',
-    bio: 'A DAAD Helmut-Schmidt Scholar pursuing an MA in Development & Governance, with a First Class in Political Science from the University of Ghana and a PMP certification. She shows you exactly how to go from overlooked to unforgettable.',
+    bio: 'A DAAD Helmut-Schmidt Scholar pursuing an MA in Development & Governance, with First Class honours in Political Science and Chinese from the University of Ghana and a PMP certification. She shows you exactly how to go from overlooked to unforgettable.',
   },
   {
     name: 'Korkoe Yao Attipoe',
@@ -65,7 +65,7 @@ export const FACILITATORS: Facilitator[] = [
     credential: 'MBA, Duke Fuqua · ex-BCG, KPMG · CFA',
     session: 'The MBA Blueprint',
     photo: '/assets/facilitators/alex-dankyi.webp',
-    bio: 'A finance and strategy professional and MBA candidate at Duke’s Fuqua School, where he co-leads the Business in Africa Club. A CFA charterholder (also ACCA and CPA), he has worked at Deloitte, KPMG, and BCG.',
+    bio: 'A finance and strategy professional and MBA candidate at Duke’s Fuqua School, where he serves as Co-President of the Business in Africa Club. A CFA charterholder (also ACCA and CPA), he has worked at Deloitte, KPMG, and BCG.',
   },
   {
     name: 'Eugene Modey',
