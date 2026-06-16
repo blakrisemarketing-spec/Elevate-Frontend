@@ -3,6 +3,7 @@ import { SiteFooter } from '../components/SiteFooter';
 import { WhatsAppFAB } from '../components/WhatsAppFAB';
 import { FAQAccordion } from '../components/FAQAccordion';
 import { FACILITATORS } from '../data/facilitators';
+import { BOOTCAMP_FAQ_GROUPS as FAQ_GROUPS } from '../data/faqs';
 
 const DROPIN_WA =
   'https://wa.me/233531113454?text=Hi%20Elevate%2C%20I%27d%20like%20to%20pick%20individual%20drop-in%20sessions%20for%20the%20Get%20Into%20Grad%20School%20Bootcamp.';
@@ -31,30 +32,6 @@ const BONUSES = [
   { title: '90 Days of Replay Access', body: 'Every 2-hour session is recorded — including the live Q&As — and sent to your inbox to rewatch anytime.' },
   { title: 'Community & Support', body: 'Access to a dedicated WhatsApp group for extra support throughout your cycle.' },
   { title: 'No Experience Required', body: 'Nothing to prepare before Session 1 — just show up with an open mind and a rough idea of your goals.' },
-];
-
-const FAQ_GROUPS = [
-  {
-    heading: 'About the bootcamp',
-    items: [
-      { question: 'What is the bootcamp all about?', answer: 'An 8-session intensive programme that walks you through the entire graduate school application process — from choosing the right programme and building your school list, to writing your personal statement, securing funding, and preparing to arrive on campus. Each session is led by a speaker with direct, relevant experience.' },
-      { question: 'Who is this for?', answer: 'Anyone seriously considering graduate school, whether you’re just starting to explore your options or already in the middle of applications. It’s particularly relevant if you’re targeting programmes in the US, UK, Canada, Australia, or Europe.' },
-      { question: 'Do I need to already know which school or programme I want?', answer: 'No. Session 1 starts with a diagnostic exercise to help you figure that out. You’ll leave with a clear direction — not just a list of schools to Google later.' },
-      { question: 'Does it cover all types of graduate programmes?', answer: 'Yes. The bootcamp covers taught Masters, research-based programmes (MPhil, Masters by Research, PhD), and MBAs.' },
-      { question: 'Is this only relevant for people applying from Ghana?', answer: 'The bootcamp is designed with an African applicant lens, but the content applies to anyone applying to graduate programmes abroad. School selection, application strategy, funding, and visa guidance are covered for multiple destination countries.' },
-    ],
-  },
-  {
-    heading: 'Funding, sessions & logistics',
-    items: [
-      { question: 'Will funding and scholarships be covered?', answer: 'Yes, and in depth. We cover graduate assistantships (one of the most underused funding routes for international students), a dedicated scholarships session with people who have actually won funding, and a resource pack with 50+ scholarships and 30+ low-tuition universities. Alternative funding such as loans is also covered.' },
-      { question: 'I’m only interested in one or two topics. Can I attend individual sessions?', answer: 'Yes. Drop-in tickets are available, so you can register for just the sessions most relevant to you.' },
-      { question: 'What do I need to bring or prepare?', answer: 'Nothing is required before Session 1 — it opens with a diagnostic exercise, so come with an open mind and a rough sense of your goals. For later sessions, facilitators may share prep materials in advance.' },
-      { question: 'Will sessions be recorded?', answer: 'Yes. Recordings are shared with registered participants after each session, with 90 days of replay access.' },
-      { question: 'What platform will sessions run on, and how long are they?', answer: 'Sessions run on Google Meet. Each one is 2 hours, with a Q&A included.' },
-      { question: 'I have a question that isn’t covered here.', answer: 'Reach out to us at hello@elevatecareerhub.com or on WhatsApp at +233 53 111 3454.' },
-    ],
-  },
 ];
 
 function CheckIcon() {
