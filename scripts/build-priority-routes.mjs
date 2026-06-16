@@ -25,6 +25,72 @@ const cssPath = path.join(projectRoot, '.tmp', 'priority.css');
 
 const OG_IMAGE = 'https://elevatecareerhub.com/assets/wp-content/uploads/2024/01/2.png';
 
+const SITE_URL = 'https://elevatecareerhub.com';
+
+// ── Structured data (JSON-LD) ────────────────────────────────────────────
+// Organization + WebSite are sitewide; per-page schema (breadcrumbs, Article,
+// Course, FAQPage) is assembled per route and merged into a single @graph.
+const ORG = {
+  '@type': 'Organization',
+  '@id': SITE_URL + '/#organization',
+  name: 'Elevate Career Hub',
+  url: SITE_URL + '/',
+  logo: SITE_URL + '/assets/icons/icon-512.png',
+  email: 'hello@elevatecareerhub.com',
+  telephone: '+233531113454',
+  description: 'Elevate Career Hub helps ambitious people break into top jobs, top universities, and new careers at home or abroad — no insider network required.',
+  sameAs: [
+    'https://www.instagram.com/elevatecareerhub/',
+    'https://www.tiktok.com/@elevatecareerhub',
+    'https://www.linkedin.com/company/elevatewithnll/',
+  ],
+};
+const WEBSITE = {
+  '@type': 'WebSite',
+  '@id': SITE_URL + '/#website',
+  url: SITE_URL + '/',
+  name: 'Elevate Career Hub',
+  publisher: { '@id': ORG['@id'] },
+};
+const BOOTCAMP_COURSE = {
+  '@type': 'Course',
+  name: 'Get Into Grad School Bootcamp',
+  description: 'An 8-session intensive bootcamp covering school selection, personal statements, scholarships, research proposals, graduate assistantships, MBA strategy, and visas — led by Chevening, DAAD, Mastercard and Forté scholars and top-MBA facilitators.',
+  url: SITE_URL + '/get-into-grad-school-bootcamp/',
+  provider: { '@id': ORG['@id'] },
+};
+
+const MONTHS = { january: '01', february: '02', march: '03', april: '04', may: '05', june: '06', july: '07', august: '08', september: '09', october: '10', november: '11', december: '12' };
+/** "18 May 2026" → "2026-05-18" (undefined if unparseable). */
+function parseHumanDate(s) {
+  const m = String(s || '').trim().match(/^(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})$/);
+  const mm = m && MONTHS[m[2].toLowerCase()];
+  return mm ? `${m[3]}-${mm}-${m[1].padStart(2, '0')}` : undefined;
+}
+/** Build a BreadcrumbList from [{ name, url }]. */
+function breadcrumb(items) {
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: it.url })),
+  };
+}
+/** Title-case the last path segment, e.g. "/career-services/" → "Career Services". */
+function segLabel(route) {
+  const seg = route.replace(/^\/|\/$/g, '').split('/').pop() || '';
+  return seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+}
+/** FAQPage schema from grouped FAQ data. */
+function faqPage(groups) {
+  return {
+    '@type': 'FAQPage',
+    mainEntity: groups.flatMap((g) => g.items).map((qa) => ({
+      '@type': 'Question',
+      name: qa.question,
+      acceptedAnswer: { '@type': 'Answer', text: qa.answer },
+    })),
+  };
+}
+
 const PRIORITY_ROUTES = [
   {
     route: '/',
@@ -232,6 +298,13 @@ async function generateDataRoutes() {
       canonical: 'https://elevatecareerhub.com' + p.route,
       ogImage: OG_IMAGE,
       hasCheckout: !p.freeDownloadPath, // paid products show a buy button
+      seo: [
+        breadcrumb([
+          { name: 'Home', url: SITE_URL + '/' },
+          { name: 'DIY Products', url: SITE_URL + '/diy-products/' },
+          { name: p.title, url: SITE_URL + p.route },
+        ]),
+      ],
       props: { slug: p.catalogId },
     });
   }
@@ -247,11 +320,19 @@ async function generateDataRoutes() {
       canonical: 'https://elevatecareerhub.com' + s.route,
       ogImage: OG_IMAGE,
       hasCheckout: Array.isArray(s.priceTierIds) && s.priceTierIds.length > 0,
+      seo: [
+        breadcrumb([
+          { name: 'Home', url: SITE_URL + '/' },
+          { name: s.title, url: SITE_URL + s.route },
+        ]),
+      ],
       props: { slug: s.slug },
     });
   }
 
   for (const post of BLOG_POSTS) {
+    const url = SITE_URL + post.route;
+    const datePublished = parseHumanDate(post.date);
     routes.push({
       route: post.route,
       outDir: toOutDir(post.route),
@@ -259,8 +340,26 @@ async function generateDataRoutes() {
       component: 'BlogPostPage',
       title: `${post.title} — Elevate Career Hub`,
       description: post.excerpt,
-      canonical: 'https://elevatecareerhub.com' + post.route,
+      canonical: url,
       ogImage: OG_IMAGE,
+      ogType: 'article',
+      seo: [
+        breadcrumb([
+          { name: 'Home', url: SITE_URL + '/' },
+          { name: 'Blog', url: SITE_URL + '/blog/' },
+          { name: post.title, url },
+        ]),
+        {
+          '@type': 'Article',
+          headline: post.title,
+          description: post.excerpt,
+          ...(datePublished ? { datePublished } : {}),
+          image: OG_IMAGE,
+          author: { '@id': ORG['@id'] },
+          publisher: { '@id': ORG['@id'] },
+          mainEntityOfPage: url,
+        },
+      ],
       props: { slug: post.slug },
     });
   }
@@ -422,9 +521,12 @@ async function loadComponent(entry, componentName) {
   return module.exports[componentName];
 }
 
-function renderHtmlShell({ title, description, canonical, ogImage, css, body, hasCheckout, noindex }) {
+function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, body, hasCheckout, noindex, jsonLd }) {
   const robots = noindex ? 'noindex,nofollow' : 'index,follow';
   const checkoutScript = hasCheckout ? '\n    <script type="module" src="/assets/checkout.js"></script>' : '';
+  const ld = (jsonLd && jsonLd.length)
+    ? `\n    <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': jsonLd })}</script>`
+    : '';
   return `<!doctype html>
 <html lang="en-US">
   <head>
@@ -434,7 +536,11 @@ function renderHtmlShell({ title, description, canonical, ogImage, css, body, ha
     <meta name="description" content="${escapeHtml(description)}">
     <link rel="canonical" href="${escapeHtml(canonical)}">
     <meta name="robots" content="${robots}">
-    <meta property="og:type" content="website">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta property="og:type" content="${escapeHtml(ogType || 'website')}">
     <meta property="og:title" content="${escapeHtml(title)}">
     <meta property="og:description" content="${escapeHtml(description)}">
     <meta property="og:url" content="${escapeHtml(canonical)}">
@@ -446,7 +552,7 @@ function renderHtmlShell({ title, description, canonical, ogImage, css, body, ha
     <meta name="twitter:image" content="${escapeHtml(ogImage)}">
     <meta name="theme-color" content="#0077B6">
     <link rel="preload" href="/fonts/Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
-    <style>${css}</style>${checkoutScript}
+    <style>${css}</style>${ld}${checkoutScript}
   </head>
   <body>${body}</body>
 </html>`;
@@ -497,6 +603,9 @@ async function main() {
   const dataRoutes = await generateDataRoutes();
   const ALL_ROUTES = [...PRIORITY_ROUTES, ...dataRoutes];
 
+  // FAQ content for FAQPage structured data (shared with the page components).
+  const { SITE_FAQ_GROUPS, BOOTCAMP_FAQ_GROUPS } = await loadModuleExports('src/priority/data/faqs.ts');
+
   // Build the checkout island + emit the Hostinger PHP/.htaccess deploy
   // artifacts once if any route uses checkout.
   if (ALL_ROUTES.some(r => r.hasCheckout)) {
@@ -509,15 +618,36 @@ async function main() {
     const Component = await loadComponent(route.entry, route.component);
     // route.props (e.g. { slug }) is undefined for static pages, which ignore it.
     const body = '<div id="root">' + renderToStaticMarkup(Component(route.props)) + '</div>';
+
+    // Assemble the JSON-LD @graph: Organization sitewide, WebSite on the home
+    // page, then page-specific schema (breadcrumbs + Article/Course/FAQPage).
+    let jsonLd = null;
+    if (!route.noindex) {
+      jsonLd = [ORG];
+      if (route.route === '/') jsonLd.push(WEBSITE);
+      if (route.seo) {
+        jsonLd.push(...route.seo);
+      } else if (route.route !== '/') {
+        jsonLd.push(breadcrumb([
+          { name: 'Home', url: SITE_URL + '/' },
+          { name: segLabel(route.route), url: route.canonical },
+        ]));
+        if (route.route === '/faqs/') jsonLd.push(faqPage(SITE_FAQ_GROUPS));
+        if (route.route === '/get-into-grad-school-bootcamp/') jsonLd.push(BOOTCAMP_COURSE, faqPage(BOOTCAMP_FAQ_GROUPS));
+      }
+    }
+
     const html = renderHtmlShell({
       title: route.title,
       description: route.description,
       canonical: route.canonical,
       ogImage: route.ogImage,
+      ogType: route.ogType,
       css,
       body,
       hasCheckout: route.hasCheckout,
       noindex: route.noindex,
+      jsonLd,
     });
     // Most routes write to dist/<outDir>/index.html; a route may instead set
     // `outFile` to write to a specific file (e.g. dist/404.html).
@@ -531,6 +661,21 @@ async function main() {
     console.log(`[ssg] ${route.route} → ${path.relative(projectRoot, outFile)} (${(size / 1024).toFixed(1)} KB)`);
   }
   console.log(`[ssg] rendered ${results.length} priority route(s)`);
+
+  // ── Sitemap (generated from the indexable route list, so it can't drift) ──
+  const today = new Date().toISOString().slice(0, 10);
+  const SITEMAP_EXCLUDE = new Set(['/payment/confirmed/', '/jrb-thank-you/']);
+  const sitemapUrls = ALL_ROUTES
+    .filter((r) => !r.noindex && !r.outFile && !SITEMAP_EXCLUDE.has(r.route))
+    .map((r) => r.canonical)
+    .sort();
+  const sitemapXml =
+    '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    sitemapUrls.map((u) => `  <url>\n    <loc>${u}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`).join('\n') +
+    '\n</urlset>\n';
+  await fs.writeFile(path.join(distRoot, 'sitemap.xml'), sitemapXml);
+  console.log(`[ssg] sitemap.xml → ${sitemapUrls.length} URLs`);
 }
 
 main().catch(err => {
