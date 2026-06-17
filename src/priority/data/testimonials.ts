@@ -32,6 +32,20 @@ export const VIDEO_TESTIMONIALS: VideoTestimonial[] = [
   { vimeoId: '1162498076' },
 ];
 
+/**
+ * Video testimonials shown on the Get Into Grad School Bootcamp page (kept
+ * separate from the homepage set). Embedded unlabelled, since the person
+ * speaks in the video; add a `caption` only with a founder-confirmed name.
+ */
+export const BOOTCAMP_VIDEO_TESTIMONIALS: VideoTestimonial[] = [
+  { vimeoId: '1202279692' },
+  { vimeoId: '1202279577' },
+  { vimeoId: '1202279662' },
+  { vimeoId: '1202279579' },
+  { vimeoId: '1202279578' },
+  { vimeoId: '1202279576' },
+];
+
 export const TESTIMONIALS: Testimonial[] = [
   {
     author: 'Helen Wanki',

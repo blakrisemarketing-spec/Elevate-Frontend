@@ -2,7 +2,9 @@ import { SiteHeader } from '../components/SiteHeader';
 import { SiteFooter } from '../components/SiteFooter';
 import { WhatsAppFAB } from '../components/WhatsAppFAB';
 import { FAQAccordion } from '../components/FAQAccordion';
+import { VideoTestimonials } from '../components/VideoTestimonials';
 import { FACILITATORS } from '../data/facilitators';
+import { BOOTCAMP_VIDEO_TESTIMONIALS } from '../data/testimonials';
 import { BOOTCAMP_FAQ_GROUPS as FAQ_GROUPS } from '../data/faqs';
 
 const DROPIN_WA =
@@ -195,14 +197,7 @@ export function GradSchoolBootcampPage() {
         {/* ── Testimonial ──────────────────────────────────────── */}
         <section className="container-site py-16 lg:py-20" aria-labelledby="proof-heading">
           <h2 id="proof-heading" className="text-headline-lg text-center mb-10">Trusted by applicants who got in</h2>
-          <figure className="max-w-3xl mx-auto card">
-            <svg viewBox="0 0 24 24" className="w-9 h-9 text-electric mb-4" fill="currentColor" aria-hidden="true"><path d="M7.17 6A5.17 5.17 0 002 11.17V18h6.83v-6.83H5.5A1.67 1.67 0 017.17 9.5V6zm9 0A5.17 5.17 0 0011 11.17V18h6.83v-6.83H14.5A1.67 1.67 0 0116.17 9.5V6z"/></svg>
-            <blockquote className="text-lg text-ink leading-relaxed">
-              <p>I always wanted to work with Elevate because of the testimonials I saw from other people. What I liked most was how fully involved they kept me at every stage, from school selection to securing admission, visa application, and relocating to the UK. They prepared me very well for all my interviews and encouraged me even when some didn’t go as planned. I never had to worry, because I was constantly updated until I received my admission.</p>
-            </blockquote>
-            <figcaption className="mt-5 font-semibold text-navy">Fafali Bona-Lartey <span className="text-ink-muted font-normal">· admitted &amp; relocated to the UK</span></figcaption>
-          </figure>
-          <p className="text-center text-ink-muted text-sm mt-6">…and many more video testimonials from past clients including Isaac Okraku, Nana Adwoa Abban, Rachel Arthur, Clive Annan, and Adwoa Atuahene.</p>
+          <VideoTestimonials items={BOOTCAMP_VIDEO_TESTIMONIALS} />
         </section>
 
         {/* ── Tickets / Pricing ────────────────────────────────── */}
