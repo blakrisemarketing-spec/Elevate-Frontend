@@ -246,7 +246,7 @@ export function GradSchoolBootcampPage() {
                   ))}
                 </ul>
                 <button type="button" className="btn-secondary w-full buy-btn" data-service-id="bootcamp-grad-dropin">
-                  Buy a single session
+                  Choose your sessions
                 </button>
                 <a href={DROPIN_WA} target="_blank" rel="noopener" className="text-center text-sm text-primary underline underline-offset-4 hover:text-navy mt-3">
                   Prefer to choose first? Message us

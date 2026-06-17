@@ -28,6 +28,14 @@ export interface CatalogItem {
    * services (which are fulfilled manually by the team).
    */
   deliverablePath?: string;
+  /**
+   * Per-unit ("pick how many") items: the selectable options. When present,
+   * checkout shows a checklist, the buyer ticks one or more, and the charged
+   * amount is `amountPesewas * (number ticked)`. The server re-validates that
+   * each submitted option is in this list and recomputes the expected amount,
+   * so a tampered client can never under-pay. Used by the bootcamp drop-in.
+   */
+  sessions?: string[];
 }
 
 export const CURRENCY = 'GHS' as const;
@@ -84,7 +92,23 @@ export const CATALOG: Record<string, CatalogItem> = {
   // Get Into Grad School Bootcamp (Jul–Aug 2026). Full pass is the early-bird
   // price (regular GHS 1,500 shown struck through on the landing page).
   'bootcamp-grad-full': { id: 'bootcamp-grad-full', name: 'Get Into Grad School Bootcamp, Full Access Pass (Early Bird)', amountPesewas: 120000, type: 'service', blurb: 'All 8 live sessions + bonuses + recordings' },
-  'bootcamp-grad-dropin': { id: 'bootcamp-grad-dropin', name: 'Get Into Grad School Bootcamp, Single Drop-In Session', amountPesewas: 30000, type: 'service', blurb: 'One session of your choice' },
+  'bootcamp-grad-dropin': {
+    id: 'bootcamp-grad-dropin',
+    name: 'Get Into Grad School Bootcamp, Drop-In Sessions',
+    amountPesewas: 30000, // per session ticked
+    type: 'service',
+    blurb: 'The sessions of your choice',
+    sessions: [
+      'Your Graduate School Game Plan - July 26',
+      'Becoming the Candidate Admissions Committees Cannot Overlook - 28 July',
+      'The MBA Blueprint - 2 August',
+      'Personal Statements & Scholarship Essays - 4 August',
+      'Research Proposals, Pitching to Supervisors & Getting Funded - 9 August',
+      'Landing a Graduate Assistantship - 11 August',
+      'Deep Dive on Scholarships - 16 August',
+      'Visas & Getting Ready for School - 18 August',
+    ],
+  },
 };
 
 /** Look up an item; returns undefined for unknown ids (caller must reject). */

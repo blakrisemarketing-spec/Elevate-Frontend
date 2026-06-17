@@ -494,6 +494,7 @@ async function emitDeployArtifacts() {
       amountPesewas: item.amountPesewas,
       type: item.type,
       deliverablePath: item.deliverablePath || null,
+      sessions: item.sessions || null,
     };
   }
   await ensureDir(path.join(distRoot, 'api'));

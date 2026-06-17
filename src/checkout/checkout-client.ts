@@ -13,6 +13,7 @@
  * charged amount against the server-side catalog before anything is fulfilled.
  */
 import { CATALOG, CURRENCY, formatCedis } from './catalog';
+import type { CatalogItem } from './catalog';
 
 const PUBLIC_KEY = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY || '';
 const PAYSTACK_SDK = 'https://js.paystack.co/v1/inline.js';
@@ -46,26 +47,58 @@ function isEmail(v: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 }
 
-/** Minimal accessible modal collecting name + email before opening Paystack. */
-function collectBuyerDetails(itemName: string, priceLabel: string): Promise<{ name: string; email: string } | null> {
+function esc(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+interface BuyerDetails { name: string; email: string; sessions: string[]; amountPesewas: number }
+
+/**
+ * Accessible modal collecting name + email before opening Paystack. For
+ * per-unit items (those with `item.sessions`), it also shows a checklist;
+ * the buyer ticks one or more sessions and the total updates live
+ * (amountPesewas × ticked). The server re-validates everything.
+ */
+function collectBuyerDetails(item: CatalogItem): Promise<BuyerDetails | null> {
+  const sessions = item.sessions ?? [];
+  const isMulti = sessions.length > 0;
+  const unit = item.amountPesewas;
   return new Promise((resolve) => {
     const overlay = document.createElement('div');
     overlay.className = 'fixed inset-0 z-50 flex items-center justify-center bg-navy/60 px-4';
     overlay.setAttribute('role', 'dialog');
     overlay.setAttribute('aria-modal', 'true');
-    overlay.setAttribute('aria-label', `Checkout for ${itemName}`);
+    overlay.setAttribute('aria-label', `Checkout for ${item.name}`);
+
+    const sessionsBlock = isMulti ? `
+          <fieldset class="mb-4">
+            <legend class="block text-sm font-semibold text-navy mb-1">Which sessions? <span class="font-normal text-ink-muted">(tick all you want)</span></legend>
+            <div class="rounded-lg border border-ink/15 divide-y divide-ink/10 max-h-56 overflow-y-auto">
+              ${sessions.map((s) => `
+                <label class="flex items-start gap-3 px-3 py-2.5 cursor-pointer hover:bg-surface">
+                  <input type="checkbox" name="session" value="${esc(s)}" class="mt-1 h-4 w-4 accent-primary shrink-0" />
+                  <span class="text-sm text-ink leading-snug">${esc(s)}</span>
+                </label>`).join('')}
+            </div>
+          </fieldset>` : '';
+
+    const payLine = isMulti
+      ? `<p class="text-ink-muted text-sm mb-6">${formatCedis(unit)} per session. <span data-total class="font-semibold text-navy">No sessions selected yet.</span></p>`
+      : `<p class="text-ink-muted text-sm mb-6">You'll pay <span class="font-semibold text-navy">${formatCedis(unit)}</span> securely via Paystack.</p>`;
+
     overlay.innerHTML = `
       <div class="bg-white rounded-2xl shadow-soft w-full max-w-md p-6 sm:p-8">
         <p class="text-xs font-semibold uppercase tracking-[0.18em] text-primary mb-2">Checkout</p>
-        <h2 class="font-display italic font-bold text-navy text-2xl mb-1">${itemName}</h2>
-        <p class="text-ink-muted text-sm mb-6">You'll pay <span class="font-semibold text-navy">${priceLabel}</span> securely via Paystack.</p>
+        <h2 class="font-display italic font-bold text-navy text-2xl mb-1">${esc(item.name)}</h2>
+        ${payLine}
         <form novalidate>
           <label class="block text-sm font-semibold text-navy mb-1" for="ck-name">Full name</label>
           <input id="ck-name" name="name" type="text" autocomplete="name" required
             class="w-full rounded-lg border border-ink/15 px-4 py-3 mb-4 outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
           <label class="block text-sm font-semibold text-navy mb-1" for="ck-email">Email</label>
           <input id="ck-email" name="email" type="email" inputmode="email" autocomplete="email" required
-            class="w-full rounded-lg border border-ink/15 px-4 py-3 mb-2 outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
+            class="w-full rounded-lg border border-ink/15 px-4 py-3 mb-4 outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
+          ${sessionsBlock}
           <p data-error class="text-error text-sm mb-3 min-h-[1.25rem]" role="alert"></p>
           <div class="flex gap-3">
             <button type="button" data-cancel class="btn-secondary flex-1">Cancel</button>
@@ -82,16 +115,32 @@ function collectBuyerDetails(itemName: string, priceLabel: string): Promise<{ na
     overlay.addEventListener('click', (e) => { if (e.target === overlay) { cleanup(); resolve(null); } });
     overlay.querySelector<HTMLButtonElement>('[data-cancel]')!.addEventListener('click', () => { cleanup(); resolve(null); });
 
+    const checkedSessions = (): string[] =>
+      Array.from(overlay.querySelectorAll<HTMLInputElement>('input[name="session"]:checked')).map((c) => c.value);
+
+    if (isMulti) {
+      const totalEl = overlay.querySelector<HTMLElement>('[data-total]')!;
+      overlay.addEventListener('change', (e) => {
+        if (!(e.target as HTMLElement).matches('input[name="session"]')) return;
+        const n = checkedSessions().length;
+        totalEl.textContent = n === 0
+          ? 'No sessions selected yet.'
+          : `Total: ${formatCedis(unit * n)} for ${n} session${n > 1 ? 's' : ''}.`;
+      });
+    }
+
     const form = overlay.querySelector('form')!;
     const errEl = overlay.querySelector<HTMLElement>('[data-error]')!;
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = (overlay.querySelector<HTMLInputElement>('#ck-name')!.value || '').trim();
       const email = (overlay.querySelector<HTMLInputElement>('#ck-email')!.value || '').trim();
+      const picked = checkedSessions();
       if (name.length < 2) { errEl.textContent = 'Please enter your name.'; return; }
       if (!isEmail(email)) { errEl.textContent = 'Please enter a valid email address.'; return; }
+      if (isMulti && picked.length === 0) { errEl.textContent = 'Please tick at least one session.'; return; }
       cleanup();
-      resolve({ name, email });
+      resolve({ name, email, sessions: picked, amountPesewas: isMulti ? unit * picked.length : unit });
     });
 
     document.body.appendChild(overlay);
@@ -120,7 +169,7 @@ async function startCheckout(btn: HTMLButtonElement): Promise<void> {
     return;
   }
 
-  const details = await collectBuyerDetails(item.name, formatCedis(item.amountPesewas));
+  const details = await collectBuyerDetails(item);
   if (!details) return;
 
   setButtonBusy(btn, true);
@@ -132,17 +181,20 @@ async function startCheckout(btn: HTMLButtonElement): Promise<void> {
     return;
   }
 
+  const customFields: Array<Record<string, string>> = [
+    { display_name: 'Service', variable_name: 'service_id', value: item.id },
+    { display_name: 'Name', variable_name: 'buyer_name', value: details.name },
+  ];
+  if (details.sessions.length) {
+    customFields.push({ display_name: 'Sessions', variable_name: 'sessions', value: details.sessions.join('; ') });
+  }
+
   const handler = window.PaystackPop!.setup({
     key: PUBLIC_KEY,
     email: details.email,
-    amount: item.amountPesewas,
+    amount: details.amountPesewas,
     currency: CURRENCY,
-    metadata: {
-      custom_fields: [
-        { display_name: 'Service', variable_name: 'service_id', value: item.id },
-        { display_name: 'Name', variable_name: 'buyer_name', value: details.name },
-      ],
-    },
+    metadata: { custom_fields: customFields },
     onClose: () => { setButtonBusy(btn, false); },
     callback: (response: { reference: string }) => {
       // Verify server-side before trusting success.
@@ -155,14 +207,14 @@ async function startCheckout(btn: HTMLButtonElement): Promise<void> {
 async function finalize(
   reference: string,
   serviceId: string,
-  details: { name: string; email: string },
+  details: BuyerDetails,
   btn: HTMLButtonElement,
 ): Promise<void> {
   try {
     const res = await fetch(VERIFY_ENDPOINT, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ reference, serviceId, name: details.name, email: details.email }),
+      body: JSON.stringify({ reference, serviceId, name: details.name, email: details.email, sessions: details.sessions }),
     });
     const data = await res.json().catch(() => ({}));
     if (res.ok && data && data.ok) {
