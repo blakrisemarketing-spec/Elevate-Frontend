@@ -81,7 +81,7 @@ export const FACILITATORS: Facilitator[] = [
     name: 'Rachel Arthur',
     credential: 'DAAD Scholar · Chartered Accountant',
     session: 'Scholarship Panel',
-    photo: '/assets/facilitators/rachel-arthur.webp',
+    photo: '/assets/facilitators/rachel-arthur-2.webp',
     bio: [
       'Rachel Arthur is a Chartered Accountant and current DAAD Scholar pursuing a Master of Arts in International and Development Economics at Hochschule für Technik und Wirtschaft Berlin, Germany. She holds a Bachelor of Business Administration in Accounting from the University of Ghana, where she graduated with First Class Honours, and is a fully qualified member of the Institute of Chartered Accountants, Ghana.',
       'Before relocating to Germany for her postgraduate studies, Rachel spent over three years in audit and financial reporting, including a role as an Experienced Audit Associate at EY, one of the world’s Big Four professional services firms. Her work spanned financial services, oil and gas, real estate, manufacturing, and the public sector, building a track record that speaks to both her technical depth and her ability to perform under pressure.',

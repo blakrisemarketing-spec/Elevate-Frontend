@@ -59,6 +59,20 @@ const BOOTCAMP_COURSE = {
   description: 'An 8-session intensive bootcamp covering school selection, personal statements, scholarships, research proposals, graduate assistantships, MBA strategy, and visas, led by Chevening, DAAD, Mastercard and Forté scholars and top-MBA facilitators.',
   url: SITE_URL + '/get-into-grad-school-bootcamp/',
   provider: { '@id': ORG['@id'] },
+  image: OG_IMAGE,
+  inLanguage: 'en',
+  // Pricing for Google's course rich results: full pass + per-session drop-in.
+  offers: [
+    { '@type': 'Offer', category: 'Full Access Pass (early bird)', price: '1200', priceCurrency: 'GHS', availability: 'https://schema.org/InStock', url: SITE_URL + '/get-into-grad-school-bootcamp/#tickets' },
+    { '@type': 'Offer', category: 'Drop-In, per session', price: '300', priceCurrency: 'GHS', availability: 'https://schema.org/InStock', url: SITE_URL + '/get-into-grad-school-bootcamp/#tickets' },
+  ],
+  hasCourseInstance: {
+    '@type': 'CourseInstance',
+    courseMode: 'Online',
+    startDate: '2026-07-26',
+    endDate: '2026-08-18',
+    location: { '@type': 'VirtualLocation', url: SITE_URL + '/get-into-grad-school-bootcamp/' },
+  },
 };
 
 const MONTHS = { january: '01', february: '02', march: '03', april: '04', may: '05', june: '06', july: '07', august: '08', september: '09', october: '10', november: '11', december: '12' };
