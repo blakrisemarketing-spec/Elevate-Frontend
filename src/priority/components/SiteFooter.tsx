@@ -55,7 +55,7 @@ export function SiteFooter() {
 
           <div>
             <h3 className="eyebrow text-electric mb-5">Let&rsquo;s talk!</h3>
-            <p className="text-white/70 text-sm mb-4">Tell us the goal and we&rsquo;ll map the path. Book a free chat &mdash; no insider network required.</p>
+            <p className="text-white/70 text-sm mb-4">Tell us the goal and we&rsquo;ll map the path. Book a free chat, no insider network required.</p>
             <a href="https://wa.me/233531113454" className="btn-electric text-sm" target="_blank" rel="noopener">
               Let&rsquo;s talk
             </a>

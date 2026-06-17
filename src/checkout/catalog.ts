@@ -1,5 +1,5 @@
 /**
- * Service & product catalog — the SINGLE SOURCE OF TRUTH for prices.
+ * Service & product catalog, the SINGLE SOURCE OF TRUTH for prices.
  *
  * `amountPesewas` is the authoritative price. The serverless verify function
  * checks the amount Paystack reports against THIS table, so a tampered
@@ -28,6 +28,14 @@ export interface CatalogItem {
    * services (which are fulfilled manually by the team).
    */
   deliverablePath?: string;
+  /**
+   * Per-unit ("pick how many") items: the selectable options. When present,
+   * checkout shows a checklist, the buyer ticks one or more, and the charged
+   * amount is `amountPesewas * (number ticked)`. The server re-validates that
+   * each submitted option is in this list and recomputes the expected amount,
+   * so a tampered client can never under-pay. Used by the bootcamp drop-in.
+   */
+  sessions?: string[];
 }
 
 export const CURRENCY = 'GHS' as const;
@@ -35,11 +43,11 @@ export const CURRENCY = 'GHS' as const;
 export const CATALOG: Record<string, CatalogItem> = {
   // ── Career Flex Services (à la carte) ─────────────────────────
   // CV is tiered by career stage (feedback: Career Services tab).
-  'career-cv-early': { id: 'career-cv-early', name: 'CV — Early Career (0–3 yrs)', amountPesewas: 35000, type: 'service' },
-  'career-cv-experienced': { id: 'career-cv-experienced', name: 'CV — Experienced Professional (3–10 yrs)', amountPesewas: 40000, type: 'service' },
-  'career-cv-senior': { id: 'career-cv-senior', name: 'CV — Senior Executive (10+ yrs)', amountPesewas: 45000, type: 'service' },
-  'career-cover-letter-local': { id: 'career-cover-letter-local', name: 'Cover Letter — Local Applications', amountPesewas: 35000, type: 'service' },
-  'career-cover-letter-intl': { id: 'career-cover-letter-intl', name: 'Cover Letter — International Applications', amountPesewas: 40000, type: 'service' },
+  'career-cv-early': { id: 'career-cv-early', name: 'CV, Early Career (0–3 yrs)', amountPesewas: 35000, type: 'service' },
+  'career-cv-experienced': { id: 'career-cv-experienced', name: 'CV, Experienced Professional (3–10 yrs)', amountPesewas: 40000, type: 'service' },
+  'career-cv-senior': { id: 'career-cv-senior', name: 'CV, Senior Executive (10+ yrs)', amountPesewas: 45000, type: 'service' },
+  'career-cover-letter-local': { id: 'career-cover-letter-local', name: 'Cover Letter, Local Applications', amountPesewas: 35000, type: 'service' },
+  'career-cover-letter-intl': { id: 'career-cover-letter-intl', name: 'Cover Letter, International Applications', amountPesewas: 40000, type: 'service' },
   'career-linkedin': { id: 'career-linkedin', name: 'LinkedIn Optimisation', amountPesewas: 40000, type: 'service' },
   'career-interview-prep': { id: 'career-interview-prep', name: '1-on-1 Interview Preparation', amountPesewas: 50000, type: 'service' },
 
@@ -50,9 +58,9 @@ export const CATALOG: Record<string, CatalogItem> = {
   'bundle-comprehensive': { id: 'bundle-comprehensive', name: 'Comprehensive Job Search Bundle', amountPesewas: 825000, type: 'service' },
 
   // ── Grad School Flex Services (à la carte) ────────────────────
-  'edu-grad-cv-early': { id: 'edu-grad-cv-early', name: 'Grad School CV — Early Career (0–3 yrs)', amountPesewas: 35000, type: 'service' },
-  'edu-grad-cv-experienced': { id: 'edu-grad-cv-experienced', name: 'Grad School CV — Experienced (3–10 yrs)', amountPesewas: 40000, type: 'service' },
-  'edu-grad-cv-senior': { id: 'edu-grad-cv-senior', name: 'Grad School CV — Senior Executive (10+ yrs)', amountPesewas: 45000, type: 'service' },
+  'edu-grad-cv-early': { id: 'edu-grad-cv-early', name: 'Grad School CV, Early Career (0–3 yrs)', amountPesewas: 35000, type: 'service' },
+  'edu-grad-cv-experienced': { id: 'edu-grad-cv-experienced', name: 'Grad School CV, Experienced (3–10 yrs)', amountPesewas: 40000, type: 'service' },
+  'edu-grad-cv-senior': { id: 'edu-grad-cv-senior', name: 'Grad School CV, Senior Executive (10+ yrs)', amountPesewas: 45000, type: 'service' },
   'edu-linkedin': { id: 'edu-linkedin', name: 'LinkedIn Optimisation', amountPesewas: 40000, type: 'service' },
   'edu-school-selection': { id: 'edu-school-selection', name: 'School Selection & Programme Research', amountPesewas: 50000, type: 'service' },
   'edu-essay-500': { id: 'edu-essay-500', name: 'Personal Statement / SOP / Scholarship Essay (up to 500 words)', amountPesewas: 52000, type: 'service' },
@@ -61,8 +69,8 @@ export const CATALOG: Record<string, CatalogItem> = {
 
   // ── Grad School Bundles ───────────────────────────────────────
   'edu-bundle-strategic': { id: 'edu-bundle-strategic', name: 'Strategic Bundle', amountPesewas: 180000, type: 'service' },
-  'edu-bundle-silver-general': { id: 'edu-bundle-silver-general', name: 'Silver Bundle — Masters / Taught Programmes', amountPesewas: 900000, type: 'service' },
-  'edu-bundle-silver-mba': { id: 'edu-bundle-silver-mba', name: 'Silver Bundle — MBA / MFA / MRes', amountPesewas: 1200000, type: 'service' },
+  'edu-bundle-silver-general': { id: 'edu-bundle-silver-general', name: 'Silver Bundle, Masters / Taught Programmes', amountPesewas: 900000, type: 'service' },
+  'edu-bundle-silver-mba': { id: 'edu-bundle-silver-mba', name: 'Silver Bundle, MBA / MFA / MRes', amountPesewas: 1200000, type: 'service' },
   'edu-bundle-gold': { id: 'edu-bundle-gold', name: 'Gold Bundle', amountPesewas: 1400000, type: 'service' },
 
   // ── DIY digital products (auto-delivered) ─────────────────────
@@ -83,8 +91,24 @@ export const CATALOG: Record<string, CatalogItem> = {
   // ── Events ────────────────────────────────────────────────────
   // Get Into Grad School Bootcamp (Jul–Aug 2026). Full pass is the early-bird
   // price (regular GHS 1,500 shown struck through on the landing page).
-  'bootcamp-grad-full': { id: 'bootcamp-grad-full', name: 'Get Into Grad School Bootcamp — Full Access Pass (Early Bird)', amountPesewas: 120000, type: 'service', blurb: 'All 8 live sessions + bonuses + recordings' },
-  'bootcamp-grad-dropin': { id: 'bootcamp-grad-dropin', name: 'Get Into Grad School Bootcamp — Single Drop-In Session', amountPesewas: 30000, type: 'service', blurb: 'One session of your choice' },
+  'bootcamp-grad-full': { id: 'bootcamp-grad-full', name: 'Get Into Grad School Bootcamp, Full Access Pass (Early Bird)', amountPesewas: 120000, type: 'service', blurb: 'All 8 live sessions + bonuses + recordings' },
+  'bootcamp-grad-dropin': {
+    id: 'bootcamp-grad-dropin',
+    name: 'Get Into Grad School Bootcamp, Drop-In Sessions',
+    amountPesewas: 30000, // per session ticked
+    type: 'service',
+    blurb: 'The sessions of your choice',
+    sessions: [
+      'Your Graduate School Game Plan - July 26',
+      'Becoming the Candidate Admissions Committees Cannot Overlook - 28 July',
+      'The MBA Blueprint - 2 August',
+      'Personal Statements & Scholarship Essays - 4 August',
+      'Research Proposals, Pitching to Supervisors & Getting Funded - 9 August',
+      'Landing a Graduate Assistantship - 11 August',
+      'Deep Dive on Scholarships - 16 August',
+      'Visas & Getting Ready for School - 18 August',
+    ],
+  },
 };
 
 /** Look up an item; returns undefined for unknown ids (caller must reject). */

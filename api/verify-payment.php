@@ -1,6 +1,6 @@
 <?php
 /**
- * Paystack payment verification — Hostinger (LiteSpeed + PHP) endpoint.
+ * Paystack payment verification, Hostinger (LiteSpeed + PHP) endpoint.
  *
  * Deployed to /api/verify-payment.php. The browser sends a transaction
  * reference after the inline popup reports success; we DO NOT trust that.
@@ -9,7 +9,7 @@
  * server-side catalog price, (3) currency is GHS. Only then do we fulfil.
  *
  * Secrets are read from the environment (set them in hPanel, or in an
- * untracked api/config.php that putenv()s them — see .env.example):
+ * untracked api/config.php that putenv()s them, see .env.example):
  *   PAYSTACK_SECRET_KEY (required)
  *   TOSEND_API_KEY, OPS_EMAIL, MAIL_FROM, PUBLIC_APP_BASE_URL (fulfilment)
  *
@@ -62,7 +62,34 @@ if (!is_array($catalog) || !isset($catalog[$serviceId]) || !is_array($catalog[$s
     respond(['ok' => false, 'message' => 'Unknown service.'], 400);
 }
 $item = $catalog[$serviceId];
-$expectedAmount = (int) ($item['amountPesewas'] ?? -1);
+$unitAmount = (int) ($item['amountPesewas'] ?? -1);
+
+// Per-unit items (e.g. the bootcamp drop-in) carry a `sessions` allow-list.
+// The buyer ticks one or more; the expected amount is unit x (count ticked),
+// and any submitted session not in the catalog list is rejected. This keeps
+// the charged amount tamper-proof: you pay for exactly the sessions you claim.
+$allowed = (isset($item['sessions']) && is_array($item['sessions'])) ? $item['sessions'] : [];
+$sessions = is_array($body['sessions'] ?? null)
+    ? array_values(array_unique(array_filter(array_map(fn($s) => trim((string) $s), $body['sessions']), fn($s) => $s !== '')))
+    : [];
+if (!empty($allowed)) {
+    foreach ($sessions as $s) {
+        if (!in_array($s, $allowed, true)) {
+            respond(['ok' => false, 'message' => 'Unknown session selected.'], 400);
+        }
+    }
+    $count = count($sessions);
+    if ($count < 1) {
+        respond(['ok' => false, 'message' => 'Please select at least one session.'], 400);
+    }
+    if ($count > count($allowed)) {
+        respond(['ok' => false, 'message' => 'Too many sessions selected.'], 400);
+    }
+    $expectedAmount = $unitAmount * $count;
+} else {
+    $sessions = [];
+    $expectedAmount = $unitAmount;
+}
 
 // ── Verify with Paystack (secret key, server-side only) ──────────
 $ch = curl_init('https://api.paystack.co/transaction/verify/' . rawurlencode($reference));
@@ -99,7 +126,7 @@ if (!$apiOk || !$paidOk || !$amountOk || !$currencyOk) {
 $buyerEmail = trim((string) ($body['email'] ?? (is_array($txn) ? ($txn['customer']['email'] ?? '') : '')));
 $buyerName = trim((string) ($body['name'] ?? ''));
 try {
-    send_fulfilment($item, $reference, $buyerName, $buyerEmail);
+    send_fulfilment($item, $reference, $buyerName, $buyerEmail, $sessions, $expectedAmount);
 } catch (Throwable $e) {
     error_log('[verify-payment] fulfilment email failed (payment is still valid): ' . $e->getMessage());
 }

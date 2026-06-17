@@ -16,7 +16,7 @@ export function JrbThankYouPage() {
             </span>
             <h1 id="jrb-ty-heading" className="text-display-lg text-white mb-4">Congratulations!</h1>
             <p className="text-lg text-white/90 leading-relaxed max-w-xl mx-auto">
-              Welcome to the Job Readiness Bootcamp — and thank you for completing your payment.
+              Welcome to the Job Readiness Bootcamp, and thank you for completing your payment.
             </p>
           </div>
         </section>

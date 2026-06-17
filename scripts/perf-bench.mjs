@@ -221,7 +221,7 @@ try {
     const result = await benchRoute(browser, baseUrl, route);
     results.push(result);
     // Verdict is on LCP (the Core Web Vitals "loaded" metric the user perceives),
-    // not the load event — below-the-fold lazy images finish after load and a real
+    // not the load event, below-the-fold lazy images finish after load and a real
     // browser defers them until scroll, so loadMs over-counts. loadMs stays in the
     // report as a secondary signal.
     const target = 2000;

@@ -84,5 +84,5 @@ for (const r of results) {
   );
 }
 const fails = results.filter(r => !r.heroFullyInViewport || !r.ctaVisible);
-console.log(fails.length ? `\nWARN: ${fails.map(f => f.vp).join(', ')} — hero/CTA not fully above fold` : '\nALL OK: full hero (heading + subhead + CTAs) above the fold on every viewport');
+console.log(fails.length ? `\nWARN: ${fails.map(f => f.vp).join(', ')}, hero/CTA not fully above fold` : '\nALL OK: full hero (heading + subhead + CTAs) above the fold on every viewport');
 process.exit(fails.length ? 1 : 0);

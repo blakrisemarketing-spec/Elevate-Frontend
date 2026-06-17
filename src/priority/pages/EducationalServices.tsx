@@ -24,12 +24,12 @@ export function EducationalServicesPage() {
           crumbs={[{ label: 'Home', href: '/' }, { label: 'Educational Services' }]}
           intro={
             <p>
-              Getting into a top-tier programme &mdash; whether it&rsquo;s an MBA in the US, an MSc in Germany, or a fully funded scholarship in the Netherlands &mdash; takes more than good grades. We help you navigate the unwritten rules of global admissions, with documents that speak the language of each institution and support from people who have seen the inside of this process from every angle.
+              Getting into a top-tier programme, whether it&rsquo;s an MBA in the US, an MSc in Germany, or a fully funded scholarship in the Netherlands, takes more than good grades. We help you navigate the unwritten rules of global admissions, with documents that speak the language of each institution and support from people who have seen the inside of this process from every angle.
             </p>
           }
         />
 
-        {/* SECTION 1 — Flex (à la carte) services */}
+        {/* SECTION 1, Flex (à la carte) services */}
         <section aria-labelledby="flex-heading">
           <div className="container-site py-16">
             <div className="text-center max-w-2xl mx-auto mb-12">
@@ -39,16 +39,16 @@ export function EducationalServicesPage() {
             </div>
 
             <div className="grid gap-6 lg:grid-cols-2 max-w-5xl mx-auto">
-              {/* Grad CV — tiered */}
+              {/* Grad CV, tiered */}
               <article className="card flex flex-col h-full">
                 <h3 className="text-headline-md mb-2">Grad School CV</h3>
                 <p className="text-sm font-semibold text-primary mb-3">An academic CV that stops the rejection cycle.</p>
                 <p className="text-ink-muted leading-relaxed mb-5">
-                  A grad school CV isn&rsquo;t a job description; it&rsquo;s an intellectual roadmap. AdComs want to see your research potential, leadership impact, and academic trajectory &mdash; not your daily office tasks. We translate your history into a narrative that signals you&rsquo;re ready for postgraduate study at the highest level.
+                  A grad school CV isn&rsquo;t a job description; it&rsquo;s an intellectual roadmap. AdComs want to see your research potential, leadership impact, and academic trajectory, not your daily office tasks. We translate your history into a narrative that signals you&rsquo;re ready for postgraduate study at the highest level.
                 </p>
                 <ul className="flex flex-col gap-4 mt-auto">
                   <li>
-                    <p className="text-sm text-ink mb-2"><span className="font-semibold text-navy">Early Career (0&ndash;3 yrs).</span> For recent graduates moving into a first postgraduate application — positioned to speak directly to a master&rsquo;s admissions panel.</p>
+                    <p className="text-sm text-ink mb-2"><span className="font-semibold text-navy">Early Career (0&ndash;3 yrs).</span> For recent graduates moving into a first postgraduate application, positioned to speak directly to a master&rsquo;s admissions panel.</p>
                     <button type="button" className="btn-primary buy-btn w-full" data-service-id="edu-grad-cv-early">₵350 Investment · Early Career</button>
                   </li>
                   <li>
@@ -56,18 +56,18 @@ export function EducationalServicesPage() {
                     <button type="button" className="btn-primary buy-btn w-full" data-service-id="edu-grad-cv-experienced">₵400 Investment · Experienced</button>
                   </li>
                   <li>
-                    <p className="text-sm text-ink mb-2"><span className="font-semibold text-navy">Senior Executive (10+ yrs).</span> For executives pursuing MBAs, executive education, or research study — communicating leadership and a clear academic purpose.</p>
+                    <p className="text-sm text-ink mb-2"><span className="font-semibold text-navy">Senior Executive (10+ yrs).</span> For executives pursuing MBAs, executive education, or research study, communicating leadership and a clear academic purpose.</p>
                     <button type="button" className="btn-primary buy-btn w-full" data-service-id="edu-grad-cv-senior">₵450 Investment · Senior Executive</button>
                   </li>
                 </ul>
               </article>
 
-              {/* Essays — two lengths */}
+              {/* Essays, two lengths */}
               <article className="card flex flex-col h-full">
                 <h3 className="text-headline-md mb-2">Statements &amp; Scholarship Essays</h3>
                 <p className="text-sm font-semibold text-primary mb-3">The essay is where you win or lose.</p>
                 <p className="text-ink-muted leading-relaxed mb-5">
-                  The committee already knows your grades. The essay is the only place they see your <em>why</em>. We write personal statements, statements of purpose, study plans, and scholarship essays that are evidence-led and impact-oriented &mdash; mapping your journey directly to the programme&rsquo;s goals and the funder&rsquo;s criteria. Our clients have been shortlisted for Chevening, Gates Cambridge, Erasmus Mundus, DAAD, and Commonwealth.
+                  The committee already knows your grades. The essay is the only place they see your <em>why</em>. We write personal statements, statements of purpose, study plans, and scholarship essays that are evidence-led and impact-oriented, mapping your journey directly to the programme&rsquo;s goals and the funder&rsquo;s criteria. Our clients have been shortlisted for Chevening, Gates Cambridge, Erasmus Mundus, DAAD, and Commonwealth.
                 </p>
                 <div className="flex flex-col gap-3 mt-auto">
                   <button type="button" className="btn-primary buy-btn" data-service-id="edu-essay-500">₵520 Investment · up to 500 words</button>
@@ -93,7 +93,7 @@ export function EducationalServicesPage() {
                 <h3 className="text-headline-md mb-2">School Selection &amp; Programme Research</h3>
                 <p className="text-sm font-semibold text-primary mb-3">Apply where the door is already ajar.</p>
                 <p className="text-ink-muted leading-relaxed flex-1">
-                  One of the most expensive mistakes you can make is applying to a big-name school that&rsquo;s a bad fit for your profile or your wallet. We build a strategic, realistic shortlist across Europe, the UK, and Canada based on where you have the highest chance of admission &mdash; and, more importantly, funding.
+                  One of the most expensive mistakes you can make is applying to a big-name school that&rsquo;s a bad fit for your profile or your wallet. We build a strategic, realistic shortlist across Europe, the UK, and Canada based on where you have the highest chance of admission, and, more importantly, funding.
                 </p>
                 <div className="mt-5 flex items-baseline gap-2">
                   <span className="text-display-lg text-primary leading-none">₵500</span>
@@ -106,7 +106,7 @@ export function EducationalServicesPage() {
                 <h3 className="text-headline-md mb-2">1-on-1 Consultation &amp; Interview Preparation</h3>
                 <p className="text-sm font-semibold text-primary mb-3">Talk to someone who&rsquo;s been inside the room.</p>
                 <p className="text-ink-muted leading-relaxed flex-1">
-                  Consultations cover application strategy, programme selection, essay direction, and any part of the process where you need clarity before moving forward. Interview preparation is available for programmes that require it &mdash; including MBA programmes, scholarship finals, and research degree interviews &mdash; grounded in real knowledge of what panels in the UK, Europe, and North America are looking for.
+                  Consultations cover application strategy, programme selection, essay direction, and any part of the process where you need clarity before moving forward. Interview preparation is available for programmes that require it, including MBA programmes, scholarship finals, and research degree interviews, grounded in real knowledge of what panels in the UK, Europe, and North America are looking for.
                 </p>
                 <div className="mt-5 flex items-baseline gap-2">
                   <span className="text-display-lg text-primary leading-none">₵500</span>
@@ -127,7 +127,7 @@ export function EducationalServicesPage() {
           </div>
         </section>
 
-        {/* SECTION 2 — Bundles */}
+        {/* SECTION 2, Bundles */}
         <section className="bg-surface" aria-labelledby="bundles-heading">
           <div className="container-site py-16">
             <div className="text-center max-w-2xl mx-auto mb-12">

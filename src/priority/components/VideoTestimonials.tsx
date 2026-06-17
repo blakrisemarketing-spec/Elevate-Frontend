@@ -1,7 +1,7 @@
 import { VIDEO_TESTIMONIALS } from '../data/testimonials';
 
 /**
- * Video testimonials row (Vimeo). Lazy-loaded iframes — below the fold, so they
+ * Video testimonials row (Vimeo). Lazy-loaded iframes, below the fold, so they
  * don't affect LCP. Keeps the zero-JS rule: the page ships no JS; the player
  * runs inside Vimeo's sandboxed iframe. Needs `player.vimeo.com` in the CSP.
  */

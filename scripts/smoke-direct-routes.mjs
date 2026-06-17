@@ -85,7 +85,7 @@ const generatedAt = new Date().toISOString();
 await fs.mkdir(outDir, { recursive: true, mode: 0o700 });
 await fs.writeFile(path.join(outDir, 'direct-route-smoke-20260510.json'), JSON.stringify({ generatedAt, base, total: results.length, failed: failed.length, results }, null, 2));
 const md = [
-  '# Direct Route Smoke Check — 2026-05-10',
+  '# Direct Route Smoke Check, 2026-05-10',
   '',
   `Generated: ${generatedAt}`,
   '',

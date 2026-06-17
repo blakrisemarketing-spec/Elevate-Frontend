@@ -17,7 +17,7 @@ export function BlogIndexPage() {
           eyebrow="Blog"
           title="Career & education insights"
           crumbs={[{ label: 'Home', href: '/' }, { label: 'Blog' }]}
-          intro={<p>Practical advice on CVs, applications, interviews, and standing out — from the Elevate Career Hub team.</p>}
+          intro={<p>Practical advice on CVs, applications, interviews, and standing out, from the Elevate Career Hub team.</p>}
         />
 
         <section className="container-site py-16" aria-labelledby="articles-heading">

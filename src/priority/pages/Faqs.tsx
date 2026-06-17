@@ -30,7 +30,7 @@ export function FaqsPage() {
         <FinalCTA
           eyebrow="Still have a question?"
           heading="Ask us anything"
-          subheading="Tell us what you’re working on and we’ll point you to the right next step — no insider network required."
+          subheading="Tell us what you’re working on and we’ll point you to the right next step, no insider network required."
         />
       </main>
 

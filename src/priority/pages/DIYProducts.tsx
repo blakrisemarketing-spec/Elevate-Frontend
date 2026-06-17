@@ -60,7 +60,7 @@ const PRODUCTS: Product[] = [
   },
   {
     title: 'The Complete Job Search Bundle',
-    description: 'Everything you need to find, land, and start your next role — CV, cover letter, LinkedIn, and interview resources in one package.',
+    description: 'Everything you need to find, land, and start your next role, CV, cover letter, LinkedIn, and interview resources in one package.',
     price: '₵ 250.00',
     href: '/product/the-complete-job-search-bundle/',
     serviceId: 'diy-complete-job-search',
@@ -80,7 +80,7 @@ export function DIYProductsPage() {
           crumbs={[{ label: 'Home', href: '/' }, { label: 'DIY Products' }]}
           intro={
             <p>
-              Want to start on your own? These are the resume templates, interview guides, and prep tools we wish we&rsquo;d had at the beginning &mdash; practical, no fluff, built to get you moving today. Best for self-starters who want structured guidance, with the option to bring us in whenever you want a hand.
+              Want to start on your own? These are the resume templates, interview guides, and prep tools we wish we&rsquo;d had at the beginning, practical, no fluff, built to get you moving today. Best for self-starters who want structured guidance, with the option to bring us in whenever you want a hand.
             </p>
           }
         />

@@ -45,14 +45,14 @@ async function callOurVerify(reference, serviceId) {
 }
 
 function line(label, ok, detail) {
-  console.log(`${ok ? 'PASS' : 'FAIL'} — ${label}${detail ? ` :: ${detail}` : ''}`);
+  console.log(`${ok ? 'PASS' : 'FAIL'}, ${label}${detail ? ` :: ${detail}` : ''}`);
   return ok;
 }
 
 const results = [];
 console.log('--- Generating real test transactions via Paystack Charge API ---');
 
-// Test 1: happy path — pay ₵350, claim career-cv-early (₵350) → expect 200 ok + emails
+// Test 1: happy path, pay ₵350, claim career-cv-early (₵350) → expect 200 ok + emails
 {
   const c = await chargeTestCard(35000, BUYER);
   console.log(`  charge ₵350 → status=${c.status} amount=${c.amount} ref=${c.reference}`);
@@ -64,7 +64,7 @@ console.log('--- Generating real test transactions via Paystack Charge API ---')
   }
 }
 
-// Test 2: ANTI-TAMPER — real successful ₵1, claim career-cv-early (₵350) → expect 402 reject
+// Test 2: ANTI-TAMPER, real successful ₵1, claim career-cv-early (₵350) → expect 402 reject
 {
   const c = await chargeTestCard(100, BUYER);
   console.log(`  charge ₵1 → status=${c.status} amount=${c.amount} ref=${c.reference}`);
@@ -76,7 +76,7 @@ console.log('--- Generating real test transactions via Paystack Charge API ---')
   }
 }
 
-// Test 3: DIY product — pay ₵75, claim diy-remote-job-playbook → expect 200 + deliverablePath
+// Test 3: DIY product, pay ₵75, claim diy-remote-job-playbook → expect 200 + deliverablePath
 {
   const c = await chargeTestCard(7500, BUYER);
   console.log(`  charge ₵75 → status=${c.status} amount=${c.amount} ref=${c.reference}`);

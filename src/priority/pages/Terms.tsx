@@ -65,8 +65,8 @@ export function TermsPage() {
 
       <LH2>Intellectual property</LH2>
       <LP>
-        All content on our website and in our products — including text, templates, guides, graphics, and
-        branding — belongs to Elevate Career Hub or its licensors and is protected by applicable laws. You
+        All content on our website and in our products, including text, templates, guides, graphics, and
+        branding, belongs to Elevate Career Hub or its licensors and is protected by applicable laws. You
         may not copy, reproduce, or reuse it except as expressly permitted.
       </LP>
 

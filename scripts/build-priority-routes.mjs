@@ -18,7 +18,7 @@ import { build as esbuild } from 'esbuild';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 // fileURLToPath (not URL.pathname) so paths containing spaces or other
-// URL-encoded characters — e.g. ".../01. GitHub/..." — resolve correctly.
+// URL-encoded characters, e.g. ".../01. GitHub/...", resolve correctly.
 const projectRoot = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 const distRoot = path.join(projectRoot, 'dist');
 const cssPath = path.join(projectRoot, '.tmp', 'priority.css');
@@ -38,7 +38,7 @@ const ORG = {
   logo: SITE_URL + '/assets/icons/icon-512.png',
   email: 'hello@elevatecareerhub.com',
   telephone: '+233531113454',
-  description: 'Elevate Career Hub helps ambitious people break into top jobs, top universities, and new careers at home or abroad — no insider network required.',
+  description: 'Elevate Career Hub helps ambitious people break into top jobs, top universities, and new careers at home or abroad, no insider network required.',
   sameAs: [
     'https://www.instagram.com/elevatecareerhub/',
     'https://www.tiktok.com/@elevatecareerhub',
@@ -55,7 +55,7 @@ const WEBSITE = {
 const BOOTCAMP_COURSE = {
   '@type': 'Course',
   name: 'Get Into Grad School Bootcamp',
-  description: 'An 8-session intensive bootcamp covering school selection, personal statements, scholarships, research proposals, graduate assistantships, MBA strategy, and visas — led by Chevening, DAAD, Mastercard and Forté scholars and top-MBA facilitators.',
+  description: 'An 8-session intensive bootcamp covering school selection, personal statements, scholarships, research proposals, graduate assistantships, MBA strategy, and visas, led by Chevening, DAAD, Mastercard and Forté scholars and top-MBA facilitators.',
   url: SITE_URL + '/get-into-grad-school-bootcamp/',
   provider: { '@id': ORG['@id'] },
 };
@@ -97,7 +97,7 @@ const PRIORITY_ROUTES = [
     outDir: '',
     entry: 'src/priority/pages/Home.tsx',
     component: 'HomePage',
-    title: 'Elevate Career Hub — Career & Education Support in Ghana',
+    title: 'Elevate Career Hub, Career & Education Support in Ghana',
     description: 'Elevate Career Hub helps students, graduates, and professionals strengthen applications, CVs, interviews, and education plans with practical expert support.',
     canonical: 'https://elevatecareerhub.com/',
     ogImage: OG_IMAGE,
@@ -117,7 +117,7 @@ const PRIORITY_ROUTES = [
     outDir: 'career-services',
     entry: 'src/priority/pages/CareerServices.tsx',
     component: 'CareerServicesPage',
-    title: 'Career Services — CVs, Cover Letters, LinkedIn & Interview Prep',
+    title: 'Career Services, CVs, Cover Letters, LinkedIn & Interview Prep',
     description: 'Get expert support with CV writing, cover letters, LinkedIn optimization, interview preparation, and career bundles tailored to your goals.',
     canonical: 'https://elevatecareerhub.com/career-services/',
     ogImage: OG_IMAGE,
@@ -128,7 +128,7 @@ const PRIORITY_ROUTES = [
     outDir: 'educational-services',
     entry: 'src/priority/pages/EducationalServices.tsx',
     component: 'EducationalServicesPage',
-    title: 'Educational Services — Graduate School & Scholarship Support',
+    title: 'Educational Services, Graduate School & Scholarship Support',
     description: 'Prepare stronger graduate school and scholarship applications with support for CVs, essays, school selection, references, and interviews.',
     canonical: 'https://elevatecareerhub.com/educational-services/',
     ogImage: OG_IMAGE,
@@ -139,7 +139,7 @@ const PRIORITY_ROUTES = [
     outDir: 'diy-products',
     entry: 'src/priority/pages/DIYProducts.tsx',
     component: 'DIYProductsPage',
-    title: 'DIY Career & Education Products — Elevate Career Hub',
+    title: 'DIY Career & Education Products, Elevate Career Hub',
     description: 'Explore Elevate Career Hub DIY resources for career and education planning, then message us on WhatsApp for purchase support or guidance.',
     canonical: 'https://elevatecareerhub.com/diy-products/',
     ogImage: OG_IMAGE,
@@ -160,7 +160,7 @@ const PRIORITY_ROUTES = [
     outDir: 'payment/confirmed',
     entry: 'src/priority/pages/PaymentConfirmed.tsx',
     component: 'PaymentConfirmedPage',
-    title: 'Payment Confirmed — Elevate Career Hub',
+    title: 'Payment Confirmed, Elevate Career Hub',
     description: 'Your Elevate Career Hub payment was successful.',
     canonical: 'https://elevatecareerhub.com/payment/confirmed/',
     ogImage: OG_IMAGE,
@@ -171,7 +171,7 @@ const PRIORITY_ROUTES = [
     outDir: 'privacy-policy',
     entry: 'src/priority/pages/PrivacyPolicy.tsx',
     component: 'PrivacyPolicyPage',
-    title: 'Privacy Policy — Elevate Career Hub',
+    title: 'Privacy Policy, Elevate Career Hub',
     description: 'How Elevate Career Hub collects, uses, and protects your personal information.',
     canonical: 'https://elevatecareerhub.com/privacy-policy/',
     ogImage: OG_IMAGE,
@@ -181,7 +181,7 @@ const PRIORITY_ROUTES = [
     outDir: 'terms',
     entry: 'src/priority/pages/Terms.tsx',
     component: 'TermsPage',
-    title: 'Terms & Services — Elevate Career Hub',
+    title: 'Terms & Services, Elevate Career Hub',
     description: 'The terms that govern your use of the Elevate Career Hub website, services, and digital products.',
     canonical: 'https://elevatecareerhub.com/terms/',
     ogImage: OG_IMAGE,
@@ -191,7 +191,7 @@ const PRIORITY_ROUTES = [
     outDir: 'refund-policy',
     entry: 'src/priority/pages/RefundPolicy.tsx',
     component: 'RefundPolicyPage',
-    title: 'Refund & Delivery Policy — Elevate Career Hub',
+    title: 'Refund & Delivery Policy, Elevate Career Hub',
     description: 'How Elevate Career Hub delivers its services and digital products, and when refunds apply.',
     canonical: 'https://elevatecareerhub.com/refund-policy/',
     ogImage: OG_IMAGE,
@@ -201,7 +201,7 @@ const PRIORITY_ROUTES = [
     outDir: 'faqs',
     entry: 'src/priority/pages/Faqs.tsx',
     component: 'FaqsPage',
-    title: 'Frequently Asked Questions — Elevate Career Hub',
+    title: 'Frequently Asked Questions, Elevate Career Hub',
     description: 'Answers to common questions about Elevate Career Hub services, payments, and process.',
     canonical: 'https://elevatecareerhub.com/faqs/',
     ogImage: OG_IMAGE,
@@ -211,8 +211,8 @@ const PRIORITY_ROUTES = [
     outDir: 'blog',
     entry: 'src/priority/pages/BlogIndex.tsx',
     component: 'BlogIndexPage',
-    title: 'Blog — Career & Education Insights | Elevate Career Hub',
-    description: 'Practical advice on CVs, applications, interviews, and standing out — from the Elevate Career Hub team.',
+    title: 'Blog, Career & Education Insights | Elevate Career Hub',
+    description: 'Practical advice on CVs, applications, interviews, and standing out, from the Elevate Career Hub team.',
     canonical: 'https://elevatecareerhub.com/blog/',
     ogImage: OG_IMAGE,
   },
@@ -221,7 +221,7 @@ const PRIORITY_ROUTES = [
     outDir: 'job-readiness-bootcamp',
     entry: 'src/priority/pages/JobReadinessBootcamp.tsx',
     component: 'JobReadinessBootcampPage',
-    title: 'Job Readiness Bootcamp — Elevate Career Hub',
+    title: 'Job Readiness Bootcamp, Elevate Career Hub',
     description: 'An 8-session live bootcamp to help you stop applying blindly and start getting interviews.',
     canonical: 'https://elevatecareerhub.com/job-readiness-bootcamp/',
     ogImage: OG_IMAGE,
@@ -231,7 +231,7 @@ const PRIORITY_ROUTES = [
     outDir: 'jrb-thank-you',
     entry: 'src/priority/pages/JrbThankYou.tsx',
     component: 'JrbThankYouPage',
-    title: 'Welcome to the Job Readiness Bootcamp — Elevate Career Hub',
+    title: 'Welcome to the Job Readiness Bootcamp, Elevate Career Hub',
     description: 'Thank you for joining the Job Readiness Bootcamp.',
     canonical: 'https://elevatecareerhub.com/jrb-thank-you/',
     ogImage: OG_IMAGE,
@@ -242,7 +242,7 @@ const PRIORITY_ROUTES = [
     outDir: 'lets-keep-in-touch',
     entry: 'src/priority/pages/LetsKeepInTouch.tsx',
     component: 'LetsKeepInTouchPage',
-    title: 'Let’s Keep in Touch — Elevate Career Hub',
+    title: 'Let’s Keep in Touch, Elevate Career Hub',
     description: 'Follow along and reach out for practical career and scholarship tips from Elevate Career Hub.',
     canonical: 'https://elevatecareerhub.com/lets-keep-in-touch/',
     ogImage: OG_IMAGE,
@@ -252,21 +252,21 @@ const PRIORITY_ROUTES = [
     outDir: 'get-into-grad-school-bootcamp',
     entry: 'src/priority/pages/GradSchoolBootcamp.tsx',
     component: 'GradSchoolBootcampPage',
-    title: 'Get Into Grad School Bootcamp — Elevate Career Hub',
-    description: 'An 8-session intensive bootcamp covering school selection, essays, funding, scholarships, and visas — led by Chevening, DAAD and Mastercard scholars and top-MBA facilitators.',
+    title: 'Get Into Grad School Bootcamp, Elevate Career Hub',
+    description: 'An 8-session intensive bootcamp covering school selection, essays, funding, scholarships, and visas, led by Chevening, DAAD and Mastercard scholars and top-MBA facilitators.',
     canonical: 'https://elevatecareerhub.com/get-into-grad-school-bootcamp/',
     ogImage: OG_IMAGE,
     hasCheckout: true,
   },
   {
     // Branded 404. Written to dist/404.html (not a route dir) and wired via
-    // ErrorDocument in .htaccess. Not in registry.ts/pages.json — it is an error
+    // ErrorDocument in .htaccess. Not in registry.ts/pages.json, it is an error
     // document, not a navigable route.
     route: '/404.html',
     outFile: '404.html',
     entry: 'src/priority/pages/NotFound.tsx',
     component: 'NotFoundPage',
-    title: 'Page not found — Elevate Career Hub',
+    title: 'Page not found, Elevate Career Hub',
     description: 'The page you are looking for could not be found.',
     canonical: 'https://elevatecareerhub.com/404.html',
     ogImage: OG_IMAGE,
@@ -338,7 +338,7 @@ async function generateDataRoutes() {
       outDir: toOutDir(post.route),
       entry: 'src/priority/pages/BlogPost.tsx',
       component: 'BlogPostPage',
-      title: `${post.title} — Elevate Career Hub`,
+      title: `${post.title}, Elevate Career Hub`,
       description: post.excerpt,
       canonical: url,
       ogImage: OG_IMAGE,
@@ -418,7 +418,7 @@ async function loadModuleExports(entry) {
  * Build dist/.htaccess from deploy/htaccess.conf, injecting the set of known
  * "virtual" SPA routes so unknown URLs return a real 404 (ErrorDocument) instead
  * of a soft-200 homepage. The allowlist is generated from src/generated/pages.json
- * — the same manifest the SPA uses — so it cannot drift from the app's routes.
+ *, the same manifest the SPA uses, so it cannot drift from the app's routes.
  *
  * Safety: throws (aborting the build) if the manifest is missing/too small or the
  * generated regex fails its self-test, rather than ever shipping an .htaccess that
@@ -481,9 +481,9 @@ async function buildHtaccess() {
 
 /**
  * Emit the Hostinger deploy artifacts into dist/:
- *   - api/catalog.json  (generated from the TS catalog — single source of truth)
+ *   - api/catalog.json  (generated from the TS catalog, single source of truth)
  *   - api/verify-payment.php  (copied)
- *   - .htaccess  (generated from deploy/htaccess.conf — see buildHtaccess)
+ *   - .htaccess  (generated from deploy/htaccess.conf, see buildHtaccess)
  */
 async function emitDeployArtifacts() {
   const { CATALOG } = await loadModuleExports('src/checkout/catalog.ts');
@@ -494,6 +494,7 @@ async function emitDeployArtifacts() {
       amountPesewas: item.amountPesewas,
       type: item.type,
       deliverablePath: item.deliverablePath || null,
+      sessions: item.sessions || null,
     };
   }
   await ensureDir(path.join(distRoot, 'api'));
@@ -595,11 +596,11 @@ async function main() {
   try {
     css = await fs.readFile(cssPath, 'utf8');
   } catch {
-    throw new Error(`Tailwind CSS not found at ${cssPath} — run "tailwindcss -i src/priority/styles.css -o .tmp/priority.css --minify" first`);
+    throw new Error(`Tailwind CSS not found at ${cssPath}, run "tailwindcss -i src/priority/styles.css -o .tmp/priority.css --minify" first`);
   }
 
   // Static routes + data-driven detail routes (products, services) generated
-  // from src/priority/data/*.ts — the same source the dev registry uses.
+  // from src/priority/data/*.ts, the same source the dev registry uses.
   const dataRoutes = await generateDataRoutes();
   const ALL_ROUTES = [...PRIORITY_ROUTES, ...dataRoutes];
 

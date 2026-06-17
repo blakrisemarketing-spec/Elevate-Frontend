@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 // fileURLToPath (not URL.pathname) so paths containing spaces or other
-// URL-encoded characters — e.g. ".../01. GitHub/..." — resolve correctly.
+// URL-encoded characters, e.g. ".../01. GitHub/...", resolve correctly.
 const projectRoot = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 const sourceRoot = path.join(projectRoot, 'Wordpress Files');
 const distRoot = path.join(projectRoot, 'dist');
@@ -38,7 +38,7 @@ const priorityRoutes = new Set(routes.map(route => route.route));
 
 const launchSeoByRoute = new Map([
   ['/', {
-    title: 'Elevate Career Hub — Career & Education Support in Ghana',
+    title: 'Elevate Career Hub, Career & Education Support in Ghana',
     h1: 'Complete Hub for Career and Education Success',
     description: 'Elevate Career Hub helps students, graduates, and professionals strengthen applications, CVs, interviews, and education plans with practical expert support.',
   }],
@@ -48,17 +48,17 @@ const launchSeoByRoute = new Map([
     description: 'Learn how Elevate Career Hub supports career growth and education goals through practical guidance, trusted resources, and personalized services.',
   }],
   ['/career-services/', {
-    title: 'Career Services — CVs, Cover Letters, LinkedIn & Interview Prep',
+    title: 'Career Services, CVs, Cover Letters, LinkedIn & Interview Prep',
     h1: 'Career Services That Help You Stand Out',
     description: 'Get expert support with CV writing, cover letters, LinkedIn optimization, interview preparation, and career bundles tailored to your goals.',
   }],
   ['/educational-services/', {
-    title: 'Educational Services — Graduate School & Scholarship Support',
+    title: 'Educational Services, Graduate School & Scholarship Support',
     h1: 'Education Support for Stronger Applications',
     description: 'Prepare stronger graduate school and scholarship applications with support for CVs, essays, school selection, references, and interviews.',
   }],
   ['/diy-products/', {
-    title: 'DIY Career & Education Products — Elevate Career Hub',
+    title: 'DIY Career & Education Products, Elevate Career Hub',
     h1: 'Practical DIY Resources for Your Next Step',
     description: 'Explore Elevate Career Hub DIY resources for career and education planning, then message us for purchase support or guidance.',
   }],
@@ -347,7 +347,7 @@ html[data-ech-source="local-wordpress-html"] *::after {
 }
 /* Elementor's animation library normally removes .elementor-invisible after firing
    the entry animation. We don't ship that JS for the static MVP, so we force the
-   invisibility off — content must be visible on a static export. */
+   invisibility off, content must be visible on a static export. */
 html[data-ech-source="local-wordpress-html"] .elementor-invisible {
   visibility: visible !important;
   opacity: 1 !important;
@@ -913,31 +913,31 @@ const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/assets/wp-content/uploads/2024/01/2.png
 
 const NON_PRIORITY_SEO = new Map([
   ['/blog/', {
-    title: 'News & Insights — Elevate Career Hub',
+    title: 'News & Insights, Elevate Career Hub',
     h1: 'News & Insights',
     description: 'Latest Elevate Career Hub articles on resumes, cover letters, interviews, applications, and education planning.',
     summary: 'Latest articles from Elevate Career Hub, organized as a clean editorial feed.',
   }],
   ['/career-strategy-session/', {
-    title: '1-on-1 Career Strategy Session — Elevate Career Hub',
+    title: '1-on-1 Career Strategy Session, Elevate Career Hub',
     h1: 'Career Strategy Session',
     description: 'Book a 1-on-1 career strategy session with Elevate Career Hub to map your next career move with a clear, practical plan.',
     summary: 'Sit down with an Elevate Career Hub advisor for a focused 1-on-1 session. We help you clarify your goals, weigh your options, and leave with a clear plan for the next stretch of your career.',
   }],
   ['/cover-letter/', {
-    title: 'Cover Letter Writing Service — Elevate Career Hub',
+    title: 'Cover Letter Writing Service, Elevate Career Hub',
     h1: 'Cover Letter Writing',
     description: 'Get a tailored, compelling cover letter from Elevate Career Hub that introduces you to employers and matches the role you want.',
     summary: 'A great cover letter does the introducing for you. Elevate Career Hub writes tailored cover letters that match the role, sound like you, and give the hiring manager a reason to keep reading.',
   }],
   ['/curriculum-vitae/', {
-    title: 'CV Writing Service — Elevate Career Hub',
+    title: 'CV Writing Service, Elevate Career Hub',
     h1: 'Curriculum Vitae (CV) Writing',
     description: 'Elevate Career Hub builds professional CVs that tell your story clearly and position you for the roles you want.',
-    summary: 'Your CV is more than a document — it is your professional story. Elevate Career Hub helps you structure it, sharpen it, and position your experience for the roles you actually want.',
+    summary: 'Your CV is more than a document, it is your professional story. Elevate Career Hub helps you structure it, sharpen it, and position your experience for the roles you actually want.',
   }],
   ['/faqs/', {
-    title: 'Frequently Asked Questions — Elevate Career Hub',
+    title: 'Frequently Asked Questions, Elevate Career Hub',
     h1: 'Frequently Asked Questions',
     description: 'Answers to common questions about Elevate Career Hub services, pricing, timelines, and how to get started.',
     summary: 'Quick answers about the services we offer, how long things take, what we charge, and how to get started. If your question is not here, message us on WhatsApp and we will help.',
@@ -945,102 +945,102 @@ const NON_PRIORITY_SEO = new Map([
   ['/how-our-career-development-company-can-help-you-stand-out/', {
     title: 'How Elevate Career Hub Helps You Stand Out',
     h1: 'How Our Career Development Company Helps You Stand Out',
-    description: 'How Elevate Career Hub helps you stand out — strong resumes, compelling cover letters, polished LinkedIn, and confident interviews.',
-    summary: 'Standing out in a competitive market takes more than effort — it takes the right materials and the right plan. Here is how Elevate Career Hub helps you put both in place.',
+    description: 'How Elevate Career Hub helps you stand out, strong resumes, compelling cover letters, polished LinkedIn, and confident interviews.',
+    summary: 'Standing out in a competitive market takes more than effort, it takes the right materials and the right plan. Here is how Elevate Career Hub helps you put both in place.',
   }],
   ['/how-to-boost-your-career-with-professional-resume-writing/', {
     title: 'Boost Your Career with Professional Resume Writing',
     h1: 'How to Boost Your Career with Professional Resume Writing',
-    description: 'Why a professionally written resume can change your career trajectory — and how Elevate Career Hub builds yours.',
-    summary: 'A strong resume opens doors. Recent graduate or seasoned professional, this is how a professionally written resume — and the Elevate Career Hub approach — moves your career forward.',
+    description: 'Why a professionally written resume can change your career trajectory, and how Elevate Career Hub builds yours.',
+    summary: 'A strong resume opens doors. Recent graduate or seasoned professional, this is how a professionally written resume, and the Elevate Career Hub approach, moves your career forward.',
   }],
   ['/interview-preparation-session/', {
-    title: 'Interview Preparation Session — Elevate Career Hub',
+    title: 'Interview Preparation Session, Elevate Career Hub',
     h1: 'Interview Preparation Session',
     description: 'Practice with an Elevate Career Hub coach to walk into your next interview prepared, focused, and confident.',
     summary: 'Interviews are the gateway to the role you want. Elevate Career Hub runs focused 1-on-1 prep sessions so you walk in calm, sharp, and ready to answer the questions that matter.',
   }],
   ['/job-readiness-bootcamp/', {
-    title: 'Job Readiness Bootcamp — Elevate Career Hub',
+    title: 'Job Readiness Bootcamp, Elevate Career Hub',
     h1: 'Job Readiness Bootcamp',
     description: 'A live online bootcamp from Elevate Career Hub to stop applying blindly and start getting interviews.',
     summary: 'Stop applying blindly. The Elevate Career Hub Job Readiness Bootcamp is a live online programme that closes the gap between being qualified and actually getting interviews.',
   }],
   ['/jrb-thank-you/', {
-    title: 'Welcome to the Job Readiness Bootcamp — Elevate Career Hub',
+    title: 'Welcome to the Job Readiness Bootcamp, Elevate Career Hub',
     h1: 'Welcome to the Job Readiness Bootcamp',
     description: 'Thanks for completing payment for the Elevate Career Hub Job Readiness Bootcamp. One short form left to tailor your experience.',
     summary: 'Thanks for completing your payment for the Job Readiness Bootcamp. One short form left so we can tailor the experience to your goals before we begin.',
     noindex: true,
   }],
   ['/lets-keep-in-touch/', {
-    title: 'Let’s Keep in Touch — Elevate Career Hub',
+    title: 'Let’s Keep in Touch, Elevate Career Hub',
     h1: 'Let’s Keep in Touch',
     description: 'Stay in touch with Elevate Career Hub for career and education tips, new resources, and programme announcements.',
     summary: 'We share practical career and education tips, new DIY resources, and programme dates a few times a month. Drop your email and we will keep you in the loop.',
   }],
   ['/linkedin-optimization/', {
-    title: 'LinkedIn Optimization Service — Elevate Career Hub',
+    title: 'LinkedIn Optimization Service, Elevate Career Hub',
     h1: 'LinkedIn Optimization',
     description: 'Elevate Career Hub turns your LinkedIn profile into a polished, recruiter-ready version of your professional brand.',
     summary: 'Your LinkedIn profile is your digital handshake. Elevate Career Hub rewrites it to look polished, sound like you, and tell recruiters exactly why they should reach out.',
   }],
   ['/product/becoming-a-job-magnet-on-linkedin/', {
-    title: 'Becoming a Job Magnet on LinkedIn — DIY Product',
+    title: 'Becoming a Job Magnet on LinkedIn, DIY Product',
     h1: 'Becoming a Job Magnet on LinkedIn',
     description: 'A DIY guide from Elevate Career Hub to turn your LinkedIn profile into a job-attracting asset.',
     summary: 'A self-guided product from Elevate Career Hub. Follow the framework to rebuild your LinkedIn profile, attract the right recruiters, and turn LinkedIn into a job-search advantage.',
   }],
   ['/product/complete-grad-school-bundle/', {
-    title: 'Complete Grad School Bundle — DIY Product',
+    title: 'Complete Grad School Bundle, DIY Product',
     h1: 'Complete Grad School Bundle',
-    description: 'An all-in-one Elevate Career Hub DIY bundle for graduate school applicants — essays, CV, references, and more.',
+    description: 'An all-in-one Elevate Career Hub DIY bundle for graduate school applicants, essays, CV, references, and more.',
     summary: 'An all-in-one DIY bundle for graduate school applicants. Templates, examples, and walkthroughs for the essays, CV, and supporting materials a strong application needs.',
   }],
   ['/product/how-to-write-the-resume-that-lands-the-interview/', {
-    title: 'How to Write the Resume That Lands the Interview — DIY Product',
+    title: 'How to Write the Resume That Lands the Interview, DIY Product',
     h1: 'How to Write the Resume That Lands the Interview',
     description: 'An Elevate Career Hub DIY product on writing the kind of resume that actually gets you to interview.',
     summary: 'Write the resume that gets you to interview. This Elevate Career Hub DIY product walks through the structure, language, and framing that hiring managers actually respond to.',
   }],
   ['/product/mastering-the-art-of-job-hunting-in-the-uk-as-an-international-student/', {
-    title: 'Job Hunting in the UK as an International Student — DIY Product',
+    title: 'Job Hunting in the UK as an International Student, DIY Product',
     h1: 'Mastering the Art of Job Hunting in the UK as an International Student',
-    description: 'Elevate Career Hub DIY guide for international students job-hunting in the UK — the rules, the strategy, the playbook.',
+    description: 'Elevate Career Hub DIY guide for international students job-hunting in the UK, the rules, the strategy, the playbook.',
     summary: 'A DIY playbook for international students job-hunting in the UK. The visa rules, the application strategy, and the small moves that turn applications into offers.',
   }],
   ['/product/nailing-your-job-interviews/', {
-    title: 'Nailing Your Job Interviews — DIY Product',
+    title: 'Nailing Your Job Interviews, DIY Product',
     h1: 'Nailing Your Job Interviews',
     description: 'A DIY interview preparation product from Elevate Career Hub to help you walk in prepared and walk out remembered.',
     summary: 'Interview prep you can run on your own time. Frameworks, sample answers, and walkthroughs from Elevate Career Hub for the questions that decide whether you get the offer.',
   }],
   ['/product/remote-job-playbook/', {
-    title: 'Remote Job Playbook — DIY Product',
+    title: 'Remote Job Playbook, DIY Product',
     h1: 'Remote Job Playbook',
     description: 'An Elevate Career Hub DIY playbook for landing legitimate, well-paid remote roles.',
     summary: 'A practical playbook for landing legitimate, well-paid remote roles. Where to look, how to position yourself, and how to stand out in a remote-first hiring process.',
   }],
   ['/product/the-complete-job-search-bundle/', {
-    title: 'The Complete Job Search Bundle — DIY Product',
+    title: 'The Complete Job Search Bundle, DIY Product',
     h1: 'The Complete Job Search Bundle',
     description: 'Elevate Career Hub’s end-to-end DIY bundle covering CV, cover letter, LinkedIn, and interview prep.',
-    summary: 'The end-to-end DIY bundle: CV, cover letter, LinkedIn, and interview prep — every Elevate Career Hub framework for the modern job search in one package.',
+    summary: 'The end-to-end DIY bundle: CV, cover letter, LinkedIn, and interview prep, every Elevate Career Hub framework for the modern job search in one package.',
   }],
   ['/reference-letter/', {
-    title: 'Reference Letter Service — Elevate Career Hub',
+    title: 'Reference Letter Service, Elevate Career Hub',
     h1: 'Reference Letter Drafts',
     description: 'Elevate Career Hub drafts strong, specific reference letters that genuinely back the application they support.',
     summary: 'Reference letters are powerful endorsements. Elevate Career Hub drafts specific, credible reference letters that genuinely back the application they are sent with.',
   }],
   ['/statement-of-purpose/', {
-    title: 'Statement of Purpose & Scholarship Essay — Elevate Career Hub',
+    title: 'Statement of Purpose & Scholarship Essay, Elevate Career Hub',
     h1: 'Statement of Purpose & Scholarship Essay',
     description: 'Elevate Career Hub helps you write a Statement of Purpose or scholarship essay that admissions committees actually want to read.',
     summary: 'Your Statement of Purpose is the linchpin of your application. Elevate Career Hub helps you write one that is specific, honest, and clearly answers why you, why this programme, and why now.',
   }],
   ['/suggestion-of-schools/', {
-    title: 'School Suggestion Service — Elevate Career Hub',
+    title: 'School Suggestion Service, Elevate Career Hub',
     h1: 'School Suggestion Service',
     description: 'Get a tailored shortlist of schools from Elevate Career Hub based on your goals, profile, and budget.',
     summary: 'Picking the right school changes everything that follows. Elevate Career Hub builds you a tailored shortlist based on your goals, your profile, and what is actually realistic for you.',
@@ -1048,14 +1048,14 @@ const NON_PRIORITY_SEO = new Map([
   ['/the-importance-of-professional-documents-in-career-development/', {
     title: 'The Importance of Professional Documents in Career Development',
     h1: 'The Importance of Professional Documents in Career Development',
-    description: 'Why resumes, cover letters, and personal statements still decide careers — and how to make yours work for you.',
+    description: 'Why resumes, cover letters, and personal statements still decide careers, and how to make yours work for you.',
     summary: 'Resumes, cover letters, and personal statements are still the gatekeepers of most careers. This is why they matter, and how to make sure yours are working for you, not against you.',
   }],
   ['/tips-for-crafting-an-effective-resume-cover-letter-personal-statement-and-school-application/', {
     title: 'Tips for Crafting an Effective Resume, Cover Letter & Application',
     h1: 'Tips for Crafting an Effective Resume, Cover Letter, Personal Statement, and School Application',
     description: 'Practical Elevate Career Hub tips for stronger resumes, cover letters, personal statements, and school applications.',
-    summary: 'Practical Elevate Career Hub tips for the documents that decide your career: resume, cover letter, personal statement, and school application — each one sharper, clearer, and more you.',
+    summary: 'Practical Elevate Career Hub tips for the documents that decide your career: resume, cover letter, personal statement, and school application, each one sharper, clearer, and more you.',
   }],
 ]);
 
@@ -1461,7 +1461,7 @@ async function writeRouteClassification(pages) {
   const mdPath = path.join(projectRoot, 'outputs', 'route-launch-classification-20260510.md');
   await fs.writeFile(jsonPath, JSON.stringify({ generatedAt, totalRoutes: rows.length, routes: rows }, null, 2));
   const md = [
-    '# Elevate Frontend Route Launch Classification — 2026-05-10',
+    '# Elevate Frontend Route Launch Classification, 2026-05-10',
     '',
     `Generated: ${generatedAt}`,
     '',

@@ -54,44 +54,54 @@ function ech_tosend_send(string $key, array $from, array $to, string $subject, s
     }
 }
 
-function send_fulfilment(array $item, string $reference, string $buyerName, string $buyerEmail): void {
+function send_fulfilment(array $item, string $reference, string $buyerName, string $buyerEmail, array $sessions = [], ?int $amountPesewas = null): void {
     $key = getenv('TOSEND_API_KEY') ?: '';
     $team = getenv('OPS_EMAIL') ?: 'hello@elevatecareerhub.com';
     $from = ech_parse_from((string) (getenv('MAIL_FROM') ?: 'Elevate Career Hub <noreply@elevatecareerhub.com>'));
     $base = rtrim((string) (getenv('PUBLIC_APP_BASE_URL') ?: ''), '/');
-    $price = ech_format_cedis((int) ($item['amountPesewas'] ?? 0));
+    $price = ech_format_cedis($amountPesewas ?? (int) ($item['amountPesewas'] ?? 0));
     $name = (string) ($item['name'] ?? 'your purchase');
     $type = (string) ($item['type'] ?? 'service');
     $download = !empty($item['deliverablePath']) ? $base . $item['deliverablePath'] : '';
 
+    // Selected sessions (drop-in): rendered as an HTML list for both emails.
+    $sessions = array_values(array_filter(array_map('strval', $sessions), fn($s) => trim($s) !== ''));
+    $sessionsListHtml = '';
+    if (!empty($sessions)) {
+        $sessionsListHtml = '<ul>' . implode('', array_map(fn($s) => '<li>' . ech_esc($s) . '</li>', $sessions)) . '</ul>';
+    }
+
     if ($key === '') {
-        error_log('[email] TOSEND_API_KEY missing — would send fulfilment: ' . json_encode([
+        error_log('[email] TOSEND_API_KEY missing, would send fulfilment: ' . json_encode([
             'item' => $name, 'reference' => $reference, 'buyer' => $buyerEmail, 'team' => $team, 'download' => $download,
+            'sessions' => $sessions, 'amount' => $price,
         ]));
         return;
     }
 
     // 1) Team notification
     $teamHtml = '<h2>New purchase</h2>'
-        . '<p><strong>' . ech_esc($name) . '</strong> — ' . $price . '</p>'
+        . '<p><strong>' . ech_esc($name) . '</strong>, ' . $price . '</p>'
         . '<ul><li>Type: ' . ech_esc($type) . '</li>'
         . '<li>Buyer: ' . ech_esc($buyerName !== '' ? $buyerName : '(name not provided)') . ' &lt;' . ech_esc($buyerEmail !== '' ? $buyerEmail : 'no email') . '&gt;</li>'
         . '<li>Paystack reference: ' . ech_esc($reference) . '</li></ul>'
+        . (!empty($sessions) ? '<p><strong>Sessions booked (' . count($sessions) . '):</strong></p>' . $sessionsListHtml : '')
         . ($type === 'service'
             ? '<p>Action: reach out to the buyer to begin the service.</p>'
-            : '<p>Digital product' . ($download !== '' ? ' — link: <a href="' . ech_esc($download) . '">' . ech_esc($download) . '</a>' : ' (no deliverable configured)') . '.</p>');
+            : '<p>Digital product' . ($download !== '' ? ', link: <a href="' . ech_esc($download) . '">' . ech_esc($download) . '</a>' : ' (no deliverable configured)') . '.</p>');
     ech_tosend_send($key, $from, [['email' => $team]], 'New purchase: ' . $name . ' (' . $price . ')', $teamHtml);
 
     // 2) Buyer confirmation
     if ($buyerEmail !== '') {
         $buyerHtml = '<p>Hi ' . ech_esc($buyerName !== '' ? $buyerName : 'there') . ',</p>'
             . '<p>Thank you for your purchase of <strong>' . ech_esc($name) . '</strong> (' . $price . '). Your payment reference is <strong>' . ech_esc($reference) . '</strong>.</p>'
+            . (!empty($sessions) ? '<p>You booked these sessions:</p>' . $sessionsListHtml : '')
             . ($type === 'service'
                 ? '<p>Our team will reach out to you shortly to get started. If you need us sooner, reply to this email or message us on WhatsApp at +233 53 111 3454.</p>'
                 : ($download !== ''
                     ? '<p>You can download your product here: <a href="' . ech_esc($download) . '">' . ech_esc($name) . '</a>.</p><p>If the link does not work, reply to this email and we will send it directly.</p>'
                     : '<p>Our team will email your product shortly.</p>'))
-            . '<p>— Elevate Career Hub</p>';
+            . '<p>,  Elevate Career Hub</p>';
         ech_tosend_send($key, $from, [['email' => $buyerEmail]], 'Your Elevate Career Hub purchase: ' . $name, $buyerHtml);
     }
 }

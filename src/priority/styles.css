@@ -6,7 +6,7 @@
    Stand-in for Gilroy ExtraBold (Gilroy is commercial / not on Google Fonts):
    self-hosted Montserrat ExtraBold 800 (~16 KB woff2). To use real Gilroy,
    drop Gilroy-ExtraBold.woff2 into /public/fonts and change the src +
-   font-family name below — nothing else needs to change. Body keeps the
+   font-family name below, nothing else needs to change. Body keeps the
    system sans stack (zero load cost). */
 @font-face {
   font-family: 'Gilroy ExtraBold';

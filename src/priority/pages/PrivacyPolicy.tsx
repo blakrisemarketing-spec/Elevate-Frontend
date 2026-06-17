@@ -23,14 +23,14 @@ export function PrivacyPolicyPage() {
       <LH2>Information we collect</LH2>
       <LP>We collect information in the following ways:</LP>
       <LUL>
-        <li><strong>Information you give us</strong> — your name, email address, phone number,
+        <li><strong>Information you give us</strong>, your name, email address, phone number,
           and any details you share when you message us on WhatsApp or by email, book a
           service, or submit documents such as CVs, essays, or applications for us to work on.</li>
-        <li><strong>Payment information</strong> — when you buy a service or digital product,
+        <li><strong>Payment information</strong>, when you buy a service or digital product,
           payment is processed by our payment provider, Paystack. We receive a transaction
           reference and confirmation of payment, but we do not collect or store your full
           card or bank details.</li>
-        <li><strong>Information collected automatically</strong> — basic technical data such as
+        <li><strong>Information collected automatically</strong>, basic technical data such as
           your browser type, device, and pages visited, which may be gathered through cookies
           or similar technologies to keep the site working and understand how it is used.</li>
       </LUL>

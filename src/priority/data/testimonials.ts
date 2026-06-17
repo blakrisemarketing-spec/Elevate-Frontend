@@ -38,21 +38,21 @@ export const TESTIMONIALS: Testimonial[] = [
     role: 'Account Executive, fintech · Canada',
     image: '/assets/testimonials/helen-wanki.webp',
     quote:
-      'Elevate Career Hub, and especially Naa and Rosemary, have honestly changed my life in Canada. When I first arrived I felt completely lost — I had the determination, but not the tools. Within just two weeks, I got my very first job here, and because of their guidance I later secured an Account Executive role at a major fintech company. It’s everything I prayed for.',
+      'Elevate Career Hub, and especially Naa and Rosemary, have honestly changed my life in Canada. When I first arrived I felt completely lost, I had the determination, but not the tools. Within just two weeks, I got my very first job here, and because of their guidance I later secured an Account Executive role at a major fintech company. It’s everything I prayed for.',
   },
   {
     author: 'Enoch Dwomoh',
     role: 'JP Morgan',
     image: '/assets/testimonials/enoch-dwomoh.webp',
     quote:
-      'Right after school, with the help of Elevate, I got my first role with JP Morgan. Elevate has been my go-to partner for everything career-related — one of the best, if not the best, in the industry.',
+      'Right after school, with the help of Elevate, I got my first role with JP Morgan. Elevate has been my go-to partner for everything career-related, one of the best, if not the best, in the industry.',
   },
   {
     author: 'Maria Yalley',
     role: 'Remote Customer Care Manager · Canada',
     image: '/assets/testimonials/maria-yalley.webp',
     quote:
-      'Just about two weeks after I got my CV back, I applied for a remote Customer Care Manager role with a Canadian-based wellness centre — and I got the job. I actually got 3 offers and chose this one. I can’t believe how fast it happened after I used the new CV.',
+      'Just about two weeks after I got my CV back, I applied for a remote Customer Care Manager role with a Canadian-based wellness centre, and I got the job. I actually got 3 offers and chose this one. I can’t believe how fast it happened after I used the new CV.',
   },
   {
     author: 'Clive Annan',
