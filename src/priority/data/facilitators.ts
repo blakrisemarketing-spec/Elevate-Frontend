@@ -101,7 +101,7 @@ export const FACILITATORS: Facilitator[] = [
   },
   {
     name: 'Alexander Dankyi Asare',
-    credential: 'MBA, Duke Fuqua · ex-BCG, KPMG · CFA',
+    credential: 'Duke Fuqua MBA, Consultant',
     session: 'The MBA Blueprint',
     photo: '/assets/facilitators/alex-dankyi.webp',
     bio: [
@@ -126,7 +126,7 @@ export const FACILITATORS: Facilitator[] = [
   },
   {
     name: 'Fred Sapathy',
-    credential: 'MBA, Kellogg · IB Associate, Bank of America',
+    credential: 'Kellogg MBA, Investment Banker',
     session: 'The MBA Blueprint',
     photo: '/assets/facilitators/fred-sapathy.webp',
     bio: [
@@ -136,7 +136,7 @@ export const FACILITATORS: Facilitator[] = [
   },
   {
     name: 'Fareedatu Naa Okailey Quaye',
-    credential: 'Study Abroad Consultant',
+    credential: 'Study Abroad and Visa Consultant',
     session: 'Visas & Getting Ready for School',
     photo: '/assets/facilitators/fareedatu-quaye.webp',
     bio: [

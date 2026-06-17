@@ -55,13 +55,9 @@ export function GradSchoolBootcampPage() {
                 <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-navy bg-electric px-3 py-1.5 rounded-full mb-6">
                   Get Into Grad School Bootcamp · Early-bird open
                 </p>
-                <h1 id="hero-heading" className="text-display-lg text-white mb-5">
-                  <span className="text-white/75">Stop guessing your way through the 2026/2027 application cycle.</span>{' '}
-                  Turn your “average” profile into an offer letter.
+                <h1 id="hero-heading" className="text-display-lg text-white mb-8">
+                  Turn your “average” profile into an offer
                 </h1>
-                <p className="text-lg text-white/90 leading-relaxed mb-8">
-                  An 8-session intensive bootcamp that walks you through the entire process — from building your school list and writing killer essays, to securing funding and getting your visa approved. Every session is led by a facilitator with direct, relevant experience.
-                </p>
                 <div className="flex flex-wrap gap-4 items-center">
                   <button type="button" className="btn-primary bg-electric text-navy hover:bg-electric-600 buy-btn" data-service-id="bootcamp-grad-full">
                     Register for the bootcamp now
