@@ -14,6 +14,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 import { build as esbuild } from 'esbuild';
 import { renderToStaticMarkup } from 'react-dom/server';
 
@@ -367,25 +368,34 @@ async function generateDataRoutes() {
   return routes;
 }
 
-/** Compile the checkout island once → dist/assets/checkout.js. */
+/**
+ * Compile the checkout island → dist/assets/checkout.<hash>.js and return its
+ * public path. The filename is content-hashed (fingerprinted) so the 1-year
+ * cache in .htaccess can never serve a stale bundle after a deploy — a change
+ * yields a new URL. Returns e.g. "/assets/checkout.a1b2c3d4.js".
+ */
 async function buildCheckoutIsland() {
-  const outFile = path.join(distRoot, 'assets', 'checkout.js');
   await ensureDir(path.join(distRoot, 'assets'));
+  const tmpFile = path.join(distRoot, 'assets', 'checkout.tmp.js');
   await esbuild({
     entryPoints: [path.join(projectRoot, 'src/checkout/checkout-client.ts')],
     bundle: true,
     minify: true,
     format: 'iife',
     target: 'es2019',
-    outfile: outFile,
+    outfile: tmpFile,
     loader: { '.ts': 'ts' },
     define: {
       'import.meta.env.VITE_PAYSTACK_PUBLIC_KEY': JSON.stringify(process.env.VITE_PAYSTACK_PUBLIC_KEY || ''),
     },
     logLevel: 'silent',
   });
-  const size = (await fs.stat(outFile)).size;
-  console.log(`[ssg] checkout island → dist/assets/checkout.js (${(size / 1024).toFixed(1)} KB)`);
+  const buf = await fs.readFile(tmpFile);
+  const hash = createHash('sha256').update(buf).digest('hex').slice(0, 8);
+  const fileName = `checkout.${hash}.js`;
+  await fs.rename(tmpFile, path.join(distRoot, 'assets', fileName));
+  console.log(`[ssg] checkout island → dist/assets/${fileName} (${(buf.length / 1024).toFixed(1)} KB)`);
+  return `/assets/${fileName}`;
 }
 
 async function bundleEntry(entry) {
@@ -522,9 +532,9 @@ async function loadComponent(entry, componentName) {
   return module.exports[componentName];
 }
 
-function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, body, hasCheckout, noindex, jsonLd }) {
+function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, body, hasCheckout, checkoutSrc, noindex, jsonLd }) {
   const robots = noindex ? 'noindex,nofollow' : 'index,follow';
-  const checkoutScript = hasCheckout ? '\n    <script type="module" src="/assets/checkout.js"></script>' : '';
+  const checkoutScript = hasCheckout ? `\n    <script type="module" src="${checkoutSrc || '/assets/checkout.js'}"></script>` : '';
   const ld = (jsonLd && jsonLd.length)
     ? `\n    <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': jsonLd })}</script>`
     : '';
@@ -608,9 +618,11 @@ async function main() {
   const { SITE_FAQ_GROUPS, BOOTCAMP_FAQ_GROUPS } = await loadModuleExports('src/priority/data/faqs.ts');
 
   // Build the checkout island + emit the Hostinger PHP/.htaccess deploy
-  // artifacts once if any route uses checkout.
+  // artifacts once if any route uses checkout. The island's URL is
+  // content-hashed, so each route embeds the current fingerprinted path.
+  let checkoutSrc = '/assets/checkout.js';
   if (ALL_ROUTES.some(r => r.hasCheckout)) {
-    await buildCheckoutIsland();
+    checkoutSrc = await buildCheckoutIsland();
     await emitDeployArtifacts();
   }
 
@@ -647,6 +659,7 @@ async function main() {
       css,
       body,
       hasCheckout: route.hasCheckout,
+      checkoutSrc,
       noindex: route.noindex,
       jsonLd,
     });
