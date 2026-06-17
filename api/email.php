@@ -65,7 +65,7 @@ function send_fulfilment(array $item, string $reference, string $buyerName, stri
     $download = !empty($item['deliverablePath']) ? $base . $item['deliverablePath'] : '';
 
     if ($key === '') {
-        error_log('[email] TOSEND_API_KEY missing — would send fulfilment: ' . json_encode([
+        error_log('[email] TOSEND_API_KEY missing, would send fulfilment: ' . json_encode([
             'item' => $name, 'reference' => $reference, 'buyer' => $buyerEmail, 'team' => $team, 'download' => $download,
         ]));
         return;
@@ -73,13 +73,13 @@ function send_fulfilment(array $item, string $reference, string $buyerName, stri
 
     // 1) Team notification
     $teamHtml = '<h2>New purchase</h2>'
-        . '<p><strong>' . ech_esc($name) . '</strong> — ' . $price . '</p>'
+        . '<p><strong>' . ech_esc($name) . '</strong>, ' . $price . '</p>'
         . '<ul><li>Type: ' . ech_esc($type) . '</li>'
         . '<li>Buyer: ' . ech_esc($buyerName !== '' ? $buyerName : '(name not provided)') . ' &lt;' . ech_esc($buyerEmail !== '' ? $buyerEmail : 'no email') . '&gt;</li>'
         . '<li>Paystack reference: ' . ech_esc($reference) . '</li></ul>'
         . ($type === 'service'
             ? '<p>Action: reach out to the buyer to begin the service.</p>'
-            : '<p>Digital product' . ($download !== '' ? ' — link: <a href="' . ech_esc($download) . '">' . ech_esc($download) . '</a>' : ' (no deliverable configured)') . '.</p>');
+            : '<p>Digital product' . ($download !== '' ? ', link: <a href="' . ech_esc($download) . '">' . ech_esc($download) . '</a>' : ' (no deliverable configured)') . '.</p>');
     ech_tosend_send($key, $from, [['email' => $team]], 'New purchase: ' . $name . ' (' . $price . ')', $teamHtml);
 
     // 2) Buyer confirmation
@@ -91,7 +91,7 @@ function send_fulfilment(array $item, string $reference, string $buyerName, stri
                 : ($download !== ''
                     ? '<p>You can download your product here: <a href="' . ech_esc($download) . '">' . ech_esc($name) . '</a>.</p><p>If the link does not work, reply to this email and we will send it directly.</p>'
                     : '<p>Our team will email your product shortly.</p>'))
-            . '<p>— Elevate Career Hub</p>';
+            . '<p>,  Elevate Career Hub</p>';
         ech_tosend_send($key, $from, [['email' => $buyerEmail]], 'Your Elevate Career Hub purchase: ' . $name, $buyerHtml);
     }
 }

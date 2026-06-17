@@ -1,6 +1,6 @@
 <?php
 /**
- * Paystack payment verification — Hostinger (LiteSpeed + PHP) endpoint.
+ * Paystack payment verification, Hostinger (LiteSpeed + PHP) endpoint.
  *
  * Deployed to /api/verify-payment.php. The browser sends a transaction
  * reference after the inline popup reports success; we DO NOT trust that.
@@ -9,7 +9,7 @@
  * server-side catalog price, (3) currency is GHS. Only then do we fulfil.
  *
  * Secrets are read from the environment (set them in hPanel, or in an
- * untracked api/config.php that putenv()s them — see .env.example):
+ * untracked api/config.php that putenv()s them, see .env.example):
  *   PAYSTACK_SECRET_KEY (required)
  *   TOSEND_API_KEY, OPS_EMAIL, MAIL_FROM, PUBLIC_APP_BASE_URL (fulfilment)
  *

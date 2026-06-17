@@ -202,7 +202,7 @@ const summary = {
 await fs.writeFile(path.join(outDir, 'qa-non-priority-routes.json'), JSON.stringify(summary, null, 2));
 
 const md = [
-  '# Non-Priority Route QA — Pre-Rendered SPA Shells',
+  '# Non-Priority Route QA, Pre-Rendered SPA Shells',
   '',
   `Generated: ${generatedAt}`,
   '',
@@ -216,7 +216,7 @@ const md = [
   '',
   '| Route | HTTP | Title | Meta description (len) | H1 | Result |',
   '|---|---:|---|---:|---|---|',
-  ...results.map(r => `| \`${r.route}\` | ${r.status} | ${r.title || '(empty)'} | ${r.description.length} | ${r.h1 || '(empty)'} | ${r.passed ? 'PASS' : `FAIL — ${r.failures.join('; ')}`} |`),
+  ...results.map(r => `| \`${r.route}\` | ${r.status} | ${r.title || '(empty)'} | ${r.description.length} | ${r.h1 || '(empty)'} | ${r.passed ? 'PASS' : `FAIL, ${r.failures.join('; ')}`} |`),
   '',
 ].join('\n');
 await fs.writeFile(path.join(outDir, 'qa-non-priority-routes.md'), md);

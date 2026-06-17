@@ -10,7 +10,7 @@ const OUTCOMES = [
   'Build a targeted job search plan so you stop spraying applications and hoping',
   'Align your CV to the job description so you actually get noticed by recruiters',
   'Present a clear, credible professional brand that attracts offers',
-  'Use networking and referrals strategically — without sounding desperate',
+  'Use networking and referrals strategically, without sounding desperate',
   'Answer interview questions with clarity, structure, and confidence',
   'Use AI the right way so it helps you instead of quietly harming your chances',
   'Identify and apply for remote roles safely (and avoid scams)',
@@ -23,13 +23,13 @@ const SESSIONS = [
   { n: '03', title: 'Building a personal brand that attracts opportunities', body: 'LinkedIn optimisation for recruiter discovery and using social media intentionally.' },
   { n: '04', title: 'Networking, referrals & the hidden job market', body: 'Contacting hiring managers professionally, strategic networking, and follow-up rules that work.' },
   { n: '05', title: 'How to ace every interview stage', body: 'How hiring managers assess you, structuring strong answers, and smart follow-up emails.' },
-  { n: '06', title: 'Leveraging AI in your job search & skills building', body: 'Using AI to find roles, screen job descriptions, and tailor applications — without getting flagged.' },
+  { n: '06', title: 'Leveraging AI in your job search & skills building', body: 'Using AI to find roles, screen job descriptions, and tailor applications, without getting flagged.' },
   { n: '07', title: 'Landing international / visa-sponsored roles', body: 'Markets open to international hires, sponsorship realities, CV adjustments, and global job boards.' },
   { n: '08', title: 'The blueprint for landing remote jobs', body: 'What remote employers worry about, where legit remote jobs are posted, and scam red flags.' },
 ];
 
 const TESTIMONIALS = [
-  { quote: 'Right after school, with the help of Elevate, I got my first role with JP Morgan. Elevate has been my go-to partner for everything career-related — one of the best, if not the best in the industry.' },
+  { quote: 'Right after school, with the help of Elevate, I got my first role with JP Morgan. Elevate has been my go-to partner for everything career-related, one of the best, if not the best in the industry.' },
   { quote: 'As an immigrant in the Netherlands, Elevate helped me land an enviable role with the Dutch Relief Alliance. They’re the best in the game!' },
   { quote: 'Elevate guided me through every step until I landed a role at KPMG. I couldn’t have done it without them. So grateful!' },
 ];
@@ -47,7 +47,7 @@ export function JobReadinessBootcampPage() {
           crumbs={[{ label: 'Home', href: '/' }, { label: 'Job Readiness Bootcamp' }]}
           intro={
             <p>
-              You’re qualified, but your applications aren’t getting you seen. The gap between &lsquo;good enough&rsquo; and &lsquo;obvious choice&rsquo; is smaller than you think — and we close it in 8 focused, live online sessions.
+              You’re qualified, but your applications aren’t getting you seen. The gap between &lsquo;good enough&rsquo; and &lsquo;obvious choice&rsquo; is smaller than you think, and we close it in 8 focused, live online sessions.
             </p>
           }
         />
@@ -56,10 +56,10 @@ export function JobReadinessBootcampPage() {
           <div className="max-w-3xl">
             <h2 id="why-heading" className="text-headline-lg mb-4">Why this bootcamp, why now</h2>
             <p className="text-ink-muted leading-relaxed mb-4">
-              The job market is more competitive than ever — more applicants, fewer easy wins, and more silent rejections. For every job posted on LinkedIn there are, on average, 400+ resumes recruiters have to sort through.
+              The job market is more competitive than ever, more applicants, fewer easy wins, and more silent rejections. For every job posted on LinkedIn there are, on average, 400+ resumes recruiters have to sort through.
             </p>
             <p className="text-ink-muted leading-relaxed">
-              Finding a job in this market requires strategy and skill — your experience alone won’t cut it. In 8 focused sessions you’ll build a job search strategy that fits your background, position yourself as a recruiter’s obvious choice, network with confidence, and learn how to stand out for remote and international roles.
+              Finding a job in this market requires strategy and skill, your experience alone won’t cut it. In 8 focused sessions you’ll build a job search strategy that fits your background, position yourself as a recruiter’s obvious choice, network with confidence, and learn how to stand out for remote and international roles.
             </p>
           </div>
         </section>
@@ -118,7 +118,7 @@ export function JobReadinessBootcampPage() {
           <div className="container-site py-20">
             <div className="bg-gradient-to-br from-primary to-navy text-white rounded-xl p-10 sm:p-14 text-center shadow-soft">
               <p className="text-sm font-semibold uppercase tracking-wider text-electric mb-3">Seats are limited</p>
-              <h2 id="register-heading" className="text-headline-lg text-white mb-5">Invest in your success — register today</h2>
+              <h2 id="register-heading" className="text-headline-lg text-white mb-5">Invest in your success, register today</h2>
               <p className="text-white/90 text-lg max-w-xl mx-auto mb-8">
                 To keep sessions effective we cap the number of seats, and they sell out fast. Message us to secure your place.
               </p>

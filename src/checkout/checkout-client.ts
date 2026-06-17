@@ -1,5 +1,5 @@
 /**
- * Checkout island — progressive enhancement for static pages.
+ * Checkout island, progressive enhancement for static pages.
  *
  * Buy buttons are plain static HTML:
  *   <button class="buy-btn" data-service-id="career-cv">Pay ₵350</button>

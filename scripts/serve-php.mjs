@@ -1,6 +1,6 @@
 /**
  * Local full-stack preview: serves the built dist/ with PHP, so the checkout
- * island AND the /api/verify-payment.php endpoint work together — the real
+ * island AND the /api/verify-payment.php endpoint work together, the real
  * deploy shape (Hostinger = LiteSpeed + PHP).
  *
  * Loads .env / .env.local into the PHP process so the endpoint has the
@@ -29,7 +29,7 @@ for (const file of ['.env', '.env.local']) {
 
 const distDir = path.join(projectRoot, 'dist');
 if (!fs.existsSync(path.join(distDir, 'index.html'))) {
-  console.error('[serve:php] dist/ not found — run `pnpm build` first.');
+  console.error('[serve:php] dist/ not found, run `pnpm build` first.');
   process.exit(1);
 }
 
@@ -37,7 +37,7 @@ const port = process.env.PORT || '8080';
 const hasSecret = !!env.PAYSTACK_SECRET_KEY;
 const hasTosend = !!env.TOSEND_API_KEY;
 console.log(`[serve:php] http://localhost:${port}  (also on your LAN IP:${port})`);
-console.log(`[serve:php] Paystack secret: ${hasSecret ? 'set' : 'MISSING (verify → 503)'} | toSend: ${hasTosend ? 'set — successful test payments send REAL emails' : 'unset (emails log only)'}`);
+console.log(`[serve:php] Paystack secret: ${hasSecret ? 'set' : 'MISSING (verify → 503)'} | toSend: ${hasTosend ? 'set, successful test payments send REAL emails' : 'unset (emails log only)'}`);
 
 const child = spawn('php', ['-S', `0.0.0.0:${port}`, '-t', 'dist'], { cwd: projectRoot, stdio: 'inherit', env });
 child.on('exit', (code) => process.exit(code ?? 0));

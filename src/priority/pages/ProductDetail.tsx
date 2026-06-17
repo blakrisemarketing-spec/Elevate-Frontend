@@ -80,7 +80,7 @@ export function ProductDetailPage({ slug }: { slug: string }) {
                   </a>
                 ) : (
                   <button type="button" className="btn-primary buy-btn w-full" data-service-id={product.catalogId}>
-                    Buy now — {priceLabel}
+                    Buy now, {priceLabel}
                   </button>
                 )}
                 <p className="text-center text-xs text-ink-muted mt-4">Secured by Paystack · cards &amp; mobile money</p>

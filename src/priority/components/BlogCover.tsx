@@ -4,7 +4,7 @@ import type { BlogCoverKey } from '../data/blog';
  * Decorative, on-brand cover art for blog cards and post headers.
  * Pure inline SVG (zero extra requests, a few hundred bytes each) so the blog
  * keeps its zero-JS / fast-3G budget. Each key pairs a brand gradient with a
- * simple line motif. Decorative only — the post title carries the meaning, so
+ * simple line motif. Decorative only, the post title carries the meaning, so
  * the SVG is aria-hidden.
  */
 
@@ -61,7 +61,7 @@ function Motif({ cover }: { cover: BlogCoverKey }) {
     );
   }
 
-  // toolkit — checklist
+  // toolkit, checklist
   return (
     <g>
       {[110, 172, 234].map((y, i) => (

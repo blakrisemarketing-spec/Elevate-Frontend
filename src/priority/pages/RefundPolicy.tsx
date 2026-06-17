@@ -23,7 +23,7 @@ export function RefundPolicyPage() {
       <LUL>
         <li><strong>Services</strong> (CV writing, coaching, application support, interview prep, and
           similar) are delivered remotely. After payment, we contact you using the details you provide
-          — usually by email or WhatsApp — to begin work, agree on what is needed, and schedule any
+        , usually by email or WhatsApp, to begin work, agree on what is needed, and schedule any
           sessions.</li>
         <li><strong>Digital products</strong> (DIY guides and templates) are delivered electronically.
           Where a download is available, a link is sent to the email address used at checkout. If a

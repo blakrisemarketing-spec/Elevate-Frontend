@@ -28,19 +28,19 @@ export const SERVICES: ServiceDetailContent[] = [
     route: '/curriculum-vitae/',
     slug: 'curriculum-vitae',
     shortName: 'Curriculum Vitae',
-    title: 'Curriculum Vitae Writing — Elevate Career Hub',
+    title: 'Curriculum Vitae Writing, Elevate Career Hub',
     metaDescription:
-      'A professionally crafted CV that tells your career story with impact — optimised for ATS and tailored to your industry.',
+      'A professionally crafted CV that tells your career story with impact, optimised for ATS and tailored to your industry.',
     eyebrow: 'Career Services',
     heading: 'Curriculum Vitae',
     intro:
-      'Your CV is more than a document — it’s your professional story. Our CV service is meticulously crafted so your unique narrative stands out in a competitive job market.',
+      'Your CV is more than a document, it’s your professional story. Our CV service is meticulously crafted so your unique narrative stands out in a competitive job market.',
     parentService: 'career',
     sections: [
       {
         heading: 'Why choose our CV service',
         body:
-          'Seamless excellence in action. Our process is designed to showcase your professional narrative with precision and impact — strategically crafting your story for success rather than simply listing experiences.',
+          'Seamless excellence in action. Our process is designed to showcase your professional narrative with precision and impact, strategically crafting your story for success rather than simply listing experiences.',
       },
     ],
     features: [
@@ -55,19 +55,19 @@ export const SERVICES: ServiceDetailContent[] = [
     route: '/cover-letter/',
     slug: 'cover-letter',
     shortName: 'Cover Letter',
-    title: 'Cover Letter Writing — Elevate Career Hub',
+    title: 'Cover Letter Writing, Elevate Career Hub',
     metaDescription:
       'A compelling cover letter that makes the case for why you are the ideal candidate, tailored to the role.',
     eyebrow: 'Career Services',
     heading: 'Cover Letters',
     intro:
-      'A well-crafted cover letter is your introduction to potential employers — a narrative that captivates from the start and makes a compelling case for why you’re the ideal candidate.',
+      'A well-crafted cover letter is your introduction to potential employers, a narrative that captivates from the start and makes a compelling case for why you’re the ideal candidate.',
     parentService: 'career',
     sections: [
       {
         heading: 'More than a formality',
         body:
-          'Our Cover Letter Service is designed to uplift your application and set you apart in a competitive job market — transforming your professional story into a document designed to make you stand out.',
+          'Our Cover Letter Service is designed to uplift your application and set you apart in a competitive job market, transforming your professional story into a document designed to make you stand out.',
       },
     ],
     features: [
@@ -82,19 +82,19 @@ export const SERVICES: ServiceDetailContent[] = [
     route: '/linkedin-optimization/',
     slug: 'linkedin-optimization',
     shortName: 'LinkedIn Optimisation',
-    title: 'LinkedIn Optimisation — Elevate Career Hub',
+    title: 'LinkedIn Optimisation, Elevate Career Hub',
     metaDescription:
-      'A strategic elevation of your LinkedIn profile — content, keywords, and visuals that get you discovered by recruiters.',
+      'A strategic elevation of your LinkedIn profile, content, keywords, and visuals that get you discovered by recruiters.',
     eyebrow: 'Career Services',
     heading: 'LinkedIn Optimisation',
     intro:
-      'Your LinkedIn profile is your digital handshake. Our LinkedIn Optimisation service is a strategic elevation of your professional brand — not just a transformation.',
+      'Your LinkedIn profile is your digital handshake. Our LinkedIn Optimisation service is a strategic elevation of your professional brand, not just a transformation.',
     parentService: 'career',
     sections: [
       {
         heading: 'A profile that works for you',
         body:
-          'We go beyond conventional profile enhancement — delving into strategic content creation, keyword optimisation, and visual refinement so your profile becomes a beacon of your professional story, inviting opportunities and connections.',
+          'We go beyond conventional profile enhancement, delving into strategic content creation, keyword optimisation, and visual refinement so your profile becomes a beacon of your professional story, inviting opportunities and connections.',
       },
     ],
     features: [
@@ -109,7 +109,7 @@ export const SERVICES: ServiceDetailContent[] = [
     route: '/reference-letter/',
     slug: 'reference-letter',
     shortName: 'Reference Letter',
-    title: 'Reference Letters — Elevate Career Hub',
+    title: 'Reference Letters, Elevate Career Hub',
     metaDescription:
       'Powerful, personalised reference letters that endorse your professional character and open doors.',
     eyebrow: 'Career Services',
@@ -121,7 +121,7 @@ export const SERVICES: ServiceDetailContent[] = [
       {
         heading: 'Endorsements that stand out',
         body:
-          'We understand the pivotal role reference letters play in shaping perceptions, and our service ensures they become invaluable assets in your career arsenal — strategically crafted to highlight your unique strengths and qualities.',
+          'We understand the pivotal role reference letters play in shaping perceptions, and our service ensures they become invaluable assets in your career arsenal, strategically crafted to highlight your unique strengths and qualities.',
       },
     ],
     features: [
@@ -136,19 +136,19 @@ export const SERVICES: ServiceDetailContent[] = [
     route: '/statement-of-purpose/',
     slug: 'statement-of-purpose',
     shortName: 'Statement of Purpose',
-    title: 'Statement of Purpose & Scholarship Essays — Elevate Career Hub',
+    title: 'Statement of Purpose & Scholarship Essays, Elevate Career Hub',
     metaDescription:
       'A collaborative service that amplifies your voice and aspirations in a Statement of Purpose that exceeds reviewers’ expectations.',
     eyebrow: 'Educational Services',
     heading: 'Statement of Purpose',
     intro:
-      'Your Statement of Purpose is the linchpin of your academic journey — an opportunity to articulate your ambitions and showcase your unique qualities. Our SOP service is a collaborative journey designed to amplify your voice and aspirations.',
+      'Your Statement of Purpose is the linchpin of your academic journey, an opportunity to articulate your ambitions and showcase your unique qualities. Our SOP service is a collaborative journey designed to amplify your voice and aspirations.',
     parentService: 'education',
     sections: [
       {
         heading: 'Your story, told with precision',
         body:
-          'We begin with a collaborative exploration of your academic and professional journey — a personalised consultation that delves into your experiences and goals, ensuring your SOP is well-written and deeply resonant with your personality and ambitions.',
+          'We begin with a collaborative exploration of your academic and professional journey, a personalised consultation that delves into your experiences and goals, ensuring your SOP is well-written and deeply resonant with your personality and ambitions.',
       },
     ],
     features: [
@@ -163,7 +163,7 @@ export const SERVICES: ServiceDetailContent[] = [
     route: '/suggestion-of-schools/',
     slug: 'suggestion-of-schools',
     shortName: 'School Selection',
-    title: 'School Selection & Programme Research — Elevate Career Hub',
+    title: 'School Selection & Programme Research, Elevate Career Hub',
     metaDescription:
       'Personalised school suggestions and in-depth programme research to help you choose the right institution with confidence.',
     eyebrow: 'Educational Services',
@@ -181,7 +181,7 @@ export const SERVICES: ServiceDetailContent[] = [
     features: [
       { title: 'Personalised consultation', body: 'We delve into your unique profile to provide tailored recommendations.' },
       { title: 'Alignment with your goals', body: 'Institutions offering programmes and resources matched to your aspirations.' },
-      { title: 'Comprehensive research', body: 'In-depth research on programmes, faculty, and opportunities — a curated shortlist.' },
+      { title: 'Comprehensive research', body: 'In-depth research on programmes, faculty, and opportunities, a curated shortlist.' },
       { title: 'Campus culture fit', body: 'Insights on community, diversity, and environment so you can thrive.' },
     ],
     priceTierIds: ['edu-school-selection'],
@@ -190,7 +190,7 @@ export const SERVICES: ServiceDetailContent[] = [
     route: '/interview-preparation-session/',
     slug: 'interview-preparation-session',
     shortName: 'Interview Preparation',
-    title: 'Interview Preparation Session — Elevate Career Hub',
+    title: 'Interview Preparation Session, Elevate Career Hub',
     metaDescription:
       'Personalised 1-on-1 interview coaching with mock interviews and constructive feedback to help you make a lasting impression.',
     eyebrow: 'Career Services',
@@ -217,7 +217,7 @@ export const SERVICES: ServiceDetailContent[] = [
     route: '/career-strategy-session/',
     slug: 'career-strategy-session',
     shortName: 'Career Strategy Session',
-    title: 'Career Strategy Session — Elevate Career Hub',
+    title: 'Career Strategy Session, Elevate Career Hub',
     metaDescription:
       'Personalised insights, actionable strategies, and a roadmap to navigate your professional trajectory with confidence.',
     eyebrow: 'Career Services',
@@ -229,7 +229,7 @@ export const SERVICES: ServiceDetailContent[] = [
       {
         heading: 'A roadmap built around you',
         body:
-          'Whether you’re at a crossroads, aspiring for growth, or considering a shift, our sessions empower you with the tools needed for informed, strategic decision-making — from career assessment to goal alignment and networking.',
+          'Whether you’re at a crossroads, aspiring for growth, or considering a shift, our sessions empower you with the tools needed for informed, strategic decision-making, from career assessment to goal alignment and networking.',
       },
     ],
     features: [

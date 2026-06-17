@@ -49,7 +49,7 @@ const FAILED_REQUEST_ALLOWLIST = [
 ];
 
 // Required priority routes for H1/title assertions. Exception list (slugs) lets the
-// gate forgive a documented missing-H1 case. Currently empty — every priority route
+// gate forgive a documented missing-H1 case. Currently empty, every priority route
 // must have a single H1 per Mara's dispatch §C.
 const H1_EXCEPTION_SLUGS = new Set([]);
 
@@ -242,7 +242,7 @@ async function makeComparison(browser, sourcePng, appPng, route, vp, output) {
     .label{padding:8px 10px;background:#000;font-weight:700;}
     img{display:block;width:100%;height:auto;background:white;}
   </style></head><body>
-    <div class="bar">${route.route} — ${vp.name}: local WordPress source (left) vs rebuilt app (right)</div>
+    <div class="bar">${route.route}, ${vp.name}: local WordPress source (left) vs rebuilt app (right)</div>
     <div class="wrap">
       <div class="panel"><div class="label">SOURCE: ${route.source}</div><img src="${sourceUrl}"></div>
       <div class="panel"><div class="label">APP: ${route.route}</div><img src="${appUrl}"></div>
@@ -412,7 +412,7 @@ try {
   // ─── Human-readable summary ──────────────────────────────────────────────────
   console.log('');
   console.log('═══════════════════════════════════════════════════════════════════');
-  console.log('  WordPress HTML QA — Hardened Gate Summary');
+  console.log('  WordPress HTML QA, Hardened Gate Summary');
   console.log('═══════════════════════════════════════════════════════════════════');
   console.log(`  Routes checked      : ${routes.length}`);
   console.log(`  Viewports per route : ${viewports.map(v => v.name).join(', ')}`);

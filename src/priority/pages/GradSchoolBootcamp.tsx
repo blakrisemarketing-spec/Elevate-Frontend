@@ -16,22 +16,22 @@ const QUICK_FACTS = [
 ];
 
 const SESSIONS = [
-  { n: 1, date: 'Jul 26', title: 'Your Graduate School Game Plan', outcome: 'Make a confident, informed decision about which programme type, country, and schools fit your goals — instead of applying on guesswork or reputation alone.' },
+  { n: 1, date: 'Jul 26', title: 'Your Graduate School Game Plan', outcome: 'Make a confident, informed decision about which programme type, country, and schools fit your goals, instead of applying on guesswork or reputation alone.' },
   { n: 2, date: 'Jul 28', title: 'Becoming the Candidate Admissions Committees Cannot Overlook', outcome: 'The blueprint to format and position your profile so committees pause when they hit your name.' },
   { n: 3, date: 'Aug 2', title: 'The MBA Blueprint', outcome: 'A dedicated session for corporate professionals looking to pivot globally and maximise their grad school experience from day one.' },
   { n: 4, date: 'Aug 4', title: 'Personal Statements & Scholarship Essays', outcome: 'Our signature narrative strategy to break through writer’s block and draft an essay that stands out in a pool of thousands.' },
   { n: 5, date: 'Aug 9', title: 'Research Proposals, Pitching to Supervisors & Getting Funded', outcome: 'How to reach out to international academic supervisors and write proposals that make them want to say “yes.”' },
-  { n: 6, date: 'Aug 11', title: 'Landing a Graduate Assistantship', outcome: 'A deep dive into graduate assistantships — one of the most underused funding routes for international students.' },
-  { n: 7, date: 'Aug 16', title: 'Deep Dive on Scholarships', outcome: 'Real strategies from past winners of full-ride scholarships like Chevening, DAAD, and Forté — plus a curated, personalised funding list you can act on immediately.' },
+  { n: 6, date: 'Aug 11', title: 'Landing a Graduate Assistantship', outcome: 'A deep dive into graduate assistantships, one of the most underused funding routes for international students.' },
+  { n: 7, date: 'Aug 16', title: 'Deep Dive on Scholarships', outcome: 'Real strategies from past winners of full-ride scholarships like Chevening, DAAD, and Forté, plus a curated, personalised funding list you can act on immediately.' },
   { n: 8, date: 'Aug 18', title: 'Visas & Getting Ready for School', outcome: 'From document compilation to visa interview prep, so you are 100% ready to confidently step onto a global campus.' },
 ];
 
 const BONUSES = [
   { title: 'The Ultimate Funding Pack', body: 'A curated list of 50+ scholarships with open application windows.' },
   { title: 'The Smart School List', body: 'A guide to 30+ low-tuition universities with high funding rates for international applicants.' },
-  { title: '90 Days of Replay Access', body: 'Every 2-hour session is recorded — including the live Q&As — and sent to your inbox to rewatch anytime.' },
+  { title: '90 Days of Replay Access', body: 'Every 2-hour session is recorded, including the live Q&As, and sent to your inbox to rewatch anytime.' },
   { title: 'Community & Support', body: 'Access to a dedicated WhatsApp group for extra support throughout your cycle.' },
-  { title: 'No Experience Required', body: 'Nothing to prepare before Session 1 — just show up with an open mind and a rough idea of your goals.' },
+  { title: 'No Experience Required', body: 'Nothing to prepare before Session 1, just show up with an open mind and a rough idea of your goals.' },
 ];
 
 function CheckIcon() {
@@ -96,9 +96,9 @@ export function GradSchoolBootcampPage() {
           <div className="max-w-3xl">
             <h2 id="problem-heading" className="text-headline-lg mb-5">Does your late-night browser look like this?</h2>
             <div className="space-y-4 text-ink-muted leading-relaxed">
-              <p>It’s 11 PM. You have 15 different university tabs open, your head is spinning, and you’re staring at a blank Google Doc — typing and deleting the same first sentence. You know you have a great story to tell, but everything you write feels boring, and you have no idea how to make it compelling enough to stand out.</p>
-              <p>And to make it worse, you keep asking whether your grad school dream is still valid, with headlines about countries tightening immigration rules. The UK has cut the Graduate visa from 24 to 18 months; in the US, students face increasing scrutiny and reports of sudden visa cancellations. The old way of applying — without a clear plan — is no longer enough.</p>
-              <p className="text-ink font-medium">But here’s the good news: top universities are still actively seeking global talent and issuing offers every day. The difference is that you can no longer guess your way through — you need a strategic narrative that highlights your value and resilience. That’s exactly what this bootcamp gives you.</p>
+              <p>It’s 11 PM. You have 15 different university tabs open, your head is spinning, and you’re staring at a blank Google Doc, typing and deleting the same first sentence. You know you have a great story to tell, but everything you write feels boring, and you have no idea how to make it compelling enough to stand out.</p>
+              <p>And to make it worse, you keep asking whether your grad school dream is still valid, with headlines about countries tightening immigration rules. The UK has cut the Graduate visa from 24 to 18 months; in the US, students face increasing scrutiny and reports of sudden visa cancellations. The old way of applying, without a clear plan, is no longer enough.</p>
+              <p className="text-ink font-medium">But here’s the good news: top universities are still actively seeking global talent and issuing offers every day. The difference is that you can no longer guess your way through, you need a strategic narrative that highlights your value and resilience. That’s exactly what this bootcamp gives you.</p>
             </div>
           </div>
         </section>
@@ -128,7 +128,7 @@ export function GradSchoolBootcampPage() {
         {/* ── Bonuses ──────────────────────────────────────────── */}
         <section className="container-site py-16 lg:py-20" aria-labelledby="bonus-heading">
           <p className="text-sm font-semibold uppercase tracking-wider text-primary text-center mb-3">What’s in it for you</p>
-          <h2 id="bonus-heading" className="text-headline-lg text-center mb-4">You’re not just getting live classes — you’re getting the tools to win</h2>
+          <h2 id="bonus-heading" className="text-headline-lg text-center mb-4">You’re not just getting live classes, you’re getting the tools to win</h2>
           <p className="text-ink-muted text-center max-w-2xl mx-auto mb-12">Register for the full bootcamp and instantly unlock our premium resource bundle to fast-track your cycle.</p>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
             {BONUSES.map((b) => (
@@ -146,7 +146,7 @@ export function GradSchoolBootcampPage() {
           <div className="container-site py-16 lg:py-20">
             <p className="text-sm font-semibold uppercase tracking-wider text-primary text-center mb-3">Meet your facilitators</p>
             <h2 id="facilitators-heading" className="text-headline-lg text-center mb-4">Learn from people who’ve actually done it</h2>
-            <p className="text-ink-muted text-center max-w-2xl mx-auto mb-12">Chevening, DAAD, Mastercard Foundation and Forté scholars, MBAs from Columbia, Duke and Kellogg, and admissions and visa specialists — each session is led by someone with direct, relevant experience.</p>
+            <p className="text-ink-muted text-center max-w-2xl mx-auto mb-12">Chevening, DAAD, Mastercard Foundation and Forté scholars, MBAs from Columbia, Duke and Kellogg, and admissions and visa specialists, each session is led by someone with direct, relevant experience.</p>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
               {FACILITATORS.map((f) => {
                 const slug = f.photo.replace(/^.*\/|\.webp$/g, '');
@@ -167,7 +167,7 @@ export function GradSchoolBootcampPage() {
             </div>
           </div>
 
-          {/* Full-bio modals — zero-JS, opened via CSS :target */}
+          {/* Full-bio modals, zero-JS, opened via CSS :target */}
           {FACILITATORS.map((f) => {
             const slug = f.photo.replace(/^.*\/|\.webp$/g, '');
             return (
@@ -198,7 +198,7 @@ export function GradSchoolBootcampPage() {
           <figure className="max-w-3xl mx-auto card">
             <svg viewBox="0 0 24 24" className="w-9 h-9 text-electric mb-4" fill="currentColor" aria-hidden="true"><path d="M7.17 6A5.17 5.17 0 002 11.17V18h6.83v-6.83H5.5A1.67 1.67 0 017.17 9.5V6zm9 0A5.17 5.17 0 0011 11.17V18h6.83v-6.83H14.5A1.67 1.67 0 0116.17 9.5V6z"/></svg>
             <blockquote className="text-lg text-ink leading-relaxed">
-              <p>I always wanted to work with Elevate because of the testimonials I saw from other people. What I liked most was how fully involved they kept me at every stage — from school selection to securing admission, visa application, and relocating to the UK. They prepared me very well for all my interviews and encouraged me even when some didn’t go as planned. I never had to worry, because I was constantly updated until I received my admission.</p>
+              <p>I always wanted to work with Elevate because of the testimonials I saw from other people. What I liked most was how fully involved they kept me at every stage, from school selection to securing admission, visa application, and relocating to the UK. They prepared me very well for all my interviews and encouraged me even when some didn’t go as planned. I never had to worry, because I was constantly updated until I received my admission.</p>
             </blockquote>
             <figcaption className="mt-5 font-semibold text-navy">Fafali Bona-Lartey <span className="text-ink-muted font-normal">· admitted &amp; relocated to the UK</span></figcaption>
           </figure>
@@ -220,7 +220,7 @@ export function GradSchoolBootcampPage() {
                   <span className="text-4xl font-bold text-primary">GHS 1,200</span>
                   <span className="text-ink-muted line-through">GHS 1,500</span>
                 </div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-electric mb-6">Early-bird price — limited seats</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-electric mb-6">Early-bird price, limited seats</p>
                 <ul className="flex flex-col gap-2.5 mb-7 text-sm text-ink">
                   {['All 8 live sessions + Q&As', 'The Ultimate Funding Pack (50+ scholarships)', 'The Smart School List (30+ universities)', '90 days of replay access', 'Dedicated WhatsApp community'].map((x) => (
                     <li key={x} className="flex items-start gap-2.5"><CheckIcon />{x}</li>
@@ -262,7 +262,7 @@ export function GradSchoolBootcampPage() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 id="about-heading" className="text-headline-lg mb-4">What is the Get Into Grad School Bootcamp?</h2>
             <p className="text-ink-muted leading-relaxed">
-              It’s an 8-session intensive programme that walks you through the entire graduate school application process — from choosing the right programme and building your school list, to writing your personal statement, securing funding, and preparing to arrive on campus. Whether you’re just starting to explore your options or already in the middle of messy applications, we walk with you through every single step.
+              It’s an 8-session intensive programme that walks you through the entire graduate school application process, from choosing the right programme and building your school list, to writing your personal statement, securing funding, and preparing to arrive on campus. Whether you’re just starting to explore your options or already in the middle of messy applications, we walk with you through every single step.
             </p>
           </div>
         </section>
@@ -281,9 +281,9 @@ export function GradSchoolBootcampPage() {
         <section aria-labelledby="final-cta">
           <div className="container-site py-20">
             <div className="bg-gradient-to-br from-primary to-navy text-white rounded-xl p-10 sm:p-14 text-center shadow-soft">
-              <p className="text-sm font-semibold uppercase tracking-wider text-electric mb-3">Seats are limited — early-bird won’t last</p>
+              <p className="text-sm font-semibold uppercase tracking-wider text-electric mb-3">Seats are limited, early-bird won’t last</p>
               <h2 id="final-cta" className="text-headline-lg text-white mb-5">Secure your future with confidence</h2>
-              <p className="text-white/90 text-lg max-w-xl mx-auto mb-8">Stop guessing. Get the exact blueprint, the funding lists, and the people who’ve done it — all in one bootcamp.</p>
+              <p className="text-white/90 text-lg max-w-xl mx-auto mb-8">Stop guessing. Get the exact blueprint, the funding lists, and the people who’ve done it, all in one bootcamp.</p>
               <div className="flex flex-wrap justify-center gap-4">
                 <button type="button" className="btn-primary bg-electric text-navy hover:bg-electric-600 buy-btn" data-service-id="bootcamp-grad-full">
                   Register for the full bootcamp

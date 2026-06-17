@@ -34,7 +34,7 @@ export const PRODUCTS: ProductDetailContent[] = [
     route: '/product/becoming-a-job-magnet-on-linkedin/',
     catalogId: 'diy-job-magnet-linkedin',
     shortName: 'Becoming a Job Magnet on LinkedIn',
-    title: 'Becoming a Job Magnet on LinkedIn — Elevate Career Hub',
+    title: 'Becoming a Job Magnet on LinkedIn, Elevate Career Hub',
     metaDescription:
       'Build a stellar LinkedIn profile that gets recruiters and hiring managers chasing you with opportunities.',
     tagline:
@@ -44,7 +44,7 @@ export const PRODUCTS: ProductDetailContent[] = [
       {
         heading: 'Make recruiters come to you',
         body:
-          'Learn how to build a stellar LinkedIn profile that gets recruiters and hiring managers chasing you with opportunities. This resource gives you expert tips, strategies, and actionable advice to optimise your profile, expand your professional network, and attract career opportunities — whether you’re a seasoned professional or just starting out.',
+          'Learn how to build a stellar LinkedIn profile that gets recruiters and hiring managers chasing you with opportunities. This resource gives you expert tips, strategies, and actionable advice to optimise your profile, expand your professional network, and attract career opportunities, whether you’re a seasoned professional or just starting out.',
       },
     ],
     whatsInside: [
@@ -58,7 +58,7 @@ export const PRODUCTS: ProductDetailContent[] = [
     route: '/product/complete-grad-school-bundle/',
     catalogId: 'diy-grad-school-bundle',
     shortName: 'Complete Grad School Bundle',
-    title: 'Complete Grad School Bundle — Elevate Career Hub',
+    title: 'Complete Grad School Bundle, Elevate Career Hub',
     metaDescription:
       'An all-in-one toolkit for graduate school applications: CV templates, statement of purpose guides, reference templates, and more.',
     tagline:
@@ -68,7 +68,7 @@ export const PRODUCTS: ProductDetailContent[] = [
       {
         heading: 'Your complete graduate school toolkit',
         body:
-          'This all-in-one DIY product includes the essential resources you need to apply with confidence — CV templates, statement of purpose guides, reference letter templates, interview preparation, and more. Take the next step towards your academic goals with this invaluable resource.',
+          'This all-in-one DIY product includes the essential resources you need to apply with confidence, CV templates, statement of purpose guides, reference letter templates, interview preparation, and more. Take the next step towards your academic goals with this invaluable resource.',
       },
     ],
     whatsInside: [
@@ -86,7 +86,7 @@ export const PRODUCTS: ProductDetailContent[] = [
     route: '/product/how-to-write-the-resume-that-lands-the-interview/',
     catalogId: 'diy-resume-that-lands',
     shortName: 'How to Write the Resume that Lands the Interview',
-    title: 'How to Write the Resume that Lands the Interview — Elevate Career Hub',
+    title: 'How to Write the Resume that Lands the Interview, Elevate Career Hub',
     metaDescription:
       'Learn the formula for a resume that gets past Applicant Tracking Systems and lands you interviews.',
     tagline:
@@ -94,9 +94,9 @@ export const PRODUCTS: ProductDetailContent[] = [
     category: 'Course',
     sections: [
       {
-        heading: 'A resume that gets past the bots — and the humans',
+        heading: 'A resume that gets past the bots, and the humans',
         body:
-          'This comprehensive DIY course is your ultimate guide to creating a standout resume that captures the attention of employers and gets past Applicant Tracking Systems. Packed with expert tips, proven strategies, and practical advice, it walks you through every step — from formatting and content selection to highlighting your skills and accomplishments effectively.',
+          'This comprehensive DIY course is your ultimate guide to creating a standout resume that captures the attention of employers and gets past Applicant Tracking Systems. Packed with expert tips, proven strategies, and practical advice, it walks you through every step, from formatting and content selection to highlighting your skills and accomplishments effectively.',
       },
     ],
     whatsInside: [
@@ -110,7 +110,7 @@ export const PRODUCTS: ProductDetailContent[] = [
     route: '/product/mastering-the-art-of-job-hunting-in-the-uk-as-an-international-student/',
     catalogId: 'diy-uk-job-hunting',
     shortName: 'Mastering Job Hunting in the UK',
-    title: 'Mastering Job Hunting in the UK as an International Student — Elevate Career Hub',
+    title: 'Mastering Job Hunting in the UK as an International Student, Elevate Career Hub',
     metaDescription:
       'Navigate the UK job market with confidence: the recruitment process, visa-sponsoring companies, and how to stand out to UK employers.',
     tagline:
@@ -134,7 +134,7 @@ export const PRODUCTS: ProductDetailContent[] = [
     route: '/product/nailing-your-job-interviews/',
     catalogId: 'diy-nailing-interviews',
     shortName: 'Nailing Your Job Interviews',
-    title: 'Nailing Your Job Interviews — Elevate Career Hub',
+    title: 'Nailing Your Job Interviews, Elevate Career Hub',
     metaDescription:
       'Expert insights, proven strategies, and practical tips to ace your interviews and land your dream job.',
     tagline:
@@ -158,11 +158,11 @@ export const PRODUCTS: ProductDetailContent[] = [
     route: '/product/remote-job-playbook/',
     catalogId: 'diy-remote-job-playbook',
     shortName: 'Remote Job Playbook',
-    title: 'Remote Job Playbook — Elevate Career Hub',
+    title: 'Remote Job Playbook, Elevate Career Hub',
     metaDescription:
       'Discover the strategies trusted by thousands of professionals to secure high-paying remote jobs from anywhere in the world.',
     tagline:
-      'Unlock your remote career potential — the strategies trusted by thousands of professionals to secure high-paying remote jobs from anywhere in the world.',
+      'Unlock your remote career potential, the strategies trusted by thousands of professionals to secure high-paying remote jobs from anywhere in the world.',
     category: 'eBook',
     freeDownloadPath: '/downloads/the-remote-job-playbook.pdf',
     sections: [
@@ -188,17 +188,17 @@ export const PRODUCTS: ProductDetailContent[] = [
     route: '/product/the-complete-job-search-bundle/',
     catalogId: 'diy-complete-job-search',
     shortName: 'The Complete Job Search Bundle',
-    title: 'The Complete Job Search Bundle — Elevate Career Hub',
+    title: 'The Complete Job Search Bundle, Elevate Career Hub',
     metaDescription:
-      'Everything you need to find, land, and start your next role — resume, cover letter, LinkedIn, and interview resources in one package.',
+      'Everything you need to find, land, and start your next role, resume, cover letter, LinkedIn, and interview resources in one package.',
     tagline:
-      'A curated collection of everything you need to find, land, and start your next role — in one package.',
+      'A curated collection of everything you need to find, land, and start your next role, in one package.',
     category: 'Bundle',
     sections: [
       {
         heading: 'Your end-to-end job search toolkit',
         body:
-          'This comprehensive bundle offers a curated collection of essential resources, including resume templates, a cover letter guide, interview preparation, and networking strategies — everything you need to run a focused, effective job search from start to finish.',
+          'This comprehensive bundle offers a curated collection of essential resources, including resume templates, a cover letter guide, interview preparation, and networking strategies, everything you need to run a focused, effective job search from start to finish.',
       },
     ],
     whatsInside: [

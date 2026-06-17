@@ -71,7 +71,7 @@ export const SITE_FAQ_GROUPS: FaqGroup[] = [
       {
         question: 'How can I benefit from your educational services?',
         answer:
-          'Our educational services are tailored to help you make informed decisions about your academic journey — whether you’re applying to schools, planning your coursework, or seeking academic guidance.',
+          'Our educational services are tailored to help you make informed decisions about your academic journey, whether you’re applying to schools, planning your coursework, or seeking academic guidance.',
       },
     ],
   },
@@ -102,9 +102,9 @@ export const BOOTCAMP_FAQ_GROUPS: FaqGroup[] = [
   {
     heading: 'About the bootcamp',
     items: [
-      { question: 'What is the bootcamp all about?', answer: 'An 8-session intensive programme that walks you through the entire graduate school application process — from choosing the right programme and building your school list, to writing your personal statement, securing funding, and preparing to arrive on campus. Each session is led by a speaker with direct, relevant experience.' },
+      { question: 'What is the bootcamp all about?', answer: 'An 8-session intensive programme that walks you through the entire graduate school application process, from choosing the right programme and building your school list, to writing your personal statement, securing funding, and preparing to arrive on campus. Each session is led by a speaker with direct, relevant experience.' },
       { question: 'Who is this for?', answer: 'Anyone seriously considering graduate school, whether you’re just starting to explore your options or already in the middle of applications. It’s particularly relevant if you’re targeting programmes in the US, UK, Canada, Australia, or Europe.' },
-      { question: 'Do I need to already know which school or programme I want?', answer: 'No. Session 1 starts with a diagnostic exercise to help you figure that out. You’ll leave with a clear direction — not just a list of schools to Google later.' },
+      { question: 'Do I need to already know which school or programme I want?', answer: 'No. Session 1 starts with a diagnostic exercise to help you figure that out. You’ll leave with a clear direction, not just a list of schools to Google later.' },
       { question: 'Does it cover all types of graduate programmes?', answer: 'Yes. The bootcamp covers taught Masters, research-based programmes (MPhil, Masters by Research, PhD), and MBAs.' },
       { question: 'Is this only relevant for people applying from Ghana?', answer: 'The bootcamp is designed with an African applicant lens, but the content applies to anyone applying to graduate programmes abroad. School selection, application strategy, funding, and visa guidance are covered for multiple destination countries.' },
     ],
@@ -114,7 +114,7 @@ export const BOOTCAMP_FAQ_GROUPS: FaqGroup[] = [
     items: [
       { question: 'Will funding and scholarships be covered?', answer: 'Yes, and in depth. We cover graduate assistantships (one of the most underused funding routes for international students), a dedicated scholarships session with people who have actually won funding, and a resource pack with 50+ scholarships and 30+ low-tuition universities. Alternative funding such as loans is also covered.' },
       { question: 'I’m only interested in one or two topics. Can I attend individual sessions?', answer: 'Yes. Drop-in tickets are available, so you can register for just the sessions most relevant to you.' },
-      { question: 'What do I need to bring or prepare?', answer: 'Nothing is required before Session 1 — it opens with a diagnostic exercise, so come with an open mind and a rough sense of your goals. For later sessions, facilitators may share prep materials in advance.' },
+      { question: 'What do I need to bring or prepare?', answer: 'Nothing is required before Session 1, it opens with a diagnostic exercise, so come with an open mind and a rough sense of your goals. For later sessions, facilitators may share prep materials in advance.' },
       { question: 'Will sessions be recorded?', answer: 'Yes. Recordings are shared with registered participants after each session, with 90 days of replay access.' },
       { question: 'What platform will sessions run on, and how long are they?', answer: 'Sessions run on Google Meet. Each one is 2 hours, with a Q&A included.' },
       { question: 'I have a question that isn’t covered here.', answer: 'Reach out to us at hello@elevatecareerhub.com or on WhatsApp at +233 53 111 3454.' },

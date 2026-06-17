@@ -11,7 +11,7 @@ export interface Facilitator {
   credential: string;
   /** Which session / topic they lead. */
   session: string;
-  /** /assets/facilitators/<slug>.webp — the filename slug also keys the modal. */
+  /** /assets/facilitators/<slug>.webp, the filename slug also keys the modal. */
   photo: string;
   /** Full bio, one entry per paragraph. */
   bio: string[];

@@ -2,7 +2,7 @@ import { SiteHeader } from '../components/SiteHeader';
 import { SiteFooter } from '../components/SiteFooter';
 
 /**
- * Post-payment confirmation. Static by default (works with JS off — the buyer's
+ * Post-payment confirmation. Static by default (works with JS off, the buyer's
  * email carries the reference + any download). A tiny inline script
  * progressively fills in the reference from ?ref and reveals a download button
  * for digital products from ?item.
@@ -21,7 +21,7 @@ export function PaymentConfirmedPage() {
             </span>
             <h1 className="text-display-lg text-primary mb-4">Payment confirmed</h1>
             <p className="text-lg text-ink-muted leading-relaxed mb-2 not-italic">
-              Thank you — your payment was successful. A confirmation has been sent to your email.
+              Thank you, your payment was successful. A confirmation has been sent to your email.
             </p>
             <p id="ref-row" className="text-sm text-ink-muted mb-8 not-italic" style={{ display: 'none' }}>
               Reference: <span id="ref" className="font-semibold text-navy"></span>

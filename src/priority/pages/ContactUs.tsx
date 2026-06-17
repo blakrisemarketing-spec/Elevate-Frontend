@@ -21,7 +21,7 @@ export function ContactUsPage() {
       <main id="main">
         <PageHero
           eyebrow="Contact"
-          title="Reach out — we&rsquo;re here to help"
+          title="Reach out, we&rsquo;re here to help"
           crumbs={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
           intro={<p>Tell us what you are working on and we will guide you to the right next step. Replies are typically within the same business day.</p>}
         />

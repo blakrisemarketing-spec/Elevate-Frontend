@@ -1,6 +1,6 @@
 <?php
 /**
- * Local test harness — sends a real fulfilment email pair via toSend using the
+ * Local test harness, sends a real fulfilment email pair via toSend using the
  * exact api/email.php code path. Run: php scripts/test-tosend.php
  * Not deployed. Reports the toSend API result (success or exact error).
  */
@@ -19,5 +19,5 @@ try {
     send_fulfilment($item, 'TEST_REF_LOCAL_123', 'Local Tester', $ops);
     echo "RESULT: send_fulfilment completed without throwing (toSend accepted the requests).\n";
 } catch (Throwable $e) {
-    echo "RESULT: ERROR — " . $e->getMessage() . "\n";
+    echo "RESULT: ERROR, " . $e->getMessage() . "\n";
 }

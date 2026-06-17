@@ -20,12 +20,12 @@ export function CareerServicesPage() {
           crumbs={[{ label: 'Home', href: '/' }, { label: 'Career Services' }]}
           intro={
             <p>
-              You don&rsquo;t always need a total career makeover. Sometimes you just need that one missing piece &mdash; a CV that actually gets read, a LinkedIn profile that stops the scroll, or interview prep with someone who&rsquo;s actually hired for your role. Flex Services lets you grab exactly what you need, guided by a team that&rsquo;s been behind the closed doors of hiring.
+              You don&rsquo;t always need a total career makeover. Sometimes you just need that one missing piece, a CV that actually gets read, a LinkedIn profile that stops the scroll, or interview prep with someone who&rsquo;s actually hired for your role. Flex Services lets you grab exactly what you need, guided by a team that&rsquo;s been behind the closed doors of hiring.
             </p>
           }
         />
 
-        {/* SECTION 1 — Flex (à la carte) services */}
+        {/* SECTION 1, Flex (à la carte) services */}
         <section aria-labelledby="flex-heading">
           <div className="container-site py-16">
             <div className="text-center max-w-2xl mx-auto mb-12">
@@ -34,12 +34,12 @@ export function CareerServicesPage() {
             </div>
 
             <div className="grid gap-6 lg:grid-cols-2 max-w-5xl mx-auto">
-              {/* CV — tiered */}
+              {/* CV, tiered */}
               <article className="card flex flex-col h-full">
                 <h3 className="text-headline-md mb-2">Curriculum Vitae (CV)</h3>
                 <p className="text-sm font-semibold text-primary mb-3">Stop sending CVs into a black hole.</p>
                 <p className="text-ink-muted leading-relaxed mb-5">
-                  A weak CV doesn&rsquo;t always look &ldquo;bad&rdquo; &mdash; usually it just fails to tell a recruiter why they should keep reading. We don&rsquo;t just fix your CV; we translate your experience into the language recruiters use to make shortlisting decisions, whether you&rsquo;re applying down the street or across the ocean.
+                  A weak CV doesn&rsquo;t always look &ldquo;bad&rdquo;, usually it just fails to tell a recruiter why they should keep reading. We don&rsquo;t just fix your CV; we translate your experience into the language recruiters use to make shortlisting decisions, whether you&rsquo;re applying down the street or across the ocean.
                 </p>
                 <ul className="flex flex-col gap-4 mt-auto">
                   <li>
@@ -57,7 +57,7 @@ export function CareerServicesPage() {
                 </ul>
               </article>
 
-              {/* Cover letter — two options */}
+              {/* Cover letter, two options */}
               <article className="card flex flex-col h-full">
                 <h3 className="text-headline-md mb-2">Cover Letter</h3>
                 <p className="text-sm font-semibold text-primary mb-3">The cover letter that makes a recruiter pay attention.</p>
@@ -88,7 +88,7 @@ export function CareerServicesPage() {
                 <h3 className="text-headline-md mb-2">1-on-1 Interview Preparation</h3>
                 <p className="text-sm font-semibold text-primary mb-3">Practice with someone who&rsquo;s actually sat on the other side of the table.</p>
                 <p className="text-ink-muted leading-relaxed flex-1">
-                  Most prep is just memorising &ldquo;safe&rdquo; answers &mdash; that&rsquo;s not how you get the job. We pair you with an expert who works in your field. They&rsquo;ll tell you what the interviewer is really listening for, even the things they don&rsquo;t put in the job description.
+                  Most prep is just memorising &ldquo;safe&rdquo; answers, that&rsquo;s not how you get the job. We pair you with an expert who works in your field. They&rsquo;ll tell you what the interviewer is really listening for, even the things they don&rsquo;t put in the job description.
                 </p>
                 <div className="mt-5 flex items-baseline gap-2">
                   <span className="text-display-lg text-primary leading-none">₵500</span>
@@ -96,12 +96,12 @@ export function CareerServicesPage() {
                 <button type="button" className="btn-primary buy-btn mt-5" data-service-id="career-interview-prep">₵500 Investment</button>
               </article>
 
-              {/* Career strategy — consultation */}
+              {/* Career strategy, consultation */}
               <article className="card flex flex-col h-full lg:col-span-2">
                 <h3 className="text-headline-md mb-2">1-on-1 Career Strategy Session</h3>
                 <p className="text-sm font-semibold text-primary mb-3">Figure out your next move with someone who knows the market.</p>
                 <p className="text-ink-muted leading-relaxed flex-1">
-                  Most career advice is completely generic &mdash; &ldquo;just network more&rdquo; or &ldquo;follow your passion.&rdquo; That doesn&rsquo;t help when you&rsquo;re trying to pivot industries, move abroad, or break into a space where you don&rsquo;t know anyone. This is a strategic deep dive into your skills, your goals, and the reality of the market you&rsquo;re targeting &mdash; ending with a step-by-step plan to land the role you want.
+                  Most career advice is completely generic, &ldquo;just network more&rdquo; or &ldquo;follow your passion.&rdquo; That doesn&rsquo;t help when you&rsquo;re trying to pivot industries, move abroad, or break into a space where you don&rsquo;t know anyone. This is a strategic deep dive into your skills, your goals, and the reality of the market you&rsquo;re targeting, ending with a step-by-step plan to land the role you want.
                 </p>
                 <a href="/contact-us/" className="btn-primary mt-5 self-start">Book a strategy session</a>
               </article>
@@ -109,14 +109,14 @@ export function CareerServicesPage() {
           </div>
         </section>
 
-        {/* SECTION 2 — Bundles */}
+        {/* SECTION 2, Bundles */}
         <section className="bg-surface" aria-labelledby="bundles-heading">
           <div className="container-site py-16">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">Career Bundles</p>
               <h2 id="bundles-heading" className="text-headline-lg">Everything you need to go from &ldquo;Applicant&rdquo; to &ldquo;Hired&rdquo;</h2>
               <p className="text-ink-muted leading-relaxed mt-4">
-                The system rewards people who have the full package. Our bundles bring your CV, your LinkedIn, and your interview game into one cohesive strategy &mdash; no more patching it together.
+                The system rewards people who have the full package. Our bundles bring your CV, your LinkedIn, and your interview game into one cohesive strategy, no more patching it together.
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
@@ -128,7 +128,7 @@ export function CareerServicesPage() {
                 features={[
                   '1 professionally written CV, tailored to your level and target role',
                   '1 cover letter for your specific role or market',
-                  'A full LinkedIn profile makeover — headline, summary, experience, keywords, and positioning',
+                  'A full LinkedIn profile makeover, headline, summary, experience, keywords, and positioning',
                 ]}
                 footnote="The foundation every serious job seeker needs."
               />
@@ -171,7 +171,7 @@ export function CareerServicesPage() {
                   '5 one-on-one career consultations, from search design to negotiation',
                   '5 one-on-one interview prep sessions with role-matched experts',
                 ]}
-                footnote="Your own personal job search engine — our highest level of support."
+                footnote="Your own personal job search engine, our highest level of support."
               />
             </div>
 

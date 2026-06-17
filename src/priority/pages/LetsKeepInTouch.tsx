@@ -35,7 +35,7 @@ export function LetsKeepInTouchPage() {
           eyebrow="Stay connected"
           title="Let’s keep in touch"
           crumbs={[{ label: 'Home', href: '/' }, { label: 'Let’s keep in touch' }]}
-          intro={<p>Follow along and reach out — we share practical career and scholarship tips, and we’re always happy to point you to the right next step.</p>}
+          intro={<p>Follow along and reach out, we share practical career and scholarship tips, and we’re always happy to point you to the right next step.</p>}
         />
 
         <section className="container-site py-16" aria-labelledby="channels-heading">

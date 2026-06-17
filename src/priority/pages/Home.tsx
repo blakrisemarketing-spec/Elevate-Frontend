@@ -71,7 +71,7 @@ export function HomePage() {
           </div>
 
           <div className="container-site grid gap-12 lg:grid-cols-12 lg:items-center py-16 lg:py-20 relative">
-            {/* LEFT — copy */}
+            {/* LEFT, copy */}
             <div className="lg:col-span-6 relative z-10">
               <p className="eyebrow text-primary mb-5">Accelerating access to global careers &amp; scholarships</p>
               <h1 id="hero-heading" className="text-display-xl text-navy mb-2">
@@ -96,7 +96,7 @@ export function HomePage() {
               </div>
             </div>
 
-            {/* RIGHT — photo + overlay */}
+            {/* RIGHT, photo + overlay */}
             <div className="lg:col-span-6 relative">
               <div className="relative max-w-md lg:max-w-none mx-auto">
                 {/* Navy backdrop shape (behind photo) */}
@@ -115,7 +115,7 @@ export function HomePage() {
                   </svg>
                 </div>
 
-                {/* Photo — two co-founders auto-crossfading (CSS-only, no JS) */}
+                {/* Photo, two co-founders auto-crossfading (CSS-only, no JS) */}
                 <div className="relative rounded-[2rem] overflow-hidden shadow-soft aspect-[4/5] bg-gradient-to-b from-surface-tint to-white">
                   <img
                     src="/assets/founders/rosemary.webp"
@@ -191,7 +191,7 @@ export function HomePage() {
                 We exist to break one pattern
               </h2>
               <p className="text-ink-muted leading-relaxed mb-4">
-                Elevate isn&rsquo;t just a service provider. It&rsquo;s an answer to a problem most ambitious applicants never name out loud &mdash; that opportunity, almost everywhere, gets distributed by who you know, not what you can do.
+                Elevate isn&rsquo;t just a service provider. It&rsquo;s an answer to a problem most ambitious applicants never name out loud, that opportunity, almost everywhere, gets distributed by who you know, not what you can do.
               </p>
               <p className="text-ink-muted leading-relaxed mb-4">
                 Whether you&rsquo;re applying to a top firm in Accra, chasing a master&rsquo;s at Manchester, or rebuilding a career as an immigrant in London or Toronto, the rules have always rewarded insiders.
@@ -266,7 +266,7 @@ export function HomePage() {
               <article className="card bg-white">
                 <h3 className="text-headline-md text-navy mb-4">Career Services</h3>
                 <p className="text-ink-muted leading-relaxed mb-6">
-                  Whether you&rsquo;re going after a top firm at home or rebuilding your career in a new country, we&rsquo;ll help you get there faster. Resume, interviews, positioning, the whole approach &mdash; shaped by people who&rsquo;ve actually sat on the inside and know what makes a candidate stand out.
+                  Whether you&rsquo;re going after a top firm at home or rebuilding your career in a new country, we&rsquo;ll help you get there faster. Resume, interviews, positioning, the whole approach, shaped by people who&rsquo;ve actually sat on the inside and know what makes a candidate stand out.
                 </p>
                 <a href="/career-services/" className="inline-flex items-center gap-1 text-primary font-semibold no-underline hover:underline">
                   Learn more <ArrowRight />
@@ -284,7 +284,7 @@ export function HomePage() {
               <article className="card bg-white">
                 <h3 className="text-headline-md text-navy mb-4">DIY Products</h3>
                 <p className="text-ink-muted leading-relaxed mb-6">
-                  Want to start on your own? These are the resume templates, interview guides, and prep tools we wish we&rsquo;d had at the beginning. Practical, no fluff, built to get you moving today &mdash; with the option to bring us in whenever you want a hand.
+                  Want to start on your own? These are the resume templates, interview guides, and prep tools we wish we&rsquo;d had at the beginning. Practical, no fluff, built to get you moving today, with the option to bring us in whenever you want a hand.
                 </p>
                 <a href="/diy-products/" className="inline-flex items-center gap-1 text-primary font-semibold no-underline hover:underline">
                   Learn more <ArrowRight />
