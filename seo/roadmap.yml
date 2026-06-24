@@ -1,0 +1,234 @@
+# SEO content & technical backlog — Ghana-first, diaspora-aware, founder-led.
+#
+# The nightly routine processes the FIRST item with `status: todo` (top-to-bottom),
+# so order = priority. After publishing, it flips the item to `status: done` and
+# records the date. Add new items at the right priority; never reorder `done` items.
+#
+# `volume` = Ghana monthly searches for the primary keyword. Most items below are
+# seeded `null` because no live DataForSEO/GSC pull has run yet. The weekly routine
+# (`seo-weekly`) fills these in and re-prioritizes; treat the current order as an
+# intent-and-business-value best guess until real data lands.
+#
+# Item shape:
+#   - id / type / cluster / slug / keyword / intent / title / status
+#   - volume:  Ghana monthly searches (DataForSEO), or null
+#   - secondary: extra terms the article should also cover
+#   - notes: brief pointer / context
+#
+# Clusters: career | study-abroad | scholarships | bootcamp | decision | local
+
+meta:
+  market: Ghana (primary) + diaspora (UK/US/Canada)
+  primary_language: en-GH
+  focus: founder-led career & study-abroad guidance ("Insider Friend")
+  updated: 2026-06-24
+  keyword_data: "none yet — run seo-weekly to pull live DataForSEO/GSC volumes"
+
+items:
+  # ---- Already published (WordPress migration + brand-voice rewrite) — never reorder ----
+  - id: art-hidden-job-market
+    type: article
+    cluster: career
+    slug: how-our-career-development-company-can-help-you-stand-out
+    keyword: hidden job market
+    secondary: ["networking for jobs", "how to get a job through referrals", "jobs filled before advertised"]
+    intent: informational
+    title: "Most jobs are filled before they’re advertised. Here’s how to get in."
+    status: done
+    notes: "Networking / referral angle. The brand's core 'who you know' thesis. Internal-link hub for career articles."
+
+  - id: art-cv-writing
+    type: article
+    cluster: career
+    slug: how-to-boost-your-career-with-professional-resume-writing
+    keyword: professional resume writing
+    secondary: ["how to write a CV", "CV that gets interviews", "ATS resume tips"]
+    intent: commercial
+    title: "The CV that actually lands the interview"
+    status: done
+    notes: "Reference article for the blog shape. Internal-links to /career-services/."
+
+  - id: art-scholarship-win
+    type: article
+    cluster: scholarships
+    slug: the-importance-of-professional-documents-in-career-development
+    keyword: scholarship to top university
+    secondary: ["how to win a scholarship", "fully funded scholarship", "scholarship personal statement"]
+    intent: informational
+    title: "What actually wins a scholarship to a top university"
+    status: done
+    notes: "Rosemary's Manchester full-ride story. Internal-link hub for study-abroad articles."
+
+  - id: art-application-toolkit
+    type: article
+    cluster: career
+    slug: tips-for-crafting-an-effective-resume-cover-letter-personal-statement-and-school-application
+    keyword: how to write a cover letter
+    secondary: ["personal statement tips", "school application", "CV and cover letter"]
+    intent: informational
+    title: "Your application toolkit: CV, cover letter, personal statement, school app"
+    status: done
+
+  # ---- High-intent commercial first (closest to the money pages) ----
+  - id: art-cv-writing-service-ghana
+    type: article
+    cluster: decision
+    slug: professional-cv-writing-service-ghana
+    keyword: cv writing service Ghana
+    volume: null
+    secondary: ["professional CV writing Accra", "resume writing service Ghana", "how much does CV writing cost"]
+    intent: commercial
+    title: "Professional CV Writing in Ghana: What You Get and What It Costs"
+    status: todo
+    notes: "Bottom-funnel. Use real catalog prices (career-cv-early 350 / experienced 400 / senior 450) and link straight to /career-services/. Cross-check ech-service-catalog before quoting any price."
+
+  - id: art-how-to-get-scholarship-abroad
+    type: article
+    cluster: scholarships
+    slug: how-to-get-scholarship-to-study-abroad
+    keyword: how to get a scholarship to study abroad
+    volume: null
+    secondary: ["fully funded scholarships for Ghanaians", "scholarships for African students", "how to study abroad for free"]
+    intent: informational
+    title: "How to Get a Scholarship to Study Abroad (From Ghana)"
+    status: todo
+    notes: "High-value top-of-funnel for the study-abroad persona. Internal-link to art-scholarship-win and /educational-services/ and /get-into-grad-school-bootcamp/."
+
+  - id: art-statement-of-purpose
+    type: article
+    cluster: study-abroad
+    slug: how-to-write-statement-of-purpose
+    keyword: how to write a statement of purpose
+    volume: null
+    secondary: ["statement of purpose example", "SOP for masters", "personal statement for graduate school"]
+    intent: informational
+    title: "How to Write a Statement of Purpose That Gets You In"
+    status: todo
+    notes: "Maps to edu-essay-500 / edu-essay-1000 services. Keep the honest 'no guaranteed admission' caveat."
+
+  - id: art-study-abroad-from-ghana
+    type: article
+    cluster: study-abroad
+    slug: how-to-study-abroad-from-ghana
+    keyword: how to study abroad from Ghana
+    volume: null
+    secondary: ["study in UK from Ghana", "study in USA from Ghana", "masters abroad for Ghanaians"]
+    intent: informational
+    title: "How to Study Abroad From Ghana: A Step-by-Step Path"
+    status: todo
+
+  - id: art-linkedin-optimisation
+    type: article
+    cluster: career
+    slug: how-to-optimise-your-linkedin-profile
+    keyword: how to optimise LinkedIn profile
+    volume: null
+    secondary: ["LinkedIn for job search", "LinkedIn headline examples", "get recruiters to find you"]
+    intent: informational
+    title: "How to Make Recruiters Find You on LinkedIn"
+    status: todo
+    notes: "Maps to the LinkedIn Optimisation service (career-linkedin 400)."
+
+  - id: art-interview-preparation
+    type: article
+    cluster: career
+    slug: how-to-prepare-for-a-job-interview
+    keyword: how to prepare for a job interview
+    volume: null
+    secondary: ["interview questions and answers", "competency interview tips", "interview preparation"]
+    intent: informational
+    title: "How to Prepare for a Job Interview (and Actually Feel Ready)"
+    status: todo
+    notes: "Maps to 1-on-1 Interview Preparation (career-interview-prep 500)."
+
+  - id: art-job-search-ghana
+    type: article
+    cluster: local
+    slug: how-to-find-a-job-in-ghana
+    keyword: how to find a job in Ghana
+    volume: null
+    secondary: ["job search Ghana", "graduate jobs Ghana", "where to find jobs in Accra"]
+    intent: informational
+    title: "How to Find a Job in Ghana When the Best Roles Aren’t Advertised"
+    status: todo
+    notes: "Ties the local job market to the hidden-job-market thesis. Internal-link to art-hidden-job-market."
+
+  - id: art-career-change
+    type: article
+    cluster: career
+    slug: how-to-change-careers
+    keyword: how to change careers
+    volume: null
+    secondary: ["switching careers", "career change at 30", "pivot to a new industry"]
+    intent: informational
+    title: "How to Change Careers Without Starting From Zero"
+    status: todo
+
+  - id: art-rebuild-career-abroad
+    type: article
+    cluster: local
+    slug: rebuilding-your-career-as-an-immigrant
+    keyword: rebuilding career as an immigrant
+    volume: null
+    secondary: ["jobs for immigrants UK", "getting a job in Canada as a newcomer", "international experience on a CV"]
+    intent: informational
+    title: "Rebuilding Your Career After Moving Abroad"
+    status: todo
+    notes: "Diaspora persona (UK/US/Canada). Naa's relocation story is the proof point."
+
+  - id: art-remote-jobs
+    type: article
+    cluster: career
+    slug: how-to-get-a-remote-job-from-ghana
+    keyword: how to get a remote job
+    volume: null
+    secondary: ["remote jobs from Ghana", "work for foreign companies remotely", "remote job for Africans"]
+    intent: informational
+    title: "How to Land a Remote Job From Ghana"
+    status: todo
+    notes: "Internal-link to the Remote Job Playbook DIY product (free download)."
+
+  - id: art-masters-application
+    type: article
+    cluster: study-abroad
+    slug: how-to-apply-for-a-masters-abroad
+    keyword: how to apply for a masters abroad
+    volume: null
+    secondary: ["masters application UK", "grad school application US", "choosing a masters programme"]
+    intent: informational
+    title: "How to Apply for a Masters Abroad: The Full Timeline"
+    status: todo
+    notes: "Maps to edu-school-selection (500) and the grad bundles. Reinforces /get-into-grad-school-bootcamp/."
+
+  # ---- Technical / GEO tasks (interleaved by the weekly routine) ----
+  - id: tech-llms-txt
+    type: technical
+    keyword: n/a
+    intent: n/a
+    title: "Generate dist/llms.txt for AI crawlers (next to the sitemap writer)"
+    status: todo
+    notes: "Elevate generates sitemap.xml but no llms.txt yet. Add a writer in scripts/build-priority-routes.mjs that lists the key pages + blog routes with one-line descriptions. Direct GEO win."
+
+  - id: tech-blog-link-faq-blocks
+    type: technical
+    keyword: n/a
+    intent: n/a
+    title: "Add link-internal + faq block types to the blog content model"
+    status: todo
+    notes: "Extend BlogBlock in src/priority/data/blog.ts + the BlogPost template so articles carry a structured internal-link graph and an answer-first FAQ block (FAQPage schema), like the money pages already do. Unlocks better internal linking and AI-citable FAQs on every article."
+
+  - id: tech-og-images-blog
+    type: technical
+    keyword: n/a
+    intent: n/a
+    title: "Generate per-article OG/social images (seo-image-gen)"
+    status: todo
+    notes: "Articles currently share the site OG image. Remember: images are NOT fingerprinted, so each new card needs a unique filename to beat the 1-year cache."
+
+  - id: tech-programmatic-services
+    type: technical
+    keyword: n/a
+    intent: n/a
+    title: "Programmatic service/location landing pages from ech-service-catalog"
+    status: todo
+    notes: "Same data-driven SSG mechanism as the blog (one data file + existing detail templates). Candidate angles: per-service pages, 'CV writing in <city>' for Accra/Kumasi."

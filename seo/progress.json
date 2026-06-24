@@ -1,0 +1,14 @@
+{
+  "lastRunDate": null,
+  "lastWeeklyRun": null,
+  "completed": [],
+  "manuallyPublished": [
+    "art-hidden-job-market",
+    "art-cv-writing",
+    "art-scholarship-win",
+    "art-application-toolkit"
+  ],
+  "inFlightPRs": [],
+  "publishedCount": 4,
+  "notes": "Control plane initialized 2026-06-24. Four articles already live (WordPress migration + brand-voice rewrite), recorded in manuallyPublished. No automated nightly run yet. Next todo item: art-cv-writing-service-ghana (cv writing service Ghana, commercial). Brief not yet written. Roadmap volumes are all null until the first seo-weekly pull."
+}
