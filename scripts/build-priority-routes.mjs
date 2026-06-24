@@ -24,7 +24,14 @@ const projectRoot = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 const distRoot = path.join(projectRoot, 'dist');
 const cssPath = path.join(projectRoot, '.tmp', 'priority.css');
 
-const OG_IMAGE = 'https://elevatecareerhub.com/assets/wp-content/uploads/2024/01/2.png';
+// Social-share card: 1200x630 PNG served from the build (public/assets/og/).
+// Absolute URL because social scrapers don't resolve relative paths.
+// The previous source (wp-content/uploads/2024/01/2.png) was a blank white
+// image, which is why link previews rendered empty.
+const OG_IMAGE = 'https://elevatecareerhub.com/assets/og/og-default.png';
+const OG_IMAGE_WIDTH = '1200';
+const OG_IMAGE_HEIGHT = '630';
+const OG_IMAGE_ALT = 'Elevate Career Hub, accelerating access to global careers and scholarships';
 
 const SITE_URL = 'https://elevatecareerhub.com';
 
@@ -562,7 +569,6 @@ function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, 
     <link rel="canonical" href="${escapeHtml(canonical)}">
     <meta name="robots" content="${robots}">
     <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta property="og:type" content="${escapeHtml(ogType || 'website')}">
@@ -570,11 +576,16 @@ function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, 
     <meta property="og:description" content="${escapeHtml(description)}">
     <meta property="og:url" content="${escapeHtml(canonical)}">
     <meta property="og:image" content="${escapeHtml(ogImage)}">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="${OG_IMAGE_WIDTH}">
+    <meta property="og:image:height" content="${OG_IMAGE_HEIGHT}">
+    <meta property="og:image:alt" content="${escapeHtml(OG_IMAGE_ALT)}">
     <meta property="og:site_name" content="Elevate Career Hub">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${escapeHtml(title)}">
     <meta name="twitter:description" content="${escapeHtml(description)}">
     <meta name="twitter:image" content="${escapeHtml(ogImage)}">
+    <meta name="twitter:image:alt" content="${escapeHtml(OG_IMAGE_ALT)}">
     <meta name="theme-color" content="#0077B6">
     <link rel="preload" href="/fonts/Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
     <style>${css}</style>${ld}${checkoutScript}
