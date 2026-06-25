@@ -44,6 +44,20 @@
     "htmlPath": "/snapshots/blog.html"
   },
   {
+    "id": 20260625,
+    "type": "pages",
+    "route": "/events/",
+    "aliases": [],
+    "originalUrl": "https://elevatecareerhub.com/events/",
+    "slug": "events",
+    "title": "Events",
+    "description": "Explore upcoming Elevate Career Hub bootcamps and live events, plus past programmes including Job Readiness Bootcamp and Career Clarity Workshop.",
+    "canonical": "https://elevatecareerhub.com/events/",
+    "ogImage": "https://elevatecareerhub.com/assets/og/og-default.png",
+    "dateModified": "2026-06-25T00:00:00",
+    "htmlPath": "/snapshots/events.html"
+  },
+  {
     "id": 1531,
     "type": "pages",
     "route": "/career-services/",

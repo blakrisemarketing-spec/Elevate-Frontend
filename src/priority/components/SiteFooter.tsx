@@ -37,6 +37,7 @@ export function SiteFooter() {
               <li><a href="/career-services/" className="text-white/80 hover:text-electric no-underline">Career Services</a></li>
               <li><a href="/educational-services/" className="text-white/80 hover:text-electric no-underline">Educational Services</a></li>
               <li><a href="/blog/" className="text-white/80 hover:text-electric no-underline">Blog</a></li>
+              <li><a href="/events/" className="text-white/80 hover:text-electric no-underline">Events</a></li>
               <li><a href="/diy-products/" className="text-white/80 hover:text-electric no-underline">DIY Products</a></li>
               <li><a href="/contact-us/" className="text-white/80 hover:text-electric no-underline">Contact Us</a></li>
             </ul>

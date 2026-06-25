@@ -10,7 +10,6 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/about/' },
   {
     label: 'Services',
     children: [
@@ -18,7 +17,7 @@ const NAV_ITEMS: NavItem[] = [
       { label: 'Career Services', href: '/career-services/' },
     ],
   },
-  { label: 'Blog', href: '/blog/' },
+  { label: 'Events', href: '/events/' },
   { label: 'Contact Us', href: '/contact-us/' },
 ];
 

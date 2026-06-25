@@ -16,6 +16,7 @@ import { JobReadinessBootcampPage } from './pages/JobReadinessBootcamp';
 import { JrbThankYouPage } from './pages/JrbThankYou';
 import { LetsKeepInTouchPage } from './pages/LetsKeepInTouch';
 import { GradSchoolBootcampPage } from './pages/GradSchoolBootcamp';
+import { EventsPage } from './pages/Events';
 import { ProductDetailPage } from './pages/ProductDetail';
 import { ServiceDetailPage } from './pages/ServiceDetail';
 import { PRODUCTS } from './data/products';
@@ -46,6 +47,7 @@ const STATIC_PAGES: Record<string, () => ReactElement> = {
   '/refund-policy/': RefundPolicyPage,
   '/faqs/': FaqsPage,
   '/blog/': BlogIndexPage,
+  '/events/': EventsPage,
   '/job-readiness-bootcamp/': JobReadinessBootcampPage,
   '/jrb-thank-you/': JrbThankYouPage,
   '/lets-keep-in-touch/': LetsKeepInTouchPage,
