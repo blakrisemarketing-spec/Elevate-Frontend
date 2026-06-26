@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-06-13T00:46:36.731Z",
-  "base": "http://127.0.0.1:53115",
-  "total": 35,
+  "generatedAt": "2026-06-26T14:20:42.499Z",
+  "base": "http://127.0.0.1:55052",
+  "total": 36,
   "failed": 0,
   "results": [
     {
@@ -18,6 +18,12 @@
     },
     {
       "route": "/blog/",
+      "expected": "direct 200 static/app-shell route",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "route": "/events/",
       "expected": "direct 200 static/app-shell route",
       "status": 200,
       "passed": true

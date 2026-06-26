@@ -1,16 +1,17 @@
-# Direct Route Smoke Check — 2026-05-10
+# Direct Route Smoke Check, 2026-05-10
 
-Generated: 2026-06-13T00:46:36.731Z
+Generated: 2026-06-26T14:20:42.499Z
 
 Command: `node scripts/smoke-direct-routes.mjs`
 
-Result: PASS (35/35 passed)
+Result: PASS (36/36 passed)
 
 | Route | Expected behavior | HTTP status | Result |
 |---|---|---:|---|
 | `/` | direct 200 static/app-shell route | 200 | PASS |
 | `/about/` | direct 200 static/app-shell route | 200 | PASS |
 | `/blog/` | direct 200 static/app-shell route | 200 | PASS |
+| `/events/` | direct 200 static/app-shell route | 200 | PASS |
 | `/career-services/` | direct 200 static/app-shell route | 200 | PASS |
 | `/career-strategy-session/` | direct 200 static/app-shell route | 200 | PASS |
 | `/cart/` | intentional assisted-commerce redirect shell to /contact-us/ | 200 | PASS |
