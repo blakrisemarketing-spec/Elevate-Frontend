@@ -1,0 +1,17 @@
+# Elevate Career Hub, lead store guard.
+#
+# This directory holds raw grad-school-match leads (leads-YYYY-MM.ndjson) and
+# uploaded CVs (cv/). It is personal data and must NEVER be served or executed
+# over the web. "Require all denied" rejects the HTTP request before any handler
+# (including PHP) runs, on both Apache 2.4 and LiteSpeed, so even a malicious
+# upload that slipped the type checks cannot be fetched or executed here.
+#
+# PHP still reads/writes these files server-side via api/quiz-lead.php; this only
+# blocks direct web access to /api/_leads/...
+Require all denied
+
+# Apache 2.2 fallback (no mod_authz_core).
+<IfModule !mod_authz_core.c>
+  Order allow,deny
+  Deny from all
+</IfModule>

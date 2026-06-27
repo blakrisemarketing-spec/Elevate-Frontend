@@ -105,6 +105,18 @@ export function GradSchoolBootcampPage() {
           </div>
         </section>
 
+        {/* ── Free match tool CTA ──────────────────────────────── */}
+        <section className="container-site pb-4" aria-labelledby="match-cta">
+          <div className="rounded-2xl border-2 border-primary/20 bg-surface-tint/60 p-7 sm:p-9 flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+            <div className="flex-1">
+              <p className="eyebrow text-primary mb-2">Not sure where you stand?</p>
+              <h2 id="match-cta" className="text-headline-md text-navy mb-1">See the programs and scholarships you qualify for, free</h2>
+              <p className="text-ink-muted text-sm">Take the 2-minute match and get a personalized shortlist before you decide.</p>
+            </div>
+            <a href="/grad-school-match/" className="btn-secondary shrink-0">Find my matches</a>
+          </div>
+        </section>
+
         {/* ── Curriculum ───────────────────────────────────────── */}
         <section className="bg-surface" aria-labelledby="curriculum-heading">
           <div className="container-site py-16 lg:py-20">

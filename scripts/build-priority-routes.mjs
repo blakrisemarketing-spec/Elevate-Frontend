@@ -353,6 +353,17 @@ const PRIORITY_ROUTES = [
     hasCheckout: true,
   },
   {
+    route: '/grad-school-match/',
+    outDir: 'grad-school-match',
+    entry: 'src/priority/pages/GradSchoolMatch.tsx',
+    component: 'GradSchoolMatchPage',
+    title: 'Grad School & Scholarship Match, Elevate Career Hub',
+    description: 'Answer a few quick questions and see which funded grad school programs and scholarships fit your profile, then get a personalized report and next step.',
+    canonical: 'https://elevatecareerhub.com/grad-school-match/',
+    ogImage: OG_IMAGE,
+    hasMatch: true,
+  },
+  {
     // Branded 404. Written to dist/404.html (not a route dir) and wired via
     // ErrorDocument in .htaccess. Not in registry.ts/pages.json, it is an error
     // document, not a navigable route.
@@ -491,6 +502,38 @@ async function buildCheckoutIsland() {
   return `/assets/${fileName}`;
 }
 
+/**
+ * Compile the Grad School Match island → dist/assets/match.<hash>.js. Unlike the
+ * checkout island (vanilla TS), this one is a small React app (the multi-step
+ * tool), so react/react-dom are bundled in and NODE_ENV is defined for them.
+ * Content-hashed for the same cache-busting reason as the checkout island.
+ */
+async function buildMatchIsland() {
+  await ensureDir(path.join(distRoot, 'assets'));
+  const tmpFile = path.join(distRoot, 'assets', 'match.tmp.js');
+  await esbuild({
+    entryPoints: [path.join(projectRoot, 'src/match/match-client.tsx')],
+    bundle: true,
+    minify: true,
+    format: 'iife',
+    target: 'es2019',
+    outfile: tmpFile,
+    loader: { '.tsx': 'tsx', '.ts': 'ts' },
+    jsx: 'automatic',
+    jsxImportSource: 'react',
+    define: {
+      'process.env.NODE_ENV': '"production"',
+    },
+    logLevel: 'silent',
+  });
+  const buf = await fs.readFile(tmpFile);
+  const hash = createHash('sha256').update(buf).digest('hex').slice(0, 8);
+  const fileName = `match.${hash}.js`;
+  await fs.rename(tmpFile, path.join(distRoot, 'assets', fileName));
+  console.log(`[ssg] match island → dist/assets/${fileName} (${(buf.length / 1024).toFixed(1)} KB)`);
+  return `/assets/${fileName}`;
+}
+
 async function bundleEntry(entry) {
   const result = await esbuild({
     entryPoints: [path.join(projectRoot, entry)],
@@ -608,6 +651,25 @@ async function emitDeployArtifacts() {
   console.log(`[ssg] deploy artifacts → dist/api/{catalog.json,verify-payment.php,email.php}, dist/.htaccess`);
 }
 
+/**
+ * Emit the Grad School Match artifacts into dist/:
+ *   - api/match-config.json  (id -> {name, blurb}, so the PHP report can't be spoofed)
+ *   - api/quiz-lead.php       (copied lead-capture endpoint)
+ *   - api/_leads/.htaccess    (deny-all guard for the PII + CV store)
+ * Relies on emitDeployArtifacts() having already copied api/email.php (required
+ * by quiz-lead.php) and built the .htaccess.
+ */
+async function emitMatchArtifacts() {
+  const mod = await loadModuleExports('src/match/match-data.ts');
+  const cfg = typeof mod.matchConfig === 'function' ? mod.matchConfig() : { pathways: [], scholarships: [] };
+  await ensureDir(path.join(distRoot, 'api'));
+  await fs.writeFile(path.join(distRoot, 'api', 'match-config.json'), JSON.stringify(cfg, null, 2));
+  await fs.copyFile(path.join(projectRoot, 'api', 'quiz-lead.php'), path.join(distRoot, 'api', 'quiz-lead.php'));
+  await ensureDir(path.join(distRoot, 'api', '_leads'));
+  await fs.copyFile(path.join(projectRoot, 'api', '_leads', '.htaccess'), path.join(distRoot, 'api', '_leads', '.htaccess'));
+  console.log('[ssg] match artifacts → dist/api/{match-config.json,quiz-lead.php,_leads/.htaccess}');
+}
+
 async function loadComponent(entry, componentName) {
   const code = await bundleEntry(entry);
   const module = { exports: {} };
@@ -625,9 +687,10 @@ async function loadComponent(entry, componentName) {
   return module.exports[componentName];
 }
 
-function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, body, hasCheckout, checkoutSrc, noindex, jsonLd }) {
+function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, body, hasCheckout, checkoutSrc, hasMatch, matchSrc, noindex, jsonLd }) {
   const robots = noindex ? 'noindex,nofollow' : 'index,follow';
   const checkoutScript = hasCheckout ? `\n    <script type="module" src="${checkoutSrc || '/assets/checkout.js'}"></script>` : '';
+  const matchScript = hasMatch ? `\n    <script type="module" src="${matchSrc || '/assets/match.js'}"></script>` : '';
   const ld = (jsonLd && jsonLd.length)
     ? `\n    <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': jsonLd })}</script>`
     : '';
@@ -660,7 +723,7 @@ function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, 
     <meta name="twitter:image:alt" content="${escapeHtml(OG_IMAGE_ALT)}">
     <meta name="theme-color" content="#0077B6">
     <link rel="preload" href="/fonts/Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
-    <style>${css}</style>${ld}${checkoutScript}
+    <style>${css}</style>${ld}${checkoutScript}${matchScript}
   </head>
   <body>${body}</body>
 </html>`;
@@ -718,9 +781,22 @@ async function main() {
   // artifacts once if any route uses checkout. The island's URL is
   // content-hashed, so each route embeds the current fingerprinted path.
   let checkoutSrc = '/assets/checkout.js';
-  if (ALL_ROUTES.some(r => r.hasCheckout)) {
+  let matchSrc = '/assets/match.js';
+  const needsCheckout = ALL_ROUTES.some(r => r.hasCheckout);
+  const needsMatch = ALL_ROUTES.some(r => r.hasMatch);
+  if (needsCheckout) {
     checkoutSrc = await buildCheckoutIsland();
+  }
+  if (needsMatch) {
+    matchSrc = await buildMatchIsland();
+  }
+  // The PHP/.htaccess deploy artifacts are shared; emit them if either island
+  // is in play (quiz-lead.php needs the copied email.php + .htaccess too).
+  if (needsCheckout || needsMatch) {
     await emitDeployArtifacts();
+  }
+  if (needsMatch) {
+    await emitMatchArtifacts();
   }
 
   const results = [];
@@ -757,6 +833,8 @@ async function main() {
       body,
       hasCheckout: route.hasCheckout,
       checkoutSrc,
+      hasMatch: route.hasMatch,
+      matchSrc,
       noindex: route.noindex,
       jsonLd,
     });
