@@ -15,8 +15,11 @@
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const projectRoot = path.resolve(new URL('..', import.meta.url).pathname);
+// fileURLToPath (not URL.pathname) so paths containing spaces or other
+// URL-encoded characters, e.g. ".../01. GitHub/...", resolve correctly.
+const projectRoot = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 const env = { ...process.env };
 for (const file of ['.env', '.env.local']) {
   try {
