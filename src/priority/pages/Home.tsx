@@ -294,6 +294,20 @@ export function HomePage() {
           </div>
         </section>
 
+        {/* GRAD MATCH PROMO ─────────────────────────────────── */}
+        <section className="bg-canvas" aria-labelledby="match-promo">
+          <div className="container-site pt-20">
+            <div className="rounded-2xl border-2 border-primary/20 bg-surface-tint/50 p-8 sm:p-10 flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+              <div className="flex-1">
+                <p className="eyebrow text-primary mb-2">Free 2-minute tool</p>
+                <h2 id="match-promo" className="text-headline-md text-navy mb-2">See which grad school programs and scholarships you qualify for</h2>
+                <p className="text-ink-muted not-italic">Answer a few quick questions and get a personalized shortlist, plus your next step. No payment, no spam.</p>
+              </div>
+              <a href="/grad-school-match/" className="btn-primary shrink-0">Find my matches <ArrowRight /></a>
+            </div>
+          </div>
+        </section>
+
         {/* TESTIMONIALS ──────────────────────────────────────── */}
         <section className="bg-canvas" aria-labelledby="testimonials-heading">
           <div className="container-site py-20">

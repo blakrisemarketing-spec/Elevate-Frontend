@@ -1,0 +1,5 @@
+# Captured grad-school-match leads + uploaded CVs are PII generated at runtime.
+# Never commit them. Keep only the deny-all guard and this file tracked.
+*
+!.gitignore
+!.htaccess

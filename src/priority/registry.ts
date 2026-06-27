@@ -17,6 +17,7 @@ import { JrbThankYouPage } from './pages/JrbThankYou';
 import { LetsKeepInTouchPage } from './pages/LetsKeepInTouch';
 import { GradSchoolBootcampPage } from './pages/GradSchoolBootcamp';
 import { EventsPage } from './pages/Events';
+import { GradSchoolMatchPage } from './pages/GradSchoolMatch';
 import { ProductDetailPage } from './pages/ProductDetail';
 import { ServiceDetailPage } from './pages/ServiceDetail';
 import { PRODUCTS } from './data/products';
@@ -52,6 +53,7 @@ const STATIC_PAGES: Record<string, () => ReactElement> = {
   '/jrb-thank-you/': JrbThankYouPage,
   '/lets-keep-in-touch/': LetsKeepInTouchPage,
   '/get-into-grad-school-bootcamp/': GradSchoolBootcampPage,
+  '/grad-school-match/': GradSchoolMatchPage,
 };
 
 const PRODUCT_PAGES: Record<string, () => ReactElement> = Object.fromEntries(
