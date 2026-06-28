@@ -148,7 +148,9 @@ export function MatchTool() {
   async function submit(e: FormEvent) {
     e.preventDefault();
     setFormError('');
-    if (company.trim() !== '') return; // bot
+    // Note: the honeypot (`company`) is NOT checked here. The browser can autofill
+    // a hidden field and that must never block a real person; the server decides
+    // what to do with it (store + flag, no email) so the UI always reaches the report.
     if (name.trim().length < 2) { setFormError('Pop your name in so we know who we are cheering for.'); return; }
     if (!isEmail(email.trim())) { setFormError('We need a valid email to send your report to.'); return; }
     if (phoneNumber.replace(/\D/g, '').length < 7) { setFormError('Add your WhatsApp number so we can reach you.'); return; }
@@ -358,9 +360,11 @@ export function MatchTool() {
             </div>
           </Field>
 
-          {/* Honeypot, visually hidden */}
-          <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: 'auto', height: 0, overflow: 'hidden' }}>
-            <label>Company<input type="text" tabIndex={-1} autoComplete="off" value={company} onChange={(e) => setCompany(e.target.value)} /></label>
+          {/* Honeypot, visually hidden. No real label or autofill-friendly name,
+              so browser autofill / password managers never fill it (which would
+              otherwise look like a bot and block a real submission). */}
+          <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
+            <input type="text" name="hp_check" tabIndex={-1} autoComplete="off" value={company} onChange={(e) => setCompany(e.target.value)} />
           </div>
 
           <label className="flex items-start gap-3 text-sm text-ink-muted mb-5">
