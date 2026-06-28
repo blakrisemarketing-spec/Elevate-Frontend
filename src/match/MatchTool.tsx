@@ -18,7 +18,7 @@
 import { useMemo, useState } from 'react';
 import type { FormEvent, ReactNode } from 'react';
 import { QUESTIONS, matchProfile, motivationFor } from './match-data';
-import type { Answers, MatchQuestion } from './match-data';
+import type { Answers, MatchQuestion, Tier } from './match-data';
 
 const LEAD_ENDPOINT = '/api/quiz-lead.php';
 const BOOTCAMP_URL = '/get-into-grad-school-bootcamp/#tickets';
@@ -164,6 +164,8 @@ export function MatchTool() {
       fd.append('answers', JSON.stringify(answers));
       fd.append('pathwayIds', result.pathways.map((p) => p.id).join(','));
       fd.append('scholarshipIds', result.scholarships.map((s) => s.id).join(','));
+      fd.append('pathwayTiers', result.pathways.map((p) => p.tier).join(','));
+      fd.append('scholarshipTiers', result.scholarships.map((s) => s.tier).join(','));
       if (linkedin.trim()) fd.append('linkedin', linkedin.trim());
       if (portfolio.trim()) fd.append('portfolio', portfolio.trim());
       if (cvFile) fd.append('cv', cvFile);
@@ -409,9 +411,13 @@ export function MatchTool() {
         <div className="grid gap-4 sm:grid-cols-2">
           {result.pathways.map((p) => (
             <div key={p.id} className="card">
-              <span className="inline-flex items-center text-[11px] font-semibold uppercase tracking-wide text-primary bg-surface-tint px-2.5 py-1 rounded-full mb-3">{p.category}</span>
+              <div className="flex flex-wrap items-center gap-2 mb-3">
+                <span className="inline-flex items-center text-[11px] font-semibold uppercase tracking-wide text-navy bg-surface-tint px-2.5 py-1 rounded-full">{p.category}</span>
+                <TierBadge tier={p.tier} />
+              </div>
               <h4 className="text-lg font-bold text-navy">{p.name}</h4>
               <p className="text-ink-muted text-sm leading-relaxed mt-1">{p.blurb}</p>
+              <Reasons reasons={p.reasons} />
               {p.bootcampSession && <p className="text-xs text-primary mt-3">Covered in the bootcamp: {p.bootcampSession}</p>}
             </div>
           ))}
@@ -423,16 +429,18 @@ export function MatchTool() {
         <div className="grid gap-4 sm:grid-cols-2">
           {result.scholarships.map((s) => (
             <div key={s.id} className="card">
-              <div className="flex flex-wrap gap-2 mb-3">
+              <div className="flex flex-wrap items-center gap-2 mb-3">
                 <span className="inline-flex items-center text-[11px] font-semibold uppercase tracking-wide text-navy bg-surface-tint px-2.5 py-1 rounded-full">{s.region}</span>
                 <span className="inline-flex items-center text-[11px] font-semibold uppercase tracking-wide text-primary bg-primary-50 px-2.5 py-1 rounded-full">{s.fundingType}</span>
+                <TierBadge tier={s.tier} />
               </div>
               <h4 className="text-lg font-bold text-navy">{s.name}</h4>
               <p className="text-ink-muted text-sm leading-relaxed mt-1">{s.blurb}</p>
+              <Reasons reasons={s.reasons} />
             </div>
           ))}
         </div>
-        <p className="text-xs text-ink-muted mt-4">Quick honesty note: the final yes on funding sits with each provider. Our job is to make your case impossible to ignore.</p>
+        <p className="text-xs text-ink-muted mt-4">Quick honesty note: the final yes on funding sits with each provider. Our job is to make your case impossible to ignore. "Worth a stretch" just means aim for it with a sharper application, that is exactly what the bootcamp builds.</p>
       </section>
 
       {/* Personalized next step → bootcamp */}
@@ -487,5 +495,26 @@ function LockIcon() {
     <svg viewBox="0 0 20 20" className="w-4 h-4 text-ink-muted shrink-0" fill="currentColor" aria-hidden="true">
       <path d="M5 9V7a5 5 0 0110 0v2h1a1 1 0 011 1v7a1 1 0 01-1 1H4a1 1 0 01-1-1v-7a1 1 0 011-1h1zm2 0h6V7a3 3 0 00-6 0v2z" />
     </svg>
+  );
+}
+
+function TierBadge({ tier }: { tier: Tier }) {
+  if (tier === 'strong') {
+    return <span className="inline-flex items-center text-[11px] font-semibold uppercase tracking-wide text-green-700 bg-green-100 px-2.5 py-1 rounded-full">Strong match</span>;
+  }
+  return <span className="inline-flex items-center text-[11px] font-semibold uppercase tracking-wide text-amber-700 bg-amber-100 px-2.5 py-1 rounded-full">Worth a stretch</span>;
+}
+
+function Reasons({ reasons }: { reasons: string[] }) {
+  if (!reasons || reasons.length === 0) return null;
+  return (
+    <ul className="mt-3 space-y-1.5">
+      {reasons.map((r, i) => (
+        <li key={i} className="flex items-start gap-2 text-xs text-ink">
+          <svg viewBox="0 0 20 20" className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 10l4 4 6-8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          {r}
+        </li>
+      ))}
+    </ul>
   );
 }

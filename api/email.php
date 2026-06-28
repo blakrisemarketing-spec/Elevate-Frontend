@@ -119,6 +119,23 @@ function ech_render_match_list(array $items): string {
     return '<ul>' . implode('', $rows) . '</ul>';
 }
 
+/** Render matched items grouped by tier: "Your strongest matches" then "Worth a stretch". */
+function ech_render_tiered(array $items): string {
+    $strong = array_values(array_filter($items, static fn($i) => ($i['tier'] ?? 'stretch') === 'strong'));
+    $stretch = array_values(array_filter($items, static fn($i) => ($i['tier'] ?? 'stretch') !== 'strong'));
+    if (empty($strong) && empty($stretch)) {
+        return ech_render_match_list($items);
+    }
+    $html = '';
+    if (!empty($strong)) {
+        $html .= '<p><strong>Your strongest matches</strong></p>' . ech_render_match_list($strong);
+    }
+    if (!empty($stretch)) {
+        $html .= '<p><strong>Worth a stretch</strong> (aim for these with a sharper application)</p>' . ech_render_match_list($stretch);
+    }
+    return $html;
+}
+
 /** Top destination phrase from the answers, mirrors destinationPhrase() in match-data.ts. */
 function ech_match_destination_phrase(array $answers): string {
     $dests = $answers['destinations'] ?? [];
@@ -198,8 +215,8 @@ function send_match_emails(
     $base = rtrim((string) (getenv('PUBLIC_APP_BASE_URL') ?: 'https://elevatecareerhub.com'), '/');
     $bootcampUrl = $base . '/get-into-grad-school-bootcamp/#tickets';
 
-    $pathHtml = ech_render_match_list($pathways);
-    $scholHtml = ech_render_match_list($scholarships);
+    $pathHtml = ech_render_tiered($pathways);
+    $scholHtml = ech_render_tiered($scholarships);
 
     if ($key === '') {
         error_log('[email] TOSEND_API_KEY missing, would send match report to ' . $email . ' and notify ' . $team);
