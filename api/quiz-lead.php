@@ -69,6 +69,10 @@ $answers = array_slice($answers, 0, 40, true);
 
 $pathwayIds = array_values(array_filter(array_map('trim', explode(',', (string) ($_POST['pathwayIds'] ?? '')))));
 $scholarshipIds = array_values(array_filter(array_map('trim', explode(',', (string) ($_POST['scholarshipIds'] ?? '')))));
+// Tiers run parallel to the id lists (strong | stretch), used to group the report.
+$pathwayTiers = array_map('trim', explode(',', (string) ($_POST['pathwayTiers'] ?? '')));
+$scholarshipTiers = array_map('trim', explode(',', (string) ($_POST['scholarshipTiers'] ?? '')));
+$tierAt = static fn(array $tiers, int $i): string => (($tiers[$i] ?? '') === 'strong') ? 'strong' : 'stretch';
 
 // Resolve ids -> {name, blurb} from the build-emitted config.
 $cfgPath = __DIR__ . '/match-config.json';
@@ -88,15 +92,15 @@ if (is_array($cfg)) {
     }
 }
 $pathways = [];
-foreach ($pathwayIds as $id) {
+foreach ($pathwayIds as $i => $id) {
     if (isset($pathwayMap[$id])) {
-        $pathways[] = $pathwayMap[$id];
+        $pathways[] = $pathwayMap[$id] + ['tier' => $tierAt($pathwayTiers, $i)];
     }
 }
 $scholarships = [];
-foreach ($scholarshipIds as $id) {
+foreach ($scholarshipIds as $i => $id) {
     if (isset($scholMap[$id])) {
-        $scholarships[] = $scholMap[$id];
+        $scholarships[] = $scholMap[$id] + ['tier' => $tierAt($scholarshipTiers, $i)];
     }
 }
 
@@ -179,6 +183,8 @@ $record = [
     'answers' => $answers,
     'pathwayIds' => $pathwayIds,
     'scholarshipIds' => $scholarshipIds,
+    'pathwayTiers' => array_map(static fn($i) => $tierAt($pathwayTiers, $i), array_keys($pathwayIds)),
+    'scholarshipTiers' => array_map(static fn($i) => $tierAt($scholarshipTiers, $i), array_keys($scholarshipIds)),
     'cvFile' => $cvStored,
 ];
 $leadFile = $leadsDir . '/leads-' . gmdate('Y-m') . '.ndjson';
