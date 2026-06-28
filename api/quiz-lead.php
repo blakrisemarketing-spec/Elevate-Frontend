@@ -43,10 +43,10 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
     respond(['ok' => false, 'message' => 'Method not allowed'], 405);
 }
 
-// Honeypot: a real user never fills this. Pretend success so bots move on.
-if (trim((string) ($_POST['company'] ?? '')) !== '') {
-    respond(['ok' => true]);
-}
+// Honeypot: a real user never fills this. If it is filled (a bot, or an
+// over-eager browser autofill), flag the lead but DO NOT drop it, so a false
+// positive is never lost. We store it and skip the email further down.
+$suspectedBot = trim((string) ($_POST['company'] ?? '')) !== '';
 
 $name = trim((string) ($_POST['name'] ?? ''));
 $email = trim((string) ($_POST['email'] ?? ''));
@@ -186,6 +186,7 @@ $record = [
     'pathwayTiers' => array_map(static fn($i) => $tierAt($pathwayTiers, $i), array_keys($pathwayIds)),
     'scholarshipTiers' => array_map(static fn($i) => $tierAt($scholarshipTiers, $i), array_keys($scholarshipIds)),
     'cvFile' => $cvStored,
+    'suspectedBot' => $suspectedBot,
 ];
 $leadFile = $leadsDir . '/leads-' . gmdate('Y-m') . '.ndjson';
 $fh = @fopen($leadFile, 'ab');
@@ -200,11 +201,14 @@ if ($fh) {
     error_log('[quiz-lead] could not open leads file: ' . $leadFile);
 }
 
-// ── Emails (best effort, never blocks the lead) ──
-try {
-    send_match_emails($name, $email, $phone, $answers, $pathways, $scholarships, $linkedin, $portfolio, $cvStored);
-} catch (Throwable $e) {
-    error_log('[quiz-lead] email failed: ' . $e->getMessage());
+// ── Emails (best effort, never blocks the lead). Skip for suspected bots so we
+// do not email junk addresses, but the lead is already stored + flagged above. ──
+if (!$suspectedBot) {
+    try {
+        send_match_emails($name, $email, $phone, $answers, $pathways, $scholarships, $linkedin, $portfolio, $cvStored);
+    } catch (Throwable $e) {
+        error_log('[quiz-lead] email failed: ' . $e->getMessage());
+    }
 }
 
 respond(['ok' => true]);
