@@ -35,12 +35,34 @@ function ech_admin_session_start(): void {
     session_start();
 }
 
+function ech_runtime_secret(string $key): string {
+    $value = getenv($key);
+    if (is_string($value) && $value !== '') {
+        return $value;
+    }
+    $envValue = $_ENV[$key] ?? null;
+    if (is_string($envValue) && $envValue !== '') {
+        return $envValue;
+    }
+    $serverValue = $_SERVER[$key] ?? null;
+    if (is_string($serverValue) && $serverValue !== '') {
+        return $serverValue;
+    }
+    if (defined($key)) {
+        $constantValue = constant($key);
+        if (is_scalar($constantValue) && (string) $constantValue !== '') {
+            return (string) $constantValue;
+        }
+    }
+    return '';
+}
+
 function ech_admin_password(): string {
-    return (string) (getenv('ADMIN_PASSWORD') ?: '');
+    return ech_runtime_secret('ADMIN_PASSWORD');
 }
 
 function ech_admin_ttl(): int {
-    $ttl = (int) (getenv('ADMIN_SESSION_TTL_SECONDS') ?: 86400);
+    $ttl = (int) (ech_runtime_secret('ADMIN_SESSION_TTL_SECONDS') ?: 86400);
     return $ttl > 0 ? $ttl : 86400;
 }
 
@@ -115,4 +137,3 @@ function ech_normalize_phone(string $phone): string {
     }
     return '+' . ltrim($digits, '0');
 }
-
