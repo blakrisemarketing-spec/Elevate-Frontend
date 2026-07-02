@@ -14,6 +14,7 @@
  */
 import { CATALOG, CURRENCY, formatCedis } from './catalog';
 import type { CatalogItem } from './catalog';
+import { trackEvent, trackMeta } from '../analytics/tracking';
 
 const PUBLIC_KEY = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY || '';
 const PAYSTACK_SDK = 'https://js.paystack.co/v1/inline.js';
@@ -163,6 +164,12 @@ async function startCheckout(btn: HTMLButtonElement): Promise<void> {
   const id = btn.dataset.serviceId || '';
   const item = CATALOG[id];
   if (!item) { console.error(`[checkout] unknown service id: ${id}`); return; }
+  trackEvent('checkout_started', {
+    service_id: item.id,
+    item_name: item.name,
+    value: item.amountPesewas / 100,
+    currency: CURRENCY,
+  });
 
   if (!PUBLIC_KEY) {
     alert('Payments are not configured yet. Please reach out on WhatsApp and we’ll help you purchase.');
@@ -171,6 +178,13 @@ async function startCheckout(btn: HTMLButtonElement): Promise<void> {
 
   const details = await collectBuyerDetails(item);
   if (!details) return;
+  trackEvent('checkout_details_submitted', {
+    service_id: item.id,
+    item_name: item.name,
+    selected_sessions: details.sessions.length,
+    value: details.amountPesewas / 100,
+    currency: CURRENCY,
+  });
 
   setButtonBusy(btn, true);
   try {
@@ -201,6 +215,12 @@ async function startCheckout(btn: HTMLButtonElement): Promise<void> {
       void finalize(response.reference, item.id, details, btn);
     },
   });
+  trackMeta('InitiateCheckout', {
+    content_ids: item.id,
+    content_name: item.name,
+    value: details.amountPesewas / 100,
+    currency: CURRENCY,
+  });
   handler.openIframe();
 }
 
@@ -218,6 +238,20 @@ async function finalize(
     });
     const data = await res.json().catch(() => ({}));
     if (res.ok && data && data.ok) {
+      const item = CATALOG[serviceId];
+      trackEvent('purchase_completed', {
+        service_id: serviceId,
+        item_name: item?.name || serviceId,
+        selected_sessions: details.sessions.length,
+        value: details.amountPesewas / 100,
+        currency: CURRENCY,
+      });
+      trackMeta('Purchase', {
+        content_ids: serviceId,
+        content_name: item?.name || serviceId,
+        value: details.amountPesewas / 100,
+        currency: CURRENCY,
+      });
       const params = new URLSearchParams({ ref: reference, item: serviceId });
       window.location.assign(`${CONFIRM_PATH}?${params.toString()}`);
       return;

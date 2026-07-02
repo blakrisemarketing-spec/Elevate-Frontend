@@ -48,7 +48,7 @@ export function PaymentConfirmedPage() {
 
       <script
         dangerouslySetInnerHTML={{
-          __html: `(function(){try{var p=new URLSearchParams(location.search);var ref=p.get('ref');var item=p.get('item');if(ref){var r=document.getElementById('ref');if(r)r.textContent=ref;var row=document.getElementById('ref-row');if(row)row.style.display='';}var d={'diy-remote-job-playbook':'/downloads/the-remote-job-playbook.pdf'};if(item&&d[item]){var a=document.getElementById('download');if(a){a.href=d[item];a.style.display='';}}}catch(e){}})();`,
+          __html: `(function(){try{var p=new URLSearchParams(location.search);var ref=p.get('ref');var item=p.get('item');if(ref){var r=document.getElementById('ref');if(r)r.textContent=ref;var row=document.getElementById('ref-row');if(row)row.style.display='';}if(item){window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'payment_confirmed',service_id:item});if(typeof window.fbq==='function')window.fbq('trackCustom','payment_confirmed',{service_id:item});}var d={'diy-remote-job-playbook':'/downloads/the-remote-job-playbook.pdf'};if(item&&d[item]){var a=document.getElementById('download');if(a){a.href=d[item];a.style.display='';}}}catch(e){}})();`,
         }}
       />
     </>

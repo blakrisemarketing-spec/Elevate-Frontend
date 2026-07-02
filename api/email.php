@@ -33,8 +33,11 @@ function ech_parse_from(string $raw): array {
 }
 
 /** POST one email to toSend. Throws on transport or non-2xx response. */
-function ech_tosend_send(string $key, array $from, array $to, string $subject, string $html): void {
+function ech_tosend_send(string $key, array $from, array $to, string $subject, string $html, array $attachments = []): void {
     $payload = ['from' => $from, 'to' => $to, 'subject' => $subject, 'html' => $html];
+    if (!empty($attachments)) {
+        $payload['attachments'] = $attachments;
+    }
     $ch = curl_init('https://api.tosend.com/v2/emails');
     curl_setopt_array($ch, [
         CURLOPT_RETURNTRANSFER => true,
@@ -148,6 +151,8 @@ function ech_match_destination_phrase(array $answers): string {
         'canada' => 'in Canada',
         'europe' => 'in Europe',
         'australia' => 'in Australia',
+        'new-zealand' => 'in New Zealand',
+        'asia' => 'in Asia',
         'africa' => 'across Africa',
     ];
     foreach ($order as $v => $phrase) {
@@ -207,13 +212,15 @@ function send_match_emails(
     array $scholarships,
     string $linkedin = '',
     string $portfolio = '',
-    string $cvFile = ''
+    string $cvFile = '',
+    array $cvMeta = []
 ): void {
     $key = getenv('TOSEND_API_KEY') ?: '';
     $team = getenv('OPS_EMAIL') ?: 'hello@elevatecareerhub.com';
     $from = ech_parse_from((string) (getenv('MAIL_FROM') ?: 'Elevate Career Hub <noreply@elevatecareerhub.com>'));
     $base = rtrim((string) (getenv('PUBLIC_APP_BASE_URL') ?: 'https://elevatecareerhub.com'), '/');
     $bootcampUrl = $base . '/get-into-grad-school-bootcamp/#tickets';
+    $cvDownloadUrl = $cvFile !== '' ? $base . '/api/admin-cv.php?file=' . rawurlencode($cvFile) : '';
 
     $pathHtml = ech_render_tiered($pathways);
     $scholHtml = ech_render_tiered($scholarships);
@@ -232,7 +239,10 @@ function send_match_emails(
         . '<h3>Program pathways you qualify for</h3>' . $pathHtml
         . '<h3>Scholarships worth targeting</h3>' . $scholHtml
         . '<p>One honesty note: the final yes on funding sits with each provider. Our job is to make your case impossible to ignore. The Get Into Grad School Bootcamp shows you exactly how, from school selection to visa.</p>'
-        . '<p><a href="' . ech_esc($bootcampUrl) . '">See the bootcamp and ticket options</a></p>'
+        . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:24px 0;background:#0077B6;border-radius:14px;"><tr><td style="padding:22px;text-align:center;">'
+        . '<p style="margin:0 0 12px;color:#ffffff;font-size:18px;font-weight:700;">Ready to turn these matches into applications?</p>'
+        . '<a href="' . ech_esc($bootcampUrl) . '" style="display:inline-block;background:#3FA9F5;color:#12213f;text-decoration:none;font-weight:800;padding:14px 22px;border-radius:999px;">Save my spot in the bootcamp</a>'
+        . '</td></tr></table>'
         . ($cvFile !== '' ? '<p>Thanks for sharing your CV. A real human on our team will review it and follow up with notes.</p>' : '')
         . '<p>, Elevate Career Hub</p>';
     ech_tosend_send($key, $from, [['email' => $email]], 'Your grad school matches are in, ' . ($name !== '' ? $name : 'friend'), $userHtml);
@@ -243,6 +253,20 @@ function send_match_emails(
         $val = is_array($v) ? implode(', ', array_map('strval', $v)) : (string) $v;
         $answerRows .= '<li>' . ech_esc((string) $k) . ': ' . ech_esc($val) . '</li>';
     }
+    $attachments = [];
+    if ($cvFile !== '') {
+        $cvPath = __DIR__ . '/_leads/cv/' . $cvFile;
+        if (is_file($cvPath) && filesize($cvPath) <= 5 * 1024 * 1024) {
+            $cvName = (string) ($cvMeta['originalName'] ?? $cvFile);
+            $cvMime = (string) ($cvMeta['mime'] ?? 'application/octet-stream');
+            $attachments[] = [
+                'type' => $cvMime !== '' ? $cvMime : 'application/octet-stream',
+                'name' => $cvName !== '' ? $cvName : $cvFile,
+                'content' => base64_encode((string) file_get_contents($cvPath)),
+            ];
+        }
+    }
+
     $teamHtml = '<h2>New grad school match lead</h2>'
         . '<ul>'
         . '<li>Name: ' . ech_esc($name) . '</li>'
@@ -250,10 +274,11 @@ function send_match_emails(
         . '<li>WhatsApp: ' . ech_esc($phone) . '</li>'
         . ($linkedin !== '' ? '<li>LinkedIn: ' . ech_esc($linkedin) . '</li>' : '')
         . ($portfolio !== '' ? '<li>Portfolio: ' . ech_esc($portfolio) . '</li>' : '')
-        . ($cvFile !== '' ? '<li>CV uploaded: api/_leads/cv/' . ech_esc($cvFile) . '</li>' : '<li>CV: not provided</li>')
+        . ($cvFile !== '' ? '<li>CV uploaded: ' . ech_esc((string) ($cvMeta['originalName'] ?? $cvFile)) . '</li>' : '<li>CV: not provided</li>')
         . '</ul>'
+        . ($cvDownloadUrl !== '' ? '<p><a href="' . ech_esc($cvDownloadUrl) . '" style="display:inline-block;background:#0077B6;color:#ffffff;text-decoration:none;font-weight:800;padding:14px 20px;border-radius:10px;">Open CV in admin</a></p>' : '')
         . '<h3>Answers</h3><ul>' . $answerRows . '</ul>'
         . '<h3>Matched pathways</h3>' . $pathHtml
         . '<h3>Matched scholarships</h3>' . $scholHtml;
-    ech_tosend_send($key, $from, [['email' => $team]], 'New grad school match lead: ' . ($name !== '' ? $name : $email), $teamHtml);
+    ech_tosend_send($key, $from, [['email' => $team]], 'New grad school match lead: ' . ($name !== '' ? $name : $email), $teamHtml, $attachments);
 }

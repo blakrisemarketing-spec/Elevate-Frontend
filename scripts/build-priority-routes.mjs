@@ -34,6 +34,8 @@ const OG_IMAGE_HEIGHT = '630';
 const OG_IMAGE_ALT = 'Elevate Career Hub, accelerating access to global careers and scholarships';
 
 const SITE_URL = 'https://elevatecareerhub.com';
+const GTM_ID = 'GTM-5WZLRJND';
+const META_PIXEL_ID = '2070906919981573';
 
 // ── Structured data (JSON-LD) ────────────────────────────────────────────
 // Organization + WebSite are sitewide; per-page schema (breadcrumbs, Article,
@@ -364,6 +366,18 @@ const PRIORITY_ROUTES = [
     hasMatch: true,
   },
   {
+    route: '/admin/',
+    outDir: 'admin',
+    entry: 'src/priority/pages/Admin.tsx',
+    component: 'AdminPage',
+    title: 'Admin Dashboard, Elevate Career Hub',
+    description: 'Private operations dashboard for Elevate Career Hub.',
+    canonical: 'https://elevatecareerhub.com/admin/',
+    ogImage: OG_IMAGE,
+    noindex: true,
+    hasAdmin: true,
+  },
+  {
     // Branded 404. Written to dist/404.html (not a route dir) and wired via
     // ErrorDocument in .htaccess. Not in registry.ts/pages.json, it is an error
     // document, not a navigable route.
@@ -534,6 +548,37 @@ async function buildMatchIsland() {
   return `/assets/${fileName}`;
 }
 
+/**
+ * Compile the private admin app → dist/assets/admin.<hash>.js. The page shell
+ * is public and noindexed; every data read/write still goes through PHP session
+ * auth, so this bundle carries only UI code.
+ */
+async function buildAdminIsland() {
+  await ensureDir(path.join(distRoot, 'assets'));
+  const tmpFile = path.join(distRoot, 'assets', 'admin.tmp.js');
+  await esbuild({
+    entryPoints: [path.join(projectRoot, 'src/admin/admin-client.tsx')],
+    bundle: true,
+    minify: true,
+    format: 'iife',
+    target: 'es2019',
+    outfile: tmpFile,
+    loader: { '.tsx': 'tsx', '.ts': 'ts' },
+    jsx: 'automatic',
+    jsxImportSource: 'react',
+    define: {
+      'process.env.NODE_ENV': '"production"',
+    },
+    logLevel: 'silent',
+  });
+  const buf = await fs.readFile(tmpFile);
+  const hash = createHash('sha256').update(buf).digest('hex').slice(0, 8);
+  const fileName = `admin.${hash}.js`;
+  await fs.rename(tmpFile, path.join(distRoot, 'assets', fileName));
+  console.log(`[ssg] admin island → dist/assets/${fileName} (${(buf.length / 1024).toFixed(1)} KB)`);
+  return `/assets/${fileName}`;
+}
+
 async function bundleEntry(entry) {
   const result = await esbuild({
     entryPoints: [path.join(projectRoot, entry)],
@@ -645,10 +690,11 @@ async function emitDeployArtifacts() {
   }
   await ensureDir(path.join(distRoot, 'api'));
   await fs.writeFile(path.join(distRoot, 'api', 'catalog.json'), JSON.stringify(slim, null, 2));
+  await fs.copyFile(path.join(projectRoot, 'api', 'admin-auth.php'), path.join(distRoot, 'api', 'admin-auth.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'verify-payment.php'), path.join(distRoot, 'api', 'verify-payment.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'email.php'), path.join(distRoot, 'api', 'email.php'));
   await buildHtaccess();
-  console.log(`[ssg] deploy artifacts → dist/api/{catalog.json,verify-payment.php,email.php}, dist/.htaccess`);
+  console.log(`[ssg] deploy artifacts → dist/api/{catalog.json,admin-auth.php,verify-payment.php,email.php}, dist/.htaccess`);
 }
 
 /**
@@ -665,9 +711,34 @@ async function emitMatchArtifacts() {
   await ensureDir(path.join(distRoot, 'api'));
   await fs.writeFile(path.join(distRoot, 'api', 'match-config.json'), JSON.stringify(cfg, null, 2));
   await fs.copyFile(path.join(projectRoot, 'api', 'quiz-lead.php'), path.join(distRoot, 'api', 'quiz-lead.php'));
+  await fs.copyFile(path.join(projectRoot, 'api', 'scholarships.php'), path.join(distRoot, 'api', 'scholarships.php'));
   await ensureDir(path.join(distRoot, 'api', '_leads'));
+  await ensureDir(path.join(distRoot, 'api', '_data'));
   await fs.copyFile(path.join(projectRoot, 'api', '_leads', '.htaccess'), path.join(distRoot, 'api', '_leads', '.htaccess'));
-  console.log('[ssg] match artifacts → dist/api/{match-config.json,quiz-lead.php,_leads/.htaccess}');
+  await fs.copyFile(path.join(projectRoot, 'api', '_data', '.htaccess'), path.join(distRoot, 'api', '_data', '.htaccess'));
+  console.log('[ssg] match artifacts → dist/api/{match-config.json,quiz-lead.php,scholarships.php,_leads/.htaccess,_data/.htaccess}');
+}
+
+/**
+ * Emit private admin PHP endpoints. Runtime data files are intentionally not
+ * bundled; Hostinger creates and keeps them server-side under api/_data.
+ */
+async function emitAdminArtifacts() {
+  await ensureDir(path.join(distRoot, 'api'));
+  await ensureDir(path.join(distRoot, 'api', '_data'));
+  const files = [
+    'admin-login.php',
+    'admin-logout.php',
+    'admin-leads.php',
+    'admin-cv.php',
+    'admin-scholarships.php',
+    'admin-purchases.php',
+  ];
+  for (const file of files) {
+    await fs.copyFile(path.join(projectRoot, 'api', file), path.join(distRoot, 'api', file));
+  }
+  await fs.copyFile(path.join(projectRoot, 'api', '_data', '.htaccess'), path.join(distRoot, 'api', '_data', '.htaccess'));
+  console.log(`[ssg] admin artifacts → dist/api/{${files.join(',')}}, dist/api/_data/.htaccess`);
 }
 
 async function loadComponent(entry, componentName) {
@@ -687,17 +758,24 @@ async function loadComponent(entry, componentName) {
   return module.exports[componentName];
 }
 
-function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, body, hasCheckout, checkoutSrc, hasMatch, matchSrc, noindex, jsonLd }) {
+function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, body, hasCheckout, checkoutSrc, hasMatch, matchSrc, hasAdmin, adminSrc, noindex, jsonLd }) {
   const robots = noindex ? 'noindex,nofollow' : 'index,follow';
   const checkoutScript = hasCheckout ? `\n    <script type="module" src="${checkoutSrc || '/assets/checkout.js'}"></script>` : '';
   const matchScript = hasMatch ? `\n    <script type="module" src="${matchSrc || '/assets/match.js'}"></script>` : '';
+  const adminScript = hasAdmin ? `\n    <script type="module" src="${adminSrc || '/assets/admin.js'}"></script>` : '';
   const ld = (jsonLd && jsonLd.length)
     ? `\n    <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': jsonLd })}</script>`
     : '';
+  const trackingHead = `
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');</script>
+    <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments);};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s);}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${META_PIXEL_ID}');fbq('track','PageView');</script>
+    <script>(function(){function clean(o){var r={};Object.keys(o||{}).forEach(function(k){if(o[k]!==undefined&&o[k]!==null&&o[k]!=='')r[k]=o[k];});return r;}function send(event,payload){window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:event},clean(payload)));if(typeof window.fbq==='function')window.fbq('trackCustom',event,clean(payload));}document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a,button'):null;if(!a)return;var href=a.getAttribute('href')||'';var text=(a.textContent||a.getAttribute('aria-label')||'').trim().slice(0,120);if(href.indexOf('wa.me/')>-1){send('whatsapp_cta_clicked',{location:location.pathname,cta_text:text});}if(href.indexOf('/get-into-grad-school-bootcamp/#tickets')>-1){send('bootcamp_cta_clicked',{location:location.pathname,cta_text:text});}});})();</script>`;
+  const trackingBody = `<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1"/></noscript>`;
   return `<!doctype html>
 <html lang="en-US">
   <head>
     <meta charset="UTF-8">
+    ${trackingHead}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${escapeHtml(title)}</title>
     <meta name="description" content="${escapeHtml(description)}">
@@ -723,9 +801,9 @@ function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, 
     <meta name="twitter:image:alt" content="${escapeHtml(OG_IMAGE_ALT)}">
     <meta name="theme-color" content="#0077B6">
     <link rel="preload" href="/fonts/Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
-    <style>${css}</style>${ld}${checkoutScript}${matchScript}
+    <style>${css}</style>${ld}${checkoutScript}${matchScript}${adminScript}
   </head>
-  <body>${body}</body>
+  <body>${trackingBody}${body}</body>
 </html>`;
 }
 
@@ -782,21 +860,29 @@ async function main() {
   // content-hashed, so each route embeds the current fingerprinted path.
   let checkoutSrc = '/assets/checkout.js';
   let matchSrc = '/assets/match.js';
+  let adminSrc = '/assets/admin.js';
   const needsCheckout = ALL_ROUTES.some(r => r.hasCheckout);
   const needsMatch = ALL_ROUTES.some(r => r.hasMatch);
+  const needsAdmin = ALL_ROUTES.some(r => r.hasAdmin);
   if (needsCheckout) {
     checkoutSrc = await buildCheckoutIsland();
   }
   if (needsMatch) {
     matchSrc = await buildMatchIsland();
   }
+  if (needsAdmin) {
+    adminSrc = await buildAdminIsland();
+  }
   // The PHP/.htaccess deploy artifacts are shared; emit them if either island
   // is in play (quiz-lead.php needs the copied email.php + .htaccess too).
-  if (needsCheckout || needsMatch) {
+  if (needsCheckout || needsMatch || needsAdmin) {
     await emitDeployArtifacts();
   }
   if (needsMatch) {
     await emitMatchArtifacts();
+  }
+  if (needsAdmin) {
+    await emitAdminArtifacts();
   }
 
   const results = [];
@@ -835,6 +921,8 @@ async function main() {
       checkoutSrc,
       hasMatch: route.hasMatch,
       matchSrc,
+      hasAdmin: route.hasAdmin,
+      adminSrc,
       noindex: route.noindex,
       jsonLd,
     });

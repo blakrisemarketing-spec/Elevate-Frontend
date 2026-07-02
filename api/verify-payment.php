@@ -27,6 +27,7 @@ if (is_file($configFile)) {
     require $configFile;
 }
 require __DIR__ . '/email.php';
+require_once __DIR__ . '/admin-auth.php';
 
 function respond($data, int $status = 200): void {
     http_response_code($status);
@@ -125,6 +126,21 @@ if (!$apiOk || !$paidOk || !$amountOk || !$currencyOk) {
 // ── Fulfilment (best-effort; never block the buyer's confirmation) ─
 $buyerEmail = trim((string) ($body['email'] ?? (is_array($txn) ? ($txn['customer']['email'] ?? '') : '')));
 $buyerName = trim((string) ($body['name'] ?? ''));
+$purchase = [
+    'ts' => gmdate('c'),
+    'reference' => $reference,
+    'serviceId' => $serviceId,
+    'itemName' => (string) ($item['name'] ?? ''),
+    'type' => (string) ($item['type'] ?? ''),
+    'amountPesewas' => $expectedAmount,
+    'currency' => 'GHS',
+    'buyerName' => $buyerName,
+    'buyerEmail' => $buyerEmail,
+    'sessions' => $sessions,
+    'paystackStatus' => (string) ($txn['status'] ?? ''),
+];
+$purchaseFile = ech_private_data_dir() . '/purchases-' . gmdate('Y-m') . '.ndjson';
+@file_put_contents($purchaseFile, json_encode($purchase, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . "\n", FILE_APPEND | LOCK_EX);
 try {
     send_fulfilment($item, $reference, $buyerName, $buyerEmail, $sessions, $expectedAmount);
 } catch (Throwable $e) {

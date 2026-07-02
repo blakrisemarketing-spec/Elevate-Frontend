@@ -47,7 +47,7 @@ export interface MatchQuestion {
 
 /** Structured attributes every scorable item carries. */
 export interface Scorable {
-  /** Destination codes it serves (uk/us/canada/europe/australia/africa), or ['any']. */
+  /** Destination codes it serves (uk/us/canada/europe/australia/new-zealand/asia/africa), or ['any']. */
   regions: string[];
   /** Fields it suits (business/stem/health/social/law/arts), or ['any']. */
   fields: string[];
@@ -80,6 +80,7 @@ export interface Scholarship extends Scorable {
   region: string; // display label
   fundingType: string; // display label
   blurb: string;
+  genderEligibility?: 'any' | 'female' | 'male';
 }
 
 export interface ScoredPathway extends ProgramPathway {
@@ -167,6 +168,17 @@ export const QUESTIONS: MatchQuestion[] = [
     ],
   },
   {
+    id: 'gender',
+    section: 'Your background',
+    prompt: 'Which scholarships should we screen for you?',
+    help: 'Some funding is gender-specific, so this keeps your report relevant.',
+    type: 'single',
+    options: [
+      { value: 'female', label: 'Female' },
+      { value: 'male', label: 'Male' },
+    ],
+  },
+  {
     id: 'qualification',
     section: 'Your background',
     prompt: 'How did your last degree end?',
@@ -228,6 +240,8 @@ export const QUESTIONS: MatchQuestion[] = [
       { value: 'canada', label: 'Canada' },
       { value: 'europe', label: 'Europe (not the UK)' },
       { value: 'australia', label: 'Australia' },
+      { value: 'new-zealand', label: 'New Zealand' },
+      { value: 'asia', label: 'Asia' },
       { value: 'africa', label: 'Within Africa' },
       { value: 'open', label: 'Surprise me, I’m open' },
     ],
@@ -289,7 +303,7 @@ export const QUESTIONS: MatchQuestion[] = [
 const CLASS_RANK: Record<string, number> = { first: 4, '2:1': 3, '2:2': 2, third: 1, studying: 3 };
 const MIN_CLASS_RANK: Record<string, number> = { first: 4, '2:1': 3, '2:2': 2, third: 1, any: 0 };
 const REGION_LABEL: Record<string, string> = {
-  uk: 'the UK', us: 'the US', canada: 'Canada', europe: 'Europe', australia: 'Australia', africa: 'Africa',
+  uk: 'the UK', us: 'the US', canada: 'Canada', europe: 'Europe', australia: 'Australia', 'new-zealand': 'New Zealand', asia: 'Asia', africa: 'Africa',
 };
 const FIELD_LABEL: Record<string, string> = {
   business: 'business', stem: 'STEM', health: 'health', social: 'social science', law: 'law', arts: 'arts', other: 'field',
@@ -313,7 +327,7 @@ function fundingReason(uf: string): string {
 
 function matchedRegionLabel(item: Scorable, a: Answers): string | null {
   const dests = destinations(a);
-  for (const r of ['uk', 'us', 'canada', 'europe', 'australia', 'africa']) {
+  for (const r of ['uk', 'us', 'canada', 'europe', 'australia', 'new-zealand', 'asia', 'africa']) {
     if (item.regions.includes(r) && dests.includes(r)) return REGION_LABEL[r];
   }
   return null;
@@ -321,6 +335,10 @@ function matchedRegionLabel(item: Scorable, a: Answers): string | null {
 
 /** Score one item against the answers. Returns null when it is simply not relevant (wrong region). */
 function scoreItem(item: Scorable, a: Answers): { score: number; tier: Tier; reasons: string[] } | null {
+  const genderEligibility = (item as Scholarship).genderEligibility || 'any';
+  const userGender = pick(a, 'gender');
+  if (genderEligibility !== 'any' && userGender !== genderEligibility) return null;
+
   const dests = destinations(a);
   const open = dests.includes('open') || dests.length === 0;
   const regionAny = item.regions.includes('any');
@@ -632,7 +650,7 @@ export const SCHOLARSHIPS: Scholarship[] = [
   {
     id: 'forte-fellowship', name: 'Forté Fellowship', region: 'Multiple', fundingType: 'Partial to full',
     blurb: 'MBA fellowships that advance women in business leadership, awarded by top schools in the Forté network.',
-    regions: ['us', 'uk', 'canada', 'europe'], fields: ['business'], degrees: ['mba'], minClass: '2:1', idealExp: 'experienced', funding: ['partial', 'full', 'self-partly'], tags: ['women', 'leadership'], weight: 73,
+    regions: ['us', 'uk', 'canada', 'europe'], fields: ['business'], degrees: ['mba'], minClass: '2:1', idealExp: 'experienced', funding: ['partial', 'full', 'self-partly'], tags: ['women', 'leadership'], weight: 73, genderEligibility: 'female',
   },
   {
     id: 'jj-wbgsp', name: 'Joint Japan World Bank Scholarship', region: 'Multiple', fundingType: 'Fully funded',
@@ -641,7 +659,7 @@ export const SCHOLARSHIPS: Scholarship[] = [
   },
   {
     id: 'ofid', name: 'OPEC Fund (OFID) Scholarship', region: 'Multiple', fundingType: 'Fully funded',
-    blurb: 'Full funding for a master’s for students from developing countries, with a development focus across many fields.',
+    blurb: 'Full funding for a master’s student from a developing country, with a development focus across many fields.',
     regions: ['any'], fields: ['stem', 'social', 'health'], degrees: ['taught'], minClass: '2:1', idealExp: 'some', funding: ['full'], tags: ['development', 'africa'], weight: 62,
   },
   {
@@ -652,7 +670,367 @@ export const SCHOLARSHIPS: Scholarship[] = [
   {
     id: 'owsd', name: 'OWSD PhD Fellowship', region: 'Multiple', fundingType: 'Fully funded',
     blurb: 'Full funding for women from the global South pursuing a PhD in science and technology fields.',
-    regions: ['any'], fields: ['stem', 'health'], degrees: ['phd', 'research'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['women', 'research', 'africa'], weight: 63,
+    regions: ['any'], fields: ['stem', 'health'], degrees: ['phd', 'research'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['women', 'research', 'africa'], weight: 63, genderEligibility: 'female',
+  },
+  {
+    id: 'cambridge-trust', name: 'Cambridge Trust Scholarships', region: 'United Kingdom', fundingType: 'Partial to full',
+    blurb: 'Cambridge awards for international students on graduate courses, including master’s and PhD routes across many fields.',
+    regions: ['uk'], fields: ['any'], degrees: ['taught', 'research', 'phd'], minClass: '2:1', idealExp: 'any', funding: ['full', 'partial'], tags: ['leadership'], weight: 76,
+  },
+  {
+    id: 'weidenfeld-hoffmann', name: 'Weidenfeld-Hoffmann Scholarships', region: 'United Kingdom', fundingType: 'Fully funded',
+    blurb: 'Oxford graduate scholarships for applicants from developing and emerging economies, paired with a leadership programme.',
+    regions: ['uk'], fields: ['business', 'stem', 'health', 'social', 'law'], degrees: ['taught', 'mba'], minClass: '2:1', idealExp: 'some', funding: ['full'], tags: ['development', 'leadership'], weight: 77,
+  },
+  {
+    id: 'imperial-presidents-phd', name: 'Imperial President’s PhD Scholarships', region: 'United Kingdom', fundingType: 'Fully funded',
+    blurb: 'Highly competitive Imperial College London PhD awards covering fees, stipend support, and research costs for outstanding candidates.',
+    regions: ['uk'], fields: ['stem', 'health', 'business'], degrees: ['phd', 'research'], minClass: 'first', idealExp: 'any', funding: ['full'], tags: ['research'], weight: 72,
+  },
+  {
+    id: 'edinburgh-doctoral-college', name: 'Edinburgh Doctoral College Scholarships', region: 'United Kingdom', fundingType: 'Funded',
+    blurb: 'University of Edinburgh doctoral awards for strong PhD applicants, normally combining tuition support with a stipend.',
+    regions: ['uk'], fields: ['any'], degrees: ['phd', 'research'], minClass: '2:1', idealExp: 'any', funding: ['full', 'partial'], tags: ['research'], weight: 62,
+  },
+  {
+    id: 'manchester-global-futures', name: 'Manchester Global Futures Scholarship', region: 'United Kingdom', fundingType: 'Partial',
+    blurb: 'University of Manchester awards for international applicants from selected countries, including several African markets.',
+    regions: ['uk'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly'], tags: ['africa'], weight: 58,
+  },
+  {
+    id: 'bristol-think-big', name: 'Bristol Think Big Scholarships', region: 'United Kingdom', fundingType: 'Partial',
+    blurb: 'University of Bristol tuition scholarships for international students on eligible postgraduate programmes.',
+    regions: ['uk'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly'], tags: ['accessible'], weight: 57,
+  },
+  {
+    id: 'warwick-chancellors-international', name: 'Warwick Chancellor’s International Scholarships', region: 'United Kingdom', fundingType: 'Fully funded',
+    blurb: 'University of Warwick doctoral scholarships for top international PhD applicants across the university.',
+    regions: ['uk'], fields: ['any'], degrees: ['phd', 'research'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['research'], weight: 66,
+  },
+  {
+    id: 'nottingham-developing-solutions', name: 'Nottingham Developing Solutions Scholarship', region: 'United Kingdom', fundingType: 'Full or half tuition',
+    blurb: 'University of Nottingham master’s awards for students from Africa, India, and selected Commonwealth countries focused on development impact.',
+    regions: ['uk'], fields: ['stem', 'health', 'social', 'business'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'full'], tags: ['development', 'africa'], weight: 67,
+  },
+  {
+    id: 'queen-elizabeth-commonwealth', name: 'Queen Elizabeth Commonwealth Scholarships', region: 'Commonwealth', fundingType: 'Fully funded',
+    blurb: 'Fully funded two-year master’s scholarships at ACU member universities in low and middle income Commonwealth countries.',
+    regions: ['africa', 'asia', 'any'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['development', 'africa'], weight: 76,
+  },
+  {
+    id: 'glasgow-african-excellence', name: 'Glasgow African Excellence Award', region: 'United Kingdom', fundingType: 'Partial',
+    blurb: 'University of Glasgow tuition discount for high-achieving African applicants to eligible postgraduate taught programmes.',
+    regions: ['uk'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly'], tags: ['africa'], weight: 56,
+  },
+  {
+    id: 'sheffield-postgraduate-merit', name: 'Sheffield International Postgraduate Merit Scholarship', region: 'United Kingdom', fundingType: 'Partial',
+    blurb: 'University of Sheffield merit award reducing tuition for selected international postgraduate taught students.',
+    regions: ['uk'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly'], tags: ['accessible'], weight: 54,
+  },
+  {
+    id: 'exeter-global-excellence', name: 'Exeter Global Excellence Scholarships', region: 'United Kingdom', fundingType: 'Partial',
+    blurb: 'University of Exeter awards that reduce tuition for high-achieving international postgraduate applicants.',
+    regions: ['uk'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly'], tags: ['accessible'], weight: 53,
+  },
+  {
+    id: 'uea-international-excellence', name: 'UEA International Excellence Scholarship', region: 'United Kingdom', fundingType: 'Partial',
+    blurb: 'University of East Anglia scholarship support for international postgraduate taught applicants with strong academic profiles.',
+    regions: ['uk'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly'], tags: ['accessible'], weight: 52,
+  },
+  {
+    id: 'msca-doctoral-networks', name: 'Marie Skłodowska-Curie Doctoral Networks', region: 'Europe', fundingType: 'Funded doctoral salary',
+    blurb: 'EU-funded doctoral positions across European research networks, with international recruitment and mobility built in.',
+    regions: ['europe'], fields: ['any'], degrees: ['phd', 'research'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['research'], weight: 74,
+  },
+  {
+    id: 'daad-epos', name: 'DAAD EPOS Scholarships', region: 'Germany', fundingType: 'Fully funded',
+    blurb: 'DAAD funding for development-related postgraduate courses in Germany, aimed at professionals from developing countries.',
+    regions: ['europe'], fields: ['business', 'stem', 'health', 'social'], degrees: ['taught', 'research'], minClass: '2:1', idealExp: 'some', funding: ['full'], tags: ['development', 'research'], weight: 82,
+  },
+  {
+    id: 'heinrich-boll', name: 'Heinrich Böll Foundation Scholarships', region: 'Germany', fundingType: 'Stipend',
+    blurb: 'Foundation support for international master’s and doctoral students in Germany with strong academic and civic profiles.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught', 'research', 'phd'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'full'], tags: ['leadership'], weight: 62,
+  },
+  {
+    id: 'konrad-adenauer', name: 'Konrad Adenauer Foundation Scholarships', region: 'Germany', fundingType: 'Stipend',
+    blurb: 'Scholarships for international graduates in Germany who show academic strength, social engagement, and leadership potential.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught', 'research', 'phd'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'full'], tags: ['leadership'], weight: 61,
+  },
+  {
+    id: 'friedrich-ebert', name: 'Friedrich Ebert Foundation Scholarships', region: 'Germany', fundingType: 'Stipend',
+    blurb: 'German foundation funding for international students and doctoral candidates with academic promise and social commitment.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught', 'research', 'phd'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'full'], tags: ['leadership'], weight: 60,
+  },
+  {
+    id: 'rosa-luxemburg', name: 'Rosa Luxemburg Foundation Scholarships', region: 'Germany', fundingType: 'Stipend',
+    blurb: 'Scholarship support for international master’s and doctoral students in Germany with strong social or political engagement.',
+    regions: ['europe'], fields: ['social', 'law', 'arts', 'business'], degrees: ['taught', 'research', 'phd'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'full'], tags: ['leadership'], weight: 57,
+  },
+  {
+    id: 'kaad', name: 'KAAD Scholarships', region: 'Germany', fundingType: 'Stipend plus tuition support',
+    blurb: 'Catholic Academic Exchange Service awards for postgraduate study or research in Germany, focused on applicants from developing countries.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught', 'research', 'phd'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'full'], tags: ['development', 'africa'], weight: 58,
+  },
+  {
+    id: 'eric-bleumink', name: 'Eric Bleumink Fund', region: 'Netherlands', fundingType: 'Fully funded',
+    blurb: 'University of Groningen master’s funding for talented students from selected developing countries.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['development'], weight: 63,
+  },
+  {
+    id: 'leiden-excellence', name: 'Leiden University Excellence Scholarship', region: 'Netherlands', fundingType: 'Partial',
+    blurb: 'Tuition scholarships for excellent non-EEA students applying to eligible Leiden University master’s programmes.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly'], tags: ['accessible'], weight: 56,
+  },
+  {
+    id: 'radboud', name: 'Radboud Scholarship Programme', region: 'Netherlands', fundingType: 'Partial tuition',
+    blurb: 'Radboud University support that substantially reduces tuition for selected non-EEA master’s applicants.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly'], tags: ['accessible'], weight: 57,
+  },
+  {
+    id: 'maastricht-high-potential', name: 'Maastricht High Potential Scholarship', region: 'Netherlands', fundingType: 'Fully funded',
+    blurb: 'Maastricht University scholarship for talented non-EU master’s applicants, combining tuition support and living-cost funding.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['leadership'], weight: 64,
+  },
+  {
+    id: 'amsterdam-merit', name: 'Amsterdam Merit Scholarship', region: 'Netherlands', fundingType: 'Partial',
+    blurb: 'University of Amsterdam merit awards for outstanding international master’s applicants in selected faculties.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly'], tags: ['accessible'], weight: 54,
+  },
+  {
+    id: 'university-twente', name: 'University of Twente Scholarship', region: 'Netherlands', fundingType: 'Partial',
+    blurb: 'Scholarships for excellent students from EU and non-EU countries applying to University of Twente master’s programmes.',
+    regions: ['europe'], fields: ['stem', 'business', 'social'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly'], tags: ['accessible'], weight: 56,
+  },
+  {
+    id: 'tu-delft-excellence', name: 'TU Delft Excellence Scholarships', region: 'Netherlands', fundingType: 'Partial to full',
+    blurb: 'Competitive Delft master’s scholarships for excellent international applicants, especially strong for engineering and design fields.',
+    regions: ['europe'], fields: ['stem', 'arts'], degrees: ['taught'], minClass: 'first', idealExp: 'any', funding: ['partial', 'full'], tags: ['research'], weight: 60,
+  },
+  {
+    id: 'vlir-uos', name: 'VLIR-UOS ICP Connect Scholarships', region: 'Belgium', fundingType: 'Fully funded',
+    blurb: 'Fully funded master’s scholarships in Belgium for applicants from eligible countries in Africa, Asia, and Latin America.',
+    regions: ['europe'], fields: ['stem', 'health', 'social'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['development', 'africa'], weight: 72,
+  },
+  {
+    id: 'ares-belgium', name: 'ARES Scholarships', region: 'Belgium', fundingType: 'Fully funded',
+    blurb: 'Belgian development cooperation scholarships for specialised bachelor’s, master’s, and continuing education programmes.',
+    regions: ['europe'], fields: ['stem', 'health', 'social', 'business'], degrees: ['taught'], minClass: '2:1', idealExp: 'some', funding: ['full'], tags: ['development', 'africa'], weight: 68,
+  },
+  {
+    id: 'emile-boutmy', name: 'Émile Boutmy Scholarship', region: 'France', fundingType: 'Partial to full',
+    blurb: 'Sciences Po tuition awards for first-time non-EU applicants on eligible undergraduate and master’s programmes.',
+    regions: ['europe'], fields: ['social', 'law', 'business'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly', 'full'], tags: ['leadership'], weight: 58,
+  },
+  {
+    id: 'paris-saclay', name: 'Université Paris-Saclay International Master’s Scholarships', region: 'France', fundingType: 'Partial',
+    blurb: 'Paris-Saclay scholarships designed to attract international students into eligible master’s programmes.',
+    regions: ['europe'], fields: ['stem', 'health', 'social', 'business'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly'], tags: ['research'], weight: 57,
+  },
+  {
+    id: 'ens-international-selection', name: 'ENS International Selection', region: 'France', fundingType: 'Stipend',
+    blurb: 'École Normale Supérieure selection route with monthly grant support for high-potential international students.',
+    regions: ['europe'], fields: ['stem', 'social', 'arts'], degrees: ['taught', 'research'], minClass: 'first', idealExp: 'any', funding: ['partial', 'full'], tags: ['research'], weight: 55,
+  },
+  {
+    id: 'uppsala-global', name: 'Uppsala University Global Scholarship', region: 'Sweden', fundingType: 'Tuition scholarship',
+    blurb: 'Tuition scholarships for fee-paying international students applying to eligible Uppsala master’s programmes.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly'], tags: ['accessible'], weight: 53,
+  },
+  {
+    id: 'lund-global', name: 'Lund University Global Scholarship', region: 'Sweden', fundingType: 'Partial tuition',
+    blurb: 'Merit-based tuition scholarships for high-achieving international students applying to Lund master’s programmes.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly'], tags: ['accessible'], weight: 53,
+  },
+  {
+    id: 'swiss-government-excellence', name: 'Swiss Government Excellence Scholarships', region: 'Switzerland', fundingType: 'Fully funded',
+    blurb: 'Swiss federal scholarships for international postgraduate researchers, doctoral candidates, and postdoctoral researchers.',
+    regions: ['europe'], fields: ['any'], degrees: ['research', 'phd'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['research'], weight: 64,
+  },
+  {
+    id: 'university-helsinki', name: 'University of Helsinki Scholarships', region: 'Finland', fundingType: 'Full or partial tuition',
+    blurb: 'Scholarship support for excellent non-EU and non-EEA students applying to international master’s programmes at Helsinki.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly', 'full'], tags: ['accessible'], weight: 52,
+  },
+  {
+    id: 'danish-government', name: 'Danish Government Scholarships', region: 'Denmark', fundingType: 'Partial',
+    blurb: 'Government-supported tuition waivers and grants offered by Danish universities to selected non-EU master’s students.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly'], tags: ['accessible'], weight: 52,
+  },
+  {
+    id: 'bi-presidential', name: 'BI Presidential Scholarship', region: 'Norway', fundingType: 'Partial to full tuition',
+    blurb: 'BI Norwegian Business School award for strong master’s applicants, including international candidates.',
+    regions: ['europe'], fields: ['business'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly', 'full'], tags: ['leadership'], weight: 54,
+  },
+  {
+    id: 'maeci', name: 'Italian Government MAECI Scholarships', region: 'Italy', fundingType: 'Tuition plus stipend',
+    blurb: 'Italian government grants for foreign students and Italian citizens abroad pursuing study, training, or research in Italy.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught', 'research', 'phd'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'full'], tags: ['development'], weight: 58,
+  },
+  {
+    id: 'orange-tulip', name: 'Orange Tulip Scholarship', region: 'Netherlands', fundingType: 'Partial to full',
+    blurb: 'Netherlands scholarship offers for students from selected countries, delivered through participating Dutch institutions.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'self-partly', 'full'], tags: ['accessible'], weight: 51,
+  },
+  {
+    id: 'stipendium-hungaricum', name: 'Stipendium Hungaricum', region: 'Hungary', fundingType: 'Fully funded',
+    blurb: 'Hungarian government scholarships for students from partner countries on full-degree programmes, including master’s and doctoral study.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught', 'phd', 'research'], minClass: '2:2', idealExp: 'any', funding: ['full'], tags: ['development', 'affordable'], weight: 66,
+  },
+  {
+    id: 'romanian-government', name: 'Romanian Government Scholarships', region: 'Romania', fundingType: 'Fully funded',
+    blurb: 'Romanian state scholarships for non-EU students on bachelor’s, master’s, and doctoral routes, with Romanian-language preparation where required.',
+    regions: ['europe'], fields: ['any'], degrees: ['taught', 'phd', 'research'], minClass: '2:2', idealExp: 'any', funding: ['full'], tags: ['affordable'], weight: 54,
+  },
+  {
+    id: 'czech-government', name: 'Czech Government Scholarships', region: 'Czech Republic', fundingType: 'Fully funded',
+    blurb: 'Czech government scholarships for students from selected developing countries to study in Czechia.',
+    regions: ['europe'], fields: ['stem', 'health', 'social', 'business'], degrees: ['taught', 'phd', 'research'], minClass: '2:2', idealExp: 'any', funding: ['full'], tags: ['development', 'affordable'], weight: 55,
+  },
+  {
+    id: 'open-doors', name: 'Open Doors Russian Scholarship Project', region: 'Russia', fundingType: 'Tuition scholarship',
+    blurb: 'Olympiad-based route to tuition-funded master’s and doctoral study at participating Russian universities.',
+    regions: ['europe', 'asia'], fields: ['stem', 'business', 'social'], degrees: ['taught', 'phd', 'research'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'full'], tags: ['affordable'], weight: 50,
+  },
+  {
+    id: 'rotary-global-grant', name: 'Rotary Global Grant Scholarships', region: 'Multiple', fundingType: 'Funded',
+    blurb: 'Rotary funding for graduate-level study aligned with Rotary’s areas of focus, often delivered through district sponsorship.',
+    regions: ['any'], fields: ['stem', 'health', 'social', 'business'], degrees: ['taught', 'research'], minClass: '2:1', idealExp: 'some', funding: ['partial', 'full'], tags: ['development', 'leadership'], weight: 61,
+  },
+  {
+    id: 'aauw-international', name: 'AAUW International Fellowships', region: 'United States', fundingType: 'Funded',
+    blurb: 'Funding for women who are not US citizens or permanent residents pursuing full-time graduate or postdoctoral study in the US.',
+    regions: ['us'], fields: ['any'], degrees: ['taught', 'research', 'phd'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'full'], tags: ['women', 'leadership'], weight: 63, genderEligibility: 'female',
+  },
+  {
+    id: 'yale-graduate-fellowship', name: 'Yale Graduate School Funding', region: 'United States', fundingType: 'Fully funded PhD support',
+    blurb: 'Yale doctoral funding packages typically combine tuition fellowship, stipend support, and health coverage for admitted PhD students.',
+    regions: ['us'], fields: ['any'], degrees: ['phd', 'research'], minClass: 'first', idealExp: 'any', funding: ['full'], tags: ['research'], weight: 62,
+  },
+  {
+    id: 'harvard-gsas-funding', name: 'Harvard Griffin GSAS Financial Aid', region: 'United States', fundingType: 'Fully funded PhD support',
+    blurb: 'Harvard Griffin GSAS funding for admitted doctoral students, usually combining tuition, stipend, and research or teaching support.',
+    regions: ['us'], fields: ['any'], degrees: ['phd', 'research'], minClass: 'first', idealExp: 'any', funding: ['full'], tags: ['research'], weight: 62,
+  },
+  {
+    id: 'mit-graduate-fellowships', name: 'MIT Graduate Fellowships', region: 'United States', fundingType: 'Funded',
+    blurb: 'MIT graduate funding through fellowships, assistantships, and department support, strongest for research-led STEM paths.',
+    regions: ['us'], fields: ['stem', 'business'], degrees: ['research', 'phd', 'taught'], minClass: 'first', idealExp: 'any', funding: ['full', 'partial'], tags: ['research', 'assistantship'], weight: 61,
+  },
+  {
+    id: 'cornell-graduate-fellowship', name: 'Cornell Graduate Fellowships', region: 'United States', fundingType: 'Funded',
+    blurb: 'Cornell graduate fellowships and assistantships that support admitted research students, especially doctoral candidates.',
+    regions: ['us'], fields: ['any'], degrees: ['phd', 'research'], minClass: '2:1', idealExp: 'any', funding: ['full', 'partial'], tags: ['research', 'assistantship'], weight: 57,
+  },
+  {
+    id: 'princeton-graduate-fellowship', name: 'Princeton Graduate Fellowships', region: 'United States', fundingType: 'Fully funded PhD support',
+    blurb: 'Princeton graduate funding for admitted doctoral students, typically covering tuition and stipend support.',
+    regions: ['us'], fields: ['any'], degrees: ['phd', 'research'], minClass: 'first', idealExp: 'any', funding: ['full'], tags: ['research'], weight: 60,
+  },
+  {
+    id: 'rackham-fellowships', name: 'Michigan Rackham Fellowships', region: 'United States', fundingType: 'Funded',
+    blurb: 'University of Michigan Rackham fellowship funding for graduate students, including competitive support for doctoral study.',
+    regions: ['us'], fields: ['any'], degrees: ['phd', 'research', 'taught'], minClass: '2:1', idealExp: 'any', funding: ['partial', 'full'], tags: ['research'], weight: 55,
+  },
+  {
+    id: 'rotary-peace', name: 'Rotary Peace Fellowships', region: 'Multiple', fundingType: 'Fully funded',
+    blurb: 'Fully funded fellowships for peace and development professionals pursuing selected master’s programmes or professional certificates.',
+    regions: ['us', 'uk', 'australia', 'asia'], fields: ['social', 'law', 'business'], degrees: ['taught'], minClass: '2:1', idealExp: 'experienced', funding: ['full'], tags: ['development', 'leadership'], weight: 70,
+  },
+  {
+    id: 'trudeau-foundation', name: 'Pierre Elliott Trudeau Foundation Scholarship', region: 'Canada', fundingType: 'Funded',
+    blurb: 'Canadian doctoral scholarship for researchers working on major social questions, with funding, mentorship, and leadership programming.',
+    regions: ['canada'], fields: ['social', 'law', 'arts'], degrees: ['phd', 'research'], minClass: '2:1', idealExp: 'any', funding: ['full', 'partial'], tags: ['research', 'leadership'], weight: 62,
+  },
+  {
+    id: 'uoft-mastercard', name: 'University of Toronto Mastercard Foundation Scholars', region: 'Canada', fundingType: 'Fully funded',
+    blurb: 'Mastercard Foundation scholarship route for African students at the University of Toronto, focused on transformative leadership.',
+    regions: ['canada'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['africa', 'development', 'leadership'], weight: 72,
+  },
+  {
+    id: 'ubc-mastercard', name: 'UBC Mastercard Foundation Scholars', region: 'Canada', fundingType: 'Fully funded',
+    blurb: 'University of British Columbia Mastercard Foundation scholarships for academically strong young people from Sub-Saharan Africa.',
+    regions: ['canada'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['africa', 'development', 'leadership'], weight: 72,
+  },
+  {
+    id: 'ubc-four-year-doctoral', name: 'UBC Four Year Doctoral Fellowship', region: 'Canada', fundingType: 'Funded',
+    blurb: 'University of British Columbia doctoral funding that supports excellent PhD, DMA, and MDPhD students with stipend and tuition support.',
+    regions: ['canada'], fields: ['any'], degrees: ['phd', 'research'], minClass: '2:1', idealExp: 'any', funding: ['full', 'partial'], tags: ['research'], weight: 59,
+  },
+  {
+    id: 'mandela-rhodes', name: 'Mandela Rhodes Scholarship', region: 'Africa', fundingType: 'Fully funded',
+    blurb: 'Fully funded postgraduate study in South Africa for young African leaders, paired with a leadership development programme.',
+    regions: ['africa'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['africa', 'leadership', 'development'], weight: 76,
+  },
+  {
+    id: 'au-nyerere', name: 'AU Mwalimu Nyerere Scholarship', region: 'Africa', fundingType: 'Fully funded',
+    blurb: 'African Union scholarship support for African students pursuing priority master’s or doctoral study.',
+    regions: ['africa'], fields: ['stem', 'health', 'social'], degrees: ['taught', 'phd', 'research'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['africa', 'development'], weight: 62,
+  },
+  {
+    id: 'aims-masters', name: 'AIMS Master’s Program', region: 'Africa', fundingType: 'Fully funded',
+    blurb: 'African Institute for Mathematical Sciences master’s training for talented African students in mathematical sciences and related fields.',
+    regions: ['africa'], fields: ['stem'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['africa', 'research'], weight: 66,
+  },
+  {
+    id: 'auc-african-graduate-fellowship', name: 'AUC African Graduate Fellowship', region: 'Africa', fundingType: 'Tuition, stipend, and housing',
+    blurb: 'American University in Cairo fellowship support for African nationals pursuing eligible graduate study.',
+    regions: ['africa'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['full', 'partial'], tags: ['africa', 'development'], weight: 57,
+  },
+  {
+    id: 'twas-phd', name: 'TWAS PhD Fellowships', region: 'Multiple', fundingType: 'Stipend and fees',
+    blurb: 'Doctoral fellowships for scientists from developing countries, usually hosted through TWAS partner institutions.',
+    regions: ['any'], fields: ['stem', 'health'], degrees: ['phd', 'research'], minClass: '2:1', idealExp: 'any', funding: ['full', 'partial'], tags: ['research', 'development'], weight: 60,
+  },
+  {
+    id: 'chinese-government', name: 'Chinese Government Scholarship', region: 'China', fundingType: 'Fully funded',
+    blurb: 'China Scholarship Council funding for international students pursuing master’s and doctoral study at Chinese universities.',
+    regions: ['asia'], fields: ['any'], degrees: ['taught', 'phd', 'research'], minClass: '2:2', idealExp: 'any', funding: ['full'], tags: ['affordable'], weight: 67,
+  },
+  {
+    id: 'schwarzman', name: 'Schwarzman Scholars', region: 'China', fundingType: 'Fully funded',
+    blurb: 'Fully funded one-year master’s programme at Tsinghua University for high-potential global leaders.',
+    regions: ['asia'], fields: ['business', 'social', 'law'], degrees: ['taught'], minClass: '2:1', idealExp: 'some', funding: ['full'], tags: ['leadership'], weight: 72,
+  },
+  {
+    id: 'yenching', name: 'Yenching Academy Fellowship', region: 'China', fundingType: 'Fully funded',
+    blurb: 'Peking University fellowship covering tuition, accommodation, stipend, travel, and field study costs for selected master’s students.',
+    regions: ['asia'], fields: ['social', 'law', 'arts', 'business'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['leadership'], weight: 70,
+  },
+  {
+    id: 'mext', name: 'MEXT Japanese Government Scholarship', region: 'Japan', fundingType: 'Fully funded',
+    blurb: 'Japanese government scholarship route for international graduate study and research in Japan.',
+    regions: ['asia'], fields: ['any'], degrees: ['taught', 'research', 'phd'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['research', 'affordable'], weight: 68,
+  },
+  {
+    id: 'adb-jsp', name: 'ADB-Japan Scholarship Program', region: 'Asia-Pacific', fundingType: 'Fully funded',
+    blurb: 'Asian Development Bank programme funding postgraduate study for applicants from eligible developing member countries.',
+    regions: ['asia'], fields: ['business', 'stem', 'health', 'social'], degrees: ['taught'], minClass: '2:1', idealExp: 'some', funding: ['full'], tags: ['development'], weight: 64,
+  },
+  {
+    id: 'gks', name: 'Global Korea Scholarship', region: 'South Korea', fundingType: 'Fully funded',
+    blurb: 'Korean government scholarship for international students pursuing graduate degrees in South Korea.',
+    regions: ['asia'], fields: ['any'], degrees: ['taught', 'research', 'phd'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['affordable'], weight: 64,
+  },
+  {
+    id: 'taiwan-icdf', name: 'TaiwanICDF Scholarship', region: 'Taiwan', fundingType: 'Fully funded',
+    blurb: 'TaiwanICDF support for students from partner countries pursuing selected international higher education programmes in Taiwan.',
+    regions: ['asia'], fields: ['business', 'stem', 'health', 'social'], degrees: ['taught', 'phd', 'research'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['development'], weight: 58,
+  },
+  {
+    id: 'turkiye-burslari', name: 'Türkiye Scholarships', region: 'Turkey', fundingType: 'Fully funded',
+    blurb: 'Government-funded scholarship programme for international students at Turkish universities, including graduate study.',
+    regions: ['asia', 'europe'], fields: ['any'], degrees: ['taught', 'phd', 'research'], minClass: '2:2', idealExp: 'any', funding: ['full'], tags: ['affordable'], weight: 65,
+  },
+  {
+    id: 'brunei-government', name: 'Brunei Darussalam Government Scholarship', region: 'Brunei', fundingType: 'Fully funded',
+    blurb: 'Government scholarship for international students to study at selected higher education institutions in Brunei.',
+    regions: ['asia'], fields: ['any'], degrees: ['taught'], minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['affordable'], weight: 50,
+  },
+  {
+    id: 'manaaki-new-zealand', name: 'Manaaki New Zealand Scholarships', region: 'New Zealand', fundingType: 'Fully funded',
+    blurb: 'New Zealand government scholarships for eligible developing-country applicants pursuing study that supports development impact.',
+    regions: ['new-zealand'], fields: ['stem', 'health', 'social', 'business'], degrees: ['taught', 'phd', 'research'], minClass: '2:1', idealExp: 'some', funding: ['full'], tags: ['development'], weight: 68,
   },
   {
     id: 'school-specific-merit', name: 'University merit scholarships', region: 'Multiple', fundingType: 'Partial to full',
@@ -672,15 +1050,35 @@ function rankPathways(a: Answers): ScoredPathway[] {
   return kept.slice(0, 6);
 }
 
-function rankScholarships(a: Answers): ScoredScholarship[] {
-  const scored = SCHOLARSHIPS.map((item) => {
+function diversifyScholarships(items: ScoredScholarship[], limit = 12): ScoredScholarship[] {
+  const chosen: ScoredScholarship[] = [];
+  const byRegion = new Map<string, number>();
+  const byFunding = new Map<string, number>();
+  for (const item of items) {
+    const r = item.region || 'Multiple';
+    const f = item.fundingType || 'Other';
+    if ((byRegion.get(r) || 0) >= 3 || (byFunding.get(f) || 0) >= 5) continue;
+    chosen.push(item);
+    byRegion.set(r, (byRegion.get(r) || 0) + 1);
+    byFunding.set(f, (byFunding.get(f) || 0) + 1);
+    if (chosen.length >= limit) return chosen;
+  }
+  for (const item of items) {
+    if (!chosen.some((x) => x.id === item.id)) chosen.push(item);
+    if (chosen.length >= limit) return chosen;
+  }
+  return chosen;
+}
+
+function rankScholarships(a: Answers, source: Scholarship[] = SCHOLARSHIPS): ScoredScholarship[] {
+  const scored = source.map((item) => {
     const s = scoreItem(item, a);
     return s ? ({ ...item, ...s }) : null;
   }).filter((x): x is ScoredScholarship => x !== null);
   scored.sort((x, y) => y.score - x.score || y.weight - x.weight);
   let kept = scored.filter((s) => s.score >= MIN_SCORE);
   if (kept.length < 2) kept = scored.slice(0, 2);
-  return kept.slice(0, 8);
+  return diversifyScholarships(kept, 12);
 }
 
 /**
@@ -688,8 +1086,8 @@ function rankScholarships(a: Answers): ScoredScholarship[] {
  * Always returns a non-empty, encouraging shortlist (the ['any']-region items
  * guarantee at least a couple of matches for every profile).
  */
-export function matchProfile(a: Answers): MatchResult {
-  return { pathways: rankPathways(a), scholarships: rankScholarships(a) };
+export function matchProfile(a: Answers, scholarshipsOverride?: Scholarship[]): MatchResult {
+  return { pathways: rankPathways(a), scholarships: rankScholarships(a, scholarshipsOverride && scholarshipsOverride.length > 0 ? scholarshipsOverride : SCHOLARSHIPS) };
 }
 
 // ── Goal-driven motivation (mirrored in api/email.php) ───────────────────────
@@ -700,6 +1098,8 @@ export function destinationPhrase(a: Answers): string {
     ['canada', 'in Canada'],
     ['europe', 'in Europe'],
     ['australia', 'in Australia'],
+    ['new-zealand', 'in New Zealand'],
+    ['asia', 'in Asia'],
     ['africa', 'across Africa'],
   ];
   for (const [v, phrase] of order) if (destinations(a).includes(v)) return phrase;
@@ -738,6 +1138,6 @@ export function motivationFor(a: Answers): { headline: string; body: string } {
 export function matchConfig() {
   return {
     pathways: PATHWAYS.map((p) => ({ id: p.id, name: p.name, blurb: p.blurb, category: p.category })),
-    scholarships: SCHOLARSHIPS.map((s) => ({ id: s.id, name: s.name, blurb: s.blurb, region: s.region, fundingType: s.fundingType })),
+    scholarships: SCHOLARSHIPS.map((s) => ({ id: s.id, name: s.name, blurb: s.blurb, region: s.region, fundingType: s.fundingType, genderEligibility: s.genderEligibility || 'any' })),
   };
 }

@@ -18,6 +18,7 @@ import { LetsKeepInTouchPage } from './pages/LetsKeepInTouch';
 import { GradSchoolBootcampPage } from './pages/GradSchoolBootcamp';
 import { EventsPage } from './pages/Events';
 import { GradSchoolMatchPage } from './pages/GradSchoolMatch';
+import { AdminPage } from './pages/Admin';
 import { ProductDetailPage } from './pages/ProductDetail';
 import { ServiceDetailPage } from './pages/ServiceDetail';
 import { PRODUCTS } from './data/products';
@@ -54,6 +55,7 @@ const STATIC_PAGES: Record<string, () => ReactElement> = {
   '/lets-keep-in-touch/': LetsKeepInTouchPage,
   '/get-into-grad-school-bootcamp/': GradSchoolBootcampPage,
   '/grad-school-match/': GradSchoolMatchPage,
+  '/admin/': AdminPage,
 };
 
 const PRODUCT_PAGES: Record<string, () => ReactElement> = Object.fromEntries(

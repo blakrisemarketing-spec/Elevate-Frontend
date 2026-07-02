@@ -175,6 +175,11 @@ function App(): React.ReactElement {
   }, [page]);
 
   useEffect(() => {
+    if (page.route !== '/admin/') return;
+    import('./admin/admin-client');
+  }, [page.route]);
+
+  useEffect(() => {
     const counters = document.querySelectorAll<HTMLElement>('.elementor-counter-number[data-to-value]');
     counters.forEach((counter) => {
       const value = counter.dataset.toValue;

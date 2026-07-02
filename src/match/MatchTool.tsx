@@ -15,10 +15,11 @@
  * Keep the initial (intro) render free of browser globals so it is SSR-safe.
  * Brand voice: the Insider Friend, warm and a little funny. No em dashes.
  */
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { FormEvent, ReactNode } from 'react';
 import { QUESTIONS, matchProfile, motivationFor } from './match-data';
-import type { Answers, MatchQuestion, Tier } from './match-data';
+import type { Answers, MatchQuestion, Scholarship, Tier } from './match-data';
+import { trackEvent, trackMeta } from '../analytics/tracking';
 
 const LEAD_ENDPOINT = '/api/quiz-lead.php';
 const BOOTCAMP_URL = '/get-into-grad-school-bootcamp/#tickets';
@@ -94,9 +95,24 @@ export function MatchTool() {
   const [formError, setFormError] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [emailed, setEmailed] = useState(false);
+  const [runtimeScholarships, setRuntimeScholarships] = useState<Scholarship[] | undefined>();
 
   const total = QUESTIONS.length;
-  const result = useMemo(() => matchProfile(answers), [answers]);
+  const result = useMemo(() => matchProfile(answers, runtimeScholarships), [answers, runtimeScholarships]);
+
+  useEffect(() => {
+    let alive = true;
+    fetch('/api/scholarships.php', { headers: { Accept: 'application/json' } })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (!alive || !data || !Array.isArray(data.scholarships) || data.scholarships.length === 0) return;
+        setRuntimeScholarships(data.scholarships);
+      })
+      .catch(() => {
+        // Static fallback stays in place when the PHP feed is unavailable.
+      });
+    return () => { alive = false; };
+  }, []);
 
   function answer(q: MatchQuestion, value: string) {
     if (q.type === 'single') {
@@ -138,6 +154,7 @@ export function MatchTool() {
     if (!CV_EXT.includes(ext)) { setCvFile(null); setCvError('Please upload a PDF, DOC, or DOCX file.'); return; }
     if (file.size > MAX_CV_BYTES) { setCvFile(null); setCvError('That file is over 5 MB. Pop in a smaller version.'); return; }
     setCvFile(file);
+    trackEvent('cv_uploaded', { file_type: ext, file_size_kb: Math.round(file.size / 1024), source: 'grad_school_match' });
   }
 
   function e164(): string {
@@ -158,6 +175,11 @@ export function MatchTool() {
 
     setSubmitting(true);
     try {
+      trackEvent('grad_school_match_lead_submitted', {
+        has_cv: Boolean(cvFile),
+        scholarship_count: result.scholarships.length,
+        pathway_count: result.pathways.length,
+      });
       const fd = new FormData();
       fd.append('name', name.trim());
       fd.append('email', email.trim());
@@ -175,13 +197,25 @@ export function MatchTool() {
 
       const res = await fetch(LEAD_ENDPOINT, { method: 'POST', body: fd });
       const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setFormError((data && data.message) || 'We could not submit this right now. Please try again.');
+        return;
+      }
       setEmailed(Boolean(res.ok && data && data.ok));
+      trackEvent('grad_school_match_completed', {
+        has_cv: Boolean(cvFile),
+        scholarship_count: result.scholarships.length,
+        pathway_count: result.pathways.length,
+      });
+      trackMeta('Lead', { content_name: 'Grad School Match', content_category: 'lead_generation' });
     } catch {
       setEmailed(false);
+      setFormError('We could not submit this right now. Please try again.');
+      return;
     } finally {
       setSubmitting(false);
-      setPhase('done'); // always reveal the report once they have given details
     }
+    setPhase('done');
   }
 
   // ── Intro (also the SSR / no-JS fallback) ─────────────────────────────────
@@ -194,7 +228,7 @@ export function MatchTool() {
           Two minutes of tapping. No essays, no judgment, no "we will get back to you in 6 to 8 weeks." Just a
           straight answer on where you stand, and a report you keep.
         </p>
-        <button type="button" className="btn-primary" onClick={() => { setQIndex(0); setPhase('quiz'); }}>
+        <button type="button" className="btn-primary" onClick={() => { trackEvent('grad_school_match_started', { location: 'intro' }); setQIndex(0); setPhase('quiz'); }}>
           Find my matches
         </button>
         <p className="text-xs text-ink-muted mt-4">100% free. No payment. We will not spam you, we hate that too.</p>
@@ -410,6 +444,8 @@ export function MatchTool() {
         </p>
       </div>
 
+      <BootcampCTA step={step} cvUploaded={Boolean(cvFile)} waUrl={waUrl} />
+
       <section className="mb-9">
         <h3 className="text-title-lg text-navy mb-4">Program pathways you qualify for</h3>
         <div className="grid gap-4 sm:grid-cols-2">
@@ -447,16 +483,6 @@ export function MatchTool() {
         <p className="text-xs text-ink-muted mt-4">Quick honesty note: the final yes on funding sits with each provider. Our job is to make your case impossible to ignore. "Worth a stretch" just means aim for it with a sharper application, that is exactly what the bootcamp builds.</p>
       </section>
 
-      {/* Personalized next step → bootcamp */}
-      <section className="bg-gradient-to-br from-primary to-navy text-white rounded-xl p-8 sm:p-10 text-center">
-        <h3 className="text-headline-md text-white mb-2">{step.title}</h3>
-        <p className="text-white/90 max-w-xl mx-auto mb-7">{step.body}</p>
-        {cvFile && <p className="text-white/80 text-sm mb-6">Your CV is in. A real human on our team will review it and follow up with notes alongside your report.</p>}
-        <div className="flex flex-wrap justify-center gap-4">
-          <a href={BOOTCAMP_URL} className="btn-primary bg-electric text-navy hover:bg-electric-600">See the bootcamp and ticket options</a>
-          <a href={waUrl} target="_blank" rel="noopener" className="btn-outline">Continue on WhatsApp</a>
-        </div>
-      </section>
     </Shell>
   );
 }
@@ -491,6 +517,26 @@ function Field({ label, htmlFor, help, children }: { label: string; htmlFor: str
       {help && <p className="text-xs text-ink-muted mb-1.5">{help}</p>}
       {children}
     </div>
+  );
+}
+
+function BootcampCTA({ step, cvUploaded, waUrl }: { step: { title: string; body: string }; cvUploaded: boolean; waUrl: string }) {
+  return (
+    <section className="bg-gradient-to-br from-primary to-navy text-white rounded-xl p-8 sm:p-11 mb-9 text-center shadow-soft">
+      <p className="eyebrow text-electric mb-3">Your next best move</p>
+      <h3 className="text-headline-lg text-white mb-3">{step.title}</h3>
+      <p className="text-white/90 max-w-2xl mx-auto mb-6">{step.body}</p>
+      <ul className="grid gap-3 sm:grid-cols-3 text-left mb-8">
+        {['Build a smart school list', 'Write essays that make sense', 'Target scholarships with a plan'].map((x) => (
+          <li key={x} className="bg-white/10 rounded-lg px-4 py-3 text-sm font-semibold text-white">{x}</li>
+        ))}
+      </ul>
+      {cvUploaded && <p className="text-white/80 text-sm mb-6">Your CV is in. A real human on our team will review it and follow up with notes alongside your report.</p>}
+      <div className="flex flex-wrap justify-center gap-4">
+        <a href={BOOTCAMP_URL} onClick={() => trackEvent('bootcamp_cta_clicked', { location: 'match_results', cta_text: 'Save my spot in the bootcamp' })} className="btn-primary bg-electric text-navy hover:bg-electric-600">Save my spot in the bootcamp</a>
+        <a href={waUrl} onClick={() => trackEvent('whatsapp_cta_clicked', { location: 'match_results', cta_text: 'Continue on WhatsApp' })} target="_blank" rel="noopener" className="btn-outline border-white text-white hover:bg-white/10">Continue on WhatsApp</a>
+      </div>
+    </section>
   );
 }
 

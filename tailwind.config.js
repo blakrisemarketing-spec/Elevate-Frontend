@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/priority/**/*.{ts,tsx}', './src/checkout/**/*.{ts,tsx}', './src/match/**/*.{ts,tsx}', './scripts/build-priority-routes.mjs'],
+  content: ['./src/priority/**/*.{ts,tsx}', './src/checkout/**/*.{ts,tsx}', './src/match/**/*.{ts,tsx}', './src/admin/**/*.{ts,tsx}', './scripts/build-priority-routes.mjs'],
   theme: {
     extend: {
       colors: {
