@@ -24,4 +24,4 @@ tsconfig.tsbuildinfo
 .env.*.local
 
 # Server-side secrets (Hostinger PHP) — never commit
-api/config.php
+api/config.local.php

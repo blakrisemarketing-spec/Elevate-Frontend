@@ -690,12 +690,13 @@ async function emitDeployArtifacts() {
   }
   await ensureDir(path.join(distRoot, 'api'));
   await fs.writeFile(path.join(distRoot, 'api', 'catalog.json'), JSON.stringify(slim, null, 2));
+  await fs.copyFile(path.join(projectRoot, 'api', 'config.php'), path.join(distRoot, 'api', 'config.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'admin-auth.php'), path.join(distRoot, 'api', 'admin-auth.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'verify-payment.php'), path.join(distRoot, 'api', 'verify-payment.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'email.php'), path.join(distRoot, 'api', 'email.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'lead-campaign.php'), path.join(distRoot, 'api', 'lead-campaign.php'));
   await buildHtaccess();
-  console.log(`[ssg] deploy artifacts → dist/api/{catalog.json,admin-auth.php,verify-payment.php,email.php,lead-campaign.php}, dist/.htaccess`);
+  console.log(`[ssg] deploy artifacts → dist/api/{catalog.json,config.php,admin-auth.php,verify-payment.php,email.php,lead-campaign.php}, dist/.htaccess`);
 }
 
 /**
