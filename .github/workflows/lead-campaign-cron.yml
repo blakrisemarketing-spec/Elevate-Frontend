@@ -1,0 +1,21 @@
+name: Lead campaign cron
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run-lead-campaign:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Trigger scheduled lead campaign
+        env:
+          CRON_SECRET: ${{ secrets.LEAD_CAMPAIGN_CRON_SECRET }}
+        run: |
+          test -n "$CRON_SECRET"
+          curl --fail --show-error --silent --get \
+            --data-urlencode "secret=$CRON_SECRET" \
+            --data-urlencode "limit=20" \
+            "https://elevatecareerhub.com/api/run-lead-campaign.php"
