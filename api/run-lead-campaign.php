@@ -2,8 +2,11 @@
 declare(strict_types=1);
 
 ini_set('display_errors', '0');
-header('Content-Type: application/json');
-header('Cache-Control: no-store');
+$isCli = PHP_SAPI === 'cli';
+if (!$isCli) {
+    header('Content-Type: application/json');
+    header('Cache-Control: no-store');
+}
 
 $configFile = __DIR__ . '/config.php';
 if (is_file($configFile)) {
@@ -12,22 +15,28 @@ if (is_file($configFile)) {
 require __DIR__ . '/lead-campaign.php';
 
 function campaign_json($data, int $status = 200): void {
-    http_response_code($status);
+    if (PHP_SAPI !== 'cli') {
+        http_response_code($status);
+    }
     echo json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    if (PHP_SAPI === 'cli') {
+        echo PHP_EOL;
+    }
     exit;
 }
 
-if (!in_array(($_SERVER['REQUEST_METHOD'] ?? 'GET'), ['GET', 'POST'], true)) {
-    campaign_json(['ok' => false, 'message' => 'Method not allowed'], 405);
-}
-
-$expected = ech_runtime_secret('CRON_SECRET');
-if ($expected === '') {
-    campaign_json(['ok' => false, 'message' => 'CRON_SECRET is not configured.'], 503);
-}
-$provided = (string) ($_GET['secret'] ?? ($_SERVER['HTTP_X_CRON_SECRET'] ?? ''));
-if (!hash_equals($expected, $provided)) {
-    campaign_json(['ok' => false, 'message' => 'Forbidden'], 403);
+if (!$isCli) {
+    if (!in_array(($_SERVER['REQUEST_METHOD'] ?? 'GET'), ['GET', 'POST'], true)) {
+        campaign_json(['ok' => false, 'message' => 'Method not allowed'], 405);
+    }
+    $expected = ech_runtime_secret('CRON_SECRET');
+    if ($expected === '') {
+        campaign_json(['ok' => false, 'message' => 'CRON_SECRET is not configured.'], 503);
+    }
+    $provided = (string) ($_GET['secret'] ?? ($_SERVER['HTTP_X_CRON_SECRET'] ?? ''));
+    if (!hash_equals($expected, $provided)) {
+        campaign_json(['ok' => false, 'message' => 'Forbidden'], 403);
+    }
 }
 
 $lockPath = ech_campaign_file('lead-campaign.lock');
