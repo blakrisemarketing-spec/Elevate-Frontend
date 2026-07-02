@@ -33,6 +33,7 @@ if (is_file($configFile)) {
 }
 require __DIR__ . '/email.php';
 require_once __DIR__ . '/admin-auth.php';
+require_once __DIR__ . '/lead-campaign.php';
 
 function respond($data, int $status = 200): void {
     http_response_code($status);
@@ -282,6 +283,11 @@ if ($fh) {
 // ── Emails (best effort, never blocks the lead). Skip for suspected bots so we
 // do not email junk addresses, but the lead is already stored + flagged above. ──
 if (!$suspectedBot) {
+    try {
+        ech_campaign_enroll_match_lead($record, $pathways, $scholarships);
+    } catch (Throwable $e) {
+        error_log('[quiz-lead] campaign enrollment failed: ' . $e->getMessage());
+    }
     try {
         send_match_emails($name, $email, $phone, $answers, $pathways, $scholarships, $linkedin, $portfolio, $cvStored, $cvMeta);
     } catch (Throwable $e) {

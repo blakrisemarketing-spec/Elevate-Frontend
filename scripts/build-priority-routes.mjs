@@ -693,8 +693,9 @@ async function emitDeployArtifacts() {
   await fs.copyFile(path.join(projectRoot, 'api', 'admin-auth.php'), path.join(distRoot, 'api', 'admin-auth.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'verify-payment.php'), path.join(distRoot, 'api', 'verify-payment.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'email.php'), path.join(distRoot, 'api', 'email.php'));
+  await fs.copyFile(path.join(projectRoot, 'api', 'lead-campaign.php'), path.join(distRoot, 'api', 'lead-campaign.php'));
   await buildHtaccess();
-  console.log(`[ssg] deploy artifacts → dist/api/{catalog.json,admin-auth.php,verify-payment.php,email.php}, dist/.htaccess`);
+  console.log(`[ssg] deploy artifacts → dist/api/{catalog.json,admin-auth.php,verify-payment.php,email.php,lead-campaign.php}, dist/.htaccess`);
 }
 
 /**
@@ -712,11 +713,13 @@ async function emitMatchArtifacts() {
   await fs.writeFile(path.join(distRoot, 'api', 'match-config.json'), JSON.stringify(cfg, null, 2));
   await fs.copyFile(path.join(projectRoot, 'api', 'quiz-lead.php'), path.join(distRoot, 'api', 'quiz-lead.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'scholarships.php'), path.join(distRoot, 'api', 'scholarships.php'));
+  await fs.copyFile(path.join(projectRoot, 'api', 'run-lead-campaign.php'), path.join(distRoot, 'api', 'run-lead-campaign.php'));
+  await fs.copyFile(path.join(projectRoot, 'api', 'lead-campaign-unsubscribe.php'), path.join(distRoot, 'api', 'lead-campaign-unsubscribe.php'));
   await ensureDir(path.join(distRoot, 'api', '_leads'));
   await ensureDir(path.join(distRoot, 'api', '_data'));
   await fs.copyFile(path.join(projectRoot, 'api', '_leads', '.htaccess'), path.join(distRoot, 'api', '_leads', '.htaccess'));
   await fs.copyFile(path.join(projectRoot, 'api', '_data', '.htaccess'), path.join(distRoot, 'api', '_data', '.htaccess'));
-  console.log('[ssg] match artifacts → dist/api/{match-config.json,quiz-lead.php,scholarships.php,_leads/.htaccess,_data/.htaccess}');
+  console.log('[ssg] match artifacts → dist/api/{match-config.json,quiz-lead.php,scholarships.php,run-lead-campaign.php,lead-campaign-unsubscribe.php,_leads/.htaccess,_data/.htaccess}');
 }
 
 /**
