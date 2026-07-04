@@ -12,6 +12,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 5173
+    },
+    {
+      "name": "serve-php",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "serve:php"],
+      "port": 8080
     }
   ]
 }
