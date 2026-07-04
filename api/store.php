@@ -435,6 +435,69 @@ function ech_scholarships_replace(array $clean): array {
     return ['count' => $count, 'updatedAt' => $updatedAt];
 }
 
+/** Map a validated admin scholarship (camelCase) onto the ech_scholarships columns. */
+function ech_scholarship_clean_to_row(array $c): array {
+    return [
+        'id' => $c['id'],
+        'name' => $c['name'],
+        'region' => $c['region'],
+        'funding_type' => $c['fundingType'],
+        'blurb' => $c['blurb'],
+        'regions' => array_values($c['regions']),
+        'fields' => array_values($c['fields']),
+        'degrees' => array_values($c['degrees']),
+        'funding' => array_values($c['funding']),
+        'min_class' => $c['minClass'],
+        'ideal_exp' => $c['idealExp'],
+        'tags' => array_values($c['tags']),
+        'weight' => (int) $c['weight'],
+        'gender_eligibility' => $c['genderEligibility'],
+        'active' => (bool) $c['active'],
+        'updated_at' => gmdate('c'),
+    ];
+}
+
+/** Bump the feed's updated_at and rewrite the deploy-surviving cache file. */
+function ech_scholarships_touch(): void {
+    ech_setting_set('scholarships_updated_at', gmdate('c'));
+    try {
+        ech_scholarships_cache_write(ech_scholarships_active(), gmdate('c'));
+    } catch (Throwable $e) {
+        error_log('[store] scholarship cache refresh failed: ' . $e->getMessage());
+    }
+}
+
+/** Create or update a single scholarship (id is the conflict key). */
+function ech_scholarship_upsert(array $clean): array {
+    $res = ech_sb_insert('ech_scholarships', ech_scholarship_clean_to_row($clean), ['onConflict' => 'id', 'merge' => true]);
+    ech_scholarships_touch();
+    return is_array($res[0] ?? null) ? ech_scholarship_row_to_legacy($res[0]) : $clean;
+}
+
+/**
+ * Add many scholarships at once, merging by id: new ids are inserted, existing
+ * ids are updated, and everything else in the engine is left untouched.
+ * Returns the number of rows added/updated.
+ */
+function ech_scholarships_bulk_upsert(array $cleanList): int {
+    if (empty($cleanList)) {
+        return 0;
+    }
+    $rows = array_map('ech_scholarship_clean_to_row', array_values($cleanList));
+    $res = ech_sb_insert('ech_scholarships', $rows, ['onConflict' => 'id', 'merge' => true]);
+    ech_scholarships_touch();
+    return is_array($res) ? count($res) : count($rows);
+}
+
+/** Remove a single scholarship from the engine. */
+function ech_scholarship_delete(string $id): void {
+    if ($id === '') {
+        return;
+    }
+    ech_sb_delete('ech_scholarships', 'id=eq.' . rawurlencode($id));
+    ech_scholarships_touch();
+}
+
 /** Active scholarships with the deploy-surviving cache file as fallback. */
 function ech_scholarships_active_cached(): array {
     try {
@@ -464,6 +527,77 @@ function ech_setting_set(string $key, string $value): void {
         'v' => $value,
         'updated_at' => gmdate('c'),
     ], ['onConflict' => 'k', 'merge' => true]);
+}
+
+// ── Admin users (multi-user login) ───────────────────────────────────────
+
+function ech_admin_user_by_email(string $email): ?array {
+    $email = strtolower(trim($email));
+    if ($email === '') {
+        return null;
+    }
+    $rows = ech_sb_select('ech_admin_users', 'select=*&email=eq.' . rawurlencode($email) . '&limit=1');
+    return $rows[0] ?? null;
+}
+
+function ech_admin_user_touch_login(int $id): void {
+    if ($id <= 0) {
+        return;
+    }
+    try {
+        ech_sb_update('ech_admin_users', 'id=eq.' . $id, ['last_login_at' => gmdate('c')]);
+    } catch (Throwable $e) {
+        error_log('[store] touch login failed: ' . $e->getMessage());
+    }
+}
+
+/** Create or update an admin user by email (merge). $hash is a bcrypt hash. */
+function ech_admin_user_upsert(string $email, string $hash, string $name, bool $active = true): array {
+    $row = [
+        'email' => strtolower(trim($email)),
+        'password_hash' => $hash,
+        'name' => $name,
+        'active' => $active,
+        'created_at' => gmdate('c'),
+    ];
+    $res = ech_sb_insert('ech_admin_users', $row, ['onConflict' => 'email', 'merge' => true]);
+    return $res[0] ?? $row;
+}
+
+function ech_admin_users_list(): array {
+    return ech_sb_select('ech_admin_users', 'select=id,email,name,active,created_at,last_login_at&order=email.asc');
+}
+
+function ech_admin_user_get(int $id): ?array {
+    if ($id <= 0) {
+        return null;
+    }
+    $rows = ech_sb_select('ech_admin_users', 'select=*&id=eq.' . $id . '&limit=1');
+    return $rows[0] ?? null;
+}
+
+function ech_admin_user_set_password(int $id, string $hash): void {
+    ech_sb_update('ech_admin_users', 'id=eq.' . $id, ['password_hash' => $hash]);
+}
+
+function ech_admin_user_set_active(int $id, bool $active): void {
+    ech_sb_update('ech_admin_users', 'id=eq.' . $id, ['active' => $active]);
+}
+
+function ech_admin_user_delete(int $id): void {
+    ech_sb_delete('ech_admin_users', 'id=eq.' . $id);
+}
+
+/** Map a user row to the safe (no hash) shape returned to the client. */
+function ech_admin_user_public(array $u): array {
+    return [
+        'id' => (int) ($u['id'] ?? 0),
+        'email' => (string) ($u['email'] ?? ''),
+        'name' => (string) ($u['name'] ?? ''),
+        'active' => !empty($u['active']),
+        'createdAt' => (string) ($u['created_at'] ?? ''),
+        'lastLoginAt' => (string) ($u['last_login_at'] ?? ''),
+    ];
 }
 
 // ── Stats ────────────────────────────────────────────────────────────────

@@ -2,12 +2,13 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { Database, LayoutDashboard, ShieldCheck } from 'lucide-react';
 
-export function LoginScreen({ onSubmit, busy, error }: { onSubmit: (password: string) => void; busy: boolean; error: string }) {
+export function LoginScreen({ onSubmit, busy, error }: { onSubmit: (email: string, password: string) => void; busy: boolean; error: string }) {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   function submit(e: FormEvent) {
     e.preventDefault();
-    onSubmit(password);
+    onSubmit(email, password);
   }
 
   return (
@@ -41,8 +42,10 @@ export function LoginScreen({ onSubmit, busy, error }: { onSubmit: (password: st
               <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-[#0077B6]">Sign in</p>
               <h2 className="text-2xl font-extrabold text-[#102548]">Unlock admin tools</h2>
             </div>
-            <label className="mb-2 block text-sm font-semibold text-[#26334d]" htmlFor="admin-password">Admin password</label>
-            <input id="admin-password" className="input mb-4" type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" autoFocus />
+            <label className="mb-2 block text-sm font-semibold text-[#26334d]" htmlFor="admin-email">Email</label>
+            <input id="admin-email" className="input mb-4" type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="username" autoFocus />
+            <label className="mb-2 block text-sm font-semibold text-[#26334d]" htmlFor="admin-password">Password</label>
+            <input id="admin-password" className="input mb-4" type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
             {error && <p className="mb-3 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>}
             <button className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-lg bg-[#102548] px-5 py-3 font-semibold text-white transition hover:bg-[#173661]" disabled={busy}>
               <ShieldCheck className="h-4 w-4" />

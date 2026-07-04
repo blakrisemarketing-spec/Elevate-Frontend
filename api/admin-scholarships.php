@@ -87,7 +87,44 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
 
 $raw = file_get_contents('php://input');
 $body = is_string($raw) ? json_decode($raw, true) : null;
-if (!is_array($body) || !is_array($body['scholarships'] ?? null)) {
+if (!is_array($body)) {
+    ech_json(['ok' => false, 'message' => 'Invalid request body.'], 400);
+}
+$action = (string) ($body['action'] ?? '');
+
+// Single-item edit/add: validate one scholarship and upsert it.
+if ($action === 'upsert') {
+    $errors = [];
+    $item = ech_scholarship_clean(is_array($body['scholarship'] ?? null) ? $body['scholarship'] : [], 0, $errors);
+    if (!$item) {
+        ech_json(['ok' => false, 'message' => $errors[0] ?? 'Invalid scholarship.', 'errors' => $errors], 400);
+    }
+    try {
+        $saved = ech_scholarship_upsert($item);
+    } catch (Throwable $e) {
+        error_log('[admin-scholarships] upsert failed: ' . $e->getMessage());
+        ech_json(['ok' => false, 'message' => 'Could not save the scholarship. Nothing was changed.'], 503);
+    }
+    ech_json(['ok' => true, 'scholarship' => $saved]);
+}
+
+// Single-item delete.
+if ($action === 'delete') {
+    $id = strtolower(trim((string) ($body['id'] ?? '')));
+    if ($id === '') {
+        ech_json(['ok' => false, 'message' => 'Missing scholarship id.'], 400);
+    }
+    try {
+        ech_scholarship_delete($id);
+    } catch (Throwable $e) {
+        error_log('[admin-scholarships] delete failed: ' . $e->getMessage());
+        ech_json(['ok' => false, 'message' => 'Could not delete the scholarship.'], 503);
+    }
+    ech_json(['ok' => true]);
+}
+
+// Bulk import: add new + update existing (by id), leaving the rest untouched.
+if (!is_array($body['scholarships'] ?? null)) {
     ech_json(['ok' => false, 'message' => 'Expected { scholarships: [...] }.'], 400);
 }
 
@@ -116,13 +153,13 @@ if (!empty($errors)) {
 }
 
 try {
-    // Atomic replace in Supabase (RPC: delete + insert in one transaction),
-    // then refresh the deploy-surviving cache file the public quiz falls back to.
-    $saved = ech_scholarships_replace($clean);
+    // Merge by id: new scholarships are added, existing ones updated, the rest
+    // of the engine is left intact. Refreshes the deploy-surviving cache file.
+    $count = ech_scholarships_bulk_upsert($clean);
 } catch (Throwable $e) {
-    error_log('[admin-scholarships] save failed: ' . $e->getMessage());
+    error_log('[admin-scholarships] import failed: ' . $e->getMessage());
     ech_json(['ok' => false, 'message' => 'Could not save to the scholarship database. Nothing was changed.'], 503);
 }
 
-ech_json(['ok' => true, 'count' => $saved['count'], 'updatedAt' => $saved['updatedAt']]);
+ech_json(['ok' => true, 'count' => $count, 'updatedAt' => ech_scholarships_updated_at()]);
 

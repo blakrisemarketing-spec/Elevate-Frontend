@@ -141,6 +141,33 @@ export type BroadcastSendResponse = {
   segmentEligible: number;
 };
 
+export type CurrentUser = { id: number; email: string; name: string };
+export type LoginUser = { email: string; name: string };
+export type LoginResponse = { ok: boolean; user: LoginUser };
+export type MeResponse = { ok: boolean; user: CurrentUser };
+
+export type AdminUser = {
+  id: number;
+  email: string;
+  name: string;
+  active: boolean;
+  createdAt: string;
+  lastLoginAt: string;
+};
+
+export type AdminUsersResponse = { ok: boolean; users: AdminUser[] };
+
+export type AdminUserAction =
+  | { action: 'create'; email: string; name?: string; password?: string }
+  | { action: 'reset'; id: number; password?: string }
+  | { action: 'active'; id: number; active: boolean }
+  | { action: 'delete'; id: number };
+
+export type CreateUserResponse = { ok: boolean; user: AdminUser; password: string; generated: boolean };
+export type ResetUserResponse = { ok: boolean; password: string; generated: boolean };
+export type ActiveUserResponse = { ok: boolean; active: boolean };
+export type DeleteUserResponse = { ok: boolean };
+
 export class ApiError extends Error {
   status: number;
   constructor(message: string, status: number) {
