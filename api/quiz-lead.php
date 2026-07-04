@@ -6,16 +6,21 @@
  * details + quiz answers + matched program/scholarship ids (+ optional CV /
  * LinkedIn / portfolio) as multipart/form-data after the teaser. We:
  *   1. validate + sanitize input (honeypot, email, phone, optional URLs),
- *   2. securely store an optional CV upload outside the web-served tree,
- *   3. append the lead to api/_leads/leads-YYYY-MM.ndjson (flock'd),
+ *   2. store an optional CV in the private Supabase Storage `cvs` bucket,
+ *   3. insert the lead into Supabase (campaign enrollment is columns on the
+ *      same row; a unique index on phone_normalized enforces dedup),
  *   4. email the visitor their report + notify the team (best effort).
+ *
+ * If Supabase is unreachable the lead is NEVER dropped: it is appended to a
+ * fallback NDJSON spool outside public_html (survives redeploys) and drained
+ * automatically by the next campaign cron run. See api/supabase.php.
  *
  * Matching itself runs in the browser; this endpoint maps the posted ids to
  * names/blurbs via api/match-config.json (generated at build from
  * src/match/match-data.ts) so the email content cannot be spoofed by the client.
  *
- * Env (shared with the payment flow): TOSEND_API_KEY, OPS_EMAIL, MAIL_FROM,
- * PUBLIC_APP_BASE_URL. No payment secrets are used here.
+ * Env: SUPABASE_URL, SUPABASE_SERVICE_KEY, TOSEND_API_KEY, OPS_EMAIL,
+ * MAIL_FROM, PUBLIC_APP_BASE_URL. No payment secrets are used here.
  */
 declare(strict_types=1);
 
@@ -33,7 +38,7 @@ if (is_file($configFile)) {
 }
 require __DIR__ . '/email.php';
 require_once __DIR__ . '/admin-auth.php';
-require_once __DIR__ . '/lead-campaign.php';
+require_once __DIR__ . '/store.php';
 
 function respond($data, int $status = 200): void {
     http_response_code($status);
@@ -67,6 +72,15 @@ $consent = ((string) ($_POST['consent'] ?? '')) === 'yes';
 $linkedin = filter_var(trim((string) ($_POST['linkedin'] ?? '')), FILTER_VALIDATE_URL) ?: '';
 $portfolio = filter_var(trim((string) ($_POST['portfolio'] ?? '')), FILTER_VALIDATE_URL) ?: '';
 
+// Attribution (first-touch, from the client). Bounded + sanitized; never fatal.
+$attribution = [];
+foreach (['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'referrer', 'landing_path'] as $ak) {
+    $av = trim((string) ($_POST[$ak] ?? ''));
+    if ($av !== '') {
+        $attribution[$ak] = mb_substr($av, 0, ($ak === 'referrer') ? 500 : 300);
+    }
+}
+
 $answers = json_decode((string) ($_POST['answers'] ?? '{}'), true);
 if (!is_array($answers)) {
     $answers = [];
@@ -74,52 +88,17 @@ if (!is_array($answers)) {
 // Bound the answer payload so a hostile client cannot bloat the store.
 $answers = array_slice($answers, 0, 40, true);
 
-$leadsDir = __DIR__ . '/_leads';
-$dataDir = ech_private_data_dir();
+const ECH_DUPLICATE_PHONE_MESSAGE = 'This WhatsApp number has already been used for a match report. Please contact the Elevate team if you need help accessing your report.';
 
-function phone_already_used(string $phone, string $leadsDir, string $dataDir): bool {
-    $indexPath = $dataDir . '/phone-index.json';
-    $index = is_file($indexPath) ? json_decode((string) file_get_contents($indexPath), true) : null;
-    if (is_array($index) && isset($index[$phone])) {
-        return true;
+// Early dedup check (the unique index on phone_normalized is the race-safe
+// backstop at insert time). If Supabase is down we skip the check rather than
+// reject the visitor; the fallback drain dedupes on recovery.
+try {
+    if (ech_lead_phone_exists($phoneNormalized)) {
+        respond(['ok' => false, 'message' => ECH_DUPLICATE_PHONE_MESSAGE], 409);
     }
-    $rebuilt = [];
-    foreach (glob($leadsDir . '/leads-*.ndjson') ?: [] as $file) {
-        $fh = @fopen($file, 'rb');
-        if (!$fh) {
-            continue;
-        }
-        while (($line = fgets($fh)) !== false) {
-            $rec = json_decode(trim($line), true);
-            if (!is_array($rec)) {
-                continue;
-            }
-            $p = (string) ($rec['phoneNormalized'] ?? $rec['phone'] ?? '');
-            $norm = ech_normalize_phone($p);
-            if ($norm !== '+') {
-                $rebuilt[$norm] = true;
-            }
-        }
-        fclose($fh);
-    }
-    if (!empty($rebuilt)) {
-        @file_put_contents($indexPath, json_encode($rebuilt, JSON_PRETTY_PRINT), LOCK_EX);
-    }
-    return isset($rebuilt[$phone]);
-}
-
-function mark_phone_used(string $phone, string $dataDir): void {
-    $indexPath = $dataDir . '/phone-index.json';
-    $index = is_file($indexPath) ? json_decode((string) file_get_contents($indexPath), true) : null;
-    if (!is_array($index)) {
-        $index = [];
-    }
-    $index[$phone] = gmdate('c');
-    @file_put_contents($indexPath, json_encode($index, JSON_PRETTY_PRINT), LOCK_EX);
-}
-
-if (phone_already_used($phoneNormalized, $leadsDir, $dataDir)) {
-    respond(['ok' => false, 'message' => 'This WhatsApp number has already been used for a match report. Please contact the Elevate team if you need help accessing your report.'], 409);
+} catch (Throwable $e) {
+    error_log('[quiz-lead] phone dedup check unavailable: ' . $e->getMessage());
 }
 
 $pathwayIds = array_values(array_filter(array_map('trim', explode(',', (string) ($_POST['pathwayIds'] ?? '')))));
@@ -146,19 +125,17 @@ if (is_array($cfg)) {
         }
     }
 }
-$runtimeCfgPath = __DIR__ . '/_data/scholarships.json';
-$runtimeCfg = is_file($runtimeCfgPath) ? json_decode((string) file_get_contents($runtimeCfgPath), true) : null;
-if (is_array($runtimeCfg) && is_array($runtimeCfg['scholarships'] ?? null)) {
-    foreach ($runtimeCfg['scholarships'] as $s) {
-        if (is_array($s) && !empty($s['active']) && isset($s['id'])) {
-            $scholMap[$s['id']] = [
-                'id' => $s['id'],
-                'name' => $s['name'] ?? '',
-                'blurb' => $s['blurb'] ?? '',
-                'region' => $s['region'] ?? '',
-                'fundingType' => $s['fundingType'] ?? '',
-            ];
-        }
+// Admin-managed runtime feed (Supabase, cache-file fallback) overrides/extends
+// the build-time scholarship config.
+foreach (ech_scholarships_active_cached()['scholarships'] as $s) {
+    if (is_array($s) && isset($s['id'])) {
+        $scholMap[$s['id']] = [
+            'id' => $s['id'],
+            'name' => $s['name'] ?? '',
+            'blurb' => $s['blurb'] ?? '',
+            'region' => $s['region'] ?? '',
+            'fundingType' => $s['fundingType'] ?? '',
+        ];
     }
 }
 $pathways = [];
@@ -177,10 +154,11 @@ foreach ($scholarshipIds as $i => $id) {
 /**
  * Validate + store an optional CV upload. Security on a PHP host is critical:
  * extension allowlist, size cap, finfo MIME sniff, random server-side filename
- * (never the client's), stored in the deny-all _leads/cv tree. Returns the
- * stored filename, or '' if absent/invalid (a bad upload never fails the lead).
+ * (never the client's). The file goes to the private Supabase Storage `cvs`
+ * bucket; if Storage is unreachable it lands in ech-data/cv/ outside
+ * public_html (survives redeploys). A bad upload never fails the lead.
  */
-function handle_cv_upload(array $file, string $cvDir): array {
+function handle_cv_upload(array $file): array {
     $maxBytes = 5 * 1024 * 1024;
     if (($file['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK) {
         return [];
@@ -197,7 +175,7 @@ function handle_cv_upload(array $file, string $cvDir): array {
     }
     // finfo as defense-in-depth. Office formats report various container mimes
     // (zip/ole/octet-stream), so the allowlist is intentionally permissive; the
-    // real guards are the extension allowlist + the non-executable deny-all dir.
+    // real guards are the extension allowlist + private, non-served storage.
     $allowedMime = [
         'application/pdf',
         'application/msword',
@@ -218,17 +196,25 @@ function handle_cv_upload(array $file, string $cvDir): array {
             }
         }
     }
-    if (!is_dir($cvDir) && !@mkdir($cvDir, 0700, true) && !is_dir($cvDir)) {
+    $bytes = (string) @file_get_contents((string) $file['tmp_name']);
+    if ($bytes === '') {
         return [];
     }
     $safe = 'cv-' . gmdate('Ymd') . '-' . bin2hex(random_bytes(8)) . '.' . $ext;
-    $dest = $cvDir . '/' . $safe;
-    if (!move_uploaded_file((string) $file['tmp_name'], $dest)) {
-        return [];
+    $storedIn = '';
+    if (ech_sb_ready() && ech_sb_storage_upload('ech-cvs', $safe, $bytes, $mime !== '' ? $mime : 'application/octet-stream')) {
+        $storedIn = 'supabase';
+    } else {
+        $dest = ech_cv_dir() . '/' . $safe;
+        if (@file_put_contents($dest, $bytes, LOCK_EX) === false) {
+            return [];
+        }
+        @chmod($dest, 0600);
+        $storedIn = 'local';
     }
-    @chmod($dest, 0600);
     return [
         'stored' => $safe,
+        'storedIn' => $storedIn,
         'originalName' => mb_substr((string) ($file['name'] ?? ''), 0, 180),
         'mime' => $mime !== '' ? $mime : 'application/octet-stream',
         'size' => (int) ($file['size'] ?? 0),
@@ -238,14 +224,11 @@ function handle_cv_upload(array $file, string $cvDir): array {
 
 $cvMeta = [];
 if (!empty($_FILES['cv']) && is_array($_FILES['cv'])) {
-    $cvMeta = handle_cv_upload($_FILES['cv'], $leadsDir . '/cv');
+    $cvMeta = handle_cv_upload($_FILES['cv']);
 }
 $cvStored = (string) ($cvMeta['stored'] ?? '');
 
-// ── Persist the lead (append-only NDJSON, flock'd) ──
-if (!is_dir($leadsDir)) {
-    @mkdir($leadsDir, 0700, true);
-}
+// ── Persist the lead (Supabase; NDJSON fallback spool if unreachable) ──
 $record = [
     'ts' => gmdate('c'),
     'ip' => (string) ($_SERVER['REMOTE_ADDR'] ?? ''),
@@ -265,29 +248,29 @@ $record = [
     'cvFile' => $cvStored,
     'cvMeta' => $cvMeta,
     'suspectedBot' => $suspectedBot,
+    'attribution' => $attribution,
 ];
-$leadFile = $leadsDir . '/leads-' . gmdate('Y-m') . '.ndjson';
-$fh = @fopen($leadFile, 'ab');
-if ($fh) {
-    if (flock($fh, LOCK_EX)) {
-        fwrite($fh, json_encode($record, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . "\n");
-        fflush($fh);
-        flock($fh, LOCK_UN);
+$uid = ech_lead_uid($email, $phoneNormalized);
+try {
+    $result = ech_lead_insert(ech_lead_row_build($record, $pathways, $scholarships, $uid));
+    if (!$result['ok'] && !empty($result['duplicate'])) {
+        respond(['ok' => false, 'message' => ECH_DUPLICATE_PHONE_MESSAGE], 409);
     }
-    fclose($fh);
-    mark_phone_used($phoneNormalized, $dataDir);
-} else {
-    error_log('[quiz-lead] could not open leads file: ' . $leadFile);
+} catch (Throwable $e) {
+    // Supabase unreachable: spool the lead OUTSIDE public_html so a redeploy
+    // cannot wipe it, alert ops, and continue (emails still go out).
+    error_log('[quiz-lead] Supabase insert failed, spooling to fallback: ' . $e->getMessage());
+    ech_fallback_append('leads-fallback.ndjson', $record + [
+        'uid' => $uid,
+        'pathwaysResolved' => array_slice($pathways, 0, 5),
+        'scholarshipsResolved' => array_slice($scholarships, 0, 8),
+    ]);
+    ech_ops_alert('Lead DB write failed', 'A quiz lead was spooled to the fallback file. ' . $e->getMessage());
 }
 
 // ── Emails (best effort, never blocks the lead). Skip for suspected bots so we
 // do not email junk addresses, but the lead is already stored + flagged above. ──
 if (!$suspectedBot) {
-    try {
-        ech_campaign_enroll_match_lead($record, $pathways, $scholarships);
-    } catch (Throwable $e) {
-        error_log('[quiz-lead] campaign enrollment failed: ' . $e->getMessage());
-    }
     try {
         send_match_emails($name, $email, $phone, $answers, $pathways, $scholarships, $linkedin, $portfolio, $cvStored, $cvMeta);
     } catch (Throwable $e) {

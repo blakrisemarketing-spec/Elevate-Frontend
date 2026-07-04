@@ -692,11 +692,15 @@ async function emitDeployArtifacts() {
   await fs.writeFile(path.join(distRoot, 'api', 'catalog.json'), JSON.stringify(slim, null, 2));
   await fs.copyFile(path.join(projectRoot, 'api', 'config.php'), path.join(distRoot, 'api', 'config.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'admin-auth.php'), path.join(distRoot, 'api', 'admin-auth.php'));
+  // Supabase data layer: required by quiz-lead, lead-campaign, verify-payment
+  // and every admin endpoint. Missing copies = fatal require error in prod.
+  await fs.copyFile(path.join(projectRoot, 'api', 'supabase.php'), path.join(distRoot, 'api', 'supabase.php'));
+  await fs.copyFile(path.join(projectRoot, 'api', 'store.php'), path.join(distRoot, 'api', 'store.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'verify-payment.php'), path.join(distRoot, 'api', 'verify-payment.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'email.php'), path.join(distRoot, 'api', 'email.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'lead-campaign.php'), path.join(distRoot, 'api', 'lead-campaign.php'));
   await buildHtaccess();
-  console.log(`[ssg] deploy artifacts → dist/api/{catalog.json,config.php,admin-auth.php,verify-payment.php,email.php,lead-campaign.php}, dist/.htaccess`);
+  console.log(`[ssg] deploy artifacts → dist/api/{catalog.json,config.php,admin-auth.php,supabase.php,store.php,verify-payment.php,email.php,lead-campaign.php}, dist/.htaccess`);
 }
 
 /**
@@ -734,6 +738,14 @@ async function emitAdminArtifacts() {
     'admin-login.php',
     'admin-logout.php',
     'admin-leads.php',
+    'admin-lead.php',
+    'admin-campaign.php',
+    'admin-stats.php',
+    'admin-import-legacy.php',
+    'admin-export.php',
+    'admin-leads-bulk.php',
+    'admin-views.php',
+    'admin-broadcast.php',
     'admin-cv.php',
     'admin-scholarships.php',
     'admin-purchases.php',

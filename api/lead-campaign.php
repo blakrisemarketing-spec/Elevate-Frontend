@@ -2,28 +2,24 @@
 /**
  * Grad School Match bootcamp nurture campaign.
  *
- * Leads are enrolled by api/quiz-lead.php. A Hostinger cron calls
- * api/run-lead-campaign.php, which sends due emails through toSend and records
- * each send so retries are safe. Runtime files live in api/_data.
+ * Leads are enrolled at insert time by api/quiz-lead.php (campaign_enrolled
+ * column). The GitHub Actions cron calls api/run-lead-campaign.php, which
+ * sends due emails through toSend and records each send in Supabase
+ * (campaign_sends, UNIQUE (lead_id, step)) so retries are safe. Suppressions
+ * (unsubscribes, admin holds) live in campaign_suppressions; bootcamp buyers
+ * are auto-excluded by the campaign_due_leads() SQL function.
  */
 declare(strict_types=1);
 
 require_once __DIR__ . '/admin-auth.php';
 require_once __DIR__ . '/email.php';
+require_once __DIR__ . '/store.php';
 
 const ECH_BOOTCAMP_URL = 'https://elevatecareerhub.com/get-into-grad-school-bootcamp/#tickets';
 
-function ech_campaign_file(string $name): string {
-    return ech_private_data_dir() . '/' . $name;
-}
-
-function ech_campaign_read_json(string $path, array $fallback = []): array {
-    $data = is_file($path) ? json_decode((string) file_get_contents($path), true) : null;
-    return is_array($data) ? $data : $fallback;
-}
-
-function ech_campaign_write_json(string $path, array $data): void {
-    @file_put_contents($path, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE), LOCK_EX);
+/** Path for the runner's flock lock file (ephemeral, per-host, fine on disk). */
+function ech_campaign_lock_path(): string {
+    return ech_private_data_dir() . '/lead-campaign.lock';
 }
 
 function ech_campaign_first_name(string $name): string {
@@ -199,74 +195,15 @@ function ech_campaign_steps(array $lead): array {
     ];
 }
 
-function ech_campaign_enroll_match_lead(array $record, array $pathways, array $scholarships): void {
-    if (!empty($record['suspectedBot']) || empty($record['email'])) {
-        return;
-    }
-    $id = 'gsm-' . gmdate('YmdHis') . '-' . substr(hash('sha256', (string) ($record['email'] ?? '') . '|' . (string) ($record['phoneNormalized'] ?? '') . '|' . random_bytes(8)), 0, 16);
-    $lead = [
-        'id' => $id,
-        'createdAt' => $record['ts'] ?? gmdate('c'),
-        'name' => $record['name'] ?? '',
-        'email' => strtolower((string) ($record['email'] ?? '')),
-        'phone' => $record['phoneNormalized'] ?? ($record['phone'] ?? ''),
-        'answers' => $record['answers'] ?? [],
-        'pathways' => array_slice($pathways, 0, 5),
-        'scholarships' => array_slice($scholarships, 0, 8),
-        'cvUploaded' => !empty($record['cvFile']),
-        'source' => 'grad_school_match',
-    ];
-    @file_put_contents(ech_campaign_file('lead-campaigns.ndjson'), json_encode($lead, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . "\n", FILE_APPEND | LOCK_EX);
-}
-
-function ech_campaign_load_leads(): array {
-    $rows = [];
-    $file = ech_campaign_file('lead-campaigns.ndjson');
-    $fh = is_file($file) ? @fopen($file, 'rb') : false;
-    if (!$fh) {
-        return [];
-    }
-    while (($line = fgets($fh)) !== false) {
-        $rec = json_decode(trim($line), true);
-        if (is_array($rec) && !empty($rec['id']) && !empty($rec['email'])) {
-            $rows[] = $rec;
-        }
-    }
-    fclose($fh);
-    return $rows;
-}
-
-function ech_campaign_purchase_emails(): array {
-    $emails = [];
-    foreach (glob(ech_private_data_dir() . '/purchases-*.ndjson') ?: [] as $file) {
-        $fh = @fopen($file, 'rb');
-        if (!$fh) {
-            continue;
-        }
-        while (($line = fgets($fh)) !== false) {
-            $rec = json_decode(trim($line), true);
-            if (!is_array($rec)) {
-                continue;
-            }
-            $service = strtolower((string) ($rec['serviceId'] ?? ''));
-            $item = strtolower((string) ($rec['itemName'] ?? ''));
-            $email = strtolower(trim((string) ($rec['buyerEmail'] ?? '')));
-            if ($email !== '' && (str_starts_with($service, 'bootcamp-grad') || str_contains($item, 'grad school bootcamp'))) {
-                $emails[$email] = true;
-            }
-        }
-        fclose($fh);
-    }
-    return $emails;
-}
-
-function ech_campaign_suppress_email(string $email, string $reason): void {
-    $path = ech_campaign_file('lead-campaign-suppressed.json');
-    $list = ech_campaign_read_json($path);
-    $list[strtolower(trim($email))] = ['ts' => gmdate('c'), 'reason' => $reason];
-    ech_campaign_write_json($path, $list);
-}
-
+/**
+ * Send every due, not-yet-sent campaign email (up to $limit sends).
+ *
+ * Eligibility (enrolled, not a bot, not suppressed, not already a bootcamp
+ * buyer) is computed in SQL by campaign_due_leads(). Idempotency is the
+ * UNIQUE (lead_id, step) key on campaign_sends: the send is recorded after a
+ * successful toSend call (same semantics as the old sent.json), and the
+ * runner's flock lock prevents concurrent runs on the same host.
+ */
 function ech_campaign_run_due(int $limit = 20): array {
     $key = ech_runtime_secret('TOSEND_API_KEY');
     if ($key === '') {
@@ -274,18 +211,19 @@ function ech_campaign_run_due(int $limit = 20): array {
     }
     $from = ech_parse_from((string) (ech_runtime_secret('MAIL_FROM') ?: 'Elevate Career Hub <noreply@elevatecareerhub.com>'));
     $now = time();
-    $sentPath = ech_campaign_file('lead-campaign-sent.json');
-    $sent = ech_campaign_read_json($sentPath);
-    $suppressed = ech_campaign_read_json(ech_campaign_file('lead-campaign-suppressed.json'));
-    $purchases = ech_campaign_purchase_emails();
     $stats = ['sent' => 0, 'skipped' => 0, 'errors' => []];
 
-    foreach (ech_campaign_load_leads() as $lead) {
+    $rows = ech_campaign_active_leads();
+    $sendsMap = ech_sends_map(array_map(static fn($r) => (int) ($r['id'] ?? 0), $rows));
+
+    foreach ($rows as $row) {
         if ($stats['sent'] >= $limit) {
             break;
         }
+        $dbId = (int) ($row['id'] ?? 0);
+        $lead = ech_lead_row_to_legacy($row); // templates + unsubscribe use the gsm- uid as 'id'
         $email = strtolower((string) ($lead['email'] ?? ''));
-        if ($email === '' || isset($suppressed[$email]) || isset($purchases[$email])) {
+        if ($dbId <= 0 || $email === '') {
             $stats['skipped'] += 1;
             continue;
         }
@@ -298,25 +236,26 @@ function ech_campaign_run_due(int $limit = 20): array {
             if (($created + (int) $step['delay']) > $now) {
                 continue;
             }
-            $leadId = (string) $lead['id'];
-            if (!empty($sent[$leadId][$keyStep])) {
+            if (!empty($sendsMap[$dbId][$keyStep])) {
                 continue;
             }
             $emailData = ech_campaign_email($lead, $keyStep);
             if (!$emailData) {
-                $sent[$leadId][$keyStep] = gmdate('c');
+                // Slow-lane lead reaching e6/e7: record so it is never re-evaluated.
+                ech_send_mark($dbId, $keyStep, 'skipped');
+                $sendsMap[$dbId][$keyStep] = true;
+                $stats['skipped'] += 1;
                 continue;
             }
             try {
                 ech_tosend_send($key, $from, [['email' => $email]], (string) $emailData['subject'], (string) $emailData['html']);
-                $sent[$leadId][$keyStep] = gmdate('c');
-                ech_campaign_write_json($sentPath, $sent);
+                ech_send_mark($dbId, $keyStep, 'sent');
+                $sendsMap[$dbId][$keyStep] = true;
                 $stats['sent'] += 1;
             } catch (Throwable $e) {
-                $stats['errors'][] = $leadId . ':' . $keyStep . ':' . $e->getMessage();
+                $stats['errors'][] = $lead['id'] . ':' . $keyStep . ':' . $e->getMessage();
             }
         }
     }
-    ech_campaign_write_json($sentPath, $sent);
     return $stats;
 }

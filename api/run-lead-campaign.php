@@ -39,18 +39,36 @@ if (!$isCli) {
     }
 }
 
-$lockPath = ech_campaign_file('lead-campaign.lock');
+// Fail loudly when Supabase is not configured/reachable: the GitHub Actions
+// cron uses curl --fail, so a 500 turns the workflow run red (free monitoring).
+if (!ech_sb_ready()) {
+    campaign_json(['ok' => false, 'message' => 'Supabase is not configured (SUPABASE_URL / SUPABASE_SERVICE_KEY).'], 500);
+}
+
+$lockPath = ech_campaign_lock_path();
 $lock = @fopen($lockPath, 'c');
 if (!$lock || !flock($lock, LOCK_EX | LOCK_NB)) {
     campaign_json(['ok' => true, 'message' => 'Campaign runner already active.', 'sent' => 0, 'skipped' => 0, 'errors' => []]);
 }
 
 try {
+    // Auto-recovery: import any leads spooled to the fallback file while
+    // Supabase was unreachable (never more than one cron interval behind).
+    $drained = ['imported' => 0, 'skipped' => 0];
+    try {
+        $drained = ech_drain_lead_fallback();
+        if ($drained['imported'] > 0) {
+            error_log('[lead-campaign] drained ' . $drained['imported'] . ' fallback lead(s) into Supabase');
+        }
+    } catch (Throwable $e) {
+        error_log('[lead-campaign] fallback drain failed (will retry next run): ' . $e->getMessage());
+    }
+
     $limit = max(1, min(100, (int) ($_GET['limit'] ?? 20)));
     $stats = ech_campaign_run_due($limit);
     flock($lock, LOCK_UN);
     fclose($lock);
-    campaign_json(['ok' => true] + $stats);
+    campaign_json(['ok' => true, 'drained' => $drained['imported']] + $stats);
 } catch (Throwable $e) {
     error_log('[lead-campaign] run failed: ' . $e->getMessage());
     flock($lock, LOCK_UN);

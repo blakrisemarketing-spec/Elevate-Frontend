@@ -1,0 +1,60 @@
+name: Supabase nightly backup
+
+# Nightly JSON snapshot of the ech_* lead-system tables, stored as a private
+# GitHub Actions artifact (30-day retention) so the data survives even a
+# Supabase-side incident. Uses the PostgREST API + service key over HTTPS
+# (no direct Postgres networking needed).
+#
+# Required repository secrets (Settings -> Secrets and variables -> Actions):
+#   SUPABASE_URL          https://<ref>.supabase.co
+#   SUPABASE_SERVICE_KEY  the sb_secret_... / service_role key (server-only)
+#
+# Note: the snapshot contains lead PII (names, emails, phones). It lives only in
+# this private repo's artifacts (never committed to git history) and expires
+# after 30 days. CV files live in Supabase Storage and are not included here.
+
+on:
+  schedule:
+    - cron: '0 3 * * *'   # 03:00 UTC daily
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Snapshot ech_* tables to JSON
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: |
+          set -euo pipefail
+          test -n "$SUPABASE_URL"
+          test -n "$SUPABASE_SERVICE_KEY"
+          mkdir -p backup
+          stamp="$(date -u +%Y-%m-%dT%H-%M-%SZ)"
+          echo "{\"takenAt\":\"$stamp\"}" > backup/_meta.json
+          tables="ech_leads ech_lead_notes ech_campaign_sends ech_campaign_suppressions ech_purchases ech_scholarships ech_app_settings ech_broadcasts ech_saved_views"
+          for t in $tables; do
+            echo "Backing up $t ..."
+            curl --fail --show-error --silent \
+              -H "apikey: $SUPABASE_SERVICE_KEY" \
+              -H "Authorization: Bearer $SUPABASE_SERVICE_KEY" \
+              "$SUPABASE_URL/rest/v1/$t?select=*" \
+              -o "backup/$t.json"
+            # Sanity: each response must be a JSON array.
+            head -c1 "backup/$t.json" | grep -q '\[' || { echo "Unexpected response for $t"; cat "backup/$t.json"; exit 1; }
+          done
+          echo "Row counts:"
+          for t in $tables; do
+            printf '  %-28s %s\n' "$t" "$(grep -o '"id"' "backup/$t.json" | wc -l | tr -d ' ')"
+          done
+          tar -czf "elevate-supabase-backup-$stamp.tar.gz" -C backup .
+
+      - name: Upload backup artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: elevate-supabase-backup
+          path: elevate-supabase-backup-*.tar.gz
+          retention-days: 30
+          if-no-files-found: error

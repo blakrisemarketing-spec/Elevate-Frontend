@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require __DIR__ . '/admin-auth.php';
+require_once __DIR__ . '/store.php';
 ech_admin_require();
 
 const ECH_REGIONS = ['uk','us','canada','europe','australia','new-zealand','asia','africa','any'];
@@ -71,11 +72,13 @@ function ech_scholarship_clean(array $row, int $idx, array &$errors): ?array {
     ];
 }
 
-$path = ech_private_data_dir() . '/scholarships.json';
-
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'GET') {
-    $data = is_file($path) ? json_decode((string) file_get_contents($path), true) : null;
-    ech_json(['ok' => true, 'scholarships' => is_array($data['scholarships'] ?? null) ? $data['scholarships'] : [], 'updatedAt' => $data['updatedAt'] ?? null]);
+    try {
+        ech_json(['ok' => true, 'scholarships' => ech_scholarships_all(), 'updatedAt' => ech_scholarships_updated_at()]);
+    } catch (Throwable $e) {
+        error_log('[admin-scholarships] read failed: ' . $e->getMessage());
+        ech_json(['ok' => false, 'message' => 'Scholarship database is unreachable. Try again shortly.'], 503);
+    }
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
@@ -112,16 +115,14 @@ if (!empty($errors)) {
     ech_json(['ok' => false, 'message' => 'Scholarship import has errors.', 'errors' => array_slice($errors, 0, 100)], 400);
 }
 
-if (is_file($path)) {
-    @copy($path, ech_private_data_dir() . '/scholarships-' . gmdate('Ymd-His') . '.bak.json');
+try {
+    // Atomic replace in Supabase (RPC: delete + insert in one transaction),
+    // then refresh the deploy-surviving cache file the public quiz falls back to.
+    $saved = ech_scholarships_replace($clean);
+} catch (Throwable $e) {
+    error_log('[admin-scholarships] save failed: ' . $e->getMessage());
+    ech_json(['ok' => false, 'message' => 'Could not save to the scholarship database. Nothing was changed.'], 503);
 }
 
-$payload = [
-    'updatedAt' => gmdate('c'),
-    'count' => count($clean),
-    'scholarships' => $clean,
-];
-file_put_contents($path, json_encode($payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE), LOCK_EX);
-
-ech_json(['ok' => true, 'count' => count($clean), 'updatedAt' => $payload['updatedAt']]);
+ech_json(['ok' => true, 'count' => $saved['count'], 'updatedAt' => $saved['updatedAt']]);
 

@@ -255,14 +255,31 @@ function send_match_emails(
     }
     $attachments = [];
     if ($cvFile !== '') {
-        $cvPath = __DIR__ . '/_leads/cv/' . $cvFile;
-        if (is_file($cvPath) && filesize($cvPath) <= 5 * 1024 * 1024) {
+        // CVs live in the private Supabase Storage bucket; fall back to the
+        // durable local dir (Storage-outage uploads) and the legacy path.
+        $bytes = null;
+        if (function_exists('ech_sb_ready') && ech_sb_ready()) {
+            $bytes = ech_sb_storage_download('ech-cvs', $cvFile);
+        }
+        if ($bytes === null) {
+            $candidates = [__DIR__ . '/_leads/cv/' . $cvFile];
+            if (function_exists('ech_cv_dir')) {
+                array_unshift($candidates, ech_cv_dir() . '/' . $cvFile);
+            }
+            foreach ($candidates as $cvPath) {
+                if (is_file($cvPath) && filesize($cvPath) <= 5 * 1024 * 1024) {
+                    $bytes = (string) file_get_contents($cvPath);
+                    break;
+                }
+            }
+        }
+        if (is_string($bytes) && $bytes !== '' && strlen($bytes) <= 5 * 1024 * 1024) {
             $cvName = (string) ($cvMeta['originalName'] ?? $cvFile);
             $cvMime = (string) ($cvMeta['mime'] ?? 'application/octet-stream');
             $attachments[] = [
                 'type' => $cvMime !== '' ? $cvMime : 'application/octet-stream',
                 'name' => $cvName !== '' ? $cvName : $cvFile,
-                'content' => base64_encode((string) file_get_contents($cvPath)),
+                'content' => base64_encode($bytes),
             ];
         }
     }
