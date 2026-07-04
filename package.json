@@ -14,6 +14,8 @@
     "preview": "vite preview --host 0.0.0.0",
     "serve:php": "node scripts/serve-php.mjs",
     "setup:env": "sh scripts/setup-local-env.sh",
+    "seed:scholarships": "node scripts/seed-scholarships.mjs",
+    "seed:admin-users": "php scripts/seed-admin-users.php",
     "crawl": "node scripts/crawl-wordpress.mjs && node scripts/repair-migration.mjs",
     "repair": "node scripts/repair-migration.mjs",
     "audit": "node scripts/audit.mjs",

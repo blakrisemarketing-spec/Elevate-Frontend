@@ -737,6 +737,8 @@ async function emitAdminArtifacts() {
   const files = [
     'admin-login.php',
     'admin-logout.php',
+    'admin-me.php',
+    'admin-users.php',
     'admin-leads.php',
     'admin-lead.php',
     'admin-campaign.php',

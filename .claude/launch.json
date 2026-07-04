@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "dist-preview",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8138", "--directory", "dist"],
-      "port": 8138
+      "name": "serve-php",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "serve:php"],
+      "port": 8080
     },
     {
       "name": "dev",
@@ -14,10 +14,10 @@
       "port": 5173
     },
     {
-      "name": "serve-php",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "serve:php"],
-      "port": 8080
+      "name": "dist-static-no-php",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8138", "--directory", "dist"],
+      "port": 8138
     }
   ]
 }

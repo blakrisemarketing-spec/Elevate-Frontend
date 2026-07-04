@@ -74,27 +74,42 @@ function ech_admin_is_authenticated(): bool {
 }
 
 function ech_admin_require(): void {
-    if (ech_admin_password() === '') {
-        ech_json(['ok' => false, 'message' => 'Admin password is not configured.'], 503);
-    }
     if (!ech_admin_is_authenticated()) {
         ech_json(['ok' => false, 'message' => 'Admin login required.'], 401);
     }
     $_SESSION['ech_admin_at'] = time();
 }
 
-function ech_admin_login(string $password): bool {
-    $expected = ech_admin_password();
-    if ($expected === '') {
-        return false;
-    }
-    if (!hash_equals($expected, $password)) {
-        return false;
-    }
+/** Establish an authenticated session for a resolved admin identity. */
+function ech_admin_establish_session(array $user): void {
     ech_admin_session_start();
     session_regenerate_id(true);
     $_SESSION['ech_admin_authed'] = true;
     $_SESSION['ech_admin_at'] = time();
+    $_SESSION['ech_admin_user_id'] = (int) ($user['id'] ?? 0);
+    $_SESSION['ech_admin_email'] = (string) ($user['email'] ?? '');
+    $_SESSION['ech_admin_name'] = (string) ($user['name'] ?? '');
+}
+
+/** The signed-in admin's identity, or null when not authenticated. */
+function ech_admin_current_user(): ?array {
+    if (!ech_admin_is_authenticated()) {
+        return null;
+    }
+    return [
+        'id' => (int) ($_SESSION['ech_admin_user_id'] ?? 0),
+        'email' => (string) ($_SESSION['ech_admin_email'] ?? ''),
+        'name' => (string) ($_SESSION['ech_admin_name'] ?? ''),
+    ];
+}
+
+/** Break-glass login with the shared ADMIN_PASSWORD env var (no per-user row). */
+function ech_admin_login(string $password): bool {
+    $expected = ech_admin_password();
+    if ($expected === '' || !hash_equals($expected, $password)) {
+        return false;
+    }
+    ech_admin_establish_session(['id' => 0, 'email' => 'master', 'name' => 'Master admin']);
     return true;
 }
 

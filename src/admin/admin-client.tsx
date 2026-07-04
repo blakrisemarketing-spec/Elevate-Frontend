@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ChartColumn, GraduationCap, LayoutDashboard, LogOut, ReceiptText, RefreshCw, Send, UsersRound } from 'lucide-react';
+import { ChartColumn, GraduationCap, LayoutDashboard, LogOut, ReceiptText, RefreshCw, Send, UserCog, UsersRound } from 'lucide-react';
 import { api, ApiError } from './api';
+import type { CurrentUser, LoginResponse, MeResponse } from './api';
 import { NavButton } from './ui';
 import type { Icon } from './ui';
 import { LoginScreen } from './LoginScreen';
@@ -10,8 +11,9 @@ import { LeadsTab } from './tabs/LeadsTab';
 import { MessagingTab } from './tabs/MessagingTab';
 import { PurchasesTab } from './tabs/PurchasesTab';
 import { ScholarshipsTab } from './tabs/ScholarshipsTab';
+import { UsersTab } from './tabs/UsersTab';
 
-type Tab = 'overview' | 'leads' | 'messaging' | 'purchases' | 'scholarships';
+type Tab = 'overview' | 'leads' | 'messaging' | 'purchases' | 'scholarships' | 'users';
 
 const tabs: Array<{ id: Tab; label: string; icon: Icon; description: string }> = [
   { id: 'overview', label: 'Overview', icon: ChartColumn, description: 'Pipeline and campaign health' },
@@ -19,6 +21,7 @@ const tabs: Array<{ id: Tab; label: string; icon: Icon; description: string }> =
   { id: 'messaging', label: 'Messaging', icon: Send, description: 'Broadcast to lead segments' },
   { id: 'purchases', label: 'Purchases', icon: ReceiptText, description: 'Verified Paystack ledger' },
   { id: 'scholarships', label: 'Scholarships', icon: GraduationCap, description: 'Runtime matching feed' },
+  { id: 'users', label: 'Users', icon: UserCog, description: 'Admin accounts and access' },
 ];
 
 function AdminApp() {
@@ -27,23 +30,37 @@ function AdminApp() {
   const [error, setError] = useState('');
   const [tab, setTab] = useState<Tab>('overview');
   const [refreshKey, setRefreshKey] = useState(0);
+  const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
+
+  function loadMe() {
+    api<MeResponse>('/api/admin-me.php')
+      .then((res) => setCurrentUser(res.user))
+      .catch(() => undefined);
+  }
 
   useEffect(() => {
     api('/api/admin-stats.php')
-      .then(() => setAuthed(true))
+      .then(() => {
+        setAuthed(true);
+        loadMe();
+      })
       .catch((e) => {
         // A 503 (or other non-auth failure) means the session may still be
         // valid; let the tabs surface the friendly error banner instead.
-        if (e instanceof ApiError && e.status !== 401) setAuthed(true);
+        if (e instanceof ApiError && e.status !== 401) {
+          setAuthed(true);
+          loadMe();
+        }
       });
   }, []);
 
-  async function login(password: string) {
+  async function login(email: string, password: string) {
     setBusy(true);
     setError('');
     try {
-      await api('/api/admin-login.php', { method: 'POST', body: JSON.stringify({ password }) });
+      await api<LoginResponse>('/api/admin-login.php', { method: 'POST', body: JSON.stringify({ email, password }) });
       setAuthed(true);
+      loadMe();
       setRefreshKey((k) => k + 1);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Login failed');
@@ -55,6 +72,7 @@ function AdminApp() {
   async function logout() {
     await api('/api/admin-logout.php', { method: 'POST', body: '{}' }).catch(() => undefined);
     setAuthed(false);
+    setCurrentUser(null);
   }
 
   function onAuthError() {
@@ -99,7 +117,13 @@ function AdminApp() {
               <p className="mb-1 text-xs font-bold uppercase tracking-[0.18em] text-[#0077B6]">{activeTab.label}</p>
               <h1 className="text-2xl font-extrabold text-[#102548]">{activeTab.description}</h1>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap items-center gap-2 md:justify-end">
+              {currentUser && (
+                <div className="mr-1 hidden text-right sm:block">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#64718a]">Signed in as</p>
+                  <p className="text-sm font-bold text-[#102548]">{currentUser.name || currentUser.email}</p>
+                </div>
+              )}
               <button type="button" className="inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg border border-[#c8d6e5] bg-white px-4 py-2 text-sm font-semibold text-[#102548] transition hover:border-[#0077B6] hover:text-[#0077B6]" onClick={() => setRefreshKey((k) => k + 1)}>
                 <RefreshCw className="h-4 w-4" />
                 Refresh
@@ -116,6 +140,7 @@ function AdminApp() {
           {tab === 'messaging' && <MessagingTab refreshKey={refreshKey} onAuthError={onAuthError} />}
           {tab === 'purchases' && <PurchasesTab refreshKey={refreshKey} onAuthError={onAuthError} />}
           {tab === 'scholarships' && <ScholarshipsTab refreshKey={refreshKey} onAuthError={onAuthError} />}
+          {tab === 'users' && <UsersTab refreshKey={refreshKey} onAuthError={onAuthError} currentUser={currentUser} />}
         </section>
       </div>
     </main>
