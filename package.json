@@ -13,6 +13,7 @@
     "build:priority": "tailwindcss -i src/priority/styles.css -o .tmp/priority.css --minify && node scripts/build-priority-routes.mjs",
     "preview": "vite preview --host 0.0.0.0",
     "serve:php": "node scripts/serve-php.mjs",
+    "setup:env": "sh scripts/setup-local-env.sh",
     "crawl": "node scripts/crawl-wordpress.mjs && node scripts/repair-migration.mjs",
     "repair": "node scripts/repair-migration.mjs",
     "audit": "node scripts/audit.mjs",

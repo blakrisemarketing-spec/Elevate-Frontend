@@ -25,3 +25,6 @@ tsconfig.tsbuildinfo
 
 # Server-side secrets (Hostinger PHP) — never commit
 api/config.local.php
+
+# Local runtime data dir (ECH_DATA_DIR for serve:php) — fallback spools, caches
+.ech-data/
