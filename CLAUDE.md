@@ -28,7 +28,10 @@ Vite 8 · React 19 · TypeScript 6 · Tailwind v3 · esbuild 0.28 · **npm (NOT 
 - **No em dashes (—) anywhere in copy.** Founder directive (June 2026), stripped site-wide; use commas / periods / colons. The `ech-brand-voice` skill enforces this.
 
 ## Env vars
-Build: `VITE_PAYSTACK_PUBLIC_KEY`. Runtime PHP: `PAYSTACK_SECRET_KEY`, `TOSEND_API_KEY`, `MAIL_FROM`, `OPS_EMAIL`, `PUBLIC_APP_BASE_URL`. See `.env.example`.
+Build: `VITE_PAYSTACK_PUBLIC_KEY`. Runtime PHP: `PAYSTACK_SECRET_KEY`, `TOSEND_API_KEY`, `MAIL_FROM`, `OPS_EMAIL`, `PUBLIC_APP_BASE_URL`, `ADMIN_PASSWORD`, `CRON_SECRET`, **`SUPABASE_URL` + `SUPABASE_SERVICE_KEY`** (all runtime data). See `.env.example`.
+
+## Runtime data = Supabase (dedicated Elevate project, NOT BetterHealth's)
+All runtime persistence (leads, campaign sends/suppressions, purchases, scholarship feed, CVs in the private `cvs` Storage bucket) lives in Supabase: Hostinger deploys wipe `public_html`, so **nothing runtime may be stored under it**. PHP reaches Supabase via PostgREST/Storage REST with the service key (`api/supabase.php` client, `api/store.php` domain layer); schema in `supabase/migrations/`. RLS is deny-all; only the service key works. If Supabase is unreachable, quiz leads spool to `../ech-data/fallback/` (outside public_html) and the campaign cron auto-drains them back; the public scholarship feed falls back to `../ech-data/cache/scholarships.json`. Admin portal (`/admin/`): Overview dashboard + lead pipeline (status/notes) + campaign timeline/suppress/resume; one-time legacy file import via `api/admin-import-legacy.php`. Local dev: set `SUPABASE_URL`/`SUPABASE_SERVICE_KEY` + `ECH_DATA_DIR=./.ech-data` in `.env.local`, then `npm run serve:php`.
 
 ## Open work (see elevate-tech-debt-registry for detail)
 Go-live: live Paystack keys · confirm env reaches PHP runtime (else `api/config.php`) · verify Tosend sender domain · create the `hello@elevatecareerhub.com` mailbox · legal-review the policy pages. Gaps: 5 DIY products lack deliverable files · Gilroy still a Montserrat stand-in · optional: rip out the now-vestigial SPA + vendor CSS (Phase 5). **Done this branch:** legal/404/staging-noindex, CI, all 24 snapshot routes migrated to SSG.

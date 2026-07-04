@@ -28,6 +28,7 @@ if (is_file($configFile)) {
 }
 require __DIR__ . '/email.php';
 require_once __DIR__ . '/admin-auth.php';
+require_once __DIR__ . '/store.php';
 
 function respond($data, int $status = 200): void {
     http_response_code($status);
@@ -139,8 +140,15 @@ $purchase = [
     'sessions' => $sessions,
     'paystackStatus' => (string) ($txn['status'] ?? ''),
 ];
-$purchaseFile = ech_private_data_dir() . '/purchases-' . gmdate('Y-m') . '.ndjson';
-@file_put_contents($purchaseFile, json_encode($purchase, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . "\n", FILE_APPEND | LOCK_EX);
+try {
+    ech_purchase_insert($purchase); // idempotent on reference
+} catch (Throwable $e) {
+    // Never block a verified buyer on a ledger write: spool the record to the
+    // deploy-surviving fallback dir and alert ops so it is recovered manually.
+    error_log('[verify-payment] Supabase purchase insert failed, spooling: ' . $e->getMessage());
+    ech_fallback_append('purchases-fallback.ndjson', $purchase);
+    ech_ops_alert('Purchase DB write failed', 'Reference ' . $reference . ' spooled to fallback. ' . $e->getMessage());
+}
 try {
     send_fulfilment($item, $reference, $buyerName, $buyerEmail, $sessions, $expectedAmount);
 } catch (Throwable $e) {
