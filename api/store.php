@@ -87,6 +87,34 @@ function ech_lead_by_uid(string $uid): ?array {
     return $rows[0] ?? null;
 }
 
+/**
+ * Auto-convert: flip every lead with this email to 'converted' (unless already).
+ * Called from the payment flow so a purchase instantly moves the lead. Returns
+ * the number of leads updated. Best-effort — callers wrap in try/catch.
+ */
+function ech_lead_mark_converted(string $email): int {
+    $email = strtolower(trim($email));
+    if ($email === '') {
+        return 0;
+    }
+    $rows = ech_sb_update(
+        'ech_leads',
+        'email=eq.' . rawurlencode($email) . '&status=neq.converted',
+        ['status' => 'converted', 'status_updated_at' => gmdate('c')]
+    );
+    return count($rows);
+}
+
+/** Reconcile: mark any buyer whose lead status lags as converted (bulk). */
+function ech_reconcile_conversions(): int {
+    try {
+        return (int) ech_sb_rpc('ech_reconcile_conversions');
+    } catch (Throwable $e) {
+        error_log('[store] reconcile conversions failed: ' . $e->getMessage());
+        return 0;
+    }
+}
+
 function ech_lead_set_status(string $uid, string $status): bool {
     if (!in_array($status, ['new', 'contacted', 'interested', 'converted', 'lost'], true)) {
         return false;
@@ -147,6 +175,7 @@ function ech_leads_query(string $q, string $status, int $limit, int $offset): ar
         }
         $items[] = ech_lead_row_to_legacy($row) + [
             'notesCount' => (int) ($row['notes_count'] ?? 0),
+            'lastNote' => (string) ($row['last_note'] ?? ''),
             'lastStep' => (string) ($row['last_step'] ?? ''),
             'suppressed' => !empty($row['suppressed']),
             'converted' => !empty($row['converted']),
