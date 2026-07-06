@@ -34,6 +34,7 @@ export type LeadItem = {
   status?: LeadStatus;
   statusUpdatedAt?: string;
   notesCount?: number;
+  lastNote?: string;
   lastStep?: string;
   suppressed?: boolean;
   converted?: boolean;

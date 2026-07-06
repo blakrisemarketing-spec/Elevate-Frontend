@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ChartColumn, GraduationCap, LayoutDashboard, LogOut, ReceiptText, RefreshCw, Send, UserCog, UsersRound } from 'lucide-react';
+import { ChartColumn, GraduationCap, KanbanSquare, LayoutDashboard, LogOut, ReceiptText, RefreshCw, Send, UserCog, UsersRound } from 'lucide-react';
 import { api, ApiError } from './api';
 import type { CurrentUser, LoginResponse, MeResponse } from './api';
 import { NavButton } from './ui';
@@ -8,16 +8,18 @@ import type { Icon } from './ui';
 import { LoginScreen } from './LoginScreen';
 import { OverviewTab } from './tabs/OverviewTab';
 import { LeadsTab } from './tabs/LeadsTab';
+import { ConversionTab } from './tabs/ConversionTab';
 import { MessagingTab } from './tabs/MessagingTab';
 import { PurchasesTab } from './tabs/PurchasesTab';
 import { ScholarshipsTab } from './tabs/ScholarshipsTab';
 import { UsersTab } from './tabs/UsersTab';
 
-type Tab = 'overview' | 'leads' | 'messaging' | 'purchases' | 'scholarships' | 'users';
+type Tab = 'overview' | 'leads' | 'conversion' | 'messaging' | 'purchases' | 'scholarships' | 'users';
 
 const tabs: Array<{ id: Tab; label: string; icon: Icon; description: string }> = [
   { id: 'overview', label: 'Overview', icon: ChartColumn, description: 'Pipeline and campaign health' },
   { id: 'leads', label: 'Leads', icon: UsersRound, description: 'Quiz submissions and CVs' },
+  { id: 'conversion', label: 'Conversion', icon: KanbanSquare, description: 'Sales pipeline calling board' },
   { id: 'messaging', label: 'Messaging', icon: Send, description: 'Broadcast to lead segments' },
   { id: 'purchases', label: 'Purchases', icon: ReceiptText, description: 'Verified Paystack ledger' },
   { id: 'scholarships', label: 'Scholarships', icon: GraduationCap, description: 'Runtime matching feed' },
@@ -137,6 +139,7 @@ function AdminApp() {
 
           {tab === 'overview' && <OverviewTab refreshKey={refreshKey} onAuthError={onAuthError} />}
           {tab === 'leads' && <LeadsTab refreshKey={refreshKey} onAuthError={onAuthError} />}
+          {tab === 'conversion' && <ConversionTab refreshKey={refreshKey} onAuthError={onAuthError} />}
           {tab === 'messaging' && <MessagingTab refreshKey={refreshKey} onAuthError={onAuthError} />}
           {tab === 'purchases' && <PurchasesTab refreshKey={refreshKey} onAuthError={onAuthError} />}
           {tab === 'scholarships' && <ScholarshipsTab refreshKey={refreshKey} onAuthError={onAuthError} />}

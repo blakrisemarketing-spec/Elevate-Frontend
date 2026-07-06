@@ -142,6 +142,15 @@ $purchase = [
 ];
 try {
     ech_purchase_insert($purchase); // idempotent on reference
+    // Auto-convert: a verified purchase instantly moves the matching lead to
+    // 'converted' in the CRM pipeline (best-effort; never blocks the buyer).
+    if ($buyerEmail !== '') {
+        try {
+            ech_lead_mark_converted($buyerEmail);
+        } catch (Throwable $e) {
+            error_log('[verify-payment] auto-convert failed: ' . $e->getMessage());
+        }
+    }
 } catch (Throwable $e) {
     // Never block a verified buyer on a ledger write: spool the record to the
     // deploy-surviving fallback dir and alert ops so it is recovered manually.

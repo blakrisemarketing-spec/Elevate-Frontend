@@ -64,11 +64,15 @@ try {
         error_log('[lead-campaign] fallback drain failed (will retry next run): ' . $e->getMessage());
     }
 
+    // Keep the CRM pipeline honest: mark any buyer whose lead status lags as
+    // converted (covers out-of-band purchases / recovered fallback purchases).
+    $reconciled = ech_reconcile_conversions();
+
     $limit = max(1, min(100, (int) ($_GET['limit'] ?? 20)));
     $stats = ech_campaign_run_due($limit);
     flock($lock, LOCK_UN);
     fclose($lock);
-    campaign_json(['ok' => true, 'drained' => $drained['imported']] + $stats);
+    campaign_json(['ok' => true, 'drained' => $drained['imported'], 'reconciled' => $reconciled] + $stats);
 } catch (Throwable $e) {
     error_log('[lead-campaign] run failed: ' . $e->getMessage());
     flock($lock, LOCK_UN);
