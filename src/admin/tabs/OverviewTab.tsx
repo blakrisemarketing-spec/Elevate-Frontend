@@ -147,8 +147,15 @@ export function OverviewTab({ refreshKey, onAuthError }: { refreshKey: number; o
           accent="purple"
           detail={`${stats.convertedLeads.toLocaleString()} converted`}
         />
-        <MetricCard label="Revenue from leads" value={money(stats.revenueFromLeadsPesewas)} icon={Wallet} accent="green" detail="Attributed to leads" />
-        <MetricCard label="Total purchases" value={stats.purchasesTotal} icon={ReceiptText} accent="amber" detail={money(stats.revenueTotalPesewas)} />
+        <MetricCard
+          label="Total revenue"
+          value={money(stats.revenueTotalPesewas)}
+          icon={Wallet}
+          accent="green"
+          detail="All payments"
+          sub={`${money(stats.revenueFromLeadsPesewas)} attributed to leads`}
+        />
+        <MetricCard label="Total purchases" value={stats.purchasesTotal} icon={ReceiptText} accent="amber" detail="Verified Paystack" />
       </div>
 
       <div className="mb-6">
