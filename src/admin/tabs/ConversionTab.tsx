@@ -7,17 +7,18 @@ import { LeadDetailDrawer } from './LeadDetailDrawer';
 
 const COLUMN_LIMIT = 100;
 
-type ColumnKey = 'unconverted' | 'contacted' | 'converted' | 'lost';
+type ColumnKey = 'new' | 'contacted' | 'interested' | 'converted' | 'lost';
 
 type ColumnConfig = {
   key: ColumnKey;
   label: string;
-  tone: 'blue' | 'amber' | 'green' | 'gray';
+  tone: 'blue' | 'amber' | 'purple' | 'green' | 'gray';
 };
 
 const COLUMNS: ColumnConfig[] = [
-  { key: 'unconverted', label: 'Unconverted', tone: 'blue' },
+  { key: 'new', label: 'New', tone: 'blue' },
   { key: 'contacted', label: 'Contacted', tone: 'amber' },
+  { key: 'interested', label: 'Interested', tone: 'purple' },
   { key: 'converted', label: 'Converted', tone: 'green' },
   { key: 'lost', label: 'Lost', tone: 'gray' },
 ];
@@ -25,6 +26,7 @@ const COLUMNS: ColumnConfig[] = [
 const headerTone: Record<ColumnConfig['tone'], string> = {
   blue: 'bg-[#e7f4ff] text-[#0077B6]',
   amber: 'bg-amber-100 text-amber-800',
+  purple: 'bg-purple-100 text-purple-800',
   green: 'bg-emerald-100 text-emerald-700',
   gray: 'bg-[#edf2f7] text-[#64718a]',
 };
@@ -32,6 +34,7 @@ const headerTone: Record<ColumnConfig['tone'], string> = {
 const countTone: Record<ColumnConfig['tone'], string> = {
   blue: 'bg-[#0077B6] text-white',
   amber: 'bg-amber-500 text-white',
+  purple: 'bg-purple-600 text-white',
   green: 'bg-emerald-600 text-white',
   gray: 'bg-[#64718a] text-white',
 };
@@ -41,8 +44,9 @@ type ColumnData = { items: LeadItem[]; total: number };
 type BoardState = Record<ColumnKey, ColumnData>;
 
 const emptyBoard: BoardState = {
-  unconverted: { items: [], total: 0 },
+  new: { items: [], total: 0 },
   contacted: { items: [], total: 0 },
+  interested: { items: [], total: 0 },
   converted: { items: [], total: 0 },
   lost: { items: [], total: 0 },
 };
@@ -52,10 +56,6 @@ async function fetchColumn(status: LeadStatus): Promise<LeadsResponse> {
   params.set('status', status);
   params.set('limit', String(COLUMN_LIMIT));
   return api<LeadsResponse>(`/api/admin-leads.php?${params.toString()}`);
-}
-
-function sortByCreatedDesc(items: LeadItem[]): LeadItem[] {
-  return [...items].sort((a, b) => String(b.createdAt || b.ts || '').localeCompare(String(a.createdAt || a.ts || '')));
 }
 
 function matchesQuery(lead: LeadItem, q: string): boolean {
@@ -88,10 +88,10 @@ export function ConversionTab({ refreshKey, onAuthError }: { refreshKey: number;
         fetchColumn('converted'),
         fetchColumn('lost'),
       ]);
-      const contactedItems = sortByCreatedDesc([...(contactedRes.items || []), ...(interestedRes.items || [])]);
       setBoard({
-        unconverted: { items: newRes.items || [], total: newRes.total || 0 },
-        contacted: { items: contactedItems, total: (contactedRes.total || 0) + (interestedRes.total || 0) },
+        new: { items: newRes.items || [], total: newRes.total || 0 },
+        contacted: { items: contactedRes.items || [], total: contactedRes.total || 0 },
+        interested: { items: interestedRes.items || [], total: interestedRes.total || 0 },
         converted: { items: convertedRes.items || [], total: convertedRes.total || 0 },
         lost: { items: lostRes.items || [], total: lostRes.total || 0 },
       });
@@ -216,12 +216,17 @@ type MoveButton = { label: string; status: LeadStatus; kind: 'primary' | 'danger
 
 function moveButtonsFor(column: ColumnKey): MoveButton[] {
   switch (column) {
-    case 'unconverted':
+    case 'new':
       return [
         { label: 'Contacted', status: 'contacted', kind: 'primary' },
         { label: 'Lost', status: 'lost', kind: 'danger' },
       ];
     case 'contacted':
+      return [
+        { label: 'Interested', status: 'interested', kind: 'primary' },
+        { label: 'Lost', status: 'lost', kind: 'danger' },
+      ];
+    case 'interested':
       return [
         { label: 'Converted', status: 'converted', kind: 'primary' },
         { label: 'Lost', status: 'lost', kind: 'danger' },
