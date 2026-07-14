@@ -156,13 +156,13 @@ function ech_campaign_email(array $lead, string $step): ?array {
     }
 
     if ($step === 'e5') {
-        $body = '<p>Hi ' . ech_esc($first) . ',</p><p>Let us talk money, plainly. The full bootcamp is GHS 1,200 right now on early-bird, and it goes back to GHS 1,500 after. I know that is real money. So here is the honest math.</p><p>One wasted application cycle, the rejections, the re-takes, the missed scholarship deadlines, costs you a year of your life and far more than GHS 1,200 in application and test fees alone.</p><p>You also get more than the 8 live sessions: the 50+ scholarship funding pack, the 30+ low-tuition school list, 90 days of replays, and a WhatsApp community walking it with you.</p>' . $lowGrade;
-        return ['subject' => 'Is it worth GHS 1,200? Let us do the math', 'cta' => 'Lock in early-bird', 'html' => ech_campaign_html($first, $body, 'Lock in early-bird', ECH_BOOTCAMP_URL, $tokenUrl)];
+        $body = '<p>Hi ' . ech_esc($first) . ',</p><p>Let us talk money, plainly. The full bootcamp is GHS 1,500. I know that is real money. So here is the honest math.</p><p>One wasted application cycle, the rejections, the re-takes, the missed scholarship deadlines, costs you a year of your life and far more than GHS 1,500 in application and test fees alone.</p><p>You also get more than the 8 live sessions: the 50+ scholarship funding pack, the 30+ low-tuition school list, 90 days of replays, and a WhatsApp community walking it with you.</p>' . $lowGrade;
+        return ['subject' => 'Is it worth GHS 1,500? Let us do the math', 'cta' => 'Register now', 'html' => ech_campaign_html($first, $body, 'Register now', ECH_BOOTCAMP_URL, $tokenUrl)];
     }
 
     if ($step === 'e6') {
-        $body = '<p>Hi ' . ech_esc($first) . ',</p><p>Quick, honest heads up. The early-bird price on the Get Into Grad School Bootcamp is about to end, and seats are limited because the sessions are live, not a faceless recording.</p><p>After early-bird, the full pass goes from GHS 1,200 back to GHS 1,500. Same bootcamp, more money.</p><p>You already know which programs and scholarships fit you, we matched you. The only thing between you and actually winning them is the system the bootcamp teaches.</p>';
-        return ['subject' => 'Early-bird closes soon, and seats are going', 'cta' => 'Lock in my seat', 'html' => ech_campaign_html($first, $body, 'Lock in my seat', ECH_BOOTCAMP_URL, $tokenUrl)];
+        $body = '<p>Hi ' . ech_esc($first) . ',</p><p>Quick, honest heads up. Registration for the Get Into Grad School Bootcamp is open, and seats are limited because the sessions are live, not a faceless recording.</p><p>The full pass is now GHS 1,500 and includes all 8 sessions, bonuses, recordings and community access.</p><p>You already know which programs and scholarships fit you, we matched you. The only thing between you and actually winning them is the system the bootcamp teaches.</p>';
+        return ['subject' => 'Seats are going for the grad school bootcamp', 'cta' => 'Lock in my seat', 'html' => ech_campaign_html($first, $body, 'Lock in my seat', ECH_BOOTCAMP_URL, $tokenUrl)];
     }
 
     if ($step === 'e7') {

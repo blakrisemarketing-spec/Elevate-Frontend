@@ -55,7 +55,7 @@ export function GradSchoolBootcampPage() {
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
               <div>
                 <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-navy bg-electric px-3 py-1.5 rounded-full mb-6">
-                  Get Into Grad School Bootcamp · Early-bird open
+                  Get Into Grad School Bootcamp · Registration open
                 </p>
                 <h1 id="hero-heading" className="text-display-lg text-white mb-8">
                   Turn your “average” profile into an offer
@@ -224,10 +224,9 @@ export function GradSchoolBootcampPage() {
                 <h3 className="text-headline-md text-navy mt-2">The Full Access Pass</h3>
                 <p className="text-ink-muted text-sm mt-2 mb-5">All 8 live sessions, the 50+ Scholarships Pack, the 30+ Low-Tuition University list, and all session recordings.</p>
                 <div className="flex items-baseline gap-3 mb-1">
-                  <span className="text-4xl font-bold text-primary">GHS 1,200</span>
-                  <span className="text-ink-muted line-through">GHS 1,500</span>
+                  <span className="text-4xl font-bold text-primary">GHS 1,500</span>
                 </div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-electric mb-6">Early-bird price, limited seats</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-electric mb-6">Standard price, limited seats</p>
                 <ul className="flex flex-col gap-2.5 mb-7 text-sm text-ink">
                   {['All 8 live sessions + Q&As', 'The Ultimate Funding Pack (50+ scholarships)', 'The Smart School List (30+ universities)', '90 days of replay access', 'Dedicated WhatsApp community'].map((x) => (
                     <li key={x} className="flex items-start gap-2.5"><CheckIcon />{x}</li>
@@ -288,7 +287,7 @@ export function GradSchoolBootcampPage() {
         <section aria-labelledby="final-cta">
           <div className="container-site py-20">
             <div className="bg-gradient-to-br from-primary to-navy text-white rounded-xl p-10 sm:p-14 text-center shadow-soft">
-              <p className="text-sm font-semibold uppercase tracking-wider text-electric mb-3">Seats are limited, early-bird won’t last</p>
+              <p className="text-sm font-semibold uppercase tracking-wider text-electric mb-3">Seats are limited, registration is open</p>
               <h2 id="final-cta" className="text-headline-lg text-white mb-5">Secure your future with confidence</h2>
               <p className="text-white/90 text-lg max-w-xl mx-auto mb-8">Stop guessing. Get the exact blueprint, the funding lists, and the people who’ve done it, all in one bootcamp.</p>
               <div className="flex flex-wrap justify-center gap-4">

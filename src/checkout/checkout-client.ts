@@ -263,10 +263,18 @@ async function finalize(
   }
 }
 
+let initialized = false;
 function init(): void {
-  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('button.buy-btn[data-service-id]'));
-  buttons.forEach((btn) => {
-    btn.addEventListener('click', () => { void startCheckout(btn); });
+  if (initialized) return;
+  initialized = true;
+
+  document.addEventListener('click', (event) => {
+    const target = event.target instanceof Element
+      ? event.target.closest<HTMLButtonElement>('button.buy-btn[data-service-id]')
+      : null;
+    if (!target) return;
+    event.preventDefault();
+    void startCheckout(target);
   });
 }
 

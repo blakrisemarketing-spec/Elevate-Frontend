@@ -72,7 +72,7 @@ const BOOTCAMP_COURSE = {
   inLanguage: 'en',
   // Pricing for Google's course rich results: full pass + per-session drop-in.
   offers: [
-    { '@type': 'Offer', category: 'Full Access Pass (early bird)', price: '1200', priceCurrency: 'GHS', availability: 'https://schema.org/InStock', url: SITE_URL + '/get-into-grad-school-bootcamp/#tickets' },
+    { '@type': 'Offer', category: 'Full Access Pass', price: '1500', priceCurrency: 'GHS', availability: 'https://schema.org/InStock', url: SITE_URL + '/get-into-grad-school-bootcamp/#tickets' },
     { '@type': 'Offer', category: 'Drop-In, per session', price: '300', priceCurrency: 'GHS', availability: 'https://schema.org/InStock', url: SITE_URL + '/get-into-grad-school-bootcamp/#tickets' },
   ],
   hasCourseInstance: {

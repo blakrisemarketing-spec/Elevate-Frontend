@@ -22,7 +22,7 @@ dashes. Proof is real only (no fabricated testimonials).
 - All CTAs link to https://elevatecareerhub.com/get-into-grad-school-bootcamp/#tickets unless noted.
 
 ## Pricing + facts (keep accurate)
-- Full Access Pass: **GHS 1,200 early-bird** (returns to GHS 1,500). Drop-in: **GHS 300 / session**.
+- Full Access Pass: **GHS 1,500**. Drop-in: **GHS 300 / session**.
 - 8 live sessions, **26 Jul to 18 Aug 2026**, Google Meet, 2 hrs each + Q&A.
 - Bonuses: Ultimate Funding Pack (50+ scholarships), Smart School List (30+ low-tuition universities), 90 days replay, WhatsApp community.
 - Facilitators: Chevening, DAAD, Mastercard and Forte scholars, MBAs from Columbia, Duke and Kellogg, admissions and visa specialists.
@@ -207,35 +207,35 @@ You bring the goal. They bring the map.
 
 Naa and Rosemary from Elevate Career Hub.
 
-## Email 5, Day 9: Is it worth GHS 1,200? Let us do the math
-- **Subjects:** (1) Is it worth GHS 1,200? Let us do the math. (2) The most expensive option is doing nothing. (3) About the price.
+## Email 5, Day 9: Is it worth GHS 1,500? Let us do the math
+- **Subjects:** (1) Is it worth GHS 1,500? Let us do the math. (2) The most expensive option is doing nothing. (3) About the price.
 - **Preview:** And the cheaper way in if you need it.
 - **Segment:** All.
 
 Hi {first_name},
 
-Let us talk money, plainly. The full bootcamp is GHS 1,200 right now on early-bird, and it goes back to GHS 1,500 after. I know that is real money. So here is the honest math.
+Let us talk money, plainly. The full bootcamp is GHS 1,500. I know that is real money. So here is the honest math.
 
-One wasted application cycle, the rejections, the re-takes, the missed scholarship deadlines, costs you a year of your life and far more than GHS 1,200 in application and test fees alone. The bootcamp exists so you do not lose that year.
+One wasted application cycle, the rejections, the re-takes, the missed scholarship deadlines, costs you a year of your life and far more than GHS 1,500 in application and test fees alone. The bootcamp exists so you do not lose that year.
 
 You also get more than the 8 live sessions: the 50+ scholarship Funding Pack, the 30+ low-tuition school list, 90 days of replays, and a WhatsApp community walking it with you.
 
 And if the full pass is not right today, you do not have to skip everything. Grab a single drop-in session for GHS 300, start with the one that fixes your biggest blocker, and build from there.
 
-**[Lock in early-bird]**  (secondary link: or pick one session)
+**[Register now]**  (secondary link: or pick one session)
 
 Naa and Rosemary from Elevate Career Hub.
 
-## Email 6, Day 12: Early-bird is about to close
-- **Subjects:** (1) Early-bird closes soon, and seats are going. (2) The price goes up after this. (3) Do not say we did not warn you, {first_name}.
-- **Preview:** GHS 1,200 will not last, and neither will the seats.
+## Email 6, Day 12: Seats are going for the grad school bootcamp
+- **Subjects:** (1) Seats are going for the grad school bootcamp. (2) The cohort starts soon. (3) Do not say we did not warn you, {first_name}.
+- **Preview:** The cohort starts soon, and live seats are limited.
 - **Segment:** All EXCEPT `timeline` = exploring / next-year (suppressed for the slow lane).
 
 Hi {first_name},
 
-Quick, honest heads up. The early-bird price on the Get Into Grad School Bootcamp is about to end, and seats are limited because the sessions are live, not a faceless recording.
+Quick, honest heads up. Registration for the Get Into Grad School Bootcamp is open, and seats are limited because the sessions are live, not a faceless recording.
 
-After early-bird, the full pass goes from GHS 1,200 back to GHS 1,500. Same bootcamp, more money. There is no reason to pay the later price when you can lock it in now.
+The full pass is now GHS 1,500 and includes all 8 sessions, bonuses, recordings and community access.
 
 You already know which programs and scholarships fit you, we matched you. The only thing between you and actually winning them is the system the bootcamp teaches. The cohort starts 26 July. Future you would really like you to register today.
 
@@ -255,7 +255,7 @@ This is the last nudge, then we will get out of your inbox.
 The bootcamp starts 26 July, and registration for this cohort is closing. You took the quiz because some part of you is ready to stop dreaming about grad school and start doing it. This is the move.
 
 Three ways in:
-- The full pass at early-bird, everything included, the best value.
+- The full pass at GHS 1,500, everything included, the best value.
 - A single drop-in session for GHS 300 if you just want to fix one thing first.
 - And if the timing genuinely is not right, reply with "next" and we will hold you a spot in the next cohort.
 
@@ -280,7 +280,7 @@ manual broadcasts.
 
 - **WA-1, Day 0 (minutes after signup):** "Hey {first_name}, it is Elevate. Your grad school report just hit your inbox, did it land? Reply with your #1 goal and I will tell you the one session that matters most for you."
 - **WA-2, Day 4:** "{first_name}, the #1 scholarship mistake we see: applying to the wrong ones, too late, with a generic essay. The bootcamp fixes exactly that (and you get our 50+ scholarship pack). Want the link?"
-- **WA-3, Day 12 (skip for slow lane):** "Heads up, early-bird on the bootcamp ends soon and seats are limited. GHS 1,200 now, GHS 1,500 after. Lock it in: [link]"
+- **WA-3, Day 12 (skip for slow lane):** "Heads up, registration for the bootcamp is open and seats are limited. Full pass is GHS 1,500. Lock it in: [link]"
 - **WA-4, Day 15:** "Last call {first_name}, the cohort starts 26 July and registration is closing. Full pass, a single GHS 300 session, or the next cohort. Which one? [link]"
 
 ## Build notes

@@ -180,6 +180,11 @@ function App(): React.ReactElement {
   }, [page.route]);
 
   useEffect(() => {
+    if (!PRIORITY_PAGES[page.route]) return;
+    import('./checkout/checkout-client');
+  }, [page.route]);
+
+  useEffect(() => {
     const counters = document.querySelectorAll<HTMLElement>('.elementor-counter-number[data-to-value]');
     counters.forEach((counter) => {
       const value = counter.dataset.toValue;
