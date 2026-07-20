@@ -93,7 +93,7 @@ export function EducationalServicesPage() {
                 <h3 className="text-headline-md mb-2">School Selection &amp; Programme Research</h3>
                 <p className="text-sm font-semibold text-primary mb-3">Apply where the door is already ajar.</p>
                 <p className="text-ink-muted leading-relaxed flex-1">
-                  One of the most expensive mistakes you can make is applying to a big-name school that&rsquo;s a bad fit for your profile or your wallet. We build a strategic, realistic shortlist across Europe, the UK, and Canada based on where you have the highest chance of admission, and, more importantly, funding.
+                  One of the most expensive mistakes you can make is applying to a big-name school that&rsquo;s a bad fit for your profile or your wallet. We build a strategic, realistic shortlist across Europe, the UK, Canada, and the USA based on where you have the highest chance of admission, and, more importantly, funding.
                 </p>
                 <div className="mt-5 flex items-baseline gap-2">
                   <span className="text-display-lg text-primary leading-none">₵500</span>
