@@ -1,8 +1,14 @@
 name: Lead campaign cron
 
+# The Grad School Match bootcamp nurture campaign ended on 2026-07-28 (the
+# cohort started 26 July). The every-15-minutes schedule is intentionally
+# disabled so no more nurture emails go out; ech_campaign_run_due() also has a
+# hard kill-switch as a second layer. Kept as workflow_dispatch (manual only)
+# so the drain/reconcile plumbing survives for a future cohort. To relaunch,
+# restore the schedule below AND remove the kill-switch in api/lead-campaign.php.
 on:
-  schedule:
-    - cron: '*/15 * * * *'
+  # schedule:
+  #   - cron: '*/15 * * * *'
   workflow_dispatch:
 
 jobs:

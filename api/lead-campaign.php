@@ -205,6 +205,17 @@ function ech_campaign_steps(array $lead): array {
  * runner's flock lock prevents concurrent runs on the same host.
  */
 function ech_campaign_run_due(int $limit = 20): array {
+    // KILL-SWITCH: the Grad School Match bootcamp nurture campaign ended on
+    // 2026-07-28 (the cohort started 26 July, so every "register before it
+    // starts" email is now moot). This hard return guarantees no campaign
+    // email is ever sent again, even if the cron workflow is re-enabled or a
+    // manual run is dispatched, which would otherwise dump the entire overdue
+    // e1-e7 backlog on every lead at once. The fallback-drain and conversion
+    // reconciliation in run-lead-campaign.php still run. To launch a future
+    // cohort campaign, remove this block (and re-enable the schedule in
+    // .github/workflows/lead-campaign-cron.yml).
+    return ['sent' => 0, 'skipped' => 0, 'errors' => [], 'disabled' => true];
+
     $key = ech_runtime_secret('TOSEND_API_KEY');
     if ($key === '') {
         throw new RuntimeException('TOSEND_API_KEY is not configured.');
