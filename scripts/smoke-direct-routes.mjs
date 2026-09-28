@@ -6,10 +6,12 @@ import { fileURLToPath } from 'node:url';
 // fileURLToPath (not URL.pathname) so paths containing spaces resolve correctly.
 const projectRoot = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 const distRoot = path.join(projectRoot, 'dist');
-const pages = JSON.parse(await fs.readFile(path.join(projectRoot, 'src/generated/pages.json'), 'utf8'));
-const outDir = path.join(projectRoot, 'outputs');
-const blockedRoutes = new Set(['/cart/', '/checkout/', '/my-account/', '/shop/', '/manage-profile/']);
-const assistedTarget = '/contact-us/';
+// Route inventory written by scripts/build-priority-routes.mjs.
+const inventory = JSON.parse(await fs.readFile(path.join(projectRoot, '.tmp', 'routes.json'), 'utf8'));
+const pages = [
+  ...inventory.pages.map((p) => ({ route: p.route })),
+  ...inventory.redirects.map((r) => ({ route: r.route, target: r.target })),
+];
 
 function contentType(filePath) {
   const ext = path.extname(filePath).toLowerCase();
@@ -65,13 +67,12 @@ try {
   for (const page of pages) {
     const response = await fetch(`${base}${page.route}`, { redirect: 'manual' });
     const text = await response.text();
-    const isBlocked = blockedRoutes.has(page.route);
-    const hasExpectedRedirect = !isBlocked || (text.includes(`url=${assistedTarget}`) && text.includes(assistedTarget));
-    const hasAppShellOrStaticContent = /data-ech-source="local-wordpress-html"|<div id="root"><\/div>|<div id="root">/i.test(text);
-    const passed = response.status === 200 && hasExpectedRedirect && (isBlocked || hasAppShellOrStaticContent);
+    const passed = response.status === 200 && (page.target
+      ? text.includes(`url=${page.target}`)
+      : /<div id="root"><[a-z]/i.test(text));
     results.push({
       route: page.route,
-      expected: isBlocked ? `intentional assisted-commerce redirect shell to ${assistedTarget}` : 'direct 200 static/app-shell route',
+      expected: page.target ? `assisted-commerce redirect shell to ${page.target}` : 'static page with rendered content',
       status: response.status,
       passed,
     });
@@ -81,28 +82,9 @@ try {
 }
 
 const failed = results.filter(result => !result.passed);
-const generatedAt = new Date().toISOString();
-await fs.mkdir(outDir, { recursive: true, mode: 0o700 });
-await fs.writeFile(path.join(outDir, 'direct-route-smoke-20260510.json'), JSON.stringify({ generatedAt, base, total: results.length, failed: failed.length, results }, null, 2));
-const md = [
-  '# Direct Route Smoke Check, 2026-05-10',
-  '',
-  `Generated: ${generatedAt}`,
-  '',
-  `Command: \`node scripts/smoke-direct-routes.mjs\``,
-  '',
-  `Result: ${failed.length === 0 ? 'PASS' : 'FAIL'} (${results.length - failed.length}/${results.length} passed)`,
-  '',
-  '| Route | Expected behavior | HTTP status | Result |',
-  '|---|---|---:|---|',
-  ...results.map(result => `| \`${result.route}\` | ${result.expected} | ${result.status} | ${result.passed ? 'PASS' : 'FAIL'} |`),
-  '',
-].join('\n');
-await fs.writeFile(path.join(outDir, 'direct-route-smoke-20260510.md'), md);
-
 if (failed.length) {
   console.error(`Direct route smoke failed for ${failed.length} route(s).`);
   for (const result of failed) console.error(`- ${result.route}: status ${result.status}, expected ${result.expected}`);
   process.exit(1);
 }
-console.log(`Direct route smoke passed for ${results.length} migrated route(s).`);
+console.log(`Direct route smoke passed for ${results.length} route(s).`);

@@ -5,9 +5,10 @@
 /* Heading display font.
    Stand-in for Gilroy ExtraBold (Gilroy is commercial / not on Google Fonts):
    self-hosted Montserrat ExtraBold 800 (~16 KB woff2). To use real Gilroy,
-   drop Gilroy-ExtraBold.woff2 into /public/fonts and change the src +
-   font-family name below, nothing else needs to change. Body keeps the
-   system sans stack (zero load cost). */
+   drop the licensed Gilroy-ExtraBold.woff2 into /public/fonts: the build
+   (scripts/build-priority-routes.mjs) detects it and rewrites this src and
+   the preload, so nothing here needs to change. `npm run dev` keeps showing
+   Montserrat. Body keeps the system sans stack (zero load cost). */
 @font-face {
   font-family: 'Gilroy ExtraBold';
   font-style: normal;
