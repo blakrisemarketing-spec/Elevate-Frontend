@@ -9,11 +9,15 @@
  * function. The page itself stays static; this is the only JS it ships.
  *
  * Security: this file runs in the browser, so it only ever uses the PUBLIC
- * key and DISPLAY amounts. The serverless function re-verifies the real
- * charged amount against the server-side catalog before anything is fulfilled.
+ * key and DISPLAY amounts. The amount charged comes from a server-issued,
+ * HMAC-signed price quote (see pricing-client.ts), and verify-payment.php
+ * re-derives the expected amount from that signature before anything is
+ * fulfilled. Nothing here is trusted.
  */
-import { CATALOG, CURRENCY, formatCedis } from './catalog';
+import { CATALOG, CHARGE_CURRENCY, formatCedis } from './catalog';
 import type { CatalogItem } from './catalog';
+import { currentRegion, formatForRegion, loadPricing, quoteFor } from './pricing-client';
+import type { QuotedPrice } from './pricing-client';
 import { trackEvent, trackMeta } from '../analytics/tracking';
 
 const PUBLIC_KEY = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY || '';
@@ -55,15 +59,27 @@ function esc(s: string): string {
 interface BuyerDetails { name: string; email: string; sessions: string[]; amountPesewas: number }
 
 /**
+ * Both figures for a per-unit quantity: what Paystack will bill (always cedis)
+ * and what the buyer was quoted in their own currency.
+ */
+function priceLine(price: QuotedPrice, count: number): string {
+  const cedis = formatCedis(price.chargePesewas * count);
+  if (currentRegion() === 'GH') return cedis;
+  // Paystack's popup will say cedis, so saying so first avoids a nasty
+  // surprise between our price and the amount on their statement.
+  return `${formatForRegion(price.displayMinor * count)} (charged as ${cedis})`;
+}
+
+/**
  * Accessible modal collecting name + email before opening Paystack. For
  * per-unit items (those with `item.sessions`), it also shows a checklist;
  * the buyer ticks one or more sessions and the total updates live
- * (amountPesewas × ticked). The server re-validates everything.
+ * (unit price × ticked). The server re-validates everything.
  */
-function collectBuyerDetails(item: CatalogItem): Promise<BuyerDetails | null> {
+function collectBuyerDetails(item: CatalogItem, price: QuotedPrice): Promise<BuyerDetails | null> {
   const sessions = item.sessions ?? [];
   const isMulti = sessions.length > 0;
-  const unit = item.amountPesewas;
+  const unit = price.chargePesewas;
   return new Promise((resolve) => {
     const overlay = document.createElement('div');
     overlay.className = 'fixed inset-0 z-50 flex items-center justify-center bg-navy/60 px-4';
@@ -84,8 +100,8 @@ function collectBuyerDetails(item: CatalogItem): Promise<BuyerDetails | null> {
           </fieldset>` : '';
 
     const payLine = isMulti
-      ? `<p class="text-ink-muted text-sm mb-6">${formatCedis(unit)} per session. <span data-total class="font-semibold text-navy">No sessions selected yet.</span></p>`
-      : `<p class="text-ink-muted text-sm mb-6">You'll pay <span class="font-semibold text-navy">${formatCedis(unit)}</span> securely via Paystack.</p>`;
+      ? `<p class="text-ink-muted text-sm mb-6">${priceLine(price, 1)} per session. <span data-total class="font-semibold text-navy">No sessions selected yet.</span></p>`
+      : `<p class="text-ink-muted text-sm mb-6">You'll pay <span class="font-semibold text-navy">${priceLine(price, 1)}</span> securely via Paystack.</p>`;
 
     overlay.innerHTML = `
       <div class="bg-white rounded-2xl shadow-soft w-full max-w-md p-6 sm:p-8">
@@ -126,7 +142,7 @@ function collectBuyerDetails(item: CatalogItem): Promise<BuyerDetails | null> {
         const n = checkedSessions().length;
         totalEl.textContent = n === 0
           ? 'No sessions selected yet.'
-          : `Total: ${formatCedis(unit * n)} for ${n} session${n > 1 ? 's' : ''}.`;
+          : `Total: ${priceLine(price, n)} for ${n} session${n > 1 ? 's' : ''}.`;
       });
     }
 
@@ -164,26 +180,43 @@ async function startCheckout(btn: HTMLButtonElement): Promise<void> {
   const id = btn.dataset.serviceId || '';
   const item = CATALOG[id];
   if (!item) { console.error(`[checkout] unknown service id: ${id}`); return; }
-  trackEvent('checkout_started', {
-    service_id: item.id,
-    item_name: item.name,
-    value: item.amountPesewas / 100,
-    currency: CURRENCY,
-  });
 
   if (!PUBLIC_KEY) {
     alert('Payments are not configured yet. Please reach out on WhatsApp and we’ll help you purchase.');
     return;
   }
 
-  const details = await collectBuyerDetails(item);
+  // The signed quote is a hard requirement: verify-payment.php rejects any
+  // payment without one, so there is no point opening Paystack until we have
+  // it. Failing here costs a retry; failing after the popup would mean taking
+  // money for a transaction we could not then confirm.
+  setButtonBusy(btn, true);
+  const priced = await loadPricing();
+  const price = quoteFor(id);
+  setButtonBusy(btn, false);
+  if (!priced || !price) {
+    alert('We could not load current pricing. Please refresh the page and try again, or message us on WhatsApp and we’ll help you purchase.');
+    return;
+  }
+
+  const region = currentRegion();
+  trackEvent('checkout_started', {
+    service_id: item.id,
+    item_name: item.name,
+    value: price.chargePesewas / 100,
+    currency: CHARGE_CURRENCY,
+    price_region: region,
+  });
+
+  const details = await collectBuyerDetails(item, price);
   if (!details) return;
   trackEvent('checkout_details_submitted', {
     service_id: item.id,
     item_name: item.name,
     selected_sessions: details.sessions.length,
     value: details.amountPesewas / 100,
-    currency: CURRENCY,
+    currency: CHARGE_CURRENCY,
+    price_region: region,
   });
 
   setButtonBusy(btn, true);
@@ -207,19 +240,19 @@ async function startCheckout(btn: HTMLButtonElement): Promise<void> {
     key: PUBLIC_KEY,
     email: details.email,
     amount: details.amountPesewas,
-    currency: CURRENCY,
+    currency: CHARGE_CURRENCY,
     metadata: { custom_fields: customFields },
     onClose: () => { setButtonBusy(btn, false); },
     callback: (response: { reference: string }) => {
       // Verify server-side before trusting success.
-      void finalize(response.reference, item.id, details, btn);
+      void finalize(response.reference, item.id, details, price.quote, btn);
     },
   });
   trackMeta('InitiateCheckout', {
     content_ids: item.id,
     content_name: item.name,
     value: details.amountPesewas / 100,
-    currency: CURRENCY,
+    currency: CHARGE_CURRENCY,
   });
   handler.openIframe();
 }
@@ -228,13 +261,17 @@ async function finalize(
   reference: string,
   serviceId: string,
   details: BuyerDetails,
+  quote: string,
   btn: HTMLButtonElement,
 ): Promise<void> {
   try {
     const res = await fetch(VERIFY_ENDPOINT, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ reference, serviceId, name: details.name, email: details.email, sessions: details.sessions }),
+      body: JSON.stringify({
+        reference, serviceId, quote,
+        name: details.name, email: details.email, sessions: details.sessions,
+      }),
     });
     const data = await res.json().catch(() => ({}));
     if (res.ok && data && data.ok) {
@@ -244,13 +281,14 @@ async function finalize(
         item_name: item?.name || serviceId,
         selected_sessions: details.sessions.length,
         value: details.amountPesewas / 100,
-        currency: CURRENCY,
+        currency: CHARGE_CURRENCY,
+        price_region: currentRegion(),
       });
       trackMeta('Purchase', {
         content_ids: serviceId,
         content_name: item?.name || serviceId,
         value: details.amountPesewas / 100,
-        currency: CURRENCY,
+        currency: CHARGE_CURRENCY,
       });
       const params = new URLSearchParams({ ref: reference, item: serviceId });
       window.location.assign(`${CONFIRM_PATH}?${params.toString()}`);
@@ -267,6 +305,11 @@ let initialized = false;
 function init(): void {
   if (initialized) return;
   initialized = true;
+
+  // Resolve the region up front so prices are correct before anyone clicks.
+  // The request is memoised, so a buy button that fires first simply awaits
+  // this same call rather than issuing a second one.
+  void loadPricing();
 
   document.addEventListener('click', (event) => {
     const target = event.target instanceof Element

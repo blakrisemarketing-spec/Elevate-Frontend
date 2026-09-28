@@ -3,6 +3,7 @@ import { SiteFooter } from '../components/SiteFooter';
 import { WhatsAppFAB } from '../components/WhatsAppFAB';
 import { PageHero } from '../components/PageHero';
 import { PricingPlan } from '../components/PricingPlan';
+import { Price } from '../components/Price';
 import { WhyChooseUs } from '../components/WhyChooseUs';
 import { TestimonialsBlock } from '../components/TestimonialsBlock';
 import { FinalCTA } from '../components/FinalCTA';
@@ -44,15 +45,15 @@ export function CareerServicesPage() {
                 <ul className="flex flex-col gap-4 mt-auto">
                   <li>
                     <p className="text-sm text-ink mb-2"><span className="font-semibold text-navy">Early Career (0&ndash;3 yrs).</span> We turn internships, projects, volunteer work, and transferable skills into a CV that makes you the obvious choice.</p>
-                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="career-cv-early">₵350 Investment · Early Career</button>
+                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="career-cv-early"><Price id="career-cv-early" suffix="Investment · Early Career" /></button>
                   </li>
                   <li>
                     <p className="text-sm text-ink mb-2"><span className="font-semibold text-navy">Experienced Professional (3&ndash;10 yrs).</span> We restructure and sharpen your experience into a clear, compelling professional story.</p>
-                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="career-cv-experienced">₵400 Investment · Experienced</button>
+                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="career-cv-experienced"><Price id="career-cv-experienced" suffix="Investment · Experienced" /></button>
                   </li>
                   <li>
                     <p className="text-sm text-ink mb-2"><span className="font-semibold text-navy">Senior Executive (10+ yrs).</span> A leadership asset that communicates influence, strategic impact, and decision-making authority.</p>
-                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="career-cv-senior">₵450 Investment · Senior Executive</button>
+                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="career-cv-senior"><Price id="career-cv-senior" suffix="Investment · Senior Executive" /></button>
                   </li>
                 </ul>
               </article>
@@ -65,8 +66,8 @@ export function CareerServicesPage() {
                   A strong cover letter does more than repeat your CV. It communicates intent, clarity, personality, and alignment in a way most applications never do. Every letter is customised to the role, the company, and the expectations of the market you&rsquo;re targeting.
                 </p>
                 <div className="flex flex-col gap-3 mt-auto">
-                  <button type="button" className="btn-primary buy-btn" data-service-id="career-cover-letter-local">₵350 Investment · Local applications</button>
-                  <button type="button" className="btn-secondary buy-btn" data-service-id="career-cover-letter-intl">₵400 Investment · International applications</button>
+                  <button type="button" className="btn-primary buy-btn" data-service-id="career-cover-letter-local"><Price id="career-cover-letter-local" suffix="Investment · Local applications" /></button>
+                  <button type="button" className="btn-secondary buy-btn" data-service-id="career-cover-letter-intl"><Price id="career-cover-letter-intl" suffix="Investment · International applications" /></button>
                 </div>
               </article>
 
@@ -78,9 +79,9 @@ export function CareerServicesPage() {
                   Recruiters are looking for you long before a job is even posted. If your profile isn&rsquo;t optimised, you&rsquo;re essentially invisible. We optimise every aspect of your profile to turn it into a magnet that pulls recruiters in.
                 </p>
                 <div className="mt-5 flex items-baseline gap-2">
-                  <span className="text-display-lg text-primary leading-none">₵400</span>
+                  <Price id="career-linkedin" disclose className="text-display-lg text-primary leading-none" />
                 </div>
-                <button type="button" className="btn-primary buy-btn mt-5" data-service-id="career-linkedin">₵400 Investment</button>
+                <button type="button" className="btn-primary buy-btn mt-5" data-service-id="career-linkedin"><Price id="career-linkedin" suffix="Investment" /></button>
               </article>
 
               {/* Interview prep */}
@@ -91,9 +92,9 @@ export function CareerServicesPage() {
                   Most prep is just memorising &ldquo;safe&rdquo; answers, that&rsquo;s not how you get the job. We pair you with an expert who works in your field. They&rsquo;ll tell you what the interviewer is really listening for, even the things they don&rsquo;t put in the job description.
                 </p>
                 <div className="mt-5 flex items-baseline gap-2">
-                  <span className="text-display-lg text-primary leading-none">₵500</span>
+                  <Price id="career-interview-prep" disclose className="text-display-lg text-primary leading-none" />
                 </div>
-                <button type="button" className="btn-primary buy-btn mt-5" data-service-id="career-interview-prep">₵500 Investment</button>
+                <button type="button" className="btn-primary buy-btn mt-5" data-service-id="career-interview-prep"><Price id="career-interview-prep" suffix="Investment" /></button>
               </article>
 
               {/* Career strategy, consultation */}
@@ -122,9 +123,8 @@ export function CareerServicesPage() {
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
               <PricingPlan
                 tier="Starter Bundle"
-                price="₵1,100"
                 serviceId="bundle-starter"
-                ctaLabel="₵1,100 Investment"
+                ctaSuffix="Investment"
                 features={[
                   '1 professionally written CV, tailored to your level and target role',
                   '1 cover letter for your specific role or market',
@@ -134,10 +134,9 @@ export function CareerServicesPage() {
               />
               <PricingPlan
                 tier="Job Market Accelerator"
-                price="₵2,000"
                 highlighted
                 serviceId="bundle-accelerator"
-                ctaLabel="₵2,000 Investment"
+                ctaSuffix="Investment"
                 features={[
                   'Everything in Starter',
                   '1 one-on-one career consultation on your search, positioning, and next move',
@@ -147,9 +146,8 @@ export function CareerServicesPage() {
               />
               <PricingPlan
                 tier="Premium Job Search"
-                price="₵5,000"
                 serviceId="bundle-premium"
-                ctaLabel="₵5,000 Investment"
+                ctaSuffix="Investment"
                 features={[
                   '3 tailored CVs, adapted for different roles or industries',
                   '3 cover letters, each for a specific target',
@@ -161,9 +159,8 @@ export function CareerServicesPage() {
               />
               <PricingPlan
                 tier="Comprehensive Job Search"
-                price="₵8,250"
                 serviceId="bundle-comprehensive"
-                ctaLabel="₵8,250 Investment"
+                ctaSuffix="Investment"
                 features={[
                   '5 tailored CVs, each adapted to a specific role and company',
                   '5 cover letters, each for the application it supports',

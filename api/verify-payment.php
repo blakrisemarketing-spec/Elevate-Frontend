@@ -5,8 +5,18 @@
  * Deployed to /api/verify-payment.php. The browser sends a transaction
  * reference after the inline popup reports success; we DO NOT trust that.
  * We call Paystack's verify endpoint with the SECRET key (server-only) and
- * confirm: (1) Paystack says success, (2) the amount exactly matches the
- * server-side catalog price, (3) currency is GHS. Only then do we fulfil.
+ * confirm: (1) Paystack says success, (2) the amount exactly matches the price
+ * in the SIGNED QUOTE issued by api/price-quote.php, (3) currency is GHS.
+ * Only then do we fulfil.
+ *
+ * Prices are regional (see api/pricing.php), so the expected amount can no
+ * longer be read straight from the catalog: it depends on where the buyer is.
+ * The region is decided server-side at quote time and sealed into an HMAC
+ * token, and that token is the ONLY thing consulted here. There is
+ * deliberately no fallback to the Ghana price for a missing or invalid quote,
+ * since such a fallback would let anyone claim the cheapest region by simply
+ * dropping the token. The quote is fetched before the Paystack popup opens, so
+ * a quoting outage blocks checkout rather than stranding someone mid-payment.
  *
  * Secrets are read from the environment (set them in hPanel, or in an
  * untracked api/config.php that putenv()s them, see .env.example):
@@ -29,6 +39,7 @@ if (is_file($configFile)) {
 require __DIR__ . '/email.php';
 require_once __DIR__ . '/admin-auth.php';
 require_once __DIR__ . '/store.php';
+require_once __DIR__ . '/pricing.php';
 
 function respond($data, int $status = 200): void {
     http_response_code($status);
@@ -58,13 +69,27 @@ if ($reference === '' || $serviceId === '') {
     respond(['ok' => false, 'message' => 'Missing payment reference or service.'], 400);
 }
 
-$catalogPath = __DIR__ . '/catalog.json';
-$catalog = is_file($catalogPath) ? json_decode((string) file_get_contents($catalogPath), true) : null;
-if (!is_array($catalog) || !isset($catalog[$serviceId]) || !is_array($catalog[$serviceId])) {
+$catalog = ech_catalog();
+if (!isset($catalog[$serviceId]) || !is_array($catalog[$serviceId])) {
     respond(['ok' => false, 'message' => 'Unknown service.'], 400);
 }
 $item = $catalog[$serviceId];
-$unitAmount = (int) ($item['amountPesewas'] ?? -1);
+
+// ── The signed quote is the sole source of the expected price ────
+// It carries the PER-UNIT cedi charge for the region the server picked when
+// the buyer loaded the page, so multi-session items multiply a signed unit
+// instead of trusting a client-supplied total.
+$quote = ech_quote_verify(trim((string) ($body['quote'] ?? '')));
+if ($quote === null) {
+    error_log(sprintf('[verify-payment] missing/invalid price quote ref=%s service=%s', $reference, $serviceId));
+    respond(['ok' => false, 'message' => 'Your price quote expired. Please refresh the page and try again. If you were charged, contact us with your reference and we will resolve it.'], 400);
+}
+if ((string) $quote['sid'] !== $serviceId) {
+    error_log(sprintf('[verify-payment] quote/service mismatch ref=%s quoted=%s claimed=%s', $reference, (string) $quote['sid'], $serviceId));
+    respond(['ok' => false, 'message' => 'This price quote is for a different item.'], 400);
+}
+$region = (string) $quote['region'];
+$unitAmount = (int) $quote['unit'];
 
 // Per-unit items (e.g. the bootcamp drop-in) carry a `sessions` allow-list.
 // The buyer ticks one or more; the expected amount is unit x (count ticked),
@@ -127,6 +152,9 @@ if (!$apiOk || !$paidOk || !$amountOk || !$currencyOk) {
 // ── Fulfilment (best-effort; never block the buyer's confirmation) ─
 $buyerEmail = trim((string) ($body['email'] ?? (is_array($txn) ? ($txn['customer']['email'] ?? '') : '')));
 $buyerName = trim((string) ($body['name'] ?? ''));
+// What the buyer was shown, for the record. The billed amount stays GHS.
+$regionPrice = ech_price_for($item, $region);
+$unitCount = !empty($allowed) ? count($sessions) : 1;
 $purchase = [
     'ts' => gmdate('c'),
     'reference' => $reference,
@@ -135,6 +163,9 @@ $purchase = [
     'type' => (string) ($item['type'] ?? ''),
     'amountPesewas' => $expectedAmount,
     'currency' => 'GHS',
+    'region' => $region,
+    'displayCurrency' => ECH_REGION_CURRENCY[$region] ?? 'GHS',
+    'displayMinor' => $regionPrice['displayMinor'] * $unitCount,
     'buyerName' => $buyerName,
     'buyerEmail' => $buyerEmail,
     'sessions' => $sessions,
@@ -159,7 +190,10 @@ try {
     ech_ops_alert('Purchase DB write failed', 'Reference ' . $reference . ' spooled to fallback. ' . $e->getMessage());
 }
 try {
-    send_fulfilment($item, $reference, $buyerName, $buyerEmail, $sessions, $expectedAmount);
+    send_fulfilment(
+        $item, $reference, $buyerName, $buyerEmail, $sessions, $expectedAmount,
+        $region, $regionPrice['displayMinor'] * $unitCount
+    );
 } catch (Throwable $e) {
     error_log('[verify-payment] fulfilment email failed (payment is still valid): ' . $e->getMessage());
 }

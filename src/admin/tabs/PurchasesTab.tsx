@@ -59,7 +59,7 @@ export function PurchasesTab({ refreshKey, onAuthError }: { refreshKey: number; 
           <div className="overflow-x-auto">
             <table className="min-w-[860px] w-full text-sm">
               <thead className="bg-[#f6f8fb] text-left text-xs font-bold uppercase tracking-[0.08em] text-[#64718a]">
-                <tr><th className="px-5 py-3">Date</th><th className="px-5 py-3">Buyer</th><th className="px-5 py-3">Item</th><th className="px-5 py-3">Amount</th><th className="px-5 py-3">Reference</th></tr>
+                <tr><th className="px-5 py-3">Date</th><th className="px-5 py-3">Buyer</th><th className="px-5 py-3">Item</th><th className="px-5 py-3">Amount</th><th className="px-5 py-3">Region</th><th className="px-5 py-3">Reference</th></tr>
               </thead>
               <tbody className="divide-y divide-[#edf1f6]">
                 {filtered.map((p, i) => (
@@ -68,6 +68,7 @@ export function PurchasesTab({ refreshKey, onAuthError }: { refreshKey: number; 
                     <td className="px-5 py-4"><strong className="text-[#102548]">{p.buyerName || 'Unknown'}</strong><br /><span className="text-[#64718a]">{p.buyerEmail || 'No email'}</span></td>
                     <td className="px-5 py-4 text-[#26334d]">{p.itemName || p.serviceId || 'Unknown item'}</td>
                     <td className="px-5 py-4 font-bold text-[#102548]">{money(p.amountPesewas)}</td>
+                    <td className="px-5 py-4 text-[#64718a]">{p.region || 'GH'}</td>
                     <td className="px-5 py-4 font-mono text-xs text-[#64718a]">{p.reference || 'No reference'}</td>
                   </tr>
                 ))}

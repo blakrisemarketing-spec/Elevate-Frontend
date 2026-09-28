@@ -4,7 +4,8 @@ import { WhatsAppFAB } from '../components/WhatsAppFAB';
 import { PageHero } from '../components/PageHero';
 import { FinalCTA } from '../components/FinalCTA';
 import { SERVICES } from '../data/services';
-import { CATALOG, formatCedis } from '../../checkout/catalog';
+import { Price } from '../components/Price';
+import { CATALOG } from '../../checkout/catalog';
 
 const PARENT = {
   career: { label: 'Career Services', href: '/career-services/' },
@@ -76,7 +77,9 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
                 {tiers.map((item) => (
                   <article key={item.id} className="card flex flex-col h-full text-center">
                     <h3 className="text-lg font-bold text-navy mb-2">{item.name}</h3>
-                    <p className="text-3xl font-bold text-primary mb-5 mt-1">{formatCedis(item.amountPesewas)}</p>
+                    <p className="mb-5 mt-1">
+                      <Price id={item.id} disclose className="text-3xl font-bold text-primary" />
+                    </p>
                     <button type="button" className="btn-primary buy-btn mt-auto" data-service-id={item.id}>
                       Buy now
                     </button>

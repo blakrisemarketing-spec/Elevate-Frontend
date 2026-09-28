@@ -682,7 +682,10 @@ async function emitDeployArtifacts() {
   for (const [id, item] of Object.entries(CATALOG)) {
     slim[id] = {
       name: item.name,
-      amountPesewas: item.amountPesewas,
+      // Full regional table: api/pricing.php reads it to price a quote, and
+      // api/verify-payment.php to record what the buyer was shown. The amount
+      // actually charged comes from the signed quote, never from here.
+      prices: item.prices,
       type: item.type,
       deliverablePath: item.deliverablePath || null,
       sessions: item.sessions || null,
@@ -697,10 +700,14 @@ async function emitDeployArtifacts() {
   await fs.copyFile(path.join(projectRoot, 'api', 'supabase.php'), path.join(distRoot, 'api', 'supabase.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'store.php'), path.join(distRoot, 'api', 'store.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'verify-payment.php'), path.join(distRoot, 'api', 'verify-payment.php'));
+  // Regional pricing: verify-payment.php require()s pricing.php, so a missing
+  // copy is a fatal error on every checkout, not a degraded price.
+  await fs.copyFile(path.join(projectRoot, 'api', 'pricing.php'), path.join(distRoot, 'api', 'pricing.php'));
+  await fs.copyFile(path.join(projectRoot, 'api', 'price-quote.php'), path.join(distRoot, 'api', 'price-quote.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'email.php'), path.join(distRoot, 'api', 'email.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'lead-campaign.php'), path.join(distRoot, 'api', 'lead-campaign.php'));
   await buildHtaccess();
-  console.log(`[ssg] deploy artifacts → dist/api/{catalog.json,config.php,admin-auth.php,supabase.php,store.php,verify-payment.php,email.php,lead-campaign.php}, dist/.htaccess`);
+  console.log(`[ssg] deploy artifacts → dist/api/{catalog.json,config.php,admin-auth.php,supabase.php,store.php,pricing.php,price-quote.php,verify-payment.php,email.php,lead-campaign.php}, dist/.htaccess`);
 }
 
 /**
@@ -789,6 +796,14 @@ function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, 
     <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments);};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s);}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${META_PIXEL_ID}');fbq('track','PageView');</script>
     <script>(function(){function clean(o){var r={};Object.keys(o||{}).forEach(function(k){if(o[k]!==undefined&&o[k]!==null&&o[k]!=='')r[k]=o[k];});return r;}function send(event,payload){window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:event},clean(payload)));if(typeof window.fbq==='function')window.fbq('trackCustom',event,clean(payload));}document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a,button'):null;if(!a)return;var href=a.getAttribute('href')||'';var text=(a.textContent||a.getAttribute('aria-label')||'').trim().slice(0,120);if(href.indexOf('wa.me/')>-1){send('whatsapp_cta_clicked',{location:location.pathname,cta_text:text});}if(href.indexOf('/get-into-grad-school-bootcamp/#tickets')>-1){send('bootcamp_cta_clicked',{location:location.pathname,cta_text:text});}});})();</script>`;
   const trackingBody = `<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1"/></noscript>`;
+  // Regional pricing fast path. Every region's price is already in the HTML
+  // with CSS revealing only Ghana; this restores a returning visitor's region
+  // BEFORE first paint, so they never watch a cedi price flip to theirs. It
+  // must stay a blocking inline script for that reason, hence the byte-golf.
+  // The checkout island re-confirms the region against the server afterwards.
+  const regionScript = hasCheckout
+    ? `\n    <script>try{var r=localStorage.getItem('ech_region');if(r&&/^(GH|NG|AF|UK|EU|INTL)$/.test(r))document.documentElement.setAttribute('data-region',r);}catch(e){}</script>`
+    : '';
   return `<!doctype html>
 <html lang="en-US">
   <head>
@@ -819,7 +834,7 @@ function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, 
     <meta name="twitter:image:alt" content="${escapeHtml(OG_IMAGE_ALT)}">
     <meta name="theme-color" content="#0077B6">
     <link rel="preload" href="/fonts/Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
-    <style>${css}</style>${ld}${checkoutScript}${matchScript}${adminScript}
+    <style>${css}</style>${regionScript}${ld}${checkoutScript}${matchScript}${adminScript}
   </head>
   <body>${trackingBody}${body}</body>
 </html>`;

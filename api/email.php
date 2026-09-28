@@ -57,12 +57,28 @@ function ech_tosend_send(string $key, array $from, array $to, string $subject, s
     }
 }
 
-function send_fulfilment(array $item, string $reference, string $buyerName, string $buyerEmail, array $sessions = [], ?int $amountPesewas = null): void {
+function send_fulfilment(
+    array $item,
+    string $reference,
+    string $buyerName,
+    string $buyerEmail,
+    array $sessions = [],
+    ?int $amountPesewas = null,
+    string $region = 'GH',
+    int $displayMinor = 0
+): void {
     $key = getenv('TOSEND_API_KEY') ?: '';
     $team = getenv('OPS_EMAIL') ?: 'hello@elevatecareerhub.com';
     $from = ech_parse_from((string) (getenv('MAIL_FROM') ?: 'Elevate Career Hub <noreply@elevatecareerhub.com>'));
     $base = rtrim((string) (getenv('PUBLIC_APP_BASE_URL') ?: ''), '/');
-    $price = ech_format_cedis($amountPesewas ?? (int) ($item['amountPesewas'] ?? 0));
+
+    // The cedi figure is what Paystack actually billed. Outside Ghana the buyer
+    // was quoted in their own currency, so lead with that and keep the cedi
+    // amount visible: it is what shows up on their statement.
+    $cedis = ech_format_cedis($amountPesewas ?? 0);
+    $price = ($region !== 'GH' && $displayMinor > 0 && function_exists('ech_format_price'))
+        ? ech_format_price($displayMinor, $region) . ' (charged as ' . $cedis . ')'
+        : $cedis;
     $name = (string) ($item['name'] ?? 'your purchase');
     $type = (string) ($item['type'] ?? 'service');
     $download = !empty($item['deliverablePath']) ? $base . $item['deliverablePath'] : '';
@@ -86,6 +102,7 @@ function send_fulfilment(array $item, string $reference, string $buyerName, stri
     $teamHtml = '<h2>New purchase</h2>'
         . '<p><strong>' . ech_esc($name) . '</strong>, ' . $price . '</p>'
         . '<ul><li>Type: ' . ech_esc($type) . '</li>'
+        . '<li>Price region: ' . ech_esc($region) . '</li>'
         . '<li>Buyer: ' . ech_esc($buyerName !== '' ? $buyerName : '(name not provided)') . ' &lt;' . ech_esc($buyerEmail !== '' ? $buyerEmail : 'no email') . '&gt;</li>'
         . '<li>Paystack reference: ' . ech_esc($reference) . '</li></ul>'
         . (!empty($sessions) ? '<p><strong>Sessions booked (' . count($sessions) . '):</strong></p>' . $sessionsListHtml : '')

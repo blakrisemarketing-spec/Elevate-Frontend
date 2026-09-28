@@ -1,7 +1,10 @@
+import { Price } from './Price';
+
 interface PriceCardProps {
   title: string;
   description: string;
-  price: string;
+  /** Literal price text. Ignored when `serviceId` is set, which prices regionally. */
+  price?: string;
   priceNote?: string;
   href?: string;
   ctaLabel?: string;
@@ -14,13 +17,15 @@ export function PriceCard({ title, description, price, priceNote, href = '/conta
     <article className="card flex flex-col h-full">
       <h3 className="text-headline-md mb-3">{title}</h3>
       <p className="text-ink-muted leading-relaxed flex-1">{description}</p>
-      <div className="mt-5 flex items-baseline gap-2">
-        <span className="text-display-lg text-primary leading-none">{price}</span>
-        {priceNote && <span className="text-sm text-ink-muted">{priceNote}</span>}
+      <div className="mt-5">
+        {serviceId
+          ? <Price id={serviceId} disclose className="text-display-lg text-primary leading-none" />
+          : <span className="text-display-lg text-primary leading-none">{price}</span>}
+        {priceNote && <span className="text-sm text-ink-muted ml-2">{priceNote}</span>}
       </div>
       {serviceId ? (
         <button type="button" className="btn-primary buy-btn mt-5" data-service-id={serviceId}>
-          {ctaLabel || `${price} Investment`}
+          {ctaLabel || <Price id={serviceId} suffix="Investment" />}
         </button>
       ) : (
         <a href={href} className="btn-primary mt-5">{ctaLabel || 'Get Started'}</a>

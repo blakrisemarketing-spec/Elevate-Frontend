@@ -50,8 +50,14 @@ export type Purchase = {
   serviceId?: string;
   itemName?: string;
   type?: string;
+  /** Always GHS: what Paystack actually billed. */
   amountPesewas?: number;
   currency?: string;
+  /** Price region the buyer was quoted at, e.g. "INTL". */
+  region?: string;
+  /** What the buyer was shown, in displayCurrency's minor unit. */
+  displayCurrency?: string;
+  displayMinor?: number;
   buyerName?: string;
   buyerEmail?: string;
   sessions?: string[];

@@ -151,3 +151,30 @@
   z-index: 100;
 }
 .skip-link:focus { left: 1rem; top: 1rem; }
+
+/* ── Regional prices ──────────────────────────────────────────────
+   Every region's price is in the HTML (see components/Price.tsx); exactly one
+   is revealed based on the data-region attribute the checkout island puts on
+   <html>. Doing the swap in CSS rather than JS is what keeps it flicker-free:
+   the correct price is painted in the first frame, with no reflow.
+
+   The :not([data-region]) rule is the no-JS / not-yet-resolved default, and it
+   deliberately shows Ghana, the cheapest region. Failing toward under-charging
+   is the safe direction, and it is also what search crawlers index. */
+[data-price] > [data-r] { display: none; }
+html:not([data-region]) [data-price] > [data-r="GH"],
+html[data-region="GH"]   [data-price] > [data-r="GH"],
+html[data-region="NG"]   [data-price] > [data-r="NG"],
+html[data-region="AF"]   [data-price] > [data-r="AF"],
+html[data-region="UK"]   [data-price] > [data-r="UK"],
+html[data-region="EU"]   [data-price] > [data-r="EU"],
+html[data-region="INTL"] [data-price] > [data-r="INTL"] { display: inline; }
+
+.price-note {
+  display: block;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  font-weight: 400;
+  opacity: 0.75;
+  margin-top: 0.15rem;
+}

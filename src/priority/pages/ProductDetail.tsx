@@ -4,7 +4,8 @@ import { WhatsAppFAB } from '../components/WhatsAppFAB';
 import { PageHero } from '../components/PageHero';
 import { FinalCTA } from '../components/FinalCTA';
 import { PRODUCTS } from '../data/products';
-import { CATALOG, formatCedis } from '../../checkout/catalog';
+import { Price } from '../components/Price';
+import { CATALOG } from '../../checkout/catalog';
 
 /**
  * Data-driven template for `/product/<slug>/` pages. The SSG build passes `slug`
@@ -17,7 +18,8 @@ export function ProductDetailPage({ slug }: { slug: string }) {
 
   const item = CATALOG[product.catalogId];
   const isFree = Boolean(product.freeDownloadPath);
-  const priceLabel = isFree ? 'Free' : item ? formatCedis(item.amountPesewas) : '';
+  // Paid products price regionally via <Price>; only "Free" is a literal.
+  const isPriced = !isFree && Boolean(item);
 
   return (
     <>
@@ -68,7 +70,11 @@ export function ProductDetailPage({ slug }: { slug: string }) {
                 <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-2">
                   {isFree ? 'Free download' : 'Get instant access'}
                 </p>
-                <p className="text-3xl font-bold text-primary mb-1">{priceLabel}</p>
+                <p className="mb-1">
+                  {isPriced
+                    ? <Price id={product.catalogId} disclose className="text-3xl font-bold text-primary" />
+                    : <span className="text-3xl font-bold text-primary">Free</span>}
+                </p>
                 <p className="text-ink-muted text-sm mb-5">
                   {isFree
                     ? 'A free resource from the Elevate Career Hub team.'
@@ -80,7 +86,7 @@ export function ProductDetailPage({ slug }: { slug: string }) {
                   </a>
                 ) : (
                   <button type="button" className="btn-primary buy-btn w-full" data-service-id={product.catalogId}>
-                    Buy now, {priceLabel}
+                    Buy now, <Price id={product.catalogId} />
                   </button>
                 )}
                 <p className="text-center text-xs text-ink-muted mt-4">Secured by Paystack · cards &amp; mobile money</p>

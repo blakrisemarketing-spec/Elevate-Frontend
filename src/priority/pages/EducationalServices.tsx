@@ -3,6 +3,7 @@ import { SiteFooter } from '../components/SiteFooter';
 import { WhatsAppFAB } from '../components/WhatsAppFAB';
 import { PageHero } from '../components/PageHero';
 import { PricingPlan } from '../components/PricingPlan';
+import { Price } from '../components/Price';
 import { WhyChooseUs } from '../components/WhyChooseUs';
 import { TestimonialsBlock } from '../components/TestimonialsBlock';
 import { FinalCTA } from '../components/FinalCTA';
@@ -49,15 +50,15 @@ export function EducationalServicesPage() {
                 <ul className="flex flex-col gap-4 mt-auto">
                   <li>
                     <p className="text-sm text-ink mb-2"><span className="font-semibold text-navy">Early Career (0&ndash;3 yrs).</span> For recent graduates moving into a first postgraduate application, positioned to speak directly to a master&rsquo;s admissions panel.</p>
-                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="edu-grad-cv-early">₵350 Investment · Early Career</button>
+                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="edu-grad-cv-early"><Price id="edu-grad-cv-early" suffix="Investment · Early Career" /></button>
                   </li>
                   <li>
                     <p className="text-sm text-ink mb-2"><span className="font-semibold text-navy">Experienced (3&ndash;10 yrs).</span> A CV that bridges your professional experience and your academic goals in a narrative that makes strategic sense to the AdComs.</p>
-                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="edu-grad-cv-experienced">₵400 Investment · Experienced</button>
+                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="edu-grad-cv-experienced"><Price id="edu-grad-cv-experienced" suffix="Investment · Experienced" /></button>
                   </li>
                   <li>
                     <p className="text-sm text-ink mb-2"><span className="font-semibold text-navy">Senior Executive (10+ yrs).</span> For executives pursuing MBAs, executive education, or research study, communicating leadership and a clear academic purpose.</p>
-                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="edu-grad-cv-senior">₵450 Investment · Senior Executive</button>
+                    <button type="button" className="btn-primary buy-btn w-full" data-service-id="edu-grad-cv-senior"><Price id="edu-grad-cv-senior" suffix="Investment · Senior Executive" /></button>
                   </li>
                 </ul>
               </article>
@@ -70,8 +71,8 @@ export function EducationalServicesPage() {
                   The committee already knows your grades. The essay is the only place they see your <em>why</em>. We write personal statements, statements of purpose, study plans, and scholarship essays that are evidence-led and impact-oriented, mapping your journey directly to the programme&rsquo;s goals and the funder&rsquo;s criteria. Our clients have been shortlisted for Chevening, Gates Cambridge, Erasmus Mundus, DAAD, and Commonwealth.
                 </p>
                 <div className="flex flex-col gap-3 mt-auto">
-                  <button type="button" className="btn-primary buy-btn" data-service-id="edu-essay-500">₵520 Investment · up to 500 words</button>
-                  <button type="button" className="btn-secondary buy-btn" data-service-id="edu-essay-1000">₵850 Investment · up to 1,000 words</button>
+                  <button type="button" className="btn-primary buy-btn" data-service-id="edu-essay-500"><Price id="edu-essay-500" suffix="Investment · up to 500 words" /></button>
+                  <button type="button" className="btn-secondary buy-btn" data-service-id="edu-essay-1000"><Price id="edu-essay-1000" suffix="Investment · up to 1,000 words" /></button>
                 </div>
               </article>
 
@@ -83,9 +84,9 @@ export function EducationalServicesPage() {
                   Your application doesn&rsquo;t end with the PDF you upload. The moment an evaluator gets curious, they head to LinkedIn. We align your profile with your application narrative so that when they look you up, they find achievements that strengthen rather than complicate your case.
                 </p>
                 <div className="mt-5 flex items-baseline gap-2">
-                  <span className="text-display-lg text-primary leading-none">₵400</span>
+                  <Price id="edu-linkedin" disclose className="text-display-lg text-primary leading-none" />
                 </div>
-                <button type="button" className="btn-primary buy-btn mt-5" data-service-id="edu-linkedin">₵400 Investment</button>
+                <button type="button" className="btn-primary buy-btn mt-5" data-service-id="edu-linkedin"><Price id="edu-linkedin" suffix="Investment" /></button>
               </article>
 
               {/* School selection */}
@@ -96,9 +97,9 @@ export function EducationalServicesPage() {
                   One of the most expensive mistakes you can make is applying to a big-name school that&rsquo;s a bad fit for your profile or your wallet. We build a strategic, realistic shortlist across Europe, the UK, Canada, and the USA based on where you have the highest chance of admission, and, more importantly, funding.
                 </p>
                 <div className="mt-5 flex items-baseline gap-2">
-                  <span className="text-display-lg text-primary leading-none">₵500</span>
+                  <Price id="edu-school-selection" disclose className="text-display-lg text-primary leading-none" />
                 </div>
-                <button type="button" className="btn-primary buy-btn mt-5" data-service-id="edu-school-selection">₵500 Investment</button>
+                <button type="button" className="btn-primary buy-btn mt-5" data-service-id="edu-school-selection"><Price id="edu-school-selection" suffix="Investment" /></button>
               </article>
 
               {/* Consultation & interview prep */}
@@ -109,10 +110,10 @@ export function EducationalServicesPage() {
                   Consultations cover application strategy, programme selection, essay direction, and any part of the process where you need clarity before moving forward. Interview preparation is available for programmes that require it, including MBA programmes, scholarship finals, and research degree interviews, grounded in real knowledge of what panels in the UK, Europe, and North America are looking for.
                 </p>
                 <div className="mt-5 flex items-baseline gap-2">
-                  <span className="text-display-lg text-primary leading-none">₵500</span>
+                  <Price id="edu-consultation" disclose className="text-display-lg text-primary leading-none" />
                   <span className="text-sm text-ink-muted">per session</span>
                 </div>
-                <button type="button" className="btn-primary buy-btn mt-5 self-start" data-service-id="edu-consultation">₵500 Investment · per session</button>
+                <button type="button" className="btn-primary buy-btn mt-5 self-start" data-service-id="edu-consultation"><Price id="edu-consultation" suffix="Investment · per session" /></button>
               </article>
             </div>
 
@@ -140,9 +141,8 @@ export function EducationalServicesPage() {
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
               <PricingPlan
                 tier="Strategic Bundle"
-                price="₵1,800"
                 serviceId="edu-bundle-strategic"
-                ctaLabel="₵1,800 Investment"
+                ctaSuffix="Investment"
                 features={[
                   'A curated school list based on your funding goals',
                   '1 tailored Grad School CV',
@@ -154,7 +154,7 @@ export function EducationalServicesPage() {
               <PricingPlan
                 tier="Silver Bundle"
                 variant="Masters / Taught"
-                price="₵9,000"
+                priceId="edu-bundle-silver-general"
                 priceNote="if selected"
                 href={applyWhatsApp('Silver Bundle (Masters / Taught)')}
                 ctaLabel="Apply now"
@@ -173,7 +173,7 @@ export function EducationalServicesPage() {
               <PricingPlan
                 tier="Silver Bundle"
                 variant="MBA / MFA / MRes"
-                price="₵12,000"
+                priceId="edu-bundle-silver-mba"
                 highlighted
                 priceNote="if selected"
                 href={applyWhatsApp('Silver Bundle (MBA / MFA / MRes)')}
@@ -193,7 +193,7 @@ export function EducationalServicesPage() {
               />
               <PricingPlan
                 tier="Gold Bundle"
-                price="₵14,000"
+                priceId="edu-bundle-gold"
                 priceNote="if selected"
                 href={applyWhatsApp('Gold Bundle')}
                 ctaLabel="Apply now"
