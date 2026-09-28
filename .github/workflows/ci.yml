@@ -25,17 +25,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Full production build: tsc typecheck -> vite -> WP-html -> tailwind ->
-      # SSG + checkout island + api/*.php + .htaccess (with the SPA route
-      # allowlist self-test). No secrets needed; VITE_PAYSTACK_PUBLIC_KEY
-      # defaults to "" for a structure-only build.
+      # Full production build: tsc typecheck -> tailwind -> SSG (copies
+      # public/, renders every page, fingerprints images/fonts, builds the
+      # islands, api/*.php, .htaccess). No secrets needed;
+      # VITE_PAYSTACK_PUBLIC_KEY defaults to "" for a structure-only build.
       - name: Build
         run: npm run build
 
-      # Snapshots present, no stray scripts, internal links + assets resolve.
+      # Titles/descriptions present, no stray scripts, internal links + assets
+      # resolve, every image/font reference is fingerprinted.
       - name: Content audit
         run: npm run audit
 
-      # Every route in pages.json serves a 200 with app-shell/static content.
+      # Every built route serves a 200 with rendered content.
       - name: Direct-route smoke
         run: node scripts/smoke-direct-routes.mjs

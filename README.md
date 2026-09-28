@@ -1,56 +1,33 @@
-# Elevate Career Hub Frontend Migration
+# Elevate Career Hub Frontend
 
-Modern Vite + React + TypeScript rebuild of `https://elevatecareerhub.com/` that preserves the existing WordPress site structure, copy, links, visual assets, Elementor markup, and public route set as closely as possible.
-
-## What is included
-
-- React/Vite SPA shell with same-route navigation and legacy `/index.php/...` alias support.
-- 35 migrated public WordPress pages/posts/products.
-- Vendored WordPress/Elementor CSS needed for visual parity.
-- 348 downloaded upload assets under `public/assets/wp-content/uploads/...`.
-- Per-page HTML snapshots under `public/snapshots/` to preserve source copy and Elementor layout.
-- Route, link, asset, issue, and audit inventories under `outputs/`.
+Static, zero-JS rebuild of `https://elevatecareerhub.com/`, deployed on Hostinger. Every route is pre-rendered to HTML at build time from React components; only pages that need it load a small island (checkout, Grad School Match, admin). Payments run through Paystack with server-side PHP verification. See `CLAUDE.md` for the full project notes.
 
 ## Commands
 
 ```bash
-pnpm install
-pnpm dev
-pnpm build
-pnpm preview
-pnpm run crawl   # refresh snapshots/assets from live WordPress site
-pnpm run audit   # verify route/link/asset/snapshot inventory integrity
+npm install
+npm run dev        # design iteration with HMR (no checkout/PHP)
+npm run build      # full production build -> dist/
+npm run audit      # post-build: links, assets, scripts, fingerprinting
+npm run smoke      # post-build: every route serves 200 with content
+npm run serve:php  # local full-stack preview on :8080 (checkout + PHP)
+npm run bench -- / # Regular-3G LCP benchmark
 ```
 
 ## Project structure
 
 ```text
-src/main.tsx                 React route shell and internal link handling
-src/generated/pages.json     Route manifest and per-page metadata
-src/generated/vendor-css.css Vendored CSS imports
-public/snapshots/            Captured page HTML snapshots
-public/assets/               Downloaded WordPress upload assets
-public/vendor/elevate-css/   Vendored WordPress/Elementor CSS files
-scripts/crawl-wordpress.mjs  WordPress REST + HTML crawler
-scripts/audit.mjs            Migration integrity audit
-outputs/                     Route/link/asset/issues/audit deliverables
+src/priority/                    Page components, templates and content data
+src/priority/registry.ts         Route -> component map (dev server)
+src/checkout/, src/match/, src/admin/   Client islands
+src/main.tsx                     Dev-only preview entry (not shipped)
+scripts/build-priority-routes.mjs  The production build: SSG, islands, api/, .htaccess
+api/                             PHP endpoints (payments, leads, admin)
+deploy/htaccess.conf             Hostinger headers, redirects, caching
+public/                          Static files copied into dist/
+supabase/migrations/             Runtime data schema
 ```
 
-## Verification run
+## Caching
 
-Last verified with:
-
-```bash
-pnpm build
-pnpm run audit
-pnpm preview --host 127.0.0.1 --port 4173
-```
-
-Build passed. Audit passed with warnings for source-site WooCommerce/account/product shells that have short HTML snapshots or missing source meta descriptions.
-
-## Known limitations
-
-- Browser-level visual regression screenshots were not completed in this run because no browser automation tool was available in the execution environment.
-- WordPress scripts were stripped from migrated snapshots for safety and performance; static visual content, links, menus, and WhatsApp/email anchors are preserved. Dynamic WooCommerce/account/cart/checkout behavior remains an integration point.
-- Some CSS font/icon URLs remain remote because they are referenced inside third-party WordPress plugin CSS.
-- A small set of source WordPress upload references returned 404 and are documented in `outputs/migration-issues.json`.
+Images and fonts are cached for a year. The build copies every image/font a page references to `name.<hash>.ext` and points the page at that copy, so replacing a file in `public/` always reaches visitors on the next deploy. HTML is served with `Cache-Control: no-cache`.
