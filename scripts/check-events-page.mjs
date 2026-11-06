@@ -29,17 +29,24 @@ for (const text of [
   'Get into Grad School Bootcamp',
   'Job Readiness Bootcamp',
   'Career Clarity Workshop',
-  'Register Now',
+  'View Details',
   'View Highlights',
   'Closed',
 ]) {
   assert(html.includes(text), `Events page HTML is missing: ${text}`);
 }
 
+// The grad school bootcamp has run: nothing on this page may still sell it.
+assert(!html.includes('Register Now'), 'No ended event may still show a Register Now button.');
+assert(
+  html.includes('No open registrations right now'),
+  'With no upcoming events, the Upcoming section must render its empty state instead of a blank grid.',
+);
+
 const upcomingIndex = html.indexOf('Upcoming Events');
 const pastIndex = html.indexOf('Past Events');
 assert(upcomingIndex !== -1 && pastIndex !== -1 && upcomingIndex < pastIndex, 'Upcoming Events must appear before Past Events.');
-assert(html.includes('href="/get-into-grad-school-bootcamp/"'), 'Upcoming bootcamp Register Now button must link to the grad school bootcamp page.');
+assert(html.includes('href="/get-into-grad-school-bootcamp/"'), 'The grad school bootcamp card must still link to its page.');
 assert(!html.includes('\u2014'), 'Events page output must not contain em dashes.');
 
 console.log('Events page check passed.');

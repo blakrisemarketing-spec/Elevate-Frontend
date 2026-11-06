@@ -14,7 +14,8 @@
  * vs "stretch" tiers, and carry plain-language "why this fits you" reasons.
  *
  * It is a marketing tool, not an admissions oracle: it always returns an
- * encouraging, plausible shortlist and routes the visitor to the bootcamp.
+ * encouraging, plausible shortlist and routes the visitor to our 1-on-1
+ * grad school services.
  * Every scholarship named here is real; blurbs stay general (no invented
  * amounts or deadlines) per the brand rule against fabrication.
  *
@@ -70,8 +71,6 @@ export interface ProgramPathway extends Scorable {
   name: string;
   category: string;
   blurb: string;
-  /** Bootcamp session that most directly de-risks this pathway. */
-  bootcampSession?: string;
 }
 
 export interface Scholarship extends Scorable {
@@ -392,7 +391,7 @@ function scoreItem(item: Scorable, a: Answers): { score: number; tier: Tier; rea
     if (need >= 3) reasons.push('Your academic record clears the bar');
   } else if (need - ucr === 1) {
     score += 7;
-    reasons.push('A reach worth taking, the bootcamp shows you how to position your profile');
+    reasons.push('A reach worth taking, we help you position your profile for it');
   } else {
     score += 3;
   }
@@ -429,112 +428,96 @@ export const PATHWAYS: ProgramPathway[] = [
   {
     id: 'funded-research-masters', name: 'Fully funded research master’s', category: 'Research',
     blurb: 'Thesis-based master’s where supervisors and departments fund strong applicants. Your proposal does the heavy lifting.',
-    bootcampSession: 'Research Proposals, Pitching to Supervisors and Getting Funded',
     regions: ['uk', 'us', 'canada', 'europe', 'australia'], fields: ['stem', 'health', 'social', 'business'], degrees: ['research', 'taught'],
     minClass: '2:1', idealExp: 'any', funding: ['full', 'partial'], tags: ['research'], weight: 90,
   },
   {
     id: 'funded-phd-stipend', name: 'Funded PhD with a stipend', category: 'Research',
     blurb: 'Fully funded doctoral places that pay tuition plus a living stipend. Competitive, but very winnable with the right pitch.',
-    bootcampSession: 'Research Proposals, Pitching to Supervisors and Getting Funded',
     regions: ['uk', 'us', 'canada', 'europe', 'australia'], fields: ['any'], degrees: ['phd', 'research'],
     minClass: 'first', idealExp: 'any', funding: ['full'], tags: ['research'], weight: 88,
   },
   {
     id: 'direct-phd-funded', name: 'Direct-entry funded PhD', category: 'Research',
     blurb: 'Some systems let you go straight into a funded PhD without a separate master’s. Faster, fully funded, and built around your research idea.',
-    bootcampSession: 'Research Proposals, Pitching to Supervisors and Getting Funded',
     regions: ['us', 'canada', 'australia'], fields: ['stem', 'health', 'social'], degrees: ['phd'],
     minClass: 'first', idealExp: 'any', funding: ['full'], tags: ['research'], weight: 76,
   },
   {
     id: 'global-mba', name: 'Global MBA with scholarship support', category: 'Business',
     blurb: 'Top MBA programmes for professionals ready to pivot, with fellowships and need-based aid that bring the cost down.',
-    bootcampSession: 'The MBA Blueprint',
     regions: ['uk', 'us', 'canada', 'europe', 'australia'], fields: ['business'], degrees: ['mba'],
     minClass: '2:1', idealExp: 'experienced', funding: ['partial', 'self-partly', 'flexible'], tags: ['leadership'], weight: 85,
   },
   {
     id: 'assistantship-route', name: 'Graduate assistantship route', category: 'Funded study',
     blurb: 'One of the most underused funding routes: teaching or research assistantships that waive tuition and pay you a stipend.',
-    bootcampSession: 'Landing a Graduate Assistantship',
     regions: ['us', 'canada'], fields: ['stem', 'social', 'business', 'health'], degrees: ['research', 'taught', 'phd'],
     minClass: '2:1', idealExp: 'any', funding: ['full', 'partial'], tags: ['assistantship', 'research'], weight: 84,
   },
   {
     id: 'fully-funded-uk-masters', name: 'Fully funded UK master’s', category: 'Funded study',
     blurb: 'A one-year UK master’s backed by a full scholarship. Fast, respected, and very fundable with a sharp narrative.',
-    bootcampSession: 'Deep Dive on Scholarships',
     regions: ['uk'], fields: ['any'], degrees: ['taught'],
     minClass: '2:1', idealExp: 'some', funding: ['full', 'partial'], tags: ['leadership'], weight: 82,
   },
   {
     id: 'mastercard-scholars-pathway', name: 'Africa-focused scholars programme', category: 'Funded study',
     blurb: 'Fully funded programmes built for African talent, covering tuition, travel, and living costs end to end.',
-    bootcampSession: 'Deep Dive on Scholarships',
     regions: ['any'], fields: ['any'], degrees: ['taught', 'research'],
     minClass: '2:1', idealExp: 'any', funding: ['full'], tags: ['africa', 'development', 'leadership'], weight: 81,
   },
   {
     id: 'low-tuition-europe', name: 'Low-tuition Europe master’s', category: 'Affordable study',
     blurb: 'Public universities across Europe with low or no tuition for international students. Strong quality, gentle price.',
-    bootcampSession: 'Your Graduate School Game Plan',
     regions: ['europe'], fields: ['any'], degrees: ['taught'],
     minClass: '2:2', idealExp: 'any', funding: ['self-partly', 'flexible', 'partial'], tags: ['affordable'], weight: 80,
   },
   {
     id: 'germany-nordics-funded', name: 'Germany and Nordics, low-cost master’s', category: 'Affordable study',
     blurb: 'Germany and the Nordics offer world-class master’s with little or no tuition, plus scholarships on top. Underrated and very doable.',
-    bootcampSession: 'Your Graduate School Game Plan',
     regions: ['europe'], fields: ['stem', 'social', 'health', 'business'], degrees: ['taught', 'research'],
     minClass: '2:1', idealExp: 'any', funding: ['self-partly', 'partial', 'full'], tags: ['affordable', 'research'], weight: 79,
   },
   {
     id: 'canada-funded-masters', name: 'Funded master’s in Canada', category: 'Funded study',
     blurb: 'Research master’s in Canada where funding packages and assistantships are part of the offer for strong applicants.',
-    bootcampSession: 'Landing a Graduate Assistantship',
     regions: ['canada'], fields: ['stem', 'health', 'social'], degrees: ['research', 'taught'],
     minClass: '2:1', idealExp: 'any', funding: ['full', 'partial'], tags: ['research', 'assistantship'], weight: 79,
   },
   {
     id: 'erasmus-mundus', name: 'Erasmus Mundus joint master’s', category: 'Funded study',
     blurb: 'Study in two or more European countries on a fully funded joint degree, travel and stipend included.',
-    bootcampSession: 'Deep Dive on Scholarships',
     regions: ['europe'], fields: ['any'], degrees: ['taught'],
     minClass: '2:1', idealExp: 'any', funding: ['full', 'partial'], tags: ['leadership'], weight: 78,
   },
   {
     id: 'australia-funded', name: 'Funded study in Australia', category: 'Funded study',
     blurb: 'Australian master’s and PhD places with government and university scholarships for international applicants.',
-    bootcampSession: 'Deep Dive on Scholarships',
     regions: ['australia'], fields: ['any'], degrees: ['taught', 'research'],
     minClass: '2:1', idealExp: 'any', funding: ['full', 'partial'], tags: ['development'], weight: 70,
   },
   {
     id: 'conversion-switcher', name: 'Conversion master’s for career switchers', category: 'Profile building',
     blurb: 'Built for people moving into a new field: conversion and professional master’s that welcome a different background.',
-    bootcampSession: 'Becoming the Candidate Admissions Committees Cannot Overlook',
     regions: ['any'], fields: ['business', 'stem', 'social'], degrees: ['taught'],
     minClass: '2:2', idealExp: 'any', funding: ['self-partly', 'partial', 'flexible'], tags: ['accessible'], weight: 64,
   },
   {
     id: 'pre-masters-pathway', name: 'Pathway and pre-master’s route', category: 'Profile building',
     blurb: 'A bridge for a lower class or a career change: pathway programmes that get you into a strong master’s on merit.',
-    bootcampSession: 'Becoming the Candidate Admissions Committees Cannot Overlook',
     regions: ['any'], fields: ['any'], degrees: ['taught'],
     minClass: 'third', idealExp: 'any', funding: ['self-partly', 'partial', 'flexible'], tags: ['accessible'], weight: 60,
   },
   {
     id: 'online-distance', name: 'Online or distance master’s', category: 'Flexible study',
     blurb: 'Earn a respected master’s from a top university without relocating, often part-time and easier on the wallet.',
-    bootcampSession: 'Your Graduate School Game Plan',
     regions: ['any'], fields: ['business', 'stem', 'social'], degrees: ['taught'],
     minClass: '2:2', idealExp: 'any', funding: ['self-partly', 'flexible', 'partial'], tags: ['affordable', 'accessible'], weight: 58,
   },
   {
     id: 'self-funded-affordable', name: 'Affordable self-funded master’s', category: 'Affordable study',
     blurb: 'A curated route to respected, low-tuition universities you can fund yourself, often with partial scholarships on top.',
-    bootcampSession: 'Your Graduate School Game Plan',
     regions: ['any'], fields: ['any'], degrees: ['taught'],
     minClass: 'any', idealExp: 'any', funding: ['self-partly', 'flexible', 'partial'], tags: ['affordable'], weight: 55,
   },

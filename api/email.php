@@ -219,7 +219,7 @@ function send_match_emails(
     $team = getenv('OPS_EMAIL') ?: 'hello@elevatecareerhub.com';
     $from = ech_parse_from((string) (getenv('MAIL_FROM') ?: 'Elevate Career Hub <noreply@elevatecareerhub.com>'));
     $base = rtrim((string) (getenv('PUBLIC_APP_BASE_URL') ?: 'https://elevatecareerhub.com'), '/');
-    $bootcampUrl = $base . '/get-into-grad-school-bootcamp/#tickets';
+    $servicesUrl = $base . '/educational-services/';
     $cvDownloadUrl = $cvFile !== '' ? $base . '/api/admin-cv.php?file=' . rawurlencode($cvFile) : '';
 
     $pathHtml = ech_render_tiered($pathways);
@@ -238,10 +238,10 @@ function send_match_emails(
         . '<p>This report was built automatically from your answers the moment you hit submit, no waiting on anyone. Here is what fits you right now.</p>'
         . '<h3>Program pathways you qualify for</h3>' . $pathHtml
         . '<h3>Scholarships worth targeting</h3>' . $scholHtml
-        . '<p>One honesty note: the final yes on funding sits with each provider. Our job is to make your case impossible to ignore. The Get Into Grad School Bootcamp shows you exactly how, from school selection to visa.</p>'
+        . '<p>One honesty note: the final yes on funding sits with each provider. Our job is to make your case impossible to ignore, from the school list all the way to the visa interview.</p>'
         . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:24px 0;background:#0077B6;border-radius:14px;"><tr><td style="padding:22px;text-align:center;">'
         . '<p style="margin:0 0 12px;color:#ffffff;font-size:18px;font-weight:700;">Ready to turn these matches into applications?</p>'
-        . '<a href="' . ech_esc($bootcampUrl) . '" style="display:inline-block;background:#3FA9F5;color:#12213f;text-decoration:none;font-weight:800;padding:14px 22px;border-radius:999px;">Save my spot in the bootcamp</a>'
+        . '<a href="' . ech_esc($servicesUrl) . '" style="display:inline-block;background:#3FA9F5;color:#12213f;text-decoration:none;font-weight:800;padding:14px 22px;border-radius:999px;">See how we help, one on one</a>'
         . '</td></tr></table>'
         . ($cvFile !== '' ? '<p>Thanks for sharing your CV. A real human on our team will review it and follow up with notes.</p>' : '')
         . '<p>, Elevate Career Hub</p>';

@@ -33,4 +33,4 @@ try {
     echo '<!doctype html><title>Unsubscribe failed</title><p>Something went wrong on our side. Please try the link again in a few minutes.</p>';
     exit;
 }
-echo '<!doctype html><title>Unsubscribed</title><main style="font-family:Arial,sans-serif;max-width:640px;margin:48px auto;padding:24px;"><h1>You are unsubscribed</h1><p>You will no longer receive Grad School Bootcamp follow-up emails from this sequence.</p><p>If you still need help, you can contact the Elevate team directly.</p></main>';
+echo '<!doctype html><title>Unsubscribed</title><main style="font-family:Arial,sans-serif;max-width:640px;margin:48px auto;padding:24px;"><h1>You are unsubscribed</h1><p>You will no longer receive Grad School Match follow-up emails from this sequence.</p><p>If you still need help, you can contact the Elevate team directly.</p></main>';

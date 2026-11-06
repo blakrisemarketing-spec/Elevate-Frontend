@@ -164,6 +164,13 @@ async function startCheckout(btn: HTMLButtonElement): Promise<void> {
   const id = btn.dataset.serviceId || '';
   const item = CATALOG[id];
   if (!item) { console.error(`[checkout] unknown service id: ${id}`); return; }
+  // Closed item (e.g. an event that has already run). Pages drop their buy
+  // buttons when this flips, but a cached page can still hold one, so refuse
+  // here too rather than opening a checkout the server would reject anyway.
+  if (item.closed) {
+    alert('Registration for this programme has closed. Message us on WhatsApp and we’ll tell you when the next cohort opens.');
+    return;
+  }
   trackEvent('checkout_started', {
     service_id: item.id,
     item_name: item.name,

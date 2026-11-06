@@ -7,18 +7,17 @@ export interface EventCard {
   description: string;
 }
 
-export const UPCOMING_EVENTS: EventCard[] = [
+export const UPCOMING_EVENTS: EventCard[] = [];
+
+export const PAST_EVENTS: EventCard[] = [
   {
     title: 'Get into Grad School Bootcamp',
     date: '26 Jul to 18 Aug 2026',
     href: '/get-into-grad-school-bootcamp/',
-    status: 'upcoming',
-    ctaLabel: 'Register Now',
+    status: 'past',
+    ctaLabel: 'View Details',
     description: 'A live, 8-session bootcamp for applicants who want a clearer graduate school strategy, stronger essays, and a realistic funding plan.',
   },
-];
-
-export const PAST_EVENTS: EventCard[] = [
   {
     title: 'Job Readiness Bootcamp',
     date: 'Past bootcamp',

@@ -7,8 +7,11 @@ import { FACILITATORS } from '../data/facilitators';
 import { BOOTCAMP_VIDEO_TESTIMONIALS } from '../data/testimonials';
 import { BOOTCAMP_FAQ_GROUPS as FAQ_GROUPS } from '../data/faqs';
 
-const DROPIN_WA =
-  'https://wa.me/233531113454?text=Hi%20Elevate%2C%20I%27d%20like%20to%20pick%20individual%20drop-in%20sessions%20for%20the%20Get%20Into%20Grad%20School%20Bootcamp.';
+// The Jul-Aug 2026 cohort has run. Payments are off (both bootcamp SKUs are
+// `closed` in src/checkout/catalog.ts, and api/verify-payment.php rejects
+// them), so every register CTA now points at the next-cohort waitlist.
+const WAITLIST_WA =
+  'https://wa.me/233531113454?text=Hi%20Elevate%2C%20please%20let%20me%20know%20when%20the%20next%20Get%20Into%20Grad%20School%20Bootcamp%20opens.';
 
 const QUICK_FACTS = [
   { label: '8 live sessions', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2' },
@@ -36,6 +39,15 @@ const BONUSES = [
   { title: 'No Experience Required', body: 'Nothing to prepare before Session 1, just show up with an open mind and a rough idea of your goals.' },
 ];
 
+function ClosedPill({ className = '' }: { className?: string }) {
+  return (
+    <span className={`inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-4 py-3 text-sm font-semibold text-slate-600 ${className}`}>
+      <svg viewBox="0 0 24 24" className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round"/></svg>
+      Registration closed
+    </span>
+  );
+}
+
 function CheckIcon() {
   return (
     <svg viewBox="0 0 20 20" className="w-5 h-5 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 10l4 4 6-8" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -54,19 +66,26 @@ export function GradSchoolBootcampPage() {
           <div className="container-site py-16 lg:py-24">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
               <div>
-                <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-navy bg-electric px-3 py-1.5 rounded-full mb-6">
-                  Get Into Grad School Bootcamp · Registration open
+                <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white bg-white/15 ring-1 ring-white/25 px-3 py-1.5 rounded-full mb-6">
+                  Get Into Grad School Bootcamp · Registration closed
                 </p>
                 <h1 id="hero-heading" className="text-display-lg text-white mb-8">
                   Turn your “average” profile into an offer
                 </h1>
-                <div className="flex flex-wrap gap-4 items-center">
-                  <button type="button" className="btn-primary bg-electric text-navy hover:bg-electric-600 buy-btn" data-service-id="bootcamp-grad-full">
-                    Register for the bootcamp now
-                  </button>
-                  <a href="#tickets" className="text-white underline underline-offset-4 hover:text-electric-400 text-sm">
-                    Can’t attend it all? See individual drop-in tickets &darr;
-                  </a>
+
+                <div className="rounded-2xl bg-white/10 ring-1 ring-white/20 p-6 mb-8">
+                  <p className="text-white font-semibold text-lg mb-2">This bootcamp has ended.</p>
+                  <p className="text-white/85 leading-relaxed mb-5">
+                    The 2026 cohort ran from 26 July to 18 August, and registration is now closed. Everything below is here so you can see exactly what the next cohort covers.
+                  </p>
+                  <div className="flex flex-wrap gap-4 items-center">
+                    <a href={WAITLIST_WA} target="_blank" rel="noopener" className="btn-primary bg-electric text-navy hover:bg-electric-600">
+                      Tell me when the next cohort opens
+                    </a>
+                    <a href="/educational-services/" className="text-white underline underline-offset-4 hover:text-electric-400 text-sm">
+                      Need help with an application now? See our grad school services &rarr;
+                    </a>
+                  </div>
                 </div>
 
                 <ul className="flex flex-wrap gap-x-8 gap-y-3 mt-10">
@@ -143,7 +162,7 @@ export function GradSchoolBootcampPage() {
         <section className="container-site py-16 lg:py-20" aria-labelledby="bonus-heading">
           <p className="text-sm font-semibold uppercase tracking-wider text-primary text-center mb-3">What’s in it for you</p>
           <h2 id="bonus-heading" className="text-headline-lg text-center mb-4">You’re not just getting live classes, you’re getting the tools to win</h2>
-          <p className="text-ink-muted text-center max-w-2xl mx-auto mb-12">Register for the full bootcamp and instantly unlock our premium resource bundle to fast-track your cycle.</p>
+          <p className="text-ink-muted text-center max-w-2xl mx-auto mb-12">Every full-access participant unlocked our premium resource bundle alongside the live sessions. Here is what came with the pass.</p>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
             {BONUSES.map((b) => (
               <div key={b.title} className="card flex flex-col gap-2">
@@ -216,50 +235,50 @@ export function GradSchoolBootcampPage() {
         <section id="tickets" className="bg-surface scroll-mt-20" aria-labelledby="tickets-heading">
           <div className="container-site py-16 lg:py-20">
             <h2 id="tickets-heading" className="text-headline-lg text-center mb-3">Your entire grad school journey, solved in 8 sessions</h2>
-            <p className="text-ink-muted text-center max-w-2xl mx-auto mb-12">Choose the option that fits where you are right now.</p>
+            <p className="text-ink-muted text-center max-w-2xl mx-auto mb-8">These were the 2026 options. Registration is closed and payments are switched off, so nothing here can be bought right now.</p>
+            <div className="max-w-4xl mx-auto mb-12">
+              <p className="rounded-xl border border-slate-200 bg-white px-5 py-4 text-center text-sm text-ink">
+                <span className="font-semibold text-navy">The 2026 cohort has ended.</span>{' '}
+                <a href={WAITLIST_WA} target="_blank" rel="noopener" className="text-primary font-semibold underline underline-offset-4 hover:text-navy">Join the waitlist</a>{' '}
+                and we will message you first when dates for the next one are set.
+              </p>
+            </div>
             <div className="grid gap-6 lg:grid-cols-2 max-w-4xl mx-auto items-stretch">
               {/* Full pass */}
               <article className="card flex flex-col border-2 border-primary relative">
-                <span className="absolute -top-3 left-6 bg-primary text-white text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full">Best value</span>
+                <span className="absolute -top-3 left-6 bg-slate-200 text-slate-700 text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full">Ended</span>
                 <h3 className="text-headline-md text-navy mt-2">The Full Access Pass</h3>
                 <p className="text-ink-muted text-sm mt-2 mb-5">All 8 live sessions, the 50+ Scholarships Pack, the 30+ Low-Tuition University list, and all session recordings.</p>
                 <div className="flex items-baseline gap-3 mb-1">
                   <span className="text-4xl font-bold text-primary">GHS 1,500</span>
                 </div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-electric mb-6">Standard price, limited seats</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted mb-6">2026 cohort price</p>
                 <ul className="flex flex-col gap-2.5 mb-7 text-sm text-ink">
                   {['All 8 live sessions + Q&As', 'The Ultimate Funding Pack (50+ scholarships)', 'The Smart School List (30+ universities)', '90 days of replay access', 'Dedicated WhatsApp community'].map((x) => (
                     <li key={x} className="flex items-start gap-2.5"><CheckIcon />{x}</li>
                   ))}
                 </ul>
-                <button type="button" className="btn-primary w-full mt-auto buy-btn" data-service-id="bootcamp-grad-full">
-                  Register for the full bootcamp
-                </button>
+                <ClosedPill className="w-full mt-auto" />
               </article>
 
               {/* Drop-in */}
               <article className="card flex flex-col">
                 <h3 className="text-headline-md text-navy">The Drop-In Pass</h3>
-                <p className="text-ink-muted text-sm mt-2 mb-5">Only need help with your essays, or just want to master graduate assistantships? Pick the specific sessions you need right now.</p>
+                <p className="text-ink-muted text-sm mt-2 mb-5">For anyone who only needed the essays session, or just the graduate assistantship deep dive, drop-ins covered single sessions instead of the full pass.</p>
                 <div className="flex items-baseline gap-2 mb-1">
                   <span className="text-4xl font-bold text-primary">GHS 300</span>
                   <span className="text-ink-muted">/ session</span>
                 </div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted mb-6">Buy only what you need</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted mb-6">2026 cohort price, per session</p>
                 <ul className="flex flex-col gap-2.5 mb-7 text-sm text-ink">
-                  {['Attend any single session live', 'Includes that session’s Q&A', 'Replay access for the session you pick'].map((x) => (
+                  {['Any single session, live', 'That session’s Q&A included', 'Replay access for the session picked'].map((x) => (
                     <li key={x} className="flex items-start gap-2.5"><CheckIcon />{x}</li>
                   ))}
                 </ul>
-                <button type="button" className="btn-secondary w-full buy-btn" data-service-id="bootcamp-grad-dropin">
-                  Choose your sessions
-                </button>
-                <a href={DROPIN_WA} target="_blank" rel="noopener" className="text-center text-sm text-primary underline underline-offset-4 hover:text-navy mt-3">
-                  Prefer to choose first? Message us
-                </a>
+                <ClosedPill className="w-full mt-auto" />
               </article>
             </div>
-            <p className="text-center text-xs text-ink-muted mt-8">Secured by Paystack · cards &amp; mobile money. After checkout we’ll confirm your session details by email and WhatsApp.</p>
+            <p className="text-center text-xs text-ink-muted mt-8">Already paid for the 2026 cohort? Your replay access is unchanged. Email hello@elevatecareerhub.com if you need your links resent.</p>
           </div>
         </section>
 
@@ -287,14 +306,14 @@ export function GradSchoolBootcampPage() {
         <section aria-labelledby="final-cta">
           <div className="container-site py-20">
             <div className="bg-gradient-to-br from-primary to-navy text-white rounded-xl p-10 sm:p-14 text-center shadow-soft">
-              <p className="text-sm font-semibold uppercase tracking-wider text-electric mb-3">Seats are limited, registration is open</p>
-              <h2 id="final-cta" className="text-headline-lg text-white mb-5">Secure your future with confidence</h2>
-              <p className="text-white/90 text-lg max-w-xl mx-auto mb-8">Stop guessing. Get the exact blueprint, the funding lists, and the people who’ve done it, all in one bootcamp.</p>
+              <p className="text-sm font-semibold uppercase tracking-wider text-electric mb-3">This cohort has ended</p>
+              <h2 id="final-cta" className="text-headline-lg text-white mb-5">Be first in line for the next one</h2>
+              <p className="text-white/90 text-lg max-w-xl mx-auto mb-8">Registration for the 2026 bootcamp is closed. Join the waitlist and we will send you the dates before we announce them publicly.</p>
               <div className="flex flex-wrap justify-center gap-4">
-                <button type="button" className="btn-primary bg-electric text-navy hover:bg-electric-600 buy-btn" data-service-id="bootcamp-grad-full">
-                  Register for the full bootcamp
-                </button>
-                <a href="#tickets" className="btn-secondary bg-transparent border-white text-white hover:bg-white/10">See ticket options</a>
+                <a href={WAITLIST_WA} target="_blank" rel="noopener" className="btn-primary bg-electric text-navy hover:bg-electric-600">
+                  Join the waitlist
+                </a>
+                <a href="/educational-services/" className="btn-secondary bg-transparent border-white text-white hover:bg-white/10">See our grad school services</a>
               </div>
             </div>
           </div>

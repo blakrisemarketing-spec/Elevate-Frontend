@@ -113,7 +113,7 @@ export const BOOTCAMP_FAQ_GROUPS: FaqGroup[] = [
     heading: 'Funding, sessions & logistics',
     items: [
       { question: 'Will funding and scholarships be covered?', answer: 'Yes, and in depth. We cover graduate assistantships (one of the most underused funding routes for international students), a dedicated scholarships session with people who have actually won funding, and a resource pack with 50+ scholarships and 30+ low-tuition universities. Alternative funding such as loans is also covered.' },
-      { question: 'I’m only interested in one or two topics. Can I attend individual sessions?', answer: 'Yes. Drop-in tickets are available, so you can register for just the sessions most relevant to you.' },
+      { question: 'I’m only interested in one or two topics. Can I attend individual sessions?', answer: 'Yes. Drop-in tickets let you register for just the sessions most relevant to you. Registration for the 2026 cohort has closed, so drop-ins will reopen with the next set of dates.' },
       { question: 'What do I need to bring or prepare?', answer: 'Nothing is required before Session 1, it opens with a diagnostic exercise, so come with an open mind and a rough sense of your goals. For later sessions, facilitators may share prep materials in advance.' },
       { question: 'Will sessions be recorded?', answer: 'Yes. Recordings are shared with registered participants after each session, with 90 days of replay access.' },
       { question: 'What platform will sessions run on, and how long are they?', answer: 'Sessions run on Google Meet. Each one is 2 hours, with a Q&A included.' },

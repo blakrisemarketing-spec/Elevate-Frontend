@@ -4,6 +4,9 @@ import { WhatsAppFAB } from '../components/WhatsAppFAB';
 import { PageHero } from '../components/PageHero';
 import { PAST_EVENTS, UPCOMING_EVENTS, type EventCard } from '../data/events';
 
+const WAITLIST_WA =
+  'https://wa.me/233531113454?text=Hi%20Elevate%2C%20please%20let%20me%20know%20when%20your%20next%20bootcamp%20opens%20for%20registration.';
+
 function EventVisual({ title, muted = false }: { title: string; muted?: boolean }) {
   return (
     <div className={`relative overflow-hidden border-b ${muted ? 'border-slate-200 bg-slate-100' : 'border-primary/20 bg-primary/10'}`}>
@@ -80,9 +83,22 @@ export function EventsPage() {
               Register for live programmes currently open or coming up soon. Each event card points you to the dedicated registration page.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {UPCOMING_EVENTS.map((event) => <EventCardView key={event.title} event={event} />)}
-          </div>
+          {UPCOMING_EVENTS.length > 0 ? (
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {UPCOMING_EVENTS.map((event) => <EventCardView key={event.title} event={event} />)}
+            </div>
+          ) : (
+            <div className="card max-w-2xl">
+              <h3 className="text-headline-md mb-3">No open registrations right now</h3>
+              <p className="text-ink-muted leading-relaxed mb-6">
+                Our last bootcamp has wrapped and the next set of dates is being planned. Message us on WhatsApp to be told first when registration opens, or work with us one on one in the meantime.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a href={WAITLIST_WA} target="_blank" rel="noopener" className="btn-primary">Tell me when the next one opens</a>
+                <a href="/educational-services/" className="btn-secondary">See our services</a>
+              </div>
+            </div>
+          )}
         </section>
 
         <section className="bg-surface" aria-labelledby="past-events-heading">

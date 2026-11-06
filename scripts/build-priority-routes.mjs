@@ -72,8 +72,8 @@ const BOOTCAMP_COURSE = {
   inLanguage: 'en',
   // Pricing for Google's course rich results: full pass + per-session drop-in.
   offers: [
-    { '@type': 'Offer', category: 'Full Access Pass', price: '1500', priceCurrency: 'GHS', availability: 'https://schema.org/InStock', url: SITE_URL + '/get-into-grad-school-bootcamp/#tickets' },
-    { '@type': 'Offer', category: 'Drop-In, per session', price: '300', priceCurrency: 'GHS', availability: 'https://schema.org/InStock', url: SITE_URL + '/get-into-grad-school-bootcamp/#tickets' },
+    { '@type': 'Offer', category: 'Full Access Pass', price: '1500', priceCurrency: 'GHS', availability: 'https://schema.org/SoldOut', url: SITE_URL + '/get-into-grad-school-bootcamp/#tickets' },
+    { '@type': 'Offer', category: 'Drop-In, per session', price: '300', priceCurrency: 'GHS', availability: 'https://schema.org/SoldOut', url: SITE_URL + '/get-into-grad-school-bootcamp/#tickets' },
   ],
   hasCourseInstance: {
     '@type': 'CourseInstance',
@@ -274,7 +274,7 @@ const PRIORITY_ROUTES = [
                 startDate: '2026-07-26',
                 endDate: '2026-08-18',
                 eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
-                eventStatus: 'https://schema.org/EventScheduled',
+                eventStatus: 'https://schema.org/EventCompleted',
                 location: { '@type': 'VirtualLocation', url: SITE_URL + '/get-into-grad-school-bootcamp/' },
                 organizer: { '@id': ORG['@id'] },
                 url: SITE_URL + '/get-into-grad-school-bootcamp/',
@@ -352,7 +352,8 @@ const PRIORITY_ROUTES = [
     description: 'An 8-session intensive bootcamp covering school selection, essays, funding, scholarships, and visas, led by Chevening, DAAD and Mastercard scholars and top-MBA facilitators.',
     canonical: 'https://elevatecareerhub.com/get-into-grad-school-bootcamp/',
     ogImage: OG_IMAGE,
-    hasCheckout: true,
+    // Cohort has ended: no buy buttons on the page, so it goes back to zero JS.
+    hasCheckout: false,
   },
   {
     route: '/grad-school-match/',
@@ -686,6 +687,7 @@ async function emitDeployArtifacts() {
       type: item.type,
       deliverablePath: item.deliverablePath || null,
       sessions: item.sessions || null,
+      closed: item.closed === true,
     };
   }
   await ensureDir(path.join(distRoot, 'api'));
@@ -787,7 +789,7 @@ function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, 
   const trackingHead = `
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');</script>
     <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments);};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s);}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${META_PIXEL_ID}');fbq('track','PageView');</script>
-    <script>(function(){function clean(o){var r={};Object.keys(o||{}).forEach(function(k){if(o[k]!==undefined&&o[k]!==null&&o[k]!=='')r[k]=o[k];});return r;}function send(event,payload){window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:event},clean(payload)));if(typeof window.fbq==='function')window.fbq('trackCustom',event,clean(payload));}document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a,button'):null;if(!a)return;var href=a.getAttribute('href')||'';var text=(a.textContent||a.getAttribute('aria-label')||'').trim().slice(0,120);if(href.indexOf('wa.me/')>-1){send('whatsapp_cta_clicked',{location:location.pathname,cta_text:text});}if(href.indexOf('/get-into-grad-school-bootcamp/#tickets')>-1){send('bootcamp_cta_clicked',{location:location.pathname,cta_text:text});}});})();</script>`;
+    <script>(function(){function clean(o){var r={};Object.keys(o||{}).forEach(function(k){if(o[k]!==undefined&&o[k]!==null&&o[k]!=='')r[k]=o[k];});return r;}function send(event,payload){window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:event},clean(payload)));if(typeof window.fbq==='function')window.fbq('trackCustom',event,clean(payload));}document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a,button'):null;if(!a)return;var href=a.getAttribute('href')||'';var text=(a.textContent||a.getAttribute('aria-label')||'').trim().slice(0,120);if(href.indexOf('wa.me/')>-1){send('whatsapp_cta_clicked',{location:location.pathname,cta_text:text});}if(href.indexOf('/educational-services/')>-1){send('services_cta_clicked',{location:location.pathname,cta_text:text});}});})();</script>`;
   const trackingBody = `<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1"/></noscript>`;
   return `<!doctype html>
 <html lang="en-US">

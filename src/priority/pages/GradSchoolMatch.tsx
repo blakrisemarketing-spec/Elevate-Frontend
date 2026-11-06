@@ -21,7 +21,7 @@ export function GradSchoolMatchPage() {
       <main id="main" className="bg-gradient-to-b from-surface-tint/60 to-canvas">
         <section className="container-site py-12 lg:py-16">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <p className="eyebrow text-primary mb-3">Get Into Grad School Bootcamp</p>
+            <p className="eyebrow text-primary mb-3">Grad School &amp; Scholarship Match</p>
             <h1 className="text-display-lg mb-4">Your free grad school and scholarship match</h1>
             <p className="text-ink-muted leading-relaxed">
               Most funding goes to people who know where to look. This quick tool shows you the funded programs and

@@ -1,12 +1,13 @@
-# Elevate Frontend Route Launch Classification — 2026-05-10
+# Elevate Frontend Route Launch Classification, 2026-05-10
 
-Generated: 2026-06-13T01:39:03.092Z
+Generated: 2026-09-02T22:34:00.704Z
 
 | Route | Type | Launch behavior | Target | Decision reason |
 |---|---|---|---|---|
 | `/` | pages | serve-static | `/` | Priority launch route emitted as a direct WordPress source-of-truth static index.html. |
 | `/about/` | pages | serve-static | `/about/` | Priority launch route emitted as a direct WordPress source-of-truth static index.html. |
 | `/blog/` | pages | rewrite-to-app | `/blog/` | Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot. |
+| `/events/` | pages | rewrite-to-app | `/events/` | Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot. |
 | `/career-services/` | pages | serve-static | `/career-services/` | Priority launch route emitted as a direct WordPress source-of-truth static index.html. |
 | `/career-strategy-session/` | pages | rewrite-to-app | `/career-strategy-session/` | Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot. |
 | `/cart/` | pages | redirect-to-safe-route | `/contact-us/` | Internal WooCommerce/account flow is not in MVP; route is redirected to assisted WhatsApp/email contact. |

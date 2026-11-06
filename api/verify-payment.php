@@ -64,6 +64,15 @@ if (!is_array($catalog) || !isset($catalog[$serviceId]) || !is_array($catalog[$s
     respond(['ok' => false, 'message' => 'Unknown service.'], 400);
 }
 $item = $catalog[$serviceId];
+
+// Closed items (e.g. an event whose cohort has already run) can never be
+// fulfilled. Reject before we touch Paystack: the buy buttons are gone from
+// the page, but this is the gate that actually holds against a hand-crafted
+// request. 410 Gone, the offer existed and no longer does.
+if (!empty($item['closed'])) {
+    respond(['ok' => false, 'message' => 'Registration for this programme has closed.'], 410);
+}
+
 $unitAmount = (int) ($item['amountPesewas'] ?? -1);
 
 // Per-unit items (e.g. the bootcamp drop-in) carry a `sessions` allow-list.

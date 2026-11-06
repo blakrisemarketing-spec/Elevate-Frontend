@@ -36,6 +36,13 @@ export interface CatalogItem {
    * so a tampered client can never under-pay. Used by the bootcamp drop-in.
    */
   sessions?: string[];
+  /**
+   * Registration/sales are closed for this item (e.g. an event that has
+   * already run). The page keeps its buy buttons out of the DOM, the checkout
+   * island refuses to open, and `api/verify-payment.php` rejects the id
+   * outright, so no money can be taken even by a hand-crafted request.
+   */
+  closed?: boolean;
 }
 
 export const CURRENCY = 'GHS' as const;
@@ -89,14 +96,18 @@ export const CATALOG: Record<string, CatalogItem> = {
   'diy-complete-job-search': { id: 'diy-complete-job-search', name: 'The Complete Job Search Bundle', amountPesewas: 25000, type: 'product' },
 
   // ── Events ────────────────────────────────────────────────────
-  // Get Into Grad School Bootcamp (Jul–Aug 2026). Full pass standard price.
-  'bootcamp-grad-full': { id: 'bootcamp-grad-full', name: 'Get Into Grad School Bootcamp, Full Access Pass', amountPesewas: 150000, type: 'service', blurb: 'All 8 live sessions + bonuses + recordings' },
+  // Get Into Grad School Bootcamp (Jul–Aug 2026). The cohort has run, so both
+  // passes are `closed`: prices stay here for the record and for reconciling
+  // past purchases, but nothing can be bought. Flip `closed` off (and update
+  // the dates) when the next cohort opens.
+  'bootcamp-grad-full': { id: 'bootcamp-grad-full', name: 'Get Into Grad School Bootcamp, Full Access Pass', amountPesewas: 150000, type: 'service', blurb: 'All 8 live sessions + bonuses + recordings', closed: true },
   'bootcamp-grad-dropin': {
     id: 'bootcamp-grad-dropin',
     name: 'Get Into Grad School Bootcamp, Drop-In Sessions',
     amountPesewas: 30000, // per session ticked
     type: 'service',
     blurb: 'The sessions of your choice',
+    closed: true,
     sessions: [
       'Your Graduate School Game Plan - July 26',
       'Becoming the Candidate Admissions Committees Cannot Overlook - 28 July',

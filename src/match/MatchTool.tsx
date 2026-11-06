@@ -22,7 +22,7 @@ import type { Answers, MatchQuestion, Scholarship, Tier } from './match-data';
 import { trackEvent, trackMeta } from '../analytics/tracking';
 
 const LEAD_ENDPOINT = '/api/quiz-lead.php';
-const BOOTCAMP_URL = '/get-into-grad-school-bootcamp/#tickets';
+const SERVICES_URL = '/educational-services/';
 
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'] as const;
 
@@ -83,27 +83,27 @@ const PHONE_CODES = [
 const NEXT_STEP: Record<string, { title: string; body: string }> = {
   funding: {
     title: 'Funding is your real blocker, and it is the most solvable one.',
-    body: 'Session 7 is a full deep dive on scholarships, and you walk away with the 50+ Scholarships Pack you can act on right away.',
+    body: 'We build a school list you can realistically get funded for, then write the scholarship essay around it, in that order.',
   },
   essays: {
     title: 'Your essays are what is holding you back.',
-    body: 'Session 4 takes you through personal statements and scholarship essays step by step, using the narrative strategy that makes committees stop and read.',
+    body: 'We write your personal statement or scholarship essay with you, using the narrative strategy that makes a committee stop and read.',
   },
   'school-selection': {
     title: 'Picking the right schools is where you are stuck.',
-    body: 'Session 1 helps you build a smart, fundable school list so you stop applying on guesswork.',
+    body: 'School selection and programme research gets you a smart, fundable list, so you stop applying on guesswork.',
   },
   'low-gpa': {
     title: 'Your grades are not the end of your story.',
-    body: 'The bootcamp shows you how to position your profile so admissions committees look past the number and see your potential.',
+    body: 'We rebuild your grad school CV and your statement so committees look past the number and see what you can do.',
   },
   visa: {
     title: 'The whole moving process is weighing on you.',
-    body: 'Session 8 walks through document prep and the visa interview so you arrive on campus ready and confident.',
+    body: 'In a 1-on-1 session we walk you through document prep and the visa interview, so you arrive on campus ready instead of anxious.',
   },
   start: {
     title: 'You are not sure where to start, and that is completely normal.',
-    body: 'The bootcamp takes you from school selection all the way to your visa, one clear step at a time.',
+    body: 'Book a free chat and we will give you the order to work in, from school selection all the way to your visa. You are not signing up for anything by asking.',
   },
 };
 
@@ -276,8 +276,8 @@ export function MatchTool() {
         <p className="text-xs text-ink-muted mt-4">100% free. No payment. We will not spam you, we hate that too.</p>
         <noscript>
           <p className="text-ink-muted mt-6">
-            This tool needs JavaScript. In the meantime, see the{' '}
-            <a href="/get-into-grad-school-bootcamp/">Get Into Grad School Bootcamp</a>.
+            This tool needs JavaScript. In the meantime, see our{' '}
+            <a href="/educational-services/">grad school services</a>.
           </p>
         </noscript>
       </Shell>
@@ -470,7 +470,7 @@ export function MatchTool() {
   const motivation = motivationFor(answers);
   const topMatch = result.pathways[0];
   const waUrl = `${WHATSAPP_BASE}?text=${encodeURIComponent(
-    `Hi Elevate, I just did the Grad School Match. My top match is ${topMatch ? topMatch.name : 'a funded program'} and I'd love help getting into the bootcamp.`,
+    `Hi Elevate, I just did the Grad School Match. My top match is ${topMatch ? topMatch.name : 'a funded program'} and I'd like help with my application.`,
   )}`;
 
   return (
@@ -486,7 +486,7 @@ export function MatchTool() {
         </p>
       </div>
 
-      <BootcampCTA step={step} cvUploaded={Boolean(cvFile)} waUrl={waUrl} />
+      <NextStepCTA step={step} cvUploaded={Boolean(cvFile)} waUrl={waUrl} />
 
       <section className="mb-9">
         <h3 className="text-title-lg text-navy mb-4">Program pathways you qualify for</h3>
@@ -500,7 +500,6 @@ export function MatchTool() {
               <h4 className="text-lg font-bold text-navy">{p.name}</h4>
               <p className="text-ink-muted text-sm leading-relaxed mt-1">{p.blurb}</p>
               <Reasons reasons={p.reasons} />
-              {p.bootcampSession && <p className="text-xs text-primary mt-3">Covered in the bootcamp: {p.bootcampSession}</p>}
             </div>
           ))}
         </div>
@@ -522,7 +521,7 @@ export function MatchTool() {
             </div>
           ))}
         </div>
-        <p className="text-xs text-ink-muted mt-4">Quick honesty note: the final yes on funding sits with each provider. Our job is to make your case impossible to ignore. "Worth a stretch" just means aim for it with a sharper application, that is exactly what the bootcamp builds.</p>
+        <p className="text-xs text-ink-muted mt-4">Quick honesty note: the final yes on funding sits with each provider. Our job is to make your case impossible to ignore. "Worth a stretch" just means aim for it with a sharper application, that is exactly what we build with you.</p>
       </section>
 
     </Shell>
@@ -562,7 +561,7 @@ function Field({ label, htmlFor, help, children }: { label: string; htmlFor: str
   );
 }
 
-function BootcampCTA({ step, cvUploaded, waUrl }: { step: { title: string; body: string }; cvUploaded: boolean; waUrl: string }) {
+function NextStepCTA({ step, cvUploaded, waUrl }: { step: { title: string; body: string }; cvUploaded: boolean; waUrl: string }) {
   return (
     <section className="bg-gradient-to-br from-primary to-navy text-white rounded-xl p-8 sm:p-11 mb-9 text-center shadow-soft">
       <p className="eyebrow text-electric mb-3">Your next best move</p>
@@ -575,7 +574,7 @@ function BootcampCTA({ step, cvUploaded, waUrl }: { step: { title: string; body:
       </ul>
       {cvUploaded && <p className="text-white/80 text-sm mb-6">Your CV is in. A real human on our team will review it and follow up with notes alongside your report.</p>}
       <div className="flex flex-wrap justify-center gap-4">
-        <a href={BOOTCAMP_URL} onClick={() => trackEvent('bootcamp_cta_clicked', { location: 'match_results', cta_text: 'Save my spot in the bootcamp' })} className="btn-primary bg-electric text-navy hover:bg-electric-600">Save my spot in the bootcamp</a>
+        <a href={SERVICES_URL} onClick={() => trackEvent('services_cta_clicked', { location: 'match_results', cta_text: 'See how we help, one on one' })} className="btn-primary bg-electric text-navy hover:bg-electric-600">See how we help, one on one</a>
         <a href={waUrl} onClick={() => trackEvent('whatsapp_cta_clicked', { location: 'match_results', cta_text: 'Continue on WhatsApp' })} target="_blank" rel="noopener" className="btn-outline border-white text-white hover:bg-white/10">Continue on WhatsApp</a>
       </div>
     </section>

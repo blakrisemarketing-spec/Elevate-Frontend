@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-13T01:39:03.092Z",
-  "totalRoutes": 35,
+  "generatedAt": "2026-09-02T22:34:00.704Z",
+  "totalRoutes": 36,
   "routes": [
     {
       "route": "/",
@@ -24,6 +24,14 @@
       "title": "Blog",
       "behavior": "rewrite-to-app",
       "target": "/blog/",
+      "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
+    },
+    {
+      "route": "/events/",
+      "type": "pages",
+      "title": "Events",
+      "behavior": "rewrite-to-app",
+      "target": "/events/",
       "reason": "Migrated route served by a direct static React shell index.html that loads the matching sanitized snapshot."
     },
     {
