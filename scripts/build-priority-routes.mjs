@@ -10,6 +10,10 @@
  *
  * Tailwind CSS is generated once per build via the CLI before this script runs
  * (see package.json build script).
+ *
+ * This script owns dist/: it wipes it, copies public/ in, then writes every
+ * page, island, PHP endpoint and .htaccess. There is no client-side app shell;
+ * every route is a static file.
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -22,7 +26,22 @@ import { renderToStaticMarkup } from 'react-dom/server';
 // URL-encoded characters, e.g. ".../01. GitHub/...", resolve correctly.
 const projectRoot = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 const distRoot = path.join(projectRoot, 'dist');
+const publicRoot = path.join(projectRoot, 'public');
 const cssPath = path.join(projectRoot, '.tmp', 'priority.css');
+
+// Display font for "Gilroy ExtraBold" headings. Gilroy is a commercial font we
+// don't have yet, so Montserrat 800 stands in. Dropping the licensed file at
+// public/fonts/Gilroy-ExtraBold.woff2 switches every page to it at the next
+// build (the @font-face src and the preload are both rewritten in main()).
+const STANDIN_FONT_PATH = '/fonts/Montserrat-ExtraBold.woff2';
+const GILROY_FONT_PATH = '/fonts/Gilroy-ExtraBold.woff2';
+let displayFontPath = STANDIN_FONT_PATH;
+
+// Commerce shells that are not public MVP flows. .htaccess 302s them to
+// /contact-us/; the static redirect shells cover hosts that ignore .htaccess
+// (e.g. `npm run serve:php`).
+const BLOCKED_COMMERCE_ROUTES = ['/cart/', '/checkout/', '/my-account/', '/shop/', '/manage-profile/'];
+const ASSISTED_COMMERCE_ROUTE = '/contact-us/';
 
 // Social-share card: 1200x630 PNG served from the build (public/assets/og/).
 // Absolute URL because social scrapers don't resolve relative paths.
@@ -379,7 +398,7 @@ const PRIORITY_ROUTES = [
   },
   {
     // Branded 404. Written to dist/404.html (not a route dir) and wired via
-    // ErrorDocument in .htaccess. Not in registry.ts/pages.json, it is an error
+    // ErrorDocument in .htaccess. Not in registry.ts, it is an error
     // document, not a navigable route.
     route: '/404.html',
     outFile: '404.html',
@@ -605,69 +624,11 @@ async function loadModuleExports(entry) {
   return module.exports;
 }
 
-/**
- * Build dist/.htaccess from deploy/htaccess.conf, injecting the set of known
- * "virtual" SPA routes so unknown URLs return a real 404 (ErrorDocument) instead
- * of a soft-200 homepage. The allowlist is generated from src/generated/pages.json
- *, the same manifest the SPA uses, so it cannot drift from the app's routes.
- *
- * Safety: throws (aborting the build) if the manifest is missing/too small or the
- * generated regex fails its self-test, rather than ever shipping an .htaccess that
- * would 404 legitimate pages.
- */
+/** Copy deploy/htaccess.conf → dist/.htaccess (the Hostinger source of truth). */
 async function buildHtaccess() {
   const templatePath = path.join(projectRoot, 'deploy', 'htaccess.conf');
-  const template = await fs.readFile(templatePath, 'utf8');
-  if (!template.includes('__SPA_ROUTES__')) {
-    throw new Error('deploy/htaccess.conf is missing the __SPA_ROUTES__ placeholder');
-  }
-
-  const pagesPath = path.join(projectRoot, 'src', 'generated', 'pages.json');
-  let pages;
-  try {
-    pages = JSON.parse(await fs.readFile(pagesPath, 'utf8'));
-  } catch (err) {
-    throw new Error(`Could not read ${pagesPath} for the .htaccess SPA allowlist: ${err.message}`);
-  }
-
-  // Directory-style, lowercase routes only (the SPA's virtual routes). Drop the
-  // root and anything with a file extension or unexpected characters.
-  const tokens = [...new Set(
-    pages
-      .map(p => p.route)
-      .filter(r => typeof r === 'string' && /^\/[a-z0-9][a-z0-9\-/]*\/$/.test(r) && r !== '/')
-      .map(r => r.replace(/^\/|\/$/g, ''))
-      .filter(t => /^[a-z0-9][a-z0-9\-/]*$/.test(t)),
-  )];
-
-  if (tokens.length < 5) {
-    throw new Error(`Refusing to emit .htaccess: only ${tokens.length} SPA route(s) found in pages.json (expected the full site)`);
-  }
-
-  const alternation = tokens.join('|');
-
-  // Self-test the generated pattern before writing it.
-  const re = new RegExp(`^/(${alternation})/?$`, 'i');
-  for (const token of tokens) {
-    if (!re.test(`/${token}/`)) {
-      throw new Error(`.htaccess SPA allowlist self-test failed: /${token}/ does not match the generated pattern`);
-    }
-  }
-  if (re.test('/this-route-should-never-exist-xyz/')) {
-    throw new Error('.htaccess SPA allowlist self-test failed: a junk route matched the generated pattern');
-  }
-
-  const htaccess = template.replaceAll('__SPA_ROUTES__', alternation);
-  if (htaccess.includes('__SPA_ROUTES__')) {
-    throw new Error('.htaccess still contains the __SPA_ROUTES__ placeholder after substitution');
-  }
-  // Final-content sanity check: the generated rewrite condition must carry real
-  // route tokens, never the literal placeholder (which would 404 every route).
-  if (!new RegExp(`REQUEST_URI} \\^/\\(${tokens[0]}\\|`).test(htaccess)) {
-    throw new Error('.htaccess SPA RewriteCond did not receive the generated route allowlist');
-  }
-  await fs.writeFile(path.join(distRoot, '.htaccess'), htaccess);
-  console.log(`[ssg] .htaccess → dist/.htaccess (SPA allowlist: ${tokens.length} routes, real-404 fallback)`);
+  await fs.copyFile(templatePath, path.join(distRoot, '.htaccess'));
+  console.log('[ssg] .htaccess → dist/.htaccess');
 }
 
 /**
@@ -818,7 +779,7 @@ function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, 
     <meta name="twitter:image" content="${escapeHtml(ogImage)}">
     <meta name="twitter:image:alt" content="${escapeHtml(OG_IMAGE_ALT)}">
     <meta name="theme-color" content="#0077B6">
-    <link rel="preload" href="/fonts/Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="${displayFontPath}" as="font" type="font/woff2" crossorigin>
     <style>${css}</style>${ld}${checkoutScript}${matchScript}${adminScript}
   </head>
   <body>${trackingBody}${body}</body>
@@ -853,6 +814,59 @@ async function loadDotEnv() {
   }
 }
 
+/**
+ * Wipe dist/ and copy public/ into it. This replaces the old `vite build` step,
+ * whose only remaining job was copying public/ (it also bundled the retired
+ * WordPress-snapshot SPA).
+ */
+async function prepareDist() {
+  await fs.rm(distRoot, { recursive: true, force: true });
+  await fs.cp(publicRoot, distRoot, { recursive: true });
+}
+
+/**
+ * Fingerprint every local image/font a page references.
+ *
+ * .htaccess caches images and fonts for a year, so a file swapped in place at
+ * the same URL keeps serving the old copy. For each /assets/... or /fonts/...
+ * reference in the HTML (src, srcset, og:image, CSS url(), preload), copy the
+ * file to name.<hash>.ext and point the page at that copy, so any content
+ * change yields a new URL. The un-hashed original stays in dist/ for links we
+ * don't control (emails, the web manifest, old shares).
+ */
+const ASSET_REF_RE = /\/(?:assets|fonts)\/[A-Za-z0-9._\-/]+\.(?:webp|png|jpe?g|gif|svg|avif|ico|woff2?)(?![A-Za-z0-9])/g;
+const fingerprinted = new Map();
+
+async function fingerprintAsset(ref) {
+  if (fingerprinted.has(ref)) return fingerprinted.get(ref);
+  let hashedRef = ref;
+  const file = path.join(distRoot, ref);
+  try {
+    const buf = await fs.readFile(file);
+    const hash = createHash('sha256').update(buf).digest('hex').slice(0, 8);
+    const ext = path.extname(ref);
+    hashedRef = `${ref.slice(0, -ext.length)}.${hash}${ext}`;
+    await fs.writeFile(path.join(distRoot, hashedRef), buf);
+  } catch {
+    // Not a file we ship (e.g. a stale reference). Leave it alone; the audit
+    // script reports missing assets.
+  }
+  fingerprinted.set(ref, hashedRef);
+  return hashedRef;
+}
+
+async function fingerprintAssetRefs(html) {
+  const refs = [...new Set(html.match(ASSET_REF_RE) || [])];
+  for (const ref of refs) await fingerprintAsset(ref);
+  return html.replace(ASSET_REF_RE, (ref) => fingerprinted.get(ref) || ref);
+}
+
+function redirectShell(target) {
+  const title = 'Redirecting to Elevate Career Hub';
+  return `<!doctype html>
+<html lang="en-US"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${title}</title><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${target}"><link rel="canonical" href="${target}"></head><body><main><h1>${title}</h1><p>Continue to <a href="${target}">contact Elevate Career Hub</a>.</p></main></body></html>`;
+}
+
 async function main() {
   const { createRequire } = await import('node:module');
   globalThis.require = createRequire(import.meta.url);
@@ -863,6 +877,17 @@ async function main() {
     css = await fs.readFile(cssPath, 'utf8');
   } catch {
     throw new Error(`Tailwind CSS not found at ${cssPath}, run "tailwindcss -i src/priority/styles.css -o .tmp/priority.css --minify" first`);
+  }
+
+  await prepareDist();
+
+  try {
+    await fs.access(path.join(publicRoot, GILROY_FONT_PATH));
+    displayFontPath = GILROY_FONT_PATH;
+    css = css.replaceAll(STANDIN_FONT_PATH, GILROY_FONT_PATH);
+    console.log('[ssg] display font: Gilroy ExtraBold');
+  } catch {
+    console.log('[ssg] display font: Montserrat 800 stand-in (add public/fonts/Gilroy-ExtraBold.woff2 to switch)');
   }
 
   // Static routes + data-driven detail routes (products, services) generated
@@ -927,7 +952,7 @@ async function main() {
       }
     }
 
-    const html = renderHtmlShell({
+    const html = await fingerprintAssetRefs(renderHtmlShell({
       title: route.title,
       description: route.description,
       canonical: route.canonical,
@@ -943,7 +968,7 @@ async function main() {
       adminSrc,
       noindex: route.noindex,
       jsonLd,
-    });
+    }));
     // Most routes write to dist/<outDir>/index.html; a route may instead set
     // `outFile` to write to a specific file (e.g. dist/404.html).
     const outFile = route.outFile
@@ -956,6 +981,21 @@ async function main() {
     console.log(`[ssg] ${route.route} → ${path.relative(projectRoot, outFile)} (${(size / 1024).toFixed(1)} KB)`);
   }
   console.log(`[ssg] rendered ${results.length} priority route(s)`);
+  console.log(`[ssg] fingerprinted ${[...fingerprinted].filter(([ref, hashed]) => ref !== hashed).length} image/font asset(s)`);
+
+  for (const route of BLOCKED_COMMERCE_ROUTES) {
+    const dir = path.join(distRoot, route);
+    await ensureDir(dir);
+    await fs.writeFile(path.join(dir, 'index.html'), redirectShell(ASSISTED_COMMERCE_ROUTE));
+  }
+
+  // Route inventory for scripts/smoke-direct-routes.mjs and scripts/audit.mjs
+  // (build-local, not deployed).
+  await ensureDir(path.dirname(cssPath));
+  await fs.writeFile(path.join(projectRoot, '.tmp', 'routes.json'), JSON.stringify({
+    pages: results.map((r) => ({ route: r.route, file: r.file })),
+    redirects: BLOCKED_COMMERCE_ROUTES.map((route) => ({ route, target: ASSISTED_COMMERCE_ROUTE })),
+  }, null, 2));
 
   // ── Sitemap (generated from the indexable route list, so it can't drift) ──
   const today = new Date().toISOString().slice(0, 10);
