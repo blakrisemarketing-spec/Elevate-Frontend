@@ -26,9 +26,10 @@ $configFile = __DIR__ . '/config.php';
 if (is_file($configFile)) {
     require $configFile;
 }
-require __DIR__ . '/email.php';
+require_once __DIR__ . '/email.php';
 require_once __DIR__ . '/admin-auth.php';
 require_once __DIR__ . '/store.php';
+require_once __DIR__ . '/ops-store.php';
 
 function respond($data, int $status = 200): void {
     http_response_code($status);
@@ -139,9 +140,27 @@ $purchase = [
     'buyerEmail' => $buyerEmail,
     'sessions' => $sessions,
     'paystackStatus' => (string) ($txn['status'] ?? ''),
+    // First-party attribution from the checkout island; ech_lead_attribution_cols
+    // falls back to the .htaccess UTM/referrer cookies when this is empty.
+    'attribution' => is_array($body['attribution'] ?? null) ? $body['attribution'] : [],
 ];
+$portalLink = '';
 try {
     ech_purchase_insert($purchase); // idempotent on reference
+    // 2027 platform: client record + tracked work items + portal access.
+    // Best-effort; a failure here never blocks the buyer's confirmation.
+    try {
+        $client = ech_purchase_link_and_fulfil($reference);
+        if ($client) {
+            $base = rtrim((string) (ech_runtime_secret('PUBLIC_APP_BASE_URL') ?: 'https://elevatecareerhub.com'), '/');
+            $hasLogin = ((string) ($client['password_hash'] ?? '')) !== '' || !empty($client['google_sub']);
+            $portalLink = $hasLogin
+                ? $base . '/portal/'
+                : $base . '/portal/#token=' . rawurlencode(ech_portal_token_create((int) $client['id'], 7 * 86400));
+        }
+    } catch (Throwable $e) {
+        error_log('[verify-payment] client/work setup failed: ' . $e->getMessage());
+    }
     // Auto-convert: a verified purchase instantly moves the matching lead to
     // 'converted' in the CRM pipeline (best-effort; never blocks the buyer).
     if ($buyerEmail !== '') {
@@ -159,7 +178,7 @@ try {
     ech_ops_alert('Purchase DB write failed', 'Reference ' . $reference . ' spooled to fallback. ' . $e->getMessage());
 }
 try {
-    send_fulfilment($item, $reference, $buyerName, $buyerEmail, $sessions, $expectedAmount);
+    send_fulfilment($item, $reference, $buyerName, $buyerEmail, $sessions, $expectedAmount, $portalLink);
 } catch (Throwable $e) {
     error_log('[verify-payment] fulfilment email failed (payment is still valid): ' . $e->getMessage());
 }

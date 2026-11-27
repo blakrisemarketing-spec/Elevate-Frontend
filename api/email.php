@@ -57,7 +57,7 @@ function ech_tosend_send(string $key, array $from, array $to, string $subject, s
     }
 }
 
-function send_fulfilment(array $item, string $reference, string $buyerName, string $buyerEmail, array $sessions = [], ?int $amountPesewas = null): void {
+function send_fulfilment(array $item, string $reference, string $buyerName, string $buyerEmail, array $sessions = [], ?int $amountPesewas = null, string $portalLink = ''): void {
     $key = getenv('TOSEND_API_KEY') ?: '';
     $team = getenv('OPS_EMAIL') ?: 'hello@elevatecareerhub.com';
     $from = ech_parse_from((string) (getenv('MAIL_FROM') ?: 'Elevate Career Hub <noreply@elevatecareerhub.com>'));
@@ -104,7 +104,11 @@ function send_fulfilment(array $item, string $reference, string $buyerName, stri
                 : ($download !== ''
                     ? '<p>You can download your product here: <a href="' . ech_esc($download) . '">' . ech_esc($name) . '</a>.</p><p>If the link does not work, reply to this email and we will send it directly.</p>'
                     : '<p>Our team will email your product shortly.</p>'))
-            . '<p>,  Elevate Career Hub</p>';
+            . ($portalLink !== ''
+                ? '<p><strong>Track your progress:</strong> your client portal shows each stage of your work, your documents when they are ready, and your applications. '
+                    . '<a href="' . ech_esc($portalLink) . '">Open my client portal</a>' . (str_contains($portalLink, 'token=') ? ' (this setup link works once and lasts 7 days; after that, sign in with Google or reset your password from the portal).' : '.') . '</p>'
+                : '')
+            . '<p>Elevate Career Hub</p>';
         ech_tosend_send($key, $from, [['email' => $buyerEmail]], 'Your Elevate Career Hub purchase: ' . $name, $buyerHtml);
     }
 }

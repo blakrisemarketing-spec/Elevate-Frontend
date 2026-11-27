@@ -395,6 +395,21 @@ const PRIORITY_ROUTES = [
     ogImage: OG_IMAGE,
     noindex: true,
     hasAdmin: true,
+    // Private app: no GTM / Meta Pixel (no third party sees admin or client data).
+    noTracking: true,
+  },
+  {
+    route: '/portal/',
+    outDir: 'portal',
+    entry: 'src/priority/pages/Portal.tsx',
+    component: 'PortalPage',
+    title: 'Client Portal, Elevate Career Hub',
+    description: 'Track your Elevate Career Hub services, download your documents and follow your applications.',
+    canonical: 'https://elevatecareerhub.com/portal/',
+    ogImage: OG_IMAGE,
+    noindex: true,
+    hasPortal: true,
+    noTracking: true,
   },
   {
     // Branded 404. Written to dist/404.html (not a route dir) and wired via
@@ -598,6 +613,35 @@ async function buildAdminIsland() {
   return `/assets/${fileName}`;
 }
 
+/**
+ * Compile the client portal app → dist/assets/portal.<hash>.js. Same model as
+ * the admin island: the shell is static, all data comes from session-checked
+ * PHP endpoints scoped to the signed-in client.
+ */
+async function buildPortalIsland() {
+  await ensureDir(path.join(distRoot, 'assets'));
+  const tmpFile = path.join(distRoot, 'assets', 'portal.tmp.js');
+  await esbuild({
+    entryPoints: [path.join(projectRoot, 'src/portal/portal-client.tsx')],
+    bundle: true,
+    minify: true,
+    format: 'iife',
+    target: 'es2019',
+    outfile: tmpFile,
+    loader: { '.tsx': 'tsx', '.ts': 'ts' },
+    jsx: 'automatic',
+    jsxImportSource: 'react',
+    define: { 'process.env.NODE_ENV': '"production"' },
+    logLevel: 'silent',
+  });
+  const buf = await fs.readFile(tmpFile);
+  const hash = createHash('sha256').update(buf).digest('hex').slice(0, 8);
+  const fileName = `portal.${hash}.js`;
+  await fs.rename(tmpFile, path.join(distRoot, 'assets', fileName));
+  console.log(`[ssg] portal island → dist/assets/${fileName} (${(buf.length / 1024).toFixed(1)} KB)`);
+  return `/assets/${fileName}`;
+}
+
 async function bundleEntry(entry) {
   const result = await esbuild({
     entryPoints: [path.join(projectRoot, entry)],
@@ -651,17 +695,23 @@ async function emitDeployArtifacts() {
   }
   await ensureDir(path.join(distRoot, 'api'));
   await fs.writeFile(path.join(distRoot, 'api', 'catalog.json'), JSON.stringify(slim, null, 2));
+  // Work templates (what tracked work each purchase creates), read by ops-store.php.
+  const { fulfilmentConfig } = await loadModuleExports('src/checkout/fulfilment.ts');
+  await fs.writeFile(path.join(distRoot, 'api', 'fulfilment.json'), JSON.stringify(fulfilmentConfig(), null, 2));
   await fs.copyFile(path.join(projectRoot, 'api', 'config.php'), path.join(distRoot, 'api', 'config.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'admin-auth.php'), path.join(distRoot, 'api', 'admin-auth.php'));
   // Supabase data layer: required by quiz-lead, lead-campaign, verify-payment
   // and every admin endpoint. Missing copies = fatal require error in prod.
   await fs.copyFile(path.join(projectRoot, 'api', 'supabase.php'), path.join(distRoot, 'api', 'supabase.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'store.php'), path.join(distRoot, 'api', 'store.php'));
+  // 2027 platform domain layer: required by verify-payment (client + work
+  // creation), the admin ops endpoints and the client portal.
+  await fs.copyFile(path.join(projectRoot, 'api', 'ops-store.php'), path.join(distRoot, 'api', 'ops-store.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'verify-payment.php'), path.join(distRoot, 'api', 'verify-payment.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'email.php'), path.join(distRoot, 'api', 'email.php'));
   await fs.copyFile(path.join(projectRoot, 'api', 'lead-campaign.php'), path.join(distRoot, 'api', 'lead-campaign.php'));
   await buildHtaccess();
-  console.log(`[ssg] deploy artifacts → dist/api/{catalog.json,config.php,admin-auth.php,supabase.php,store.php,verify-payment.php,email.php,lead-campaign.php}, dist/.htaccess`);
+  console.log(`[ssg] deploy artifacts → dist/api/{catalog.json,fulfilment.json,config.php,admin-auth.php,supabase.php,store.php,ops-store.php,verify-payment.php,email.php,lead-campaign.php}, dist/.htaccess`);
 }
 
 /**
@@ -712,12 +762,36 @@ async function emitAdminArtifacts() {
     'admin-cv.php',
     'admin-scholarships.php',
     'admin-purchases.php',
+    'admin-growth.php',
+    'admin-finance.php',
+    'admin-clients.php',
+    'admin-work.php',
+    'admin-deliverables.php',
   ];
   for (const file of files) {
     await fs.copyFile(path.join(projectRoot, 'api', file), path.join(distRoot, 'api', file));
   }
   await fs.copyFile(path.join(projectRoot, 'api', '_data', '.htaccess'), path.join(distRoot, 'api', '_data', '.htaccess'));
   console.log(`[ssg] admin artifacts → dist/api/{${files.join(',')}}, dist/api/_data/.htaccess`);
+}
+
+/** Emit the client portal PHP endpoints. */
+async function emitPortalArtifacts() {
+  await ensureDir(path.join(distRoot, 'api'));
+  const files = [
+    'portal-auth.php',
+    'portal-login.php',
+    'portal-logout.php',
+    'portal-password.php',
+    'portal-google.php',
+    'portal-me.php',
+    'portal-file.php',
+    'portal-message.php',
+  ];
+  for (const file of files) {
+    await fs.copyFile(path.join(projectRoot, 'api', file), path.join(distRoot, 'api', file));
+  }
+  console.log(`[ssg] portal artifacts → dist/api/{${files.join(',')}}`);
 }
 
 async function loadComponent(entry, componentName) {
@@ -737,19 +811,20 @@ async function loadComponent(entry, componentName) {
   return module.exports[componentName];
 }
 
-function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, body, hasCheckout, checkoutSrc, hasMatch, matchSrc, hasAdmin, adminSrc, noindex, jsonLd }) {
+function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, body, hasCheckout, checkoutSrc, hasMatch, matchSrc, hasAdmin, adminSrc, hasPortal, portalSrc, noindex, noTracking, jsonLd }) {
   const robots = noindex ? 'noindex,nofollow' : 'index,follow';
   const checkoutScript = hasCheckout ? `\n    <script type="module" src="${checkoutSrc || '/assets/checkout.js'}"></script>` : '';
   const matchScript = hasMatch ? `\n    <script type="module" src="${matchSrc || '/assets/match.js'}"></script>` : '';
   const adminScript = hasAdmin ? `\n    <script type="module" src="${adminSrc || '/assets/admin.js'}"></script>` : '';
+  const portalScript = hasPortal ? `\n    <script type="module" src="${portalSrc || '/assets/portal.js'}"></script>` : '';
   const ld = (jsonLd && jsonLd.length)
     ? `\n    <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': jsonLd })}</script>`
     : '';
-  const trackingHead = `
+  const trackingHead = noTracking ? '' : `
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');</script>
     <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments);};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s);}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${META_PIXEL_ID}');fbq('track','PageView');</script>
     <script>(function(){function clean(o){var r={};Object.keys(o||{}).forEach(function(k){if(o[k]!==undefined&&o[k]!==null&&o[k]!=='')r[k]=o[k];});return r;}function send(event,payload){window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:event},clean(payload)));if(typeof window.fbq==='function')window.fbq('trackCustom',event,clean(payload));}document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a,button'):null;if(!a)return;var href=a.getAttribute('href')||'';var text=(a.textContent||a.getAttribute('aria-label')||'').trim().slice(0,120);if(href.indexOf('wa.me/')>-1){send('whatsapp_cta_clicked',{location:location.pathname,cta_text:text});}if(href.indexOf('/get-into-grad-school-bootcamp/#tickets')>-1){send('bootcamp_cta_clicked',{location:location.pathname,cta_text:text});}});})();</script>`;
-  const trackingBody = `<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1"/></noscript>`;
+  const trackingBody = noTracking ? '' : `<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1"/></noscript>`;
   return `<!doctype html>
 <html lang="en-US">
   <head>
@@ -780,7 +855,7 @@ function renderHtmlShell({ title, description, canonical, ogImage, ogType, css, 
     <meta name="twitter:image:alt" content="${escapeHtml(OG_IMAGE_ALT)}">
     <meta name="theme-color" content="#0077B6">
     <link rel="preload" href="${displayFontPath}" as="font" type="font/woff2" crossorigin>
-    <style>${css}</style>${ld}${checkoutScript}${matchScript}${adminScript}
+    <style>${css}</style>${ld}${checkoutScript}${matchScript}${adminScript}${portalScript}
   </head>
   <body>${trackingBody}${body}</body>
 </html>`;
@@ -904,9 +979,11 @@ async function main() {
   let checkoutSrc = '/assets/checkout.js';
   let matchSrc = '/assets/match.js';
   let adminSrc = '/assets/admin.js';
+  let portalSrc = '/assets/portal.js';
   const needsCheckout = ALL_ROUTES.some(r => r.hasCheckout);
   const needsMatch = ALL_ROUTES.some(r => r.hasMatch);
   const needsAdmin = ALL_ROUTES.some(r => r.hasAdmin);
+  const needsPortal = ALL_ROUTES.some(r => r.hasPortal);
   if (needsCheckout) {
     checkoutSrc = await buildCheckoutIsland();
   }
@@ -916,9 +993,12 @@ async function main() {
   if (needsAdmin) {
     adminSrc = await buildAdminIsland();
   }
+  if (needsPortal) {
+    portalSrc = await buildPortalIsland();
+  }
   // The PHP/.htaccess deploy artifacts are shared; emit them if either island
   // is in play (quiz-lead.php needs the copied email.php + .htaccess too).
-  if (needsCheckout || needsMatch || needsAdmin) {
+  if (needsCheckout || needsMatch || needsAdmin || needsPortal) {
     await emitDeployArtifacts();
   }
   if (needsMatch) {
@@ -926,6 +1006,9 @@ async function main() {
   }
   if (needsAdmin) {
     await emitAdminArtifacts();
+  }
+  if (needsPortal) {
+    await emitPortalArtifacts();
   }
 
   const results = [];
@@ -966,7 +1049,10 @@ async function main() {
       matchSrc,
       hasAdmin: route.hasAdmin,
       adminSrc,
+      hasPortal: route.hasPortal,
+      portalSrc,
       noindex: route.noindex,
+      noTracking: route.noTracking,
       jsonLd,
     }));
     // Most routes write to dist/<outDir>/index.html; a route may instead set

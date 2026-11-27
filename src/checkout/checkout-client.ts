@@ -15,6 +15,7 @@
 import { CATALOG, CURRENCY, formatCedis } from './catalog';
 import type { CatalogItem } from './catalog';
 import { trackEvent, trackMeta } from '../analytics/tracking';
+import { readAttribution } from '../analytics/attribution';
 
 const PUBLIC_KEY = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY || '';
 const PAYSTACK_SDK = 'https://js.paystack.co/v1/inline.js';
@@ -234,7 +235,7 @@ async function finalize(
     const res = await fetch(VERIFY_ENDPOINT, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ reference, serviceId, name: details.name, email: details.email, sessions: details.sessions }),
+      body: JSON.stringify({ reference, serviceId, name: details.name, email: details.email, sessions: details.sessions, attribution: readAttribution() }),
     });
     const data = await res.json().catch(() => ({}));
     if (res.ok && data && data.ok) {
@@ -265,6 +266,7 @@ async function finalize(
 
 let initialized = false;
 function init(): void {
+  readAttribution(); // snapshot the landing touch now, before any in-page changes
   if (initialized) return;
   initialized = true;
 

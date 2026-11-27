@@ -52,7 +52,23 @@ function ech_lead_attribution_cols(array $record): array {
     $a = is_array($record['attribution'] ?? null) ? $record['attribution'] : [];
     $out = [];
     foreach (['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'referrer', 'landing_path'] as $k) {
-        $out[$k] = (string) ($a[$k] ?? '');
+        $out[$k] = mb_substr(trim((string) ($a[$k] ?? '')), 0, $k === 'referrer' ? 500 : 200);
+    }
+    // Server-side fallback: the .htaccess drops 90-day first-party cookies on
+    // any UTM landing or external referral (zero page JS), so a buyer who first
+    // arrived from an ad days ago still carries that touch to checkout.
+    $internalRef = $out['referrer'] === '' || preg_match('#^https?://([^/]*\.)?elevatecareerhub\.com#i', $out['referrer']);
+    if ($out['utm_source'] === '' && $internalRef) {
+        foreach (['utm_source', 'utm_medium', 'utm_campaign'] as $k) {
+            $c = $_COOKIE['ech_' . $k] ?? '';
+            if (is_string($c) && $c !== '') {
+                $out[$k] = mb_substr(preg_replace('/[^A-Za-z0-9_.+ -]/', '', $c) ?? '', 0, 200);
+            }
+        }
+        $ref = $_COOKIE['ech_ref'] ?? '';
+        if ($out['utm_source'] === '' && is_string($ref) && preg_match('/^[A-Za-z0-9.-]{1,120}$/', $ref)) {
+            $out['referrer'] = 'https://' . $ref . '/';
+        }
     }
     return $out;
 }
@@ -367,7 +383,9 @@ function ech_purchase_insert(array $purchase): void {
         'sessions' => array_values((array) ($purchase['sessions'] ?? [])),
         'paystack_status' => (string) ($purchase['paystackStatus'] ?? ''),
         'created_at' => (string) ($purchase['ts'] ?? gmdate('c')),
-    ], ['onConflict' => 'reference', 'ignoreDuplicates' => true]);
+        'client_id' => isset($purchase['clientId']) ? (int) $purchase['clientId'] : null,
+        'channel' => (string) ($purchase['channel'] ?? ''),
+    ] + ech_lead_attribution_cols(['attribution' => $purchase['attribution'] ?? []]), ['onConflict' => 'reference', 'ignoreDuplicates' => true]);
 }
 
 function ech_purchase_row_to_legacy(array $row): array {
@@ -383,6 +401,10 @@ function ech_purchase_row_to_legacy(array $row): array {
         'buyerEmail' => (string) ($row['buyer_email'] ?? ''),
         'sessions' => is_array($row['sessions'] ?? null) ? $row['sessions'] : [],
         'paystackStatus' => (string) ($row['paystack_status'] ?? ''),
+        'channel' => (string) ($row['channel'] ?? ''),
+        'utmSource' => (string) ($row['utm_source'] ?? ''),
+        'utmCampaign' => (string) ($row['utm_campaign'] ?? ''),
+        'clientId' => isset($row['client_id']) ? (int) $row['client_id'] : null,
     ];
 }
 
@@ -581,12 +603,13 @@ function ech_admin_user_touch_login(int $id): void {
 }
 
 /** Create or update an admin user by email (merge). $hash is a bcrypt hash. */
-function ech_admin_user_upsert(string $email, string $hash, string $name, bool $active = true): array {
+function ech_admin_user_upsert(string $email, string $hash, string $name, bool $active = true, string $role = 'staff'): array {
     $row = [
         'email' => strtolower(trim($email)),
         'password_hash' => $hash,
         'name' => $name,
         'active' => $active,
+        'role' => in_array($role, ['founder', 'partner', 'staff'], true) ? $role : 'staff',
         'created_at' => gmdate('c'),
     ];
     $res = ech_sb_insert('ech_admin_users', $row, ['onConflict' => 'email', 'merge' => true]);
@@ -594,7 +617,7 @@ function ech_admin_user_upsert(string $email, string $hash, string $name, bool $
 }
 
 function ech_admin_users_list(): array {
-    return ech_sb_select('ech_admin_users', 'select=id,email,name,active,created_at,last_login_at&order=email.asc');
+    return ech_sb_select('ech_admin_users', 'select=id,email,name,role,active,created_at,last_login_at&order=email.asc');
 }
 
 function ech_admin_user_get(int $id): ?array {
@@ -607,6 +630,10 @@ function ech_admin_user_get(int $id): ?array {
 
 function ech_admin_user_set_password(int $id, string $hash): void {
     ech_sb_update('ech_admin_users', 'id=eq.' . $id, ['password_hash' => $hash]);
+}
+
+function ech_admin_user_set_role(int $id, string $role): void {
+    ech_sb_update('ech_admin_users', 'id=eq.' . $id, ['role' => $role]);
 }
 
 function ech_admin_user_set_active(int $id, bool $active): void {
@@ -623,6 +650,7 @@ function ech_admin_user_public(array $u): array {
         'id' => (int) ($u['id'] ?? 0),
         'email' => (string) ($u['email'] ?? ''),
         'name' => (string) ($u['name'] ?? ''),
+        'role' => ech_admin_normalize_role((string) ($u['role'] ?? '')),
         'active' => !empty($u['active']),
         'createdAt' => (string) ($u['created_at'] ?? ''),
         'lastLoginAt' => (string) ($u['last_login_at'] ?? ''),

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/admin-auth.php';
 require_once __DIR__ . '/store.php';
-ech_admin_require();
+ech_admin_require_role(['founder', 'partner']);
 
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'GET') {
     ech_json(['ok' => false, 'message' => 'Method not allowed'], 405);
