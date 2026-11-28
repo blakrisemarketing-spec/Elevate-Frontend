@@ -25,7 +25,7 @@ if ($email !== '') {
         $user = null;
     }
     if (is_array($user) && !empty($user['active']) && password_verify($password, (string) ($user['password_hash'] ?? ''))) {
-        ech_admin_establish_session(['id' => $user['id'], 'email' => $user['email'], 'name' => $user['name']]);
+        ech_admin_establish_session(['id' => $user['id'], 'email' => $user['email'], 'name' => $user['name'], 'role' => $user['role'] ?? '']);
         ech_admin_user_touch_login((int) $user['id']);
         ech_json(['ok' => true, 'user' => ech_admin_user_public($user)]);
     }
@@ -34,7 +34,7 @@ if ($email !== '') {
 // Break-glass: the shared ADMIN_PASSWORD still works (e.g. if the users table
 // is empty or Supabase is unreachable). Identity shows as the master admin.
 if (ech_admin_login($password)) {
-    ech_json(['ok' => true, 'user' => ['email' => $email !== '' ? $email : 'master', 'name' => 'Master admin']]);
+    ech_json(['ok' => true, 'user' => ['email' => $email !== '' ? $email : 'master', 'name' => 'Master admin', 'role' => 'founder']]);
 }
 
 usleep(400000); // small throttle on failed attempts

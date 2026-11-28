@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/admin-auth.php';
 require_once __DIR__ . '/store.php';
-ech_admin_require();
+ech_admin_require_role(['founder']);
 
 /** Readable, reasonably strong random password (no ambiguous chars). */
 function ech_generate_password(int $len = 14): string {
@@ -68,7 +68,8 @@ try {
         } elseif (mb_strlen($plain) < 8) {
             ech_json(['ok' => false, 'message' => 'Password must be at least 8 characters.'], 400);
         }
-        $user = ech_admin_user_upsert($email, ech_hash_password($plain), $name, true);
+        $role = in_array($body['role'] ?? '', ['founder', 'partner', 'staff'], true) ? (string) $body['role'] : 'staff';
+        $user = ech_admin_user_upsert($email, ech_hash_password($plain), $name, true, $role);
         ech_json(['ok' => true, 'user' => ech_admin_user_public($user), 'password' => $plain, 'generated' => $generated]);
     }
 
@@ -91,6 +92,18 @@ try {
         }
         ech_admin_user_set_password($id, ech_hash_password($plain));
         ech_json(['ok' => true, 'password' => $plain, 'generated' => $generated]);
+    }
+
+    if ($action === 'role') {
+        $role = (string) ($body['role'] ?? '');
+        if (!in_array($role, ['founder', 'partner', 'staff'], true)) {
+            ech_json(['ok' => false, 'message' => 'Unknown role.'], 400);
+        }
+        if ((int) ($me['id'] ?? -1) === $id && $role !== 'founder') {
+            ech_json(['ok' => false, 'message' => 'You cannot remove your own founder access.'], 400);
+        }
+        ech_admin_user_set_role($id, $role);
+        ech_json(['ok' => true, 'role' => $role]);
     }
 
     if ($action === 'active') {

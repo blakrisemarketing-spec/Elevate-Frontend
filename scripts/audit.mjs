@@ -27,7 +27,7 @@ try {
 
 // Rewritten by deploy/htaccess.conf before they reach the file system.
 const HTACCESS_REDIRECTS = new Set(['/index.php/about/', '/index.php/contact-us/', '/index.php/diy-products/']);
-const ISLAND_RE = /^\/assets\/(checkout|match|admin)\.[0-9a-f]{8}\.js$/;
+const ISLAND_RE = /^\/assets\/(checkout|match|admin|portal)\.[0-9a-f]{8}\.js$/;
 const FINGERPRINT_RE = /\.[0-9a-f]{8}\.[a-z0-9]+$/;
 const FINGERPRINTED_DIRS = /^\/(assets|fonts)\//;
 const IMAGE_OR_FONT = /\.(webp|png|jpe?g|gif|svg|avif|ico|woff2?)$/;

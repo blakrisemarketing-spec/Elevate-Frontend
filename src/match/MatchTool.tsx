@@ -20,48 +20,11 @@ import type { FormEvent, ReactNode } from 'react';
 import { QUESTIONS, matchProfile, motivationFor } from './match-data';
 import type { Answers, MatchQuestion, Scholarship, Tier } from './match-data';
 import { trackEvent, trackMeta } from '../analytics/tracking';
+import { readAttribution } from '../analytics/attribution';
 
 const LEAD_ENDPOINT = '/api/quiz-lead.php';
 const BOOTCAMP_URL = '/get-into-grad-school-bootcamp/#tickets';
 
-const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'] as const;
-
-/**
- * First-touch attribution for this tab: the first time the tool loads we snapshot
- * the UTM params, referrer, and landing path, persist them for the session, and
- * reuse that snapshot at submit time (so it survives in-page navigation). Fully
- * self-contained and failure-tolerant; never blocks a submission.
- */
-function readAttribution(): Record<string, string> {
-  try {
-    let stored: Record<string, string> = {};
-    try {
-      stored = JSON.parse(sessionStorage.getItem('ech_attr') || '{}');
-    } catch {
-      stored = {};
-    }
-    if (!stored || !stored.__set) {
-      const params = new URLSearchParams(window.location.search);
-      const fresh: Record<string, string> = { __set: '1' };
-      for (const k of UTM_KEYS) {
-        const v = params.get(k);
-        if (v) fresh[k] = v.slice(0, 200);
-      }
-      fresh.referrer = (document.referrer || '').slice(0, 500);
-      fresh.landing_path = (window.location.pathname || '').slice(0, 300);
-      stored = fresh;
-      try {
-        sessionStorage.setItem('ech_attr', JSON.stringify(stored));
-      } catch {
-        /* private mode / storage full: attribution is best-effort */
-      }
-    }
-    const { __set, ...out } = stored;
-    return out;
-  } catch {
-    return {};
-  }
-}
 const WHATSAPP_BASE = 'https://wa.me/233531113454';
 const MAX_CV_BYTES = 5 * 1024 * 1024;
 const CV_EXT = ['pdf', 'doc', 'docx'];

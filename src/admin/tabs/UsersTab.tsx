@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { Check, Copy, KeyRound, Plus, Trash2, UserCog, X } from 'lucide-react';
 import { api, errorMessage, isAuthError } from '../api';
+import { ROLE_LABELS } from '../ops-api';
+import type { Role } from '../ops-api';
 import type {
   ActiveUserResponse,
   AdminUser,
@@ -95,6 +97,7 @@ function AddUserDrawer({
 }) {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [role, setRole] = useState<Role>('staff');
   const [mode, setMode] = useState<'generate' | 'set'>('generate');
   const [password, setPassword] = useState('');
   const [saving, setSaving] = useState(false);
@@ -120,9 +123,10 @@ function AddUserDrawer({
     setSaving(true);
     setError('');
     try {
-      const body: { action: 'create'; email: string; name?: string; password?: string } = {
+      const body: { action: 'create'; email: string; name?: string; password?: string; role: Role } = {
         action: 'create',
         email: email.trim(),
+        role,
       };
       if (name.trim()) body.name = name.trim();
       if (mode === 'set') body.password = password;
@@ -181,6 +185,13 @@ function AddUserDrawer({
           </Field>
           <Field label="Name (optional)">
             <input value={name} onChange={(e) => setName(e.target.value)} className={inputClass} />
+          </Field>
+          <Field label="Role">
+            <select value={role} onChange={(e) => setRole(e.target.value as Role)} className={inputClass}>
+              <option value="staff">Staff: sees only work assigned to them, no finance</option>
+              <option value="partner">Partner / senior: all clients, work and growth data</option>
+              <option value="founder">Founder: everything, including user management</option>
+            </select>
           </Field>
 
           <Field label="Password">
@@ -315,6 +326,13 @@ export function UsersTab({ refreshKey, onAuthError, currentUser }: Props) {
     });
   }
 
+  function changeRole(u: AdminUser, role: Role) {
+    void runAction(async () => {
+      await api('/api/admin-users.php', { method: 'POST', body: JSON.stringify({ action: 'role', id: u.id, role }) });
+      setUsers((prev) => prev.map((x) => (x.id === u.id ? { ...x, role } : x)));
+    });
+  }
+
   function toggleActive(u: AdminUser) {
     void runAction(async () => {
       const res = await api<ActiveUserResponse>('/api/admin-users.php', {
@@ -379,6 +397,7 @@ export function UsersTab({ refreshKey, onAuthError, currentUser }: Props) {
                 <tr>
                   <th className="px-5 py-3">Email</th>
                   <th className="px-5 py-3">Name</th>
+                  <th className="px-5 py-3">Role</th>
                   <th className="px-5 py-3">Status</th>
                   <th className="px-5 py-3">Last login</th>
                   <th className="px-5 py-3 text-right"><span className="sr-only">Actions</span></th>
@@ -398,6 +417,11 @@ export function UsersTab({ refreshKey, onAuthError, currentUser }: Props) {
                         )}
                       </td>
                       <td className="px-5 py-4 text-[#26334d]">{u.name || <span className="text-[#9aa5b7]">-</span>}</td>
+                      <td className="px-5 py-4">
+                        <select aria-label={`Role for ${u.email}`} disabled={isSelf || actionBusy} value={u.role || 'founder'} onChange={(e) => changeRole(u, e.target.value as Role)} className="h-9 rounded-lg border border-[#c8d6e5] bg-white px-2 text-sm">
+                          {(Object.keys(ROLE_LABELS) as Role[]).map((r) => <option key={r} value={r}>{ROLE_LABELS[r]}</option>)}
+                        </select>
+                      </td>
                       <td className="px-5 py-4">
                         <span className="text-xs font-bold">
                           <Badge tone={u.active ? 'green' : 'neutral'}>{u.active ? 'Active' : 'Inactive'}</Badge>

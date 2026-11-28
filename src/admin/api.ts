@@ -142,8 +142,8 @@ export type BroadcastSendResponse = {
   segmentEligible: number;
 };
 
-export type CurrentUser = { id: number; email: string; name: string };
-export type LoginUser = { email: string; name: string };
+export type CurrentUser = { id: number; email: string; name: string; role?: 'founder' | 'partner' | 'staff' };
+export type LoginUser = { email: string; name: string; role?: 'founder' | 'partner' | 'staff' };
 export type LoginResponse = { ok: boolean; user: LoginUser };
 export type MeResponse = { ok: boolean; user: CurrentUser };
 
@@ -151,6 +151,7 @@ export type AdminUser = {
   id: number;
   email: string;
   name: string;
+  role?: 'founder' | 'partner' | 'staff';
   active: boolean;
   createdAt: string;
   lastLoginAt: string;
@@ -159,7 +160,8 @@ export type AdminUser = {
 export type AdminUsersResponse = { ok: boolean; users: AdminUser[] };
 
 export type AdminUserAction =
-  | { action: 'create'; email: string; name?: string; password?: string }
+  | { action: 'create'; email: string; name?: string; password?: string; role?: 'founder' | 'partner' | 'staff' }
+  | { action: 'role'; id: number; role: 'founder' | 'partner' | 'staff' }
   | { action: 'reset'; id: number; password?: string }
   | { action: 'active'; id: number; active: boolean }
   | { action: 'delete'; id: number };

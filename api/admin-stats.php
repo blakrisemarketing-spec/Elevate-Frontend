@@ -17,6 +17,20 @@ try {
     ech_json(['ok' => false, 'message' => 'Stats database is unreachable. Try again shortly.'], 503);
 }
 
+// Staff see the lead pipeline but not revenue.
+$me = ech_admin_current_user() ?? [];
+if (!ech_admin_role_sees_finance((string) ($me['role'] ?? ''))) {
+    foreach (['revenueFromLeadsPesewas', 'revenueTotalPesewas', 'purchasesTotal'] as $k) {
+        $stats[$k] = 0;
+    }
+    if (isset($stats['sourceFunnel']) && is_array($stats['sourceFunnel'])) {
+        foreach ($stats['sourceFunnel'] as &$row) {
+            $row['revenuePesewas'] = 0;
+        }
+        unset($row);
+    }
+}
+
 $stats['legacyImportDoneAt'] = null;
 try {
     $stats['legacyImportDoneAt'] = ech_setting_get('legacy_import_done_at');

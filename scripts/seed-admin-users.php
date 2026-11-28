@@ -67,7 +67,7 @@ foreach ($emails as $email) {
     }
     $plain = gen_password();
     try {
-        ech_admin_user_upsert($email, password_hash($plain, PASSWORD_DEFAULT), '', true);
+        ech_admin_user_upsert($email, password_hash($plain, PASSWORD_DEFAULT), '', true, 'founder');
         printf("%-40s %s\n", $email, $plain);
     } catch (Throwable $e) {
         $fail++;

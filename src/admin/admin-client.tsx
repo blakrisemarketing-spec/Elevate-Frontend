@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ChartColumn, GraduationCap, KanbanSquare, LayoutDashboard, LogOut, ReceiptText, RefreshCw, Send, UserCog, UsersRound } from 'lucide-react';
+import { BriefcaseBusiness, ChartColumn, Contact, GraduationCap, KanbanSquare, LayoutDashboard, LogOut, ReceiptText, RefreshCw, Send, TrendingUp, UserCog, UsersRound, Wallet } from 'lucide-react';
 import { api, ApiError } from './api';
 import type { CurrentUser, LoginResponse, MeResponse } from './api';
 import { NavButton } from './ui';
@@ -13,30 +13,45 @@ import { MessagingTab } from './tabs/MessagingTab';
 import { PurchasesTab } from './tabs/PurchasesTab';
 import { ScholarshipsTab } from './tabs/ScholarshipsTab';
 import { UsersTab } from './tabs/UsersTab';
+import { GrowthTab } from './tabs/GrowthTab';
+import { FinanceTab } from './tabs/FinanceTab';
+import { WorkTab } from './tabs/WorkTab';
+import { ClientsTab } from './tabs/ClientsTab';
+import { ROLE_LABELS, seesFinance } from './ops-api';
+import type { Role } from './ops-api';
 
-type Tab = 'overview' | 'leads' | 'conversion' | 'messaging' | 'purchases' | 'scholarships' | 'users';
+type Tab = 'growth' | 'work' | 'clients' | 'finance' | 'overview' | 'leads' | 'conversion' | 'messaging' | 'purchases' | 'scholarships' | 'users';
 
-const tabs: Array<{ id: Tab; label: string; icon: Icon; description: string }> = [
-  { id: 'overview', label: 'Overview', icon: ChartColumn, description: 'Pipeline and campaign health' },
+// `roles` = who sees the tab (server endpoints enforce the same rule).
+const tabs: Array<{ id: Tab; label: string; icon: Icon; description: string; roles?: Role[] }> = [
+  { id: 'growth', label: 'Growth', icon: TrendingUp, description: 'Revenue vs goal, channels and products', roles: ['founder', 'partner'] },
+  { id: 'work', label: 'Work board', icon: BriefcaseBusiness, description: 'Client work from purchase to delivery' },
+  { id: 'clients', label: 'Clients', icon: Contact, description: 'Client files, applications and portal' },
+  { id: 'finance', label: 'Sales & spend', icon: Wallet, description: 'Offline sales, ad spend and goals', roles: ['founder', 'partner'] },
+  { id: 'overview', label: 'Lead overview', icon: ChartColumn, description: 'Pipeline and campaign health' },
   { id: 'leads', label: 'Leads', icon: UsersRound, description: 'Quiz submissions and CVs' },
   { id: 'conversion', label: 'Conversion', icon: KanbanSquare, description: 'Sales pipeline calling board' },
   { id: 'messaging', label: 'Messaging', icon: Send, description: 'Broadcast to lead segments' },
-  { id: 'purchases', label: 'Purchases', icon: ReceiptText, description: 'Verified Paystack ledger' },
+  { id: 'purchases', label: 'Purchases', icon: ReceiptText, description: 'Verified Paystack ledger', roles: ['founder', 'partner'] },
   { id: 'scholarships', label: 'Scholarships', icon: GraduationCap, description: 'Runtime matching feed' },
-  { id: 'users', label: 'Users', icon: UserCog, description: 'Admin accounts and access' },
+  { id: 'users', label: 'Users', icon: UserCog, description: 'Admin accounts and access', roles: ['founder'] },
 ];
 
 function AdminApp() {
   const [authed, setAuthed] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
-  const [tab, setTab] = useState<Tab>('overview');
+  const [tab, setTab] = useState<Tab>('work');
   const [refreshKey, setRefreshKey] = useState(0);
   const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
 
   function loadMe() {
     api<MeResponse>('/api/admin-me.php')
-      .then((res) => setCurrentUser(res.user))
+      .then((res) => {
+        setCurrentUser(res.user);
+        // Senior roles land on Growth; staff land on their work.
+        if (seesFinance(res.user.role)) setTab((t) => (t === 'work' ? 'growth' : t));
+      })
       .catch(() => undefined);
   }
 
@@ -85,7 +100,9 @@ function AdminApp() {
     return <LoginScreen onSubmit={login} busy={busy} error={error} />;
   }
 
-  const activeTab = tabs.find((x) => x.id === tab) || tabs[0];
+  const role: Role = currentUser?.role || 'staff';
+  const visibleTabs = tabs.filter((t) => !t.roles || t.roles.includes(role));
+  const activeTab = visibleTabs.find((x) => x.id === tab) || visibleTabs.find((x) => x.id === 'work') || visibleTabs[0];
 
   return (
     <main className="min-h-screen bg-[#eef3f8] text-[#172033]">
@@ -102,8 +119,8 @@ function AdminApp() {
           </div>
 
           <nav className="space-y-2" aria-label="Admin sections">
-            {tabs.map((item) => (
-              <NavButton key={item.id} label={item.label} description={item.description} icon={item.icon} active={tab === item.id} onClick={() => setTab(item.id)} />
+            {visibleTabs.map((item) => (
+              <NavButton key={item.id} label={item.label} description={item.description} icon={item.icon} active={activeTab.id === item.id} onClick={() => setTab(item.id)} />
             ))}
           </nav>
 
@@ -123,7 +140,7 @@ function AdminApp() {
               {currentUser && (
                 <div className="mr-1 hidden text-right sm:block">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#64718a]">Signed in as</p>
-                  <p className="text-sm font-bold text-[#102548]">{currentUser.name || currentUser.email}</p>
+                  <p className="text-sm font-bold text-[#102548]">{currentUser.name || currentUser.email} <span className="font-normal text-[#64718a]">· {ROLE_LABELS[role]}</span></p>
                 </div>
               )}
               <button type="button" className="inline-flex min-h-[42px] items-center justify-center gap-2 rounded-lg border border-[#c8d6e5] bg-white px-4 py-2 text-sm font-semibold text-[#102548] transition hover:border-[#0077B6] hover:text-[#0077B6]" onClick={() => setRefreshKey((k) => k + 1)}>
@@ -137,13 +154,17 @@ function AdminApp() {
             </div>
           </header>
 
-          {tab === 'overview' && <OverviewTab refreshKey={refreshKey} onAuthError={onAuthError} />}
-          {tab === 'leads' && <LeadsTab refreshKey={refreshKey} onAuthError={onAuthError} />}
-          {tab === 'conversion' && <ConversionTab refreshKey={refreshKey} onAuthError={onAuthError} />}
-          {tab === 'messaging' && <MessagingTab refreshKey={refreshKey} onAuthError={onAuthError} />}
-          {tab === 'purchases' && <PurchasesTab refreshKey={refreshKey} onAuthError={onAuthError} />}
-          {tab === 'scholarships' && <ScholarshipsTab refreshKey={refreshKey} onAuthError={onAuthError} />}
-          {tab === 'users' && <UsersTab refreshKey={refreshKey} onAuthError={onAuthError} currentUser={currentUser} />}
+          {activeTab.id === 'growth' && <GrowthTab refreshKey={refreshKey} onAuthError={onAuthError} />}
+          {activeTab.id === 'work' && <WorkTab key={role} refreshKey={refreshKey} onAuthError={onAuthError} role={role} />}
+          {activeTab.id === 'clients' && <ClientsTab refreshKey={refreshKey} onAuthError={onAuthError} role={role} />}
+          {activeTab.id === 'finance' && <FinanceTab refreshKey={refreshKey} onAuthError={onAuthError} />}
+          {activeTab.id === 'overview' && <OverviewTab refreshKey={refreshKey} onAuthError={onAuthError} />}
+          {activeTab.id === 'leads' && <LeadsTab refreshKey={refreshKey} onAuthError={onAuthError} />}
+          {activeTab.id === 'conversion' && <ConversionTab refreshKey={refreshKey} onAuthError={onAuthError} />}
+          {activeTab.id === 'messaging' && <MessagingTab refreshKey={refreshKey} onAuthError={onAuthError} />}
+          {activeTab.id === 'purchases' && <PurchasesTab refreshKey={refreshKey} onAuthError={onAuthError} />}
+          {activeTab.id === 'scholarships' && <ScholarshipsTab refreshKey={refreshKey} onAuthError={onAuthError} />}
+          {activeTab.id === 'users' && <UsersTab refreshKey={refreshKey} onAuthError={onAuthError} currentUser={currentUser} />}
         </section>
       </div>
     </main>
